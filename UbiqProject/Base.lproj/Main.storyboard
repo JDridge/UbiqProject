@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SH1-vH-wVY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -12,10 +12,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MmE-ha-aFL"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQp-Nm-LER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-395" y="288"/>
+            <point key="canvasLocation" x="-391" y="314"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -29,34 +32,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-eO-4A3">
-                                <rect key="frame" x="0.0" y="20" width="600" height="360"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="360" id="aMx-D6-cGm"/>
-                                </constraints>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-6M-FbH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-6M-FbH">
                                 <rect key="frame" x="229" y="481" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="QF8-yH-4Gn"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="YhL-mf-dhP" kind="show" id="xY4-oE-cdF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our emblem goes here " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5F-pS-5Nz">
+                                <rect key="frame" x="199" y="179" width="179" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fRF-sY-KIK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Your Location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="848-0g-HzG">
+                                <rect key="frame" x="201" y="327" width="148" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter friends Location" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rAI-Jo-OeF">
+                                <rect key="frame" x="186" y="381" width="163" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.6559786345409131" green="0.87657242976880601" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="RUO-eO-4A3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Au5-Hc-iDH"/>
-                            <constraint firstAttribute="trailing" secondItem="RUO-eO-4A3" secondAttribute="trailing" id="hVw-wr-3ZM"/>
-                            <constraint firstItem="RUO-eO-4A3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rLY-In-16B"/>
+                            <constraint firstItem="rAI-Jo-OeF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="186" id="65b-yO-8Xa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Z9-6M-FbH" secondAttribute="bottom" constant="89" id="75E-8C-lLT"/>
+                            <constraint firstItem="G5F-pS-5Nz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="115" id="9ke-r5-deJ"/>
+                            <constraint firstItem="4Z9-6M-FbH" firstAttribute="top" secondItem="rAI-Jo-OeF" secondAttribute="bottom" constant="70" id="FFM-UE-gh2"/>
+                            <constraint firstItem="G5F-pS-5Nz" firstAttribute="centerX" secondItem="4Z9-6M-FbH" secondAttribute="centerX" id="Ks9-Ib-Dyb"/>
+                            <constraint firstItem="G5F-pS-5Nz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="199" id="L84-N9-4ci"/>
+                            <constraint firstItem="rAI-Jo-OeF" firstAttribute="top" secondItem="848-0g-HzG" secondAttribute="bottom" constant="24" id="bGm-b8-tID"/>
+                            <constraint firstItem="848-0g-HzG" firstAttribute="trailing" secondItem="rAI-Jo-OeF" secondAttribute="trailing" id="heo-AP-M1y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qzh-8w-qjC"/>
                     <connections>
                         <outlet property="MapView" destination="RUO-eO-4A3" id="Vja-GN-06f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="314"/>
+            <point key="canvasLocation" x="315" y="328"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bjj-FY-PZI">
@@ -70,12 +95,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ki-7d-iDE">
-                                <rect key="frame" x="277" y="433" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-eO-4A3">
+                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RUO-eO-4A3" firstAttribute="leading" secondItem="i0C-cc-cgg" secondAttribute="leading" id="3vU-cC-5ol"/>
+                            <constraint firstItem="RUO-eO-4A3" firstAttribute="bottom" secondItem="8Bk-eH-bmd" secondAttribute="top" id="3ya-VY-tGJ"/>
+                            <constraint firstItem="RUO-eO-4A3" firstAttribute="top" secondItem="DOX-mU-n1B" secondAttribute="bottom" constant="1" id="Ywv-cm-uba"/>
+                            <constraint firstAttribute="trailing" secondItem="RUO-eO-4A3" secondAttribute="trailing" id="bZs-1r-eHF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p1a-Zo-hdG"/>
                 </viewController>
