@@ -14,6 +14,7 @@
 		D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B9181BBF12EE007F6955 /* Assets.xcassets */; };
 		D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */; };
 		D4F2B9271BBF12EE007F6955 /* UbiqProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */; };
+		D4F2B9361BBF2B70007F6955 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9351BBF2B70007F6955 /* ModalViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		D4F2B9221BBF12EE007F6955 /* UbiqProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UbiqProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UbiqProjectTests.m; sourceTree = "<group>"; };
 		D4F2B9281BBF12EE007F6955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4F2B9341BBF2B70007F6955 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewController.h; path = ../ModalViewController.h; sourceTree = "<group>"; };
+		D4F2B9351BBF2B70007F6955 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewController.m; path = ../ModalViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		D4F2B90B1BBF12EE007F6955 /* UbiqProject */ = {
 			isa = PBXGroup;
 			children = (
+				D4F2B9341BBF2B70007F6955 /* ModalViewController.h */,
+				D4F2B9351BBF2B70007F6955 /* ModalViewController.m */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
 				D4F2B9121BBF12EE007F6955 /* ViewController.h */,
@@ -214,6 +219,7 @@
 				D4F2B9141BBF12EE007F6955 /* ViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
+				D4F2B9361BBF2B70007F6955 /* ModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

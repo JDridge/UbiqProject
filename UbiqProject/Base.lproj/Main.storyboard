@@ -107,11 +107,56 @@
                             <constraint firstAttribute="trailing" secondItem="RUO-eO-4A3" secondAttribute="trailing" id="bZs-1r-eHF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="p1a-Zo-hdG"/>
+                    <navigationItem key="navigationItem" id="p1a-Zo-hdG">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="XcU-hG-CZV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PmK-Io-vel">
+                                <rect key="frame" x="523" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="mbI-6l-6uM" kind="presentation" id="3d4-ad-420"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UK-HJ-Hzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1007" y="288"/>
+        </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="Pv5-5Z-OQ9">
+            <objects>
+                <viewController id="mbI-6l-6uM" customClass="ModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QRA-6D-Tfj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qg0-T0-j84"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CwE-Oz-jdA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPi-Qw-Ddf">
+                                <rect key="frame" x="201" y="250" width="27" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1b-Mc-vOR">
+                                <rect key="frame" x="191" y="384" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="BackButton:" destination="mbI-6l-6uM" eventType="touchDown" id="58U-D0-Y0i"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sLP-8b-Deu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671" y="288"/>
         </scene>
     </scenes>
 </document>
