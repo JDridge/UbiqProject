@@ -42,26 +42,24 @@
 - (BOOL) isValidLocationEntry:(NSString *) location{
     
     __block BOOL isValid = NO;
-    
+    __block BOOL placeMarkUpdated = NO;
+
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
         [geocoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error) {
-            if(error != nil) {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            if (placeMarkUpdated == NO) {
+                placeMarkUpdated = YES;
+                CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                if(placemark != nil) {
+                    isValid = YES;
+                }
+                else {
+                    isValid = NO;
+                }
             }
-            else {
-                [placemarks objectAtIndex:0];
-                isValid = YES;
-            }
+
         }];
-    /*
-     if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
-     return false;
-         
-     }
-     if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
-     return false;
-     }
-    */
+    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !placeMarkUpdated){};
+
     return isValid;
 }
 

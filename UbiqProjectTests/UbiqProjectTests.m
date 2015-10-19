@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "HomeViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface UbiqProjectTests : XCTestCase
 
@@ -37,11 +38,19 @@
     }];
 }
 
--(void) testForInvalidAddress{
+-(void) testForUHValidAddress{
     HomeViewController *homeVC = [[HomeViewController alloc] init];
-    
     XCTAssertTrue([homeVC isValidLocationEntry:@"University of Houston, Houston TX"]);
-    
+}
+
+-(void) testForEmptyAddressInvalid{
+    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    XCTAssertFalse([homeVC isValidLocationEntry:@""]);
+}
+
+-(void) testForHouseEmojiInvalid{
+    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    XCTAssertFalse([homeVC isValidLocationEntry:@"🏩"]);
 }
 
 @end
