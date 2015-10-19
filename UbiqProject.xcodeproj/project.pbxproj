@@ -15,6 +15,7 @@
 		D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */; };
 		D4F2B9271BBF12EE007F6955 /* UbiqProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */; };
 		D4F2B9361BBF2B70007F6955 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9351BBF2B70007F6955 /* ModalViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F431E93E1BD1D4F700A456F8 /* map-.png in Resources */ = {isa = PBXBuildFile; fileRef = F431E93D1BD1D4F700A456F8 /* map-.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		D4F2B9281BBF12EE007F6955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F2B9341BBF2B70007F6955 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewController.h; path = ../ModalViewController.h; sourceTree = "<group>"; };
 		D4F2B9351BBF2B70007F6955 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewController.m; path = ../ModalViewController.m; sourceTree = "<group>"; };
+		F431E93D1BD1D4F700A456F8 /* map-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
+				F431E93F1BD1D51100A456F8 /* Icons */,
 				D4F2B9251BBF12EE007F6955 /* UbiqProjectTests */,
 				D4F2B90A1BBF12EE007F6955 /* Products */,
 			);
@@ -114,6 +117,15 @@
 				D4F2B9281BBF12EE007F6955 /* Info.plist */,
 			);
 			path = UbiqProjectTests;
+			sourceTree = "<group>";
+		};
+		F431E93F1BD1D51100A456F8 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				F431E93D1BD1D4F700A456F8 /* map-.png */,
+			);
+			name = Icons;
+			path = UbiqProject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +210,7 @@
 			files = (
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
+				F431E93E1BD1D4F700A456F8 /* map-.png in Resources */,
 				D4F2B9171BBF12EE007F6955 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +421,7 @@
 				D4F2B92D1BBF12EE007F6955 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4F2B92E1BBF12EE007F6955 /* Build configuration list for PBXNativeTarget "UbiqProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +430,7 @@
 				D4F2B9301BBF12EE007F6955 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
