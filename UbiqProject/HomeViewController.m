@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "Query.h"
-
+#import "MapViewController.h"
 
 
 @interface HomeViewController ()
@@ -39,13 +39,30 @@
 
 - (IBAction)ConvergeLocations:(id)sender {
     
+    Query *setUpQueryToPass = [[Query alloc] init];
+    NSMutableArray *locationsToPass = [[NSMutableArray alloc] init];
     
+    [locationsToPass addObject:FirstLocation.text];
+    [locationsToPass addObject:SecondLocation.text];
+    /*
     if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
         FirstLocation.text = @"you screwed up";
     }
     if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
         SecondLocation.text = @"you also screwed up";
     }
+    */
+    
+    setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
+    setUpQueryToPass.locations = locationsToPass;
+    
+    queryToPass = setUpQueryToPass;
+    
+    [self performSegueWithIdentifier:@"mapVC" sender:nil];
+}
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    MapViewController *viewController = [segue destinationViewController];
+    viewController.queryToShow = queryToPass;
 }
 @end
