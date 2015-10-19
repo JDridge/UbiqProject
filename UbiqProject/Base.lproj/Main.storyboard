@@ -33,40 +33,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-6M-FbH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z9-6M-FbH">
                                 <rect key="frame" x="264" y="494" width="71" height="30"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="118" id="QF8-yH-4Gn"/>
-                                </constraints>
                                 <state key="normal" title="Converge!"/>
                                 <connections>
                                     <segue destination="YhL-mf-dhP" kind="show" id="xY4-oE-cdF"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter location..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rAI-Jo-OeF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter location..." borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rAI-Jo-OeF">
                                 <rect key="frame" x="226" y="390" width="148" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter location..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="848-0g-HzG">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter location..." borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="848-0g-HzG">
                                 <rect key="frame" x="226" y="343" width="148" height="30"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="148" id="Cbm-9t-H41"/>
-                                    <constraint firstAttribute="height" constant="30" id="kLB-mS-V8D"/>
+                                    <constraint firstAttribute="width" constant="148" id="9pD-Qs-tgT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map-.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
                                 <rect key="frame" x="255" y="138" width="90" height="84"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="FFa-Rz-UW4"/>
+                                    <constraint firstAttribute="width" constant="90" id="TIk-o6-p65"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.69803921570000005" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Z9-6M-FbH" firstAttribute="centerX" secondItem="rAI-Jo-OeF" secondAttribute="centerX" id="47c-d5-tpV"/>
+                            <constraint firstItem="4Z9-6M-FbH" firstAttribute="top" secondItem="rAI-Jo-OeF" secondAttribute="bottom" constant="74" id="5S2-v2-lCh"/>
+                            <constraint firstItem="848-0g-HzG" firstAttribute="trailing" secondItem="rAI-Jo-OeF" secondAttribute="trailing" id="Eq2-5D-3ZJ"/>
+                            <constraint firstItem="rAI-Jo-OeF" firstAttribute="top" secondItem="848-0g-HzG" secondAttribute="bottom" constant="17" id="Evu-7Z-2Qo"/>
+                            <constraint firstItem="848-0g-HzG" firstAttribute="centerX" secondItem="Z91-8d-1Ug" secondAttribute="centerX" id="JcI-xt-mYq"/>
+                            <constraint firstItem="848-0g-HzG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L0K-LF-6Y0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Z9-6M-FbH" secondAttribute="bottom" constant="76" id="X92-KX-rES"/>
+                            <constraint firstItem="Z91-8d-1Ug" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="74" id="Z7O-AK-lSL"/>
+                            <constraint firstItem="rAI-Jo-OeF" firstAttribute="leading" secondItem="848-0g-HzG" secondAttribute="leading" id="gkX-tJ-FAB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qzh-8w-qjC"/>
                     <connections>
