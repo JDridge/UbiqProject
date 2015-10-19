@@ -20,7 +20,7 @@
 @property Query *queryToPass;
 
 - (IBAction)ConvergeLocations:(id)sender;
-
+- (NSMutableArray*) getCoordinateLocations;
 
 @end
 

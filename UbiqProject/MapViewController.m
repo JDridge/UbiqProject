@@ -22,9 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"💩");
-    
-    [self loadConvergeMapView];
-    
+    NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
+    [self loadConvergeMapViewForConvergedPoint];
     // Do any additional setup after loading the view.
 }
 
@@ -33,7 +32,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) loadConvergeMapView {
+- (void) loadConvergeMapViewForConvergedPoint {
+    
+    self.ConvergeMapView.delegate = self;
+    addressCoordinates = [[queryToShow.locations objectAtIndex:0] coordinate];
+    MKCoordinateSpan zoom;
+    zoom.latitudeDelta = .01f; //the zoom level in degrees
+    zoom.longitudeDelta = .01f;//the zoom level in degrees
+    MKCoordinateRegion myRegion;
+    myRegion.center = addressCoordinates;
+    myRegion.span = zoom;
+    [ConvergeMapView setRegion:myRegion animated:YES];
 
 }
 

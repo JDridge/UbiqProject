@@ -22,7 +22,8 @@
 - (void)viewDidLoad {
     NSLog(@"hi");
     [super viewDidLoad];
-    
+    queryToPass = [[Query alloc] init];
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -39,6 +40,7 @@
 
 - (BOOL) isValidLocationEntry:(NSString *) firstLocation : (NSString *) secondLocation{
     
+    /*
      if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
      return false;
          
@@ -46,14 +48,14 @@
      if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
      return false;
      }
-    
+    */
     return true;
 }
 
 - (IBAction)ConvergeLocations:(id)sender {
     
     Query *setUpQueryToPass = [[Query alloc] init];
-    NSMutableArray *locationsToPass = [[NSMutableArray alloc] init];
+    NSMutableArray *locationsToPass;
     
     [locationsToPass addObject:FirstLocation.text];
     [locationsToPass addObject:SecondLocation.text];
@@ -65,9 +67,15 @@
         SecondLocation.text = @"you also screwed up";
     }
     */
-    if([self isValidLocationEntry:FirstLocation.text :SecondLocation.text]) { //add validation
+    if([self isValidLocationEntry:FirstLocation.text :SecondLocation.text]) { //add validation for valid addresses
         setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
-        setUpQueryToPass.locations = locationsToPass;
+        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
+
+        setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
+        [locationsToPassRepresentedAsCoordinates  addObject:location];
+
+        setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
         
         queryToPass = setUpQueryToPass;
         
@@ -79,6 +87,17 @@
         [self shake:FirstLocation];
         [self shake:SecondLocation];
     }
+}
+
+- (NSMutableArray*) getCoordinateLocations {
+    NSMutableArray *listOfCoordinateValues = [[NSMutableArray alloc] init];
+    
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
+
+    [listOfCoordinateValues addObject:location];
+
+    return listOfCoordinateValues;
+    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
