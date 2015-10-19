@@ -34,8 +34,12 @@
 }
 
 - (void) loadConvergeMapView {
-    self.ConvergeMapView.delegate = self;
 
+}
+
+
+- (void) loadMapAtCurrentLocation { //use this snippet to load the map at the current location.
+    self.ConvergeMapView.delegate = self;
     self.locationManager= [[CLLocationManager alloc] init];
     self.locationManager.delegate=self;
     [self.locationManager requestAlwaysAuthorization];
@@ -49,7 +53,6 @@
     [ConvergeMapView setRegion:myRegion animated:YES];
 
 }
-
 /*
 #pragma mark - Navigation
 
