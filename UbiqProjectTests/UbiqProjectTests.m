@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "HomeViewController.h"
 
 @interface UbiqProjectTests : XCTestCase
 
@@ -34,6 +35,13 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+-(void) testForInvalidAddress{
+    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    
+    XCTAssertTrue([homeVC isValidLocationEntry:@"University of Houston, Houston TX"]);
+    
 }
 
 @end

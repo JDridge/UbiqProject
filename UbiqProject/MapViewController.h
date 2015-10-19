@@ -17,6 +17,7 @@
 @property(nonatomic, retain) CLLocationManager *locationManager;
 @property(nonatomic,assign) CLLocationCoordinate2D addressCoordinates;
 
+
 - (void) loadConvergeMapViewForConvergedPoint;
 - (void) loadMapAtCurrentLocation;
 @end

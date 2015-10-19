@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "Query.h"
 #import "MapViewController.h"
+#import <MapKit/MapKit.h>
 
 
 @interface HomeViewController ()
@@ -38,8 +39,20 @@
     
 }
 
-- (BOOL) isValidLocationEntry:(NSString *) firstLocation : (NSString *) secondLocation{
+- (BOOL) isValidLocationEntry:(NSString *) location{
     
+    __block BOOL isValid = NO;
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error) {
+            if(error != nil) {
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+            else {
+                [placemarks objectAtIndex:0];
+                isValid = YES;
+            }
+        }];
     /*
      if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
      return false;
@@ -49,7 +62,7 @@
      return false;
      }
     */
-    return true;
+    return isValid;
 }
 
 - (IBAction)ConvergeLocations:(id)sender {
@@ -67,7 +80,7 @@
         SecondLocation.text = @"you also screwed up";
     }
     */
-    if([self isValidLocationEntry:FirstLocation.text :SecondLocation.text]) { //add validation for valid addresses
+    if([self isValidLocationEntry:FirstLocation.text]) { //add validation for valid addresses
         setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
 
