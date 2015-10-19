@@ -12,7 +12,9 @@
 
 @interface MapViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet MKMapView *MapView;
+@property (weak, nonatomic) IBOutlet MKMapView *ConvergeMapView;
 @property Query *queryToShow;
+@property(nonatomic, retain) CLLocationManager *locationManager;
+@property(nonatomic,assign) CLLocationCoordinate2D addressCoordinates;
 
 @end

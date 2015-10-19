@@ -17,21 +17,13 @@
 
 @implementation MapViewController
 
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"💩");
     
-    // 1
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 29.817178;
-    zoomLocation.longitude= -95.4012915;
-    
-    // 2
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    
-    // 3
-    [_MapView setRegion:viewRegion animated:YES];
-
+    [self loadConvergeMapView];
     
     // Do any additional setup after loading the view.
 }
@@ -39,6 +31,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) loadConvergeMapView {
+    self.ConvergeMapView.delegate = self;
+
+    self.locationManager= [[CLLocationManager alloc] init];
+    self.locationManager.delegate=self;
+    [self.locationManager requestAlwaysAuthorization];
+    addressCoordinates = self.locationManager.location.coordinate;
+    MKCoordinateSpan zoom;
+    zoom.latitudeDelta = .1f; //the zoom level in degrees
+    zoom.longitudeDelta = .1f;//the zoom level in degrees
+    MKCoordinateRegion myRegion;
+    myRegion.center = addressCoordinates;
+    myRegion.span = zoom;
+    [ConvergeMapView setRegion:myRegion animated:YES];
+
 }
 
 /*
