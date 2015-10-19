@@ -17,6 +17,7 @@
 		D4F2B9361BBF2B70007F6955 /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9351BBF2B70007F6955 /* SettingsModalViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; settings = {ASSET_TAGS = (); }; };
+		E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F5935F1BD4D4EF00CC612D /* MapKit.framework */; };
 		F431E93E1BD1D4F700A456F8 /* map-.png in Resources */ = {isa = PBXBuildFile; fileRef = F431E93D1BD1D4F700A456F8 /* map-.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E1F5935C1BD4A7F100CC612D /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
 		E1F5935D1BD4A7F100CC612D /* Query.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Query.m; sourceTree = "<group>"; };
+		E1F5935F1BD4D4EF00CC612D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F431E93D1BD1D4F700A456F8 /* map-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +77,7 @@
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
+				E1F5935F1BD4D4EF00CC612D /* MapKit.framework */,
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
 				F431E93F1BD1D51100A456F8 /* Icons */,
 				D4F2B9251BBF12EE007F6955 /* UbiqProjectTests */,
