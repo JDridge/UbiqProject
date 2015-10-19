@@ -17,9 +17,12 @@
 
 @implementation HomeViewController
 
+@synthesize CategorySegmentedControl, FirstLocation, SecondLocation, queryToPass;
+
 - (void)viewDidLoad {
     NSLog(@"hi");
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -31,11 +34,18 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (IBAction)ConvergeLocations:(id)sender {
     
-    NSLog(@"👊");
     
+    if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
+        FirstLocation.text = @"you screwed up";
+    }
+    if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
+        SecondLocation.text = @"you also screwed up";
+    }
+
 }
 @end

@@ -13,5 +13,6 @@
 @interface MapViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet MKMapView *MapView;
+@property Query *queryToShow;
 
 @end

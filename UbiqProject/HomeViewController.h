@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *CategorySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
 @property (weak, nonatomic) IBOutlet UITextField *SecondLocation;
+
+@property Query *queryToPass;
+
 - (IBAction)ConvergeLocations:(id)sender;
 
 
