@@ -20,6 +20,7 @@
 		E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F5935F1BD4D4EF00CC612D /* MapKit.framework */; };
 		E1F593621BD4E36A00CC612D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F593611BD4E36A00CC612D /* CoreLocation.framework */; };
 		F431E93E1BD1D4F700A456F8 /* map-.png in Resources */ = {isa = PBXBuildFile; fileRef = F431E93D1BD1D4F700A456F8 /* map-.png */; settings = {ASSET_TAGS = (); }; };
+		F4A85D551BD4DC5500CF20F7 /* Maps-Define-Location-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A85D541BD4DC5500CF20F7 /* Maps-Define-Location-icon.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E1F5935F1BD4D4EF00CC612D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E1F593611BD4E36A00CC612D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F431E93D1BD1D4F700A456F8 /* map-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-.png"; sourceTree = "<group>"; };
+		F4A85D541BD4DC5500CF20F7 /* Maps-Define-Location-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Maps-Define-Location-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		F431E93F1BD1D51100A456F8 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F4A85D541BD4DC5500CF20F7 /* Maps-Define-Location-icon.png */,
 				F431E93D1BD1D4F700A456F8 /* map-.png */,
 			);
 			name = Icons;
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
+				F4A85D551BD4DC5500CF20F7 /* Maps-Define-Location-icon.png in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 				F431E93E1BD1D4F700A456F8 /* map-.png in Resources */,
 				D4F2B9171BBF12EE007F6955 /* Main.storyboard in Resources */,
