@@ -37,6 +37,19 @@
     
 }
 
+- (BOOL) isValidLocationEntry:(NSString *) firstLocation : (NSString *) secondLocation{
+    
+     if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
+     return false;
+         
+     }
+     if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
+     return false;
+     }
+    
+    return true;
+}
+
 - (IBAction)ConvergeLocations:(id)sender {
     
     Query *setUpQueryToPass = [[Query alloc] init];
@@ -52,7 +65,7 @@
         SecondLocation.text = @"you also screwed up";
     }
     */
-    if(true) { //add validation
+    if([self isValidLocationEntry:FirstLocation.text :SecondLocation.text]) { //add validation
         setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
         setUpQueryToPass.locations = locationsToPass;
         
@@ -64,6 +77,7 @@
         direction = 1;
         shakes = 0;
         [self shake:FirstLocation];
+        [self shake:SecondLocation];
     }
 }
 
