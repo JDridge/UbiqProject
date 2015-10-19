@@ -39,27 +39,30 @@
     
 }
 
-- (BOOL) isValidLocationEntry:(NSString *) location{
-    
-    __block BOOL isValid = NO;
+- (CLPlacemark*) getCoordinateEquivalent:(NSString*) location {
     __block BOOL placeMarkUpdated = NO;
-
+    __block CLPlacemark *placemark = nil;
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-        [geocoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error) {
-            if (placeMarkUpdated == NO) {
-                placeMarkUpdated = YES;
-                CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                if(placemark != nil) {
-                    isValid = YES;
-                }
-                else {
-                    isValid = NO;
-                }
-            }
-
-        }];
+    
+    [geocoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error) {
+        if (placeMarkUpdated == NO) {
+            placeMarkUpdated = YES;
+            placemark = [placemarks objectAtIndex:0];
+        }
+    }];
+    
     while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !placeMarkUpdated){};
 
+    return placemark;
+}
+
+- (BOOL) isValidLocationEntry:(NSString *) location{
+    BOOL isValid = NO;
+    
+    if([self getCoordinateEquivalent:location] != nil) {
+        isValid = YES;
+    }
+    
     return isValid;
 }
 
