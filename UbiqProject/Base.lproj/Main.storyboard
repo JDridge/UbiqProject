@@ -161,6 +161,14 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Maps-Define-Location-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-RD-cd7">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="tintColor" red="0.2274509804" green="0.65098039220000004" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="282" y="640" width="15" height="17"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.69803921570000005" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -189,6 +197,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TXz-HG-aPs" secondAttribute="bottom" constant="64" id="woE-J7-rW0"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="HNM-RD-cd7"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="3Vj-qI-wdP"/>
                                 <exclude reference="09x-QC-fHF"/>
@@ -206,6 +217,9 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="HNM-RD-cd7"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="3Vj-qI-wdP"/>
                                 <exclude reference="vwU-Qt-ZL8"/>
@@ -351,6 +365,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Maps-Define-Location-icon.png" width="128" height="128"/>
         <image name="map-.png" width="128" height="128"/>
     </resources>
 </document>
