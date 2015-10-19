@@ -6,13 +6,13 @@
 //  Copyright © 2015 Joey. All rights reserved.
 //
 
-#import "ModalViewController.h"
+#import "SettingsModalViewController.h"
 
-@interface ModalViewController ()
+@interface SettingsModalViewController ()
 
 @end
 
-@implementation ModalViewController
+@implementation SettingsModalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ModalViewController : UIViewController
+@interface SettingsModalViewController : UIViewController
 - (IBAction)BackButton:(id)sender;
 
 //tri comment
