@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *CategorySegmentedControl;
 @property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
 @property (weak, nonatomic) IBOutlet UITextField *SecondLocation;
+@property int direction;
+@property int shakes;
 
 @property Query *queryToPass;
 

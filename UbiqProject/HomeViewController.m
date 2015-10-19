@@ -17,7 +17,7 @@
 
 @implementation HomeViewController
 
-@synthesize CategorySegmentedControl, FirstLocation, SecondLocation, queryToPass;
+@synthesize CategorySegmentedControl, FirstLocation, SecondLocation, queryToPass, direction, shakes;
 
 - (void)viewDidLoad {
     NSLog(@"hi");
@@ -52,17 +52,40 @@
         SecondLocation.text = @"you also screwed up";
     }
     */
-    
-    setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
-    setUpQueryToPass.locations = locationsToPass;
-    
-    queryToPass = setUpQueryToPass;
-    
-    [self performSegueWithIdentifier:@"mapVC" sender:nil];
+    if(true) { //add validation
+        setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
+        setUpQueryToPass.locations = locationsToPass;
+        
+        queryToPass = setUpQueryToPass;
+        
+        [self performSegueWithIdentifier:@"mapVC" sender:nil];
+    }
+    else {
+        direction = 1;
+        shakes = 0;
+        [self shake:FirstLocation];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
+}
+
+
+-(void)shake:(UIView *)shakeThisObject {
+    [UIView animateWithDuration:0.03 animations:^{
+        shakeThisObject.transform = CGAffineTransformMakeTranslation(5 * direction, 0);
+    }
+                     completion:^(BOOL finished) {
+                         if(shakes >= 10) {
+                             shakeThisObject.transform = CGAffineTransformIdentity;
+                             return;
+                         }
+                         shakes++;
+                         direction = direction * -1;
+                         [self shake:shakeThisObject];
+                     }
+     ];
 }
 @end
