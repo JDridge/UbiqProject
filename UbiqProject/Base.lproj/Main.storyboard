@@ -236,7 +236,6 @@
                     <connections>
                         <outlet property="CategorySegmentedControl" destination="2Zw-KA-7YP" id="zOv-ba-jWs"/>
                         <outlet property="FirstLocation" destination="848-0g-HzG" id="shE-aG-SIx"/>
-                        <outlet property="MapView" destination="RUO-eO-4A3" id="Vja-GN-06f"/>
                         <outlet property="SecondLocation" destination="rAI-Jo-OeF" id="yAI-Ti-46K"/>
                         <segue destination="YhL-mf-dhP" kind="show" identifier="mapVC" id="trV-AO-lhE"/>
                     </connections>
@@ -285,6 +284,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ConvergeMapView" destination="RUO-eO-4A3" id="wn8-aK-maG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UK-HJ-Hzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
