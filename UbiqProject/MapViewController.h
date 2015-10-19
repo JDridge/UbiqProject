@@ -16,6 +16,8 @@
 @property Query *queryToShow;
 @property(nonatomic, retain) CLLocationManager *locationManager;
 @property(nonatomic,assign) CLLocationCoordinate2D addressCoordinates;
+@property (strong, nonatomic) IBOutlet UISearchBar *ibSearchBar;
+
 
 
 - (void) loadConvergeMapViewForConvergedPoint;
