@@ -238,7 +238,7 @@
                         <outlet property="FirstLocation" destination="848-0g-HzG" id="shE-aG-SIx"/>
                         <outlet property="MapView" destination="RUO-eO-4A3" id="Vja-GN-06f"/>
                         <outlet property="SecondLocation" destination="rAI-Jo-OeF" id="yAI-Ti-46K"/>
-                        <segue destination="YhL-mf-dhP" kind="showDetail" id="trV-AO-lhE"/>
+                        <segue destination="YhL-mf-dhP" kind="show" identifier="mapVC" id="trV-AO-lhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
