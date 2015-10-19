@@ -72,8 +72,8 @@
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
 
         setUpQueryToPass.locations = [[NSMutableArray alloc] init];
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
-        [locationsToPassRepresentedAsCoordinates  addObject:location];
+        //CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
+        //[locationsToPassRepresentedAsCoordinates  addObject:location];
 
         setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
         
@@ -92,9 +92,12 @@
 - (NSMutableArray*) getCoordinateLocations {
     NSMutableArray *listOfCoordinateValues = [[NSMutableArray alloc] init];
     
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
+  
+    
+    
+    // CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
 
-    [listOfCoordinateValues addObject:location];
+    //[listOfCoordinateValues addObject:location];
 
     return listOfCoordinateValues;
     
