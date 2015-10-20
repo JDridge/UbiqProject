@@ -81,7 +81,7 @@
         SecondLocation.text = @"you also screwed up";
     }
     */
-    if([self isValidLocationEntry:FirstLocation.text]) { //add validation for valid addresses
+    if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry: SecondLocation.text]) { //add validation for valid addresses
         setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
 
@@ -94,8 +94,7 @@
         queryToPass = setUpQueryToPass;
         
         [self performSegueWithIdentifier:@"mapVC" sender:nil];
-    }
-    else {
+    } else{
         direction = 1;
         shakes = 0;
         [self shake:FirstLocation];
