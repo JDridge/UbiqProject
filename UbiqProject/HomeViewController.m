@@ -45,13 +45,13 @@
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     
     [geocoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error) {
-        if (placeMarkUpdated == NO) {
-            placeMarkUpdated = YES;
             placemark = [placemarks objectAtIndex:0];
-        }
     }];
     
-    while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !placeMarkUpdated){};
+    while(!placemark) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+    }
+    //while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !placeMarkUpdated){};
 
     return placemark;
 }
@@ -86,6 +86,10 @@
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
 
         setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+        
+        [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
+        [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+
         //CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
         //[locationsToPassRepresentedAsCoordinates  addObject:location];
 

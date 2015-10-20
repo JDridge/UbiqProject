@@ -22,6 +22,7 @@ MKLocalSearchResponse *results;
 @synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates;
 
 - (void)viewDidLoad {
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [super viewDidLoad];
    // self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -35,6 +36,34 @@ MKLocalSearchResponse *results;
     [self.ConvergeMapView setUserInteractionEnabled:YES];
     [self.ConvergeMapView setUserTrackingMode:MKUserTrackingModeFollow];
     
+    MKPointAnnotation *firstAddressAnnotation = [[MKPointAnnotation alloc] init];
+    MKPointAnnotation *secondAddressAnnotation = [[MKPointAnnotation alloc] init];
+    MKPointAnnotation *halfwayAnnotation = [[MKPointAnnotation alloc] init];
+    
+    CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:0];
+    CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
+    
+    CLLocationDegrees halfwayLatitude = (firstAddressPlacemark.location.coordinate.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
+    CLLocationDegrees halfwayLongitude = (firstAddressPlacemark.location.coordinate.longitude + secondAddressPlacemark.location.coordinate.longitude)/2.0;
+    
+    firstAddressAnnotation.coordinate =
+        CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    secondAddressAnnotation.coordinate =
+        CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
+    halfwayAnnotation.coordinate = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
+
+    [ConvergeMapView addAnnotation:firstAddressAnnotation];
+    [ConvergeMapView addAnnotation:secondAddressAnnotation];
+    [ConvergeMapView addAnnotation:halfwayAnnotation];
+    
+    MKCoordinateSpan zoom;
+    zoom.latitudeDelta = .3f; //the zoom level in degrees
+    zoom.longitudeDelta = .3f;//the zoom level in degrees
+    MKCoordinateRegion myRegion;
+    myRegion.center = halfwayAnnotation.coordinate;
+    myRegion.span = zoom;
+    [ConvergeMapView setRegion:myRegion animated:YES];
+
     //NSLog(@"💩");
     //NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
     //[self loadConvergeMapViewForConvergedPoint];
