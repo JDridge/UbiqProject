@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "Query.h"
+#import <MapKit/MapKit.h>
 
 #define METERS_PER_MILE 1609.344
 
@@ -88,7 +89,6 @@ MKLocalSearchResponse *results;
     [ConvergeMapView setRegion:myRegion animated:YES];
 
 }
-
 
 - (void) loadMapAtCurrentLocation { //use this snippet to load the map at the current location.
     self.ConvergeMapView.delegate = self;
