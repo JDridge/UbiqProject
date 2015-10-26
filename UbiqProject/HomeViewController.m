@@ -25,6 +25,7 @@
     queryToPass = [[Query alloc] init];
     [FirstLocation setDelegate:self];
     [SecondLocation setDelegate:self];
+    [HomeSearchBar setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
