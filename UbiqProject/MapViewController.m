@@ -20,7 +20,7 @@
 MKLocalSearch *localSearch;
 MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff;
 
 - (void)viewDidLoad {
 
@@ -47,12 +47,38 @@ MKLocalSearchResponse *results;
     CLLocationDegrees halfwayLatitude = (firstAddressPlacemark.location.coordinate.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
     CLLocationDegrees halfwayLongitude = (firstAddressPlacemark.location.coordinate.longitude + secondAddressPlacemark.location.coordinate.longitude)/2.0;
     
+    
+    
+    
+    
+    
+    
     firstAddressAnnotation.coordinate =
         CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
     secondAddressAnnotation.coordinate =
         CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
     halfwayAnnotation.coordinate = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
 
+    
+    //new code
+    double lat = firstAddressPlacemark.location.coordinate.latitude;
+    double lon = firstAddressPlacemark.location.coordinate.longitude;
+    
+    NSLog(@"lat = %f", lat);
+    NSLog(@"lat = %f", lon);
+    
+    
+    NSLog(@"first switch = %d", FirstLocationSwitchOnOrOff);
+    NSLog(@"first switch = %d", SecondLocationSwitchOnOrOff);
+   
+    
+    //end of new code
+    
+    
+    
+    
+    
+    
     [ConvergeMapView addAnnotation:firstAddressAnnotation];
     [ConvergeMapView addAnnotation:secondAddressAnnotation];
     [ConvergeMapView addAnnotation:halfwayAnnotation];

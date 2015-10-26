@@ -23,6 +23,8 @@
 - (NSMutableArray*) getCoordinateLocations;
 - (BOOL) isValidLocationEntry:(NSString *) location;
 - (void) setUpKeyboardToDismissOnReturn;
+@property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *SecondLocationSwitch;
 
 @end
 
