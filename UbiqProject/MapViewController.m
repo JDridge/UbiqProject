@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "Query.h"
 #import <MapKit/MapKit.h>
+#import "SettingsModalViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -74,6 +75,12 @@ MKLocalSearchResponse *results;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)settingsButtonClick:(id)sender {
+    [self performSegueWithIdentifier:@"settingsVC" sender:nil];
+
+
 }
 
 - (void) loadConvergeMapViewForConvergedPoint {
@@ -185,14 +192,14 @@ MKLocalSearchResponse *results;
 
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    SettingsModalViewController *viewController = [segue destinationViewController];
+    viewController.printQuery = queryToShow;
+
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

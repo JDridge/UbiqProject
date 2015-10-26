@@ -18,6 +18,7 @@
 @property(nonatomic,assign) CLLocationCoordinate2D addressCoordinates;
 @property (strong, nonatomic) IBOutlet UISearchBar *ibSearchBar;
 
+- (IBAction)settingsButtonClick:(id)sender;
 
 
 - (void) loadConvergeMapViewForConvergedPoint;

@@ -111,7 +111,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map-.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="map-.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
                                 <rect key="frame" x="198" y="139" width="205" height="192"/>
                                 <animations/>
                                 <constraints>
@@ -177,10 +177,10 @@
                                 <exclude reference="qG9-Dn-8Et"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Vsm-y6-Hys"/>
                                 <exclude reference="EFd-5Y-sNu"/>
                                 <exclude reference="WCE-rE-2Px"/>
                                 <exclude reference="v1r-Zy-s11"/>
-                                <exclude reference="Vsm-y6-Hys"/>
                                 <exclude reference="Eut-8h-Fu1"/>
                                 <exclude reference="RjV-HO-aSZ"/>
                                 <exclude reference="aBN-7q-2LN"/>
@@ -198,11 +198,11 @@
                                 <include reference="qG9-Dn-8Et"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Vsm-y6-Hys"/>
                                 <include reference="EFd-5Y-sNu"/>
                                 <include reference="WCE-rE-2Px"/>
                                 <exclude reference="pw7-IF-rBX"/>
                                 <include reference="v1r-Zy-s11"/>
-                                <include reference="Vsm-y6-Hys"/>
                                 <include reference="Eut-8h-Fu1"/>
                                 <exclude reference="PDA-Ri-Elm"/>
                                 <include reference="RjV-HO-aSZ"/>
@@ -279,7 +279,7 @@
                                 <inset key="contentEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <segue destination="mbI-6l-6uM" kind="presentation" id="3d4-ad-420"/>
+                                    <action selector="settingsButtonClick:" destination="YhL-mf-dhP" eventType="touchUpInside" id="01u-xB-Hrr"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -287,6 +287,7 @@
                     <connections>
                         <outlet property="ConvergeMapView" destination="RUO-eO-4A3" id="wn8-aK-maG"/>
                         <outlet property="searchDisplayController" destination="DX9-CS-KNk" id="pl9-66-kcX"/>
+                        <segue destination="mbI-6l-6uM" kind="showDetail" identifier="settingsVC" action="showViewController:sender:" id="dGh-cS-GrH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UK-HJ-Hzy" userLabel="First Responder" sceneMemberID="firstResponder"/>

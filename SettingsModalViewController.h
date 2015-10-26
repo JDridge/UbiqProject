@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Query.h"
 
 @interface SettingsModalViewController : UIViewController
 - (IBAction)BackButton:(id)sender;
 
+@property Query *printQuery;
 
 @end
