@@ -158,7 +158,6 @@
                 <searchDisplayController id="Bfc-iN-06W">
                     <connections>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="a2x-ol-SKb"/>
-                        <outlet property="searchBar" destination="d80-x4-wXz" id="gwH-lu-cyL"/>
                         <outlet property="searchContentsController" destination="BYZ-38-t0r" id="zif-ue-26O"/>
                         <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="MbK-rE-IJJ"/>
                         <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="Edx-7V-dbj"/>

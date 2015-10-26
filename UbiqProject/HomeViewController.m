@@ -63,37 +63,40 @@
     
     Query *setUpQueryToPass = [[Query alloc] init];
     NSMutableArray *locationsToPass;
-    
+    BOOL isInvalidEntry = NO;
     [locationsToPass addObject:FirstLocation.text];
     [locationsToPass addObject:SecondLocation.text];
-    
+    direction = 1;
+    shakes = 1;
     if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
         FirstLocation.text = @"SHAKE SHAKE";
+        [self shake:FirstLocation];
+        isInvalidEntry = YES;
     }
     if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
         SecondLocation.text = @"SHAKE SHAKE SHAKEEE";
+        [self shake:SecondLocation];
+        isInvalidEntry = YES;
     }
     
     //add validation for valid addresses
-    if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry: SecondLocation.text]) {
-        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
-
-        setUpQueryToPass.locations = [[NSMutableArray alloc] init];
-        
-        [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
-        [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-
-        setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
-        
-        queryToPass = setUpQueryToPass;
-        
-        [self performSegueWithIdentifier:@"mapVC" sender:nil];
-    } else{
-        direction = 1;
-        shakes = 1;
-        [self shake:FirstLocation];
-        [self shake:SecondLocation];
+    if (!isInvalidEntry) {
+        if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry: SecondLocation.text]) {
+            NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
+            
+            setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+            
+            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
+            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+            
+            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+            
+            queryToPass = setUpQueryToPass;
+            
+            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+        }
     }
+
 }
 
 - (NSMutableArray*) getCoordinateLocations {
