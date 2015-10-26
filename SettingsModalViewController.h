@@ -11,6 +11,5 @@
 @interface SettingsModalViewController : UIViewController
 - (IBAction)BackButton:(id)sender;
 
-//tri comment
 
 @end
