@@ -17,6 +17,7 @@
 @property int direction;
 @property int shakes;
 @property Query *queryToPass;
+@property (weak, nonatomic) IBOutlet UISearchBar *HomeSearchBar;
 
 - (IBAction)ConvergeLocations:(id)sender;
 - (NSMutableArray*) getCoordinateLocations;

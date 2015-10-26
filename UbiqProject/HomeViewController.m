@@ -11,14 +11,13 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 
-
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar;
 
 - (void)viewDidLoad {
     NSLog(@"hi");
@@ -56,7 +55,6 @@
     if([self getCoordinateEquivalent:location] != nil) {
         isValid = YES;
     }
-    
     return isValid;
 }
 
