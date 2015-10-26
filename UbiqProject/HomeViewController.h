@@ -22,6 +22,7 @@
 - (IBAction)ConvergeLocations:(id)sender;
 - (NSMutableArray*) getCoordinateLocations;
 - (BOOL) isValidLocationEntry:(NSString *) location;
+- (void) setUpKeyboardToDismissOnReturn;
 
 @end
 

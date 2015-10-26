@@ -23,9 +23,7 @@
     NSLog(@"hi");
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
-    [FirstLocation setDelegate:self];
-    [SecondLocation setDelegate:self];
-    [HomeSearchBar setDelegate:self];
+    [self setUpKeyboardToDismissOnReturn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,6 +130,12 @@
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void) setUpKeyboardToDismissOnReturn {
+    [FirstLocation setDelegate:self];
+    [SecondLocation setDelegate:self];
+    [HomeSearchBar setDelegate:self];
 }
 
 @end
