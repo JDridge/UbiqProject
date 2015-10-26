@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Query.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
 @property (weak, nonatomic) IBOutlet UITextField *SecondLocation;

@@ -23,7 +23,8 @@
     NSLog(@"hi");
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
-    
+    [FirstLocation setDelegate:self];
+    [SecondLocation setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,4 +124,10 @@
         }
      ];
 }
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end
