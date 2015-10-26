@@ -18,25 +18,20 @@
 
 @implementation HomeViewController
 
-@synthesize CategorySegmentedControl, FirstLocation, SecondLocation, queryToPass, direction, shakes;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes;
 
 - (void)viewDidLoad {
     NSLog(@"hi");
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
-
-    // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated {
-    
 }
 
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location {
@@ -52,7 +47,6 @@
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
     //while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !placeMarkUpdated){};
-
     return placemark;
 }
 
@@ -73,25 +67,22 @@
     
     [locationsToPass addObject:FirstLocation.text];
     [locationsToPass addObject:SecondLocation.text];
-    /*
+    
     if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
-        FirstLocation.text = @"you screwed up";
+        FirstLocation.text = @"SHAKE SHAKE";
     }
     if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
-        SecondLocation.text = @"you also screwed up";
+        SecondLocation.text = @"SHAKE SHAKE SHAKEEE";
     }
-    */
-    if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry: SecondLocation.text]) { //add validation for valid addresses
-        setUpQueryToPass.category = [CategorySegmentedControl titleForSegmentAtIndex:CategorySegmentedControl.selectedSegmentIndex];
+    
+    //add validation for valid addresses
+    if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry: SecondLocation.text]) {
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
 
         setUpQueryToPass.locations = [[NSMutableArray alloc] init];
         
         [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
         [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-
-        //CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
-        //[locationsToPassRepresentedAsCoordinates  addObject:location];
 
         setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
         
@@ -100,7 +91,7 @@
         [self performSegueWithIdentifier:@"mapVC" sender:nil];
     } else{
         direction = 1;
-        shakes = 0;
+        shakes = 1;
         [self shake:FirstLocation];
         [self shake:SecondLocation];
     }
@@ -108,14 +99,8 @@
 
 - (NSMutableArray*) getCoordinateLocations {
     NSMutableArray *listOfCoordinateValues = [[NSMutableArray alloc] init];
-    
-  
-    
-    
     // CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
-
     //[listOfCoordinateValues addObject:location];
-
     return listOfCoordinateValues;
     
 }
@@ -125,20 +110,19 @@
     viewController.queryToShow = queryToPass;
 }
 
-
 -(void)shake:(UIView *)shakeThisObject {
     [UIView animateWithDuration:0.03 animations:^{
         shakeThisObject.transform = CGAffineTransformMakeTranslation(5 * direction, 0);
     }
-                     completion:^(BOOL finished) {
-                         if(shakes >= 10) {
-                             shakeThisObject.transform = CGAffineTransformIdentity;
-                             return;
-                         }
-                         shakes++;
-                         direction = direction * -1;
-                         [self shake:shakeThisObject];
-                     }
+        completion:^(BOOL finished) {
+            if(shakes >= 10) {
+                 shakeThisObject.transform = CGAffineTransformIdentity;
+                 return;
+            }
+        shakes++;
+        direction = direction * -1;
+        [self shake:shakeThisObject];
+        }
      ];
 }
 @end
