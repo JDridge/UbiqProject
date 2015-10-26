@@ -12,18 +12,22 @@
 #import <MapKit/MapKit.h>
 
 @interface HomeViewController ()
-
+//<CLLocationManagerDelegate>
 @end
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch, SecondLocationSwitch;
 
 - (void)viewDidLoad {
     NSLog(@"hi");
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
+    
+    
+  
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,12 +106,32 @@
     NSMutableArray *listOfCoordinateValues = [[NSMutableArray alloc] init];
     // CLLocation *location = [[CLLocation alloc] initWithLatitude:29.7604 longitude:95.3698];
     //[listOfCoordinateValues addObject:location];
+    
+    //new code
+    
+  
+    
+    
+    
+    //end of code
+    
+    
     return listOfCoordinateValues;
     
 }
 
+
+
+
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
+    
+    viewController.FirstLocationSwitchOnOrOff = [FirstLocationSwitch isOn];
+    viewController.SecondLocationSwitchOnOrOff = [SecondLocationSwitch isOn];
+
+    
+    
     viewController.queryToShow = queryToPass;
 }
 
