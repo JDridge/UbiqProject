@@ -191,12 +191,6 @@
                                 <exclude reference="qG9-Dn-8Et"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="EFd-5Y-sNu"/>
-                                <exclude reference="WCE-rE-2Px"/>
-                                <exclude reference="v1r-Zy-s11"/>
-                                <exclude reference="Vsm-y6-Hys"/>
-                                <exclude reference="Eut-8h-Fu1"/>
-                                <exclude reference="RjV-HO-aSZ"/>
                                 <exclude reference="aBN-7q-2LN"/>
                                 <exclude reference="sAs-uJ-yes"/>
                                 <exclude reference="e8Y-f7-tMl"/>
@@ -205,6 +199,12 @@
                                 <exclude reference="UcT-Uh-N4b"/>
                                 <exclude reference="scD-fj-iQy"/>
                                 <exclude reference="u3z-4F-wTL"/>
+                                <exclude reference="EFd-5Y-sNu"/>
+                                <exclude reference="WCE-rE-2Px"/>
+                                <exclude reference="v1r-Zy-s11"/>
+                                <exclude reference="Eut-8h-Fu1"/>
+                                <exclude reference="RjV-HO-aSZ"/>
+                                <exclude reference="Vsm-y6-Hys"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -212,12 +212,6 @@
                                 <include reference="qG9-Dn-8Et"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="EFd-5Y-sNu"/>
-                                <include reference="WCE-rE-2Px"/>
-                                <include reference="v1r-Zy-s11"/>
-                                <include reference="Vsm-y6-Hys"/>
-                                <include reference="Eut-8h-Fu1"/>
-                                <include reference="RjV-HO-aSZ"/>
                                 <include reference="aBN-7q-2LN"/>
                                 <include reference="sAs-uJ-yes"/>
                                 <include reference="e8Y-f7-tMl"/>
@@ -226,6 +220,12 @@
                                 <include reference="UcT-Uh-N4b"/>
                                 <include reference="scD-fj-iQy"/>
                                 <include reference="u3z-4F-wTL"/>
+                                <include reference="EFd-5Y-sNu"/>
+                                <include reference="WCE-rE-2Px"/>
+                                <include reference="v1r-Zy-s11"/>
+                                <include reference="Eut-8h-Fu1"/>
+                                <include reference="RjV-HO-aSZ"/>
+                                <include reference="Vsm-y6-Hys"/>
                             </mask>
                         </variation>
                     </view>
