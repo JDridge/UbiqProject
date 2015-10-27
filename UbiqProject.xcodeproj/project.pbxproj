@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
-		D48E57C41BDF4C2800B544FF /* bluepin.ico in Resources */ = {isa = PBXBuildFile; fileRef = D48E57C31BDF4C2800B544FF /* bluepin.ico */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
 		D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9131BBF12EE007F6955 /* HomeViewController.m */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
-		D48E57C31BDF4C2800B544FF /* bluepin.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = bluepin.ico; path = ../../bluepin.ico; sourceTree = "<group>"; };
 		D4F2B9091BBF12EE007F6955 /* UbiqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F2B90D1BBF12EE007F6955 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		D4F2B90B1BBF12EE007F6955 /* UbiqProject */ = {
 			isa = PBXGroup;
 			children = (
-				D48E57C31BDF4C2800B544FF /* bluepin.ico */,
 				D4F2B9341BBF2B70007F6955 /* SettingsModalViewController.h */,
 				D4F2B9351BBF2B70007F6955 /* SettingsModalViewController.m */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
@@ -274,7 +271,6 @@
 				F4C507A31BDFDD3900E7438D /* CHRIS.png in Resources */,
 				F4C507A81BDFDD3900E7438D /* TRI.png in Resources */,
 				F4C507A41BDFDD3900E7438D /* JOSEPH.png in Resources */,
-				D48E57C41BDF4C2800B544FF /* bluepin.ico in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
