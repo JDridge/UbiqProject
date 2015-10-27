@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import "Query.h"
+#import "CustomAnnotation.h"
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
 
@@ -21,12 +22,13 @@
 MKLocalSearch *localSearch;
 MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap;
 
 - (void)viewDidLoad {
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [super viewDidLoad];
+    annotationViewOfMap.canShowCallout = YES;
    // self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.searchDisplayController setDelegate:self];
     [self.ibSearchBar setDelegate:self];
@@ -42,17 +44,22 @@ MKLocalSearchResponse *results;
     MKPointAnnotation *secondAddressAnnotation = [[MKPointAnnotation alloc] init];
     MKPointAnnotation *halfwayAnnotation = [[MKPointAnnotation alloc] init];
     
+    CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
+    CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
+    CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
+    
+    
     CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:0];
     CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
     
     CLLocationDegrees halfwayLatitude = (firstAddressPlacemark.location.coordinate.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
     CLLocationDegrees halfwayLongitude = (firstAddressPlacemark.location.coordinate.longitude + secondAddressPlacemark.location.coordinate.longitude)/2.0;
     
+
     
-    
-    
-    
-    
+    firstCustomAnnotation.name = @"1";
+    secondCustomAnnotation.name = @"2";
+    halfwayCustomAnnotation.name = @"0";
     
     firstAddressAnnotation.coordinate =
         CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
@@ -60,6 +67,15 @@ MKLocalSearchResponse *results;
         CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
     halfwayAnnotation.coordinate = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
 
+    
+    firstCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    
+    secondCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
+    
+    halfwayCustomAnnotation.coordinate = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
+
+    
+    
     
     //new code
     double lat = firstAddressPlacemark.location.coordinate.latitude;
@@ -80,9 +96,9 @@ MKLocalSearchResponse *results;
     
     
     
-    [ConvergeMapView addAnnotation:firstAddressAnnotation];
-    [ConvergeMapView addAnnotation:secondAddressAnnotation];
-    [ConvergeMapView addAnnotation:halfwayAnnotation];
+    [ConvergeMapView addAnnotation:firstCustomAnnotation];
+    [ConvergeMapView addAnnotation:secondCustomAnnotation];
+    [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
     
     MKCoordinateSpan zoom;
     zoom.latitudeDelta = .3f; //the zoom level in degrees
@@ -213,10 +229,32 @@ MKLocalSearchResponse *results;
     
 }
 
-
-
-
-
+-(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if([annotation isKindOfClass:[CustomAnnotation class]]) {
+        CustomAnnotation *myLocation = (CustomAnnotation*) annotation;
+        annotationViewOfMap = [mapView dequeueReusableAnnotationViewWithIdentifier:@"Custom Annotation"];
+        annotationViewOfMap.canShowCallout = YES;
+        if(annotationViewOfMap == nil) {
+            annotationViewOfMap = myLocation.annotationView;
+        }
+        if (([((CustomAnnotation *)annotation).name isEqualToString: @"1"])){
+             annotationViewOfMap.image=[UIImage imageNamed:@"map-.png"];
+        }
+        if (([((CustomAnnotation *)annotation).name isEqualToString: @"2"])){
+            annotationViewOfMap.image=[UIImage imageNamed:@"Maps-Define-Location-icon.png"];
+        }
+        if (([((CustomAnnotation *)annotation).name isEqualToString: @"3"])){
+            annotationViewOfMap.image=[UIImage imageNamed:@"map-.png"];
+        }
+        else {
+            annotationViewOfMap.annotation = annotation;
+        }
+        return annotationViewOfMap;
+    }
+    else {
+        return nil;
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
