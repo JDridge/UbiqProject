@@ -18,13 +18,13 @@
 @property int shakes;
 @property Query *queryToPass;
 @property (weak, nonatomic) IBOutlet UITextField *HomeSearchBar;
+@property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 
 - (IBAction)ConvergeLocations:(id)sender;
 - (NSMutableArray*) getCoordinateLocations;
 - (BOOL) isValidLocationEntry:(NSString *) location;
 - (void) setUpKeyboardToDismissOnReturn;
-@property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *SecondLocationSwitch;
+
 
 @end
 
