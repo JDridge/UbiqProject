@@ -238,13 +238,13 @@ MKLocalSearchResponse *results;
             annotationViewOfMap = myLocation.annotationView;
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"1"])){
-             annotationViewOfMap.image=[UIImage imageNamed:@"map-.png"];
+             annotationViewOfMap.image=[UIImage imageNamed:@"smallCHRIS.png"];
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"2"])){
-            annotationViewOfMap.image=[UIImage imageNamed:@"Maps-Define-Location-icon.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"smallJOSEPH.png"];
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"3"])){
-            annotationViewOfMap.image=[UIImage imageNamed:@"map-.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"smallTRI.png"];
         }
         else {
             annotationViewOfMap.annotation = annotation;
