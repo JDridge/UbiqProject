@@ -17,7 +17,7 @@
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch, SecondLocationSwitch;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch;
 
 - (void)viewDidLoad {
     NSLog(@"hi");
@@ -128,7 +128,6 @@
     MapViewController *viewController = [segue destinationViewController];
     
     viewController.FirstLocationSwitchOnOrOff = [FirstLocationSwitch isOn];
-    viewController.SecondLocationSwitchOnOrOff = [SecondLocationSwitch isOn];
 
     
     
