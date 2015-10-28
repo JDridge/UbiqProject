@@ -20,7 +20,6 @@
 @synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch;
 
 - (void)viewDidLoad {
-    NSLog(@"hi");
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
