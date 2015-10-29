@@ -49,11 +49,19 @@
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
     
     
-    CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:0];
+    CLLocationCoordinate2D firstLocationPlacemarkCoordinates;
+    
+    if([[queryToShow.locations objectAtIndex:0] isEqualToString: @"Current Location"]){
+        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
+    }else {
+        CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:0];
+        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    }
+    
     CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
     
-    CLLocationDegrees halfwayLatitude = (firstAddressPlacemark.location.coordinate.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
-    CLLocationDegrees halfwayLongitude = (firstAddressPlacemark.location.coordinate.longitude + secondAddressPlacemark.location.coordinate.longitude)/2.0;
+    CLLocationDegrees halfwayLatitude = (firstLocationPlacemarkCoordinates.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
+    CLLocationDegrees halfwayLongitude = (firstLocationPlacemarkCoordinates.longitude + secondAddressPlacemark.location.coordinate.longitude)/2.0;
     
     CLLocationCoordinate2D halfwayCoordinates = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
     
@@ -61,14 +69,13 @@
     secondCustomAnnotation.name = @"2";
     halfwayCustomAnnotation.name = @"3";
     
-    firstAddressAnnotation.coordinate =
-    CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    firstAddressAnnotation.coordinate = CLLocationCoordinate2DMake(firstLocationPlacemarkCoordinates.latitude, firstLocationPlacemarkCoordinates.longitude);
     secondAddressAnnotation.coordinate =
     CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
     halfwayAnnotation.coordinate = halfwayCoordinates;
     
     
-    firstCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    firstCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(firstLocationPlacemarkCoordinates.latitude, firstLocationPlacemarkCoordinates.longitude);
     
     secondCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
     
@@ -79,8 +86,8 @@
     
     
     //new code
-    double lat = firstAddressPlacemark.location.coordinate.latitude;
-    double lon = firstAddressPlacemark.location.coordinate.longitude;
+    double lat = firstLocationPlacemarkCoordinates.latitude;
+    double lon = firstLocationPlacemarkCoordinates.longitude;
     
     NSLog(@"lat = %f", lat);
     NSLog(@"lat = %f", lon);
