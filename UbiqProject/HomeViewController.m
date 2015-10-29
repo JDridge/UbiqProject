@@ -17,7 +17,7 @@
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch, CommonInterestPoints;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, CommonInterestPoints;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,12 +98,17 @@
     
     //add validation for valid addresses
     if (!isInvalidEntry) {
-        if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry: SecondLocation.text]) {
+        if( ( [FirstLocationSwitch isOn] || [self isValidLocationEntry: FirstLocation.text]) && [self isValidLocationEntry: SecondLocation.text]){
+           
             NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
             
             setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+            if (FirstLocationSwitch.on){
+                [locationsToPassRepresentedAsCoordinates addObject:@"Current Location"];
+            }else{
+                [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
+            }
             
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
             [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
             
             setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
@@ -122,21 +127,12 @@
     //[listOfCoordinateValues addObject:location];
     
     //new code
-    
-  
-    
-    
-    
     //end of code
     
     
     return listOfCoordinateValues;
     
 }
-
-
-
-
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
@@ -170,7 +166,6 @@
 - (void) setUpKeyboardToDismissOnReturn {
     [FirstLocation setDelegate:self];
     [SecondLocation setDelegate:self];
-    [HomeSearchBar setDelegate:self];
 }
 
 @end

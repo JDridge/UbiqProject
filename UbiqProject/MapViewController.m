@@ -22,7 +22,7 @@
     MKLocalSearch *localSearch;
     MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap, commonPoints;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff,annotationViewOfMap, commonPoints;
 
 - (void)viewDidLoad {
     
@@ -85,10 +85,7 @@
     NSLog(@"lat = %f", lat);
     NSLog(@"lat = %f", lon);
     
-    
     NSLog(@"first switch = %d", FirstLocationSwitchOnOrOff);
-    NSLog(@"first switch = %d", SecondLocationSwitchOnOrOff);
-    
     
     //end of new code
     
@@ -96,8 +93,6 @@
     //    [ConvergeMapView addAnnotation:firstAddressAnnotation];
     //    [ConvergeMapView addAnnotation:secondAddressAnnotation];
     //    [ConvergeMapView addAnnotation:halfwayAnnotation];
-    
-    
     
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
@@ -115,6 +110,9 @@
     //NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
     //[self loadConvergeMapViewForConvergedPoint];
     // Do any additional setup after loading the view.
+    
+    //if statement using current location.
+    
 }
 
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{

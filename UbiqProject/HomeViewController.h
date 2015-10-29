@@ -19,7 +19,6 @@
 @property int direction;
 @property int shakes;
 @property Query *queryToPass;
-@property (weak, nonatomic) IBOutlet UITextField *HomeSearchBar;
 @property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 
 - (IBAction)ConvergeLocations:(id)sender;
