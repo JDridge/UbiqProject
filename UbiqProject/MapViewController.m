@@ -93,12 +93,6 @@
     //end of new code
     
     
-    //    [ConvergeMapView addAnnotation:firstAddressAnnotation];
-    //    [ConvergeMapView addAnnotation:secondAddressAnnotation];
-    //    [ConvergeMapView addAnnotation:halfwayAnnotation];
-    
-    
-    
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
@@ -119,6 +113,8 @@
 
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     
+    
+    
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = commonPoints;
     request.region = MKCoordinateRegionMake(halfwayCoordinates,
@@ -127,10 +123,18 @@
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
     
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+    
         NSMutableArray *placemarks = [NSMutableArray array];
+        
         for (MKMapItem *item in response.mapItems) {
-            [placemarks addObject:item.placemark];
-        }
+            MKPointAnnotation *updatedAnnotation = [[MKPointAnnotation alloc] init];
+            //[placemarks addObject:item.placemark.name];
+            updatedAnnotation.title = item.name;
+            updatedAnnotation.coordinate = item.placemark.coordinate;
+            updatedAnnotation.subtitle = item.placemark.title;
+            [placemarks addObject:updatedAnnotation];
+         
+            }
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
