@@ -51,12 +51,15 @@
     
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates;
     
-    if([[queryToShow.locations objectAtIndex:0] isEqualToString: @"Current Location"]){
-        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
-    }else {
+    if ([[queryToShow.locations objectAtIndex:0] isKindOfClass:[CLPlacemark class]]) {
         CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:0];
         firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
     }
+    else {
+        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
+    }
+
+    
     
     CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
     
