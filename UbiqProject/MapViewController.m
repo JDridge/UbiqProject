@@ -261,13 +261,13 @@
             annotationViewOfMap = myLocation.annotationView;
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"1"])){
-            annotationViewOfMap.image=[UIImage imageNamed:@"smallCHRIS.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"Icons/smallCHRIS.png"];
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"2"])){
-            annotationViewOfMap.image=[UIImage imageNamed:@"smallJOSEPH.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"Icons/smallJOSEPH.png"];
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"3"])){
-            annotationViewOfMap.image=[UIImage imageNamed:@"smallTRI.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"Icons/smallTRI.png"];
         }
         else {
             annotationViewOfMap.annotation = annotation;
