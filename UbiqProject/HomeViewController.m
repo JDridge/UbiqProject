@@ -86,12 +86,12 @@
     direction = 1;
     shakes = 1;
     if([FirstLocation.text isEqual: @""] || [FirstLocation.text isEqualToString:@"Enter location..."]) {
-        FirstLocation.text = @"SHAKE SHAKE";
+        FirstLocation.text = @"Please enter an appropriate location";
         [self shake:FirstLocation];
         isInvalidEntry = YES;
     }
     if([SecondLocation.text isEqual:@""] || [SecondLocation.text isEqualToString:@"Enter location..."]) {
-        SecondLocation.text = @"SHAKE SHAKE SHAKEEE";
+        SecondLocation.text = @"Please enter an appropriate location";
         [self shake:SecondLocation];
         isInvalidEntry = YES;
     }
