@@ -106,7 +106,7 @@
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
     
-    //NSLog(@"💩");
+
     //NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
     //[self loadConvergeMapViewForConvergedPoint];
     // Do any additional setup after loading the view.
@@ -117,6 +117,8 @@
 
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     
+    
+    
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = commonPoints;
     request.region = MKCoordinateRegionMake(halfwayCoordinates,
@@ -125,10 +127,17 @@
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
     
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+    
         NSMutableArray *placemarks = [NSMutableArray array];
+        
         for (MKMapItem *item in response.mapItems) {
-            [placemarks addObject:item.placemark];
-        }
+            MKPointAnnotation *updatedAnnotation = [[MKPointAnnotation alloc] init];
+            updatedAnnotation.title = item.name;
+            updatedAnnotation.coordinate = item.placemark.coordinate;
+            updatedAnnotation.subtitle = item.placemark.title;
+            [placemarks addObject:updatedAnnotation];
+         
+            }
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];

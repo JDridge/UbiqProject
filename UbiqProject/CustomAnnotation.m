@@ -33,8 +33,6 @@
     [mapButton setTitle:@"hi" forState:UIControlStateNormal];
     [mapButton setBackgroundImage:[UIImage imageNamed:@"images-ex4/female-sign.png"] forState:UIControlStateNormal];
     
-    //annotationView.rightCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images-ex4/female-sign.png"]];
-    
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     return annotationView;
 }
