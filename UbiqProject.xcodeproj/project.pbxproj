@@ -15,7 +15,7 @@
 		D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B9181BBF12EE007F6955 /* Assets.xcassets */; };
 		D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */; };
 		D4F2B9271BBF12EE007F6955 /* UbiqProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */; };
-		D4F2B9361BBF2B70007F6955 /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9351BBF2B70007F6955 /* SettingsModalViewController.m */; };
+		E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
 		E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F5935F1BD4D4EF00CC612D /* MapKit.framework */; };
@@ -56,8 +56,8 @@
 		D4F2B9221BBF12EE007F6955 /* UbiqProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UbiqProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UbiqProjectTests.m; sourceTree = "<group>"; };
 		D4F2B9281BBF12EE007F6955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4F2B9341BBF2B70007F6955 /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsModalViewController.h; path = ../SettingsModalViewController.h; sourceTree = "<group>"; };
-		D4F2B9351BBF2B70007F6955 /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsModalViewController.m; path = ../SettingsModalViewController.m; sourceTree = "<group>"; };
+		E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModalViewController.h; sourceTree = "<group>"; };
+		E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModalViewController.m; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E1F5935C1BD4A7F100CC612D /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 		D4F2B90B1BBF12EE007F6955 /* UbiqProject */ = {
 			isa = PBXGroup;
 			children = (
-				D4F2B9341BBF2B70007F6955 /* SettingsModalViewController.h */,
-				D4F2B9351BBF2B70007F6955 /* SettingsModalViewController.m */,
+				E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */,
+				E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
@@ -293,8 +293,8 @@
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
+				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
-				D4F2B9361BBF2B70007F6955 /* SettingsModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
