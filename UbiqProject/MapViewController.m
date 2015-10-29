@@ -19,17 +19,17 @@
 @end
 
 @implementation MapViewController {
-MKLocalSearch *localSearch;
-MKLocalSearchResponse *results;
+    MKLocalSearch *localSearch;
+    MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap, commonPoints;
 
 - (void)viewDidLoad {
-
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [super viewDidLoad];
     annotationViewOfMap.canShowCallout = YES;
-   // self.edgesForExtendedLayout = UIRectEdgeNone;
+    // self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.searchDisplayController setDelegate:self];
     [self.ibSearchBar setDelegate:self];
     self.locationManager= [[CLLocationManager alloc] init];
@@ -55,26 +55,27 @@ MKLocalSearchResponse *results;
     CLLocationDegrees halfwayLatitude = (firstAddressPlacemark.location.coordinate.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
     CLLocationDegrees halfwayLongitude = (firstAddressPlacemark.location.coordinate.longitude + secondAddressPlacemark.location.coordinate.longitude)/2.0;
     
-
+    CLLocationCoordinate2D halfwayCoordinates = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
     
     firstCustomAnnotation.name = @"1";
     secondCustomAnnotation.name = @"2";
-    halfwayCustomAnnotation.name = @"0";
+    halfwayCustomAnnotation.name = @"3";
     
     firstAddressAnnotation.coordinate =
-        CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
     secondAddressAnnotation.coordinate =
-        CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
-    halfwayAnnotation.coordinate = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
-
+    CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
+    halfwayAnnotation.coordinate = halfwayCoordinates;
+    
     
     firstCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
     
     secondCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
     
-    halfwayCustomAnnotation.coordinate = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
-
+    halfwayCustomAnnotation.coordinate = halfwayCoordinates;
     
+    //loads all results from natural language queries
+    [self loadPlacesFromNaturalLanguageQuery:halfwayCoordinates];
     
     
     //new code
@@ -87,12 +88,14 @@ MKLocalSearchResponse *results;
     
     NSLog(@"first switch = %d", FirstLocationSwitchOnOrOff);
     NSLog(@"first switch = %d", SecondLocationSwitchOnOrOff);
-   
+    
     
     //end of new code
     
     
-    
+    //    [ConvergeMapView addAnnotation:firstAddressAnnotation];
+    //    [ConvergeMapView addAnnotation:secondAddressAnnotation];
+    //    [ConvergeMapView addAnnotation:halfwayAnnotation];
     
     
     
@@ -107,11 +110,31 @@ MKLocalSearchResponse *results;
     myRegion.center = halfwayAnnotation.coordinate;
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
-
+    
     //NSLog(@"💩");
     //NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
     //[self loadConvergeMapViewForConvergedPoint];
     // Do any additional setup after loading the view.
+}
+
+-(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
+    
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = commonPoints;
+    request.region = MKCoordinateRegionMake(halfwayCoordinates,
+                                            MKCoordinateSpanMake(0.125, 0.125));
+    
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        NSMutableArray *placemarks = [NSMutableArray array];
+        for (MKMapItem *item in response.mapItems) {
+            [placemarks addObject:item.placemark];
+        }
+        
+        [self.ConvergeMapView showAnnotations:placemarks animated:YES];
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,8 +144,8 @@ MKLocalSearchResponse *results;
 
 - (IBAction)settingsButtonClick:(id)sender {
     [self performSegueWithIdentifier:@"settingsVC" sender:nil];
-
-
+    
+    
 }
 
 - (void) loadConvergeMapViewForConvergedPoint {
@@ -136,7 +159,7 @@ MKLocalSearchResponse *results;
     myRegion.center = addressCoordinates;
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
-
+    
 }
 
 - (void) loadMapAtCurrentLocation { //use this snippet to load the map at the current location.
@@ -152,7 +175,7 @@ MKLocalSearchResponse *results;
     myRegion.center = addressCoordinates;
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
-
+    
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
@@ -238,7 +261,7 @@ MKLocalSearchResponse *results;
             annotationViewOfMap = myLocation.annotationView;
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"1"])){
-             annotationViewOfMap.image=[UIImage imageNamed:@"smallCHRIS.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"smallCHRIS.png"];
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"2"])){
             annotationViewOfMap.image=[UIImage imageNamed:@"smallJOSEPH.png"];
@@ -260,7 +283,8 @@ MKLocalSearchResponse *results;
     
     SettingsModalViewController *viewController = [segue destinationViewController];
     viewController.printQuery = queryToShow;
-
+    
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *ConvergeMapView;
 @property Query *queryToShow;
+@property NSString *commonPoints;
 @property(nonatomic, retain) CLLocationManager *locationManager;
 @property(nonatomic,assign) CLLocationCoordinate2D addressCoordinates;
 @property (strong, nonatomic) IBOutlet UISearchBar *ibSearchBar;
@@ -27,4 +28,5 @@
 
 - (void) loadConvergeMapViewForConvergedPoint;
 - (void) loadMapAtCurrentLocation;
+- (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
 @end
