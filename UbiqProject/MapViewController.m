@@ -284,7 +284,7 @@
             annotationViewOfMap.image=[UIImage imageNamed:@"Icons/smallJOSEPH.png"];
         }
         if (([((CustomAnnotation *)annotation).name isEqualToString: @"3"])){
-            annotationViewOfMap.image=[UIImage imageNamed:@"Icons/smallTRI.png"];
+            annotationViewOfMap.image=[UIImage imageNamed:@"Icons/halfwayarrow.png"];
         }
         else {
             annotationViewOfMap.annotation = annotation;
