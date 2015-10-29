@@ -99,7 +99,7 @@
     //add validation for valid addresses
     if (!isInvalidEntry) {
         if( ( [FirstLocationSwitch isOn] || [self isValidLocationEntry: FirstLocation.text]) && [self isValidLocationEntry: SecondLocation.text]){
-           
+            
             NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
             
             setUpQueryToPass.locations = [[NSMutableArray alloc] init];
@@ -118,7 +118,6 @@
             [self performSegueWithIdentifier:@"mapVC" sender:nil];
         }
     }
-
 }
 
 - (NSMutableArray*) getCoordinateLocations {
@@ -159,7 +158,7 @@
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
+    //[textField resignFirstResponder];
     return YES;
 }
 
