@@ -105,7 +105,7 @@
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
     
-    //NSLog(@"💩");
+
     //NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
     //[self loadConvergeMapViewForConvergedPoint];
     // Do any additional setup after loading the view.
@@ -128,7 +128,6 @@
         
         for (MKMapItem *item in response.mapItems) {
             MKPointAnnotation *updatedAnnotation = [[MKPointAnnotation alloc] init];
-            //[placemarks addObject:item.placemark.name];
             updatedAnnotation.title = item.name;
             updatedAnnotation.coordinate = item.placemark.coordinate;
             updatedAnnotation.subtitle = item.placemark.title;
