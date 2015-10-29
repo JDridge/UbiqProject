@@ -29,6 +29,21 @@
     
 }
 
+- (IBAction)SwitchTrigger:(id)sender {
+    if (FirstLocationSwitch.on){
+        [FirstLocation setEnabled: NO];
+        FirstLocation.text = @"Current Location";
+        FirstLocation.backgroundColor =  [UIColor orangeColor];
+        FirstLocation.textColor = [UIColor whiteColor];
+    }else{
+        [FirstLocation setEnabled: YES];
+        FirstLocation.text = @"";
+        FirstLocation.backgroundColor =  [UIColor whiteColor];
+        FirstLocation.textColor = [UIColor colorWithRed: 2.0f/255.0f green: 132.0f/255.0f blue: 130.0f/255.0f alpha:1.0f];
+    }
+        
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
