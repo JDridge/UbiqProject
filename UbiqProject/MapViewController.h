@@ -23,6 +23,15 @@
 @property MKAnnotationView *annotationViewOfMap;
 
 
+//new code
+@property double firstLocationLatitude;
+@property double firstLocationLongitude;
+@property double secondLocationLatitude;
+@property double secondLocationLongitude;
+
+
+//end of code
+
 - (IBAction)settingsButtonClick:(id)sender;
 
 

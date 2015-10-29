@@ -22,7 +22,7 @@
     MKLocalSearch *localSearch;
     MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap, commonPoints;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap, commonPoints, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
 
 - (void)viewDidLoad {
     
@@ -61,12 +61,29 @@
     secondCustomAnnotation.name = @"2";
     halfwayCustomAnnotation.name = @"3";
     
+    
     firstAddressAnnotation.coordinate =
     CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+   
+    //new code
+    firstLocationLatitude =  firstAddressAnnotation.coordinate.latitude;
+    firstLocationLongitude = firstAddressAnnotation.coordinate.longitude;
+    //end of new
+    
+    NSLog(@"*****first location latitude*****");
+    NSLog(@"%f", firstLocationLatitude);
+    
+    
     secondAddressAnnotation.coordinate =
     CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
     halfwayAnnotation.coordinate = halfwayCoordinates;
     
+    
+    
+    //new code
+    secondLocationLongitude = secondAddressAnnotation.coordinate.longitude;
+    secondLocationLatitude = secondAddressAnnotation.coordinate.latitude;
+    //end of new
     
     firstCustomAnnotation.coordinate =  CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
     
@@ -111,6 +128,11 @@
     // Do any additional setup after loading the view.
 }
 
+
+
+
+
+
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     
     
@@ -150,6 +172,8 @@
     
     
 }
+
+
 
 - (void) loadConvergeMapViewForConvergedPoint {
     
@@ -286,6 +310,12 @@
     
     SettingsModalViewController *viewController = [segue destinationViewController];
     viewController.printQuery = queryToShow;
+    
+    viewController.firstLocationLatitude = firstLocationLatitude;
+    viewController.firstLocationLongitude = firstLocationLongitude;
+    viewController.secondLocationLatitude = secondLocationLatitude;
+    viewController.secondLocationLongitude = secondLocationLongitude;
+    
     
     
     // Get the new view controller using [segue destinationViewController].
