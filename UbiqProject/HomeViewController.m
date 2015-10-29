@@ -17,7 +17,7 @@
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, HomeSearchBar, FirstLocationSwitch, CommonInterestPoints;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -125,12 +125,10 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
-    
     viewController.FirstLocationSwitchOnOrOff = [FirstLocationSwitch isOn];
-
-    
-    
     viewController.queryToShow = queryToPass;
+    viewController.commonPoints = CommonInterestPoints.text;
+
 }
 
 -(void)shake:(UIView *)shakeThisObject {

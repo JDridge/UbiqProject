@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
 @property (weak, nonatomic) IBOutlet UITextField *SecondLocation;
+@property (weak, nonatomic) IBOutlet UITextField *CommonInterestPoints;
+
 @property int direction;
 @property int shakes;
 @property Query *queryToPass;
