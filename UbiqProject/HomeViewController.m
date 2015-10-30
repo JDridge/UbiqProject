@@ -30,8 +30,9 @@
         FirstLocation.text = @"Current Location";
         FirstLocation.backgroundColor =  [UIColor orangeColor];
         FirstLocation.textColor = [UIColor whiteColor];
-        
-        locationFound = NO;
+ 
+        //gets current location.
+        locationFound = NO; //this flag is to let us know if the user's location has been obtained
         currentLocationManager = [[CLLocationManager alloc] init];
         currentLocationManager.delegate = self;
         [currentLocationManager requestWhenInUseAuthorization];
@@ -50,20 +51,11 @@
 
 //delegate method that runs when the current has been updated.
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    locationFound = YES;
-    CLLocation* loc = [locations lastObject]; // locations is guaranteed to have at least one object
-    float latitude = loc.coordinate.latitude;
-    float longitude = loc.coordinate.longitude;
-    NSLog(@"%.8f",latitude);
-    NSLog(@"%.8f",longitude);
+    locationFound = YES; //user's location has been obtained.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    
 }
 
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location {
@@ -108,12 +100,17 @@
         isValidTextField = NO;
     }
     
+    //if the location was found AND the text boxes are valid
     if (locationFound && isValidTextField) {
+        
+        //is the switch is on and the entries are valid.
+        
         if(([FirstLocationSwitch isOn] || [self isValidLocationEntry: FirstLocation.text]) && [self isValidLocationEntry: SecondLocation.text]) {
             
             NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
             
             setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+            
             if (FirstLocationSwitch.on) {
                 [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
             }
@@ -130,14 +127,17 @@
             [self performSegueWithIdentifier:@"mapVC" sender:nil];
         }
     }
+    //location could not be found. 
     else if(locationFound == NO) {
-        //display popup as to why location wasn't found
+        [self displayLocationCouldNotBeFoundAlert];
+    }
+    else {
+        //Invalid text fields. Not necessary to show the user anything since the boxes shake.
     }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
-    viewController.FirstLocationSwitchOnOrOff = [FirstLocationSwitch isOn];
     viewController.queryToShow = queryToPass;
     viewController.commonPoints = CommonInterestPoints.text;
 }
@@ -157,6 +157,25 @@
                      }
      ];
 }
+
+//If the GPS is too slow to get the current location and they tried to converge, this will be called to let them know to wait.
+-(void)displayLocationCouldNotBeFoundAlert {
+    UIAlertController *alert=   [UIAlertController
+                                  alertControllerWithTitle:@"No Location!"
+                                  message:@"Hey there! We couldn't find your location. Try again in a bit!"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                actionWithTitle:@"Okay 🙃"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action)
+                                {
+                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
@@ -167,6 +186,7 @@
     [SecondLocation setDelegate:self];
 }
 
+//checks if the text boxes are equal to a set of defined strings.
 -(BOOL) isTextFieldDefaultOrEmpty:(UITextField *)locationTextField {
     NSString *emptyString = @"";
     NSString *firstTextFieldDefault = @"Enter location!";

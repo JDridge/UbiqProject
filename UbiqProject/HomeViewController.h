@@ -16,16 +16,26 @@
 @property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
 @property (weak, nonatomic) IBOutlet UITextField *SecondLocation;
 @property (weak, nonatomic) IBOutlet UITextField *CommonInterestPoints;
+@property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
+@property (strong, retain) CLLocationManager *currentLocationManager;
+
 @property int direction;
 @property int shakes;
 @property Query *queryToPass;
-@property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
-@property (strong, retain) CLLocationManager *currentLocationManager;
 @property BOOL locationFound;
 
-- (IBAction)ConvergeLocations:(id)sender;
+- (IBAction) ConvergeLocations:(id)sender;
+- (IBAction)SwitchTrigger:(id)sender;
+
+- (CLPlacemark*) getCoordinateEquivalent:(NSString*) location;
+
 - (BOOL) isValidLocationEntry:(NSString *) location;
+- (BOOL) isTextFieldDefaultOrEmpty:(UITextField *)locationTextField;
+
 - (void) setUpKeyboardToDismissOnReturn;
+- (void) shake:(UIView*) shakeThisObject;
+- (void) displayLocationCouldNotBeFoundAlert;
+
 
 @end
 
