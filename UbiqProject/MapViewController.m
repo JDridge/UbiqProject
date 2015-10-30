@@ -5,6 +5,8 @@
 //  Created by Robert Vo on 10/18/15.
 //  Copyright © 2015 Joey. All rights reserved.
 //
+//
+
 
 #import "MapViewController.h"
 #import "Query.h"
@@ -22,7 +24,7 @@
     MKLocalSearch *localSearch;
     MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff, SecondLocationSwitchOnOrOff,annotationViewOfMap, commonPoints, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, annotationViewOfMap, commonPoints, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
 
 - (void)viewDidLoad {
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -57,6 +59,9 @@
         firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(0, 0);
     }
 
+    //new code
+    CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:1];
+    //end of new code
     CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
     
     CLLocationDegrees halfwayLatitude = (firstLocationPlacemarkCoordinates.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
