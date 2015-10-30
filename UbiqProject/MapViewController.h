@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Query.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *ConvergeMapView;
 @property Query *queryToShow;
