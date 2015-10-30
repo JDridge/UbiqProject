@@ -22,16 +22,13 @@
     MKLocalSearch *localSearch;
     MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, FirstLocationSwitchOnOrOff,annotationViewOfMap, commonPoints;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates,annotationViewOfMap, commonPoints;
 
 - (void)viewDidLoad {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [super viewDidLoad];
     annotationViewOfMap.canShowCallout = YES;
 
-    self.locationManager= [[CLLocationManager alloc] init];
-    self.locationManager.delegate=self;
-    [self.locationManager requestAlwaysAuthorization];
     // Zoom the map to current location.
     [self.ConvergeMapView setShowsUserLocation:YES];
     [self.ConvergeMapView setUserInteractionEnabled:YES];
@@ -56,12 +53,10 @@
         CLLocation *currentLocationFromUser = [queryToShow.locations objectAtIndex:0];
         firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(currentLocationFromUser.coordinate.latitude, currentLocationFromUser.coordinate.longitude);
     }
-    else { //PANIC
+    else { //If for some reason it gets here, set the first location coordinates to 0, 0. 
         firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(0, 0);
     }
 
-    
-    
     CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
     
     CLLocationDegrees halfwayLatitude = (firstLocationPlacemarkCoordinates.latitude + secondAddressPlacemark.location.coordinate.latitude)/2.0;
@@ -89,22 +84,6 @@
     [self loadPlacesFromNaturalLanguageQuery:halfwayCoordinates];
     
     
-    //new code
-    double lat = firstLocationPlacemarkCoordinates.latitude;
-    double lon = firstLocationPlacemarkCoordinates.longitude;
-    
-    NSLog(@"lat = %f", lat);
-    NSLog(@"lat = %f", lon);
-    
-    NSLog(@"first switch = %d", FirstLocationSwitchOnOrOff);
-    
-    //end of new code
-    
-    
-    //    [ConvergeMapView addAnnotation:firstAddressAnnotation];
-    //    [ConvergeMapView addAnnotation:secondAddressAnnotation];
-    //    [ConvergeMapView addAnnotation:halfwayAnnotation];
-    
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
@@ -116,13 +95,6 @@
     myRegion.center = halfwayAnnotation.coordinate;
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
-    
-
-    //NSLog([NSString stringWithFormat:@"%f", [queryToShow.locations objectAtIndex:0]]);
-    //[self loadConvergeMapViewForConvergedPoint];
-    // Do any additional setup after loading the view.
-    
-    //if statement using current location.
     
 }
 
@@ -168,22 +140,6 @@
     MKCoordinateSpan zoom;
     zoom.latitudeDelta = .01f; //the zoom level in degrees
     zoom.longitudeDelta = .01f;//the zoom level in degrees
-    MKCoordinateRegion myRegion;
-    myRegion.center = addressCoordinates;
-    myRegion.span = zoom;
-    [ConvergeMapView setRegion:myRegion animated:YES];
-    
-}
-
-- (void) loadMapAtCurrentLocation { //use this snippet to load the map at the current location.
-    self.ConvergeMapView.delegate = self;
-    self.locationManager= [[CLLocationManager alloc] init];
-    self.locationManager.delegate=self;
-    [self.locationManager requestAlwaysAuthorization];
-    addressCoordinates = self.locationManager.location.coordinate;
-    MKCoordinateSpan zoom;
-    zoom.latitudeDelta = .1f; //the zoom level in degrees
-    zoom.longitudeDelta = .1f;//the zoom level in degrees
     MKCoordinateRegion myRegion;
     myRegion.center = addressCoordinates;
     myRegion.span = zoom;
