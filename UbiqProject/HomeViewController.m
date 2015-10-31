@@ -252,6 +252,7 @@
 - (void) setUpKeyboardToDismissOnReturn {
     [FirstLocation setDelegate:self];
     [SecondLocation setDelegate:self];
+    [CommonInterestPoints setDelegate:self];
 }
 
 - (void) shake:(UIView *)shakeThisObject {
