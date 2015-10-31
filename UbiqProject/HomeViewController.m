@@ -26,33 +26,46 @@
 
 - (IBAction)SwitchTrigger:(id)sender {
     if (FirstLocationSwitch.on) {
-        [FirstLocation setEnabled: NO];
-        FirstLocation.text = @"Current Location";
-        FirstLocation.backgroundColor =  [UIColor orangeColor];
-        FirstLocation.textColor = [UIColor whiteColor];
- 
-        //gets current location.
-        locationFound = NO; //this flag is to let us know if the user's location has been obtained
-        currentLocationManager = [[CLLocationManager alloc] init];
-        currentLocationManager.delegate = self;
-        [currentLocationManager requestWhenInUseAuthorization];
-        currentLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        currentLocationManager.distanceFilter = kCLDistanceFilterNone;
-        [self.currentLocationManager startUpdatingLocation];
-
+        [self setFirstLocationTextFieldDisabled];
+        [self requestUsersCurrentLocation];
+    
     }
     else {
-        [FirstLocation setEnabled: YES];
-        FirstLocation.text = @"";
-        FirstLocation.backgroundColor =  [UIColor whiteColor];
-        FirstLocation.textColor = [UIColor colorWithRed: 2.0f/255.0f green: 132.0f/255.0f blue: 130.0f/255.0f alpha:1.0f];
+        [self setFirstLocationTextFieldEnabled];
     }
+}
+
+- (void) setFirstLocationTextFieldDisabled {
+    [FirstLocation setEnabled: NO];
+    FirstLocation.text = @"Current Location";
+    FirstLocation.backgroundColor =  [UIColor orangeColor];
+    FirstLocation.textColor = [UIColor whiteColor];
+}
+
+- (void) setFirstLocationTextFieldEnabled {
+    [FirstLocation setEnabled: YES];
+    FirstLocation.text = @"";
+    FirstLocation.backgroundColor =  [UIColor whiteColor];
+    FirstLocation.textColor = [UIColor colorWithRed: 2.0f/255.0f green: 132.0f/255.0f blue: 130.0f/255.0f alpha:1.0f];
 }
 
 //delegate method that runs when the current has been updated.
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     locationFound = YES; //user's location has been obtained.
 }
+
+
+- (void)requestUsersCurrentLocation {
+    //gets current location.
+    locationFound = NO; //this flag is to let us know if the user's location has been obtained
+    currentLocationManager = [[CLLocationManager alloc] init];
+    currentLocationManager.delegate = self;
+    [currentLocationManager requestWhenInUseAuthorization];
+    currentLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    currentLocationManager.distanceFilter = kCLDistanceFilterNone;
+    [self.currentLocationManager startUpdatingLocation];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -99,40 +112,37 @@
         [self shake:SecondLocation];
         isValidTextField = NO;
     }
-    
-    //if the location was found AND the text boxes are valid
-    if (locationFound && isValidTextField) {
-        
-        //is the switch is on and the entries are valid.
-        
-        if(([FirstLocationSwitch isOn] || [self isValidLocationEntry: FirstLocation.text]) && [self isValidLocationEntry: SecondLocation.text]) {
-            
-            NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
-            
-            setUpQueryToPass.locations = [[NSMutableArray alloc] init];
-            
-            if (FirstLocationSwitch.on) {
-                [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
-            }
-            else {
-                [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
-            }
-            
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-            
-            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
-            
-            queryToPass = setUpQueryToPass;
-            
-            [self performSegueWithIdentifier:@"mapVC" sender:nil];
-        }
-    }
-    //location could not be found. 
-    else if(locationFound == NO) {
+
+    if(locationFound == NO && [FirstLocationSwitch isOn]) {
         [self displayLocationCouldNotBeFoundAlert];
     }
+    
+    else if (isValidTextField) {
+        
+        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
+        setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+
+        if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
+            [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
+            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+            queryToPass = setUpQueryToPass;
+            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+
+        }
+        else if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry:SecondLocation.text]) {
+            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
+            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+            queryToPass = setUpQueryToPass;
+            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+        }
+        else {
+            [self displayErrorForUnableToConverge];
+        }
+    }
     else {
-        //Invalid text fields. Not necessary to show the user anything since the boxes shake.
+        [self displayErrorForUnableToConverge];
     }
 }
 
@@ -160,7 +170,7 @@
 
 //If the GPS is too slow to get the current location and they tried to converge, this will be called to let them know to wait.
 -(void)displayLocationCouldNotBeFoundAlert {
-    UIAlertController *alert=   [UIAlertController
+    UIAlertController *alert = [UIAlertController
                                   alertControllerWithTitle:@"No Location!"
                                   message:@"Hey there! We couldn't find your location. Try again in a bit!"
                                   preferredStyle:UIAlertControllerStyleAlert];
@@ -174,6 +184,54 @@
                                 }];
     [alert addAction:okayButton];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)displayErrorForUnableToConverge {
+    UIAlertController *alert = [UIAlertController
+                                 alertControllerWithTitle:@"Error!"
+                                 message:@"For some reason we cannot converge your locations. Try again in a bit!"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay 🙃"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)displayCurrentLocationDeniedByUser {
+    
+    [self.FirstLocationSwitch setOn:NO animated:YES];
+    [self setFirstLocationTextFieldEnabled];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"App Permission Denied!"
+                                message:@"To re-enable, please go to Settings and turn on Location Service for this app."
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay 🙃"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    if([CLLocationManager locationServicesEnabled]) {
+        if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+            [self displayCurrentLocationDeniedByUser];
+        }
+    }
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {

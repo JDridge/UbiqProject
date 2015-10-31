@@ -35,6 +35,8 @@
 - (void) setUpKeyboardToDismissOnReturn;
 - (void) shake:(UIView*) shakeThisObject;
 - (void) displayLocationCouldNotBeFoundAlert;
+- (void) requestUsersCurrentLocation;
+- (void) displayErrorForUnableToConverge;
 
 
 @end
