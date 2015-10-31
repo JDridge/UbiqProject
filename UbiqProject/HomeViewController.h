@@ -25,19 +25,24 @@
 @property BOOL locationFound;
 
 - (IBAction) ConvergeLocations:(id)sender;
-- (IBAction)SwitchTrigger:(id)sender;
+- (IBAction) SwitchTrigger:(id)sender;
 
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location;
 
-- (BOOL) isValidLocationEntry:(NSString *) location;
-- (BOOL) isTextFieldDefaultOrEmpty:(UITextField *)locationTextField;
+- (BOOL) isValidLocationEntry:(NSString*) location;
+- (BOOL) isTextFieldDefaultOrEmpty:(UITextField*)locationTextField;
+- (BOOL) textFieldShouldReturn:(UITextField*)textField;
 
+- (void) displayCurrentLocationDeniedByUser;
+- (void) displayErrorForUnableToConverge;
+- (void) displayLocationCouldNotBeFoundAlert;
+- (void) locationManager:(CLLocationManager*)manager didFailWithError:(NSError *)error;
+- (void) locationManager:(CLLocationManager*)manager didUpdateLocations:(NSArray *)locations;
+- (void) requestUsersCurrentLocation;
+- (void) setFirstLocationTextFieldDisabled;
+- (void) setFirstLocationTextFieldEnabled;
 - (void) setUpKeyboardToDismissOnReturn;
 - (void) shake:(UIView*) shakeThisObject;
-- (void) displayLocationCouldNotBeFoundAlert;
-- (void) requestUsersCurrentLocation;
-- (void) displayErrorForUnableToConverge;
-
 
 @end
 
