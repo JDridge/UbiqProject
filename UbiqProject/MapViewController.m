@@ -122,20 +122,14 @@
 }
 
 
-
-
-
-
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = commonPoints;
     request.region = MKCoordinateRegionMake(halfwayCoordinates,
                                             MKCoordinateSpanMake(0.125, 0.125));
-    
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
     
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-    
         NSMutableArray *placemarks = [NSMutableArray array];
         
         for (MKMapItem *item in response.mapItems) {
@@ -144,12 +138,10 @@
             updatedAnnotation.coordinate = item.placemark.coordinate;
             updatedAnnotation.subtitle = item.placemark.title;
             [placemarks addObject:updatedAnnotation];
-         
-            }
+        }
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,15 +149,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)settingsButtonClick:(id)sender {
-    [self performSegueWithIdentifier:@"settingsVC" sender:nil];
-}
-
 
 
 - (void) loadConvergeMapViewForConvergedPoint {
-    
-    self.ConvergeMapView.delegate = self;
+    ConvergeMapView.delegate = self;
     addressCoordinates = [[queryToShow.locations objectAtIndex:0] coordinate];
     MKCoordinateSpan zoom;
     zoom.latitudeDelta = .01f; //the zoom level in degrees
@@ -204,20 +191,17 @@
     }
 }
 
+- (IBAction)settingsButtonClick:(id)sender {
+    [self performSegueWithIdentifier:@"settingsVC" sender:nil];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     SettingsModalViewController *viewController = [segue destinationViewController];
     viewController.printQuery = queryToShow;
-    
     viewController.firstLocationLatitude = firstLocationLatitude;
     viewController.firstLocationLongitude = firstLocationLongitude;
     viewController.secondLocationLatitude = secondLocationLatitude;
     viewController.secondLocationLongitude = secondLocationLongitude;
-    
-    
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 

@@ -12,7 +12,7 @@
 #import <MapKit/MapKit.h>
 #import "Query.h"
 
-@interface MapViewController : UIViewController <CLLocationManagerDelegate>
+@interface MapViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *ConvergeMapView;
 @property Query *queryToShow;
@@ -22,18 +22,12 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *ibSearchBar;
 @property MKAnnotationView *annotationViewOfMap;
 
-
-//new code
 @property double firstLocationLatitude;
 @property double firstLocationLongitude;
 @property double secondLocationLatitude;
 @property double secondLocationLongitude;
 
-
-//end of code
-
 - (IBAction)settingsButtonClick:(id)sender;
-
 
 - (void) loadConvergeMapViewForConvergedPoint;
 - (void) loadMapAtCurrentLocation;
