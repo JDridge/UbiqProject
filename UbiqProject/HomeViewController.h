@@ -33,6 +33,7 @@
 - (BOOL) isTextFieldDefaultOrEmpty:(UITextField*)locationTextField;
 - (BOOL) textFieldShouldReturn:(UITextField*)textField;
 
+- (void) disableFocusFromAllTextFields;
 - (void) displayCurrentLocationDeniedByUser;
 - (void) displayErrorForUnableToConverge;
 - (void) displayLocationCouldNotBeFoundAlert;

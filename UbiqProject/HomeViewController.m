@@ -29,6 +29,7 @@
 }
 
 - (IBAction)ConvergeLocations:(id)sender {
+    [self disableFocusFromAllTextFields];
     
     Query *setUpQueryToPass = [[Query alloc] init];
     BOOL isValidTextField = YES;
@@ -137,24 +138,39 @@
     return YES;
 }
 
+- (void) disableFocusFromAllTextFields {
+    [FirstLocation resignFirstResponder];
+    [SecondLocation resignFirstResponder];
+    [CommonInterestPoints resignFirstResponder];
+}
+
 - (void) displayCurrentLocationDeniedByUser {
     
     [self.FirstLocationSwitch setOn:NO animated:YES];
     [self setFirstLocationTextFieldEnabled];
     
     UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:@"App Permission Denied!"
+                                alertControllerWithTitle:@"Location Services Denied!"
                                 message:@"To re-enable, please go to Settings and turn on Location Service for the Converge app."
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okayButton = [UIAlertAction
-                                 actionWithTitle:@"Okay 🙃"
+                                 actionWithTitle:@"Take me to the settings!"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                 }];
+    
+    UIAlertAction *dismissButton = [UIAlertAction
+                                 actionWithTitle:@"Dismiss"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
                                  {
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     [alert addAction:okayButton];
+    [alert addAction:dismissButton];
     [self presentViewController:alert animated:YES completion:nil];
     
 }
@@ -170,6 +186,7 @@
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
                                  {
+                                     
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     [alert addAction:okayButton];
@@ -257,8 +274,6 @@
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
     viewController.commonPoints = CommonInterestPoints.text;
-    [SecondLocation resignFirstResponder];
-
 }
 
 @end
