@@ -23,6 +23,7 @@
 @property int shakes;
 @property Query *queryToPass;
 @property BOOL locationFound;
+@property BOOL isValidTextField;
 
 - (IBAction) ConvergeLocations:(id)sender;
 - (IBAction) SwitchTrigger:(id)sender;

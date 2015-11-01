@@ -16,7 +16,7 @@
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, CommonInterestPoints, currentLocationManager, locationFound;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, CommonInterestPoints, currentLocationManager, locationFound, isValidTextField;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,20 +32,10 @@
     [self disableFocusFromAllTextFields];
     
     Query *setUpQueryToPass = [[Query alloc] init];
-    BOOL isValidTextField = YES;
     
-    if([self isTextFieldDefaultOrEmpty:FirstLocation]) {
-        direction = 1;
-        shakes = 1;
-        [self shake:FirstLocation];
-        isValidTextField = NO;
-    }
-    if([self isTextFieldDefaultOrEmpty:SecondLocation]) {
-        direction = 1;
-        shakes = 1;
-        [self shake:SecondLocation];
-        isValidTextField = NO;
-    }
+    isValidTextField = YES;
+    [self validateTextField:FirstLocation];
+    [self validateTextField:SecondLocation];
     
     if(locationFound == NO && [FirstLocationSwitch isOn]) {
         [self displayLocationCouldNotBeFoundAlert];
@@ -76,6 +66,15 @@
     }
     else {
         [self displayErrorForUnableToConverge];
+    }
+}
+
+- (void) validateTextField:(UITextField*)textField {
+    if([self isTextFieldDefaultOrEmpty:textField]) {
+        direction = 1;
+        shakes = 1;
+        [self shake:textField];
+        isValidTextField = NO;
     }
 }
 
