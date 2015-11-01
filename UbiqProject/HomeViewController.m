@@ -22,6 +22,9 @@
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
+    [self addGestureToDismissKeyboardOnTap];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -274,6 +277,42 @@
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
     viewController.commonPoints = CommonInterestPoints.text;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    float newVerticalPosition = -keyboardSize.height;
+    [self moveFrameToVerticalPosition:newVerticalPosition forDuration:0.3f];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [self moveFrameToVerticalPosition:0.0f forDuration:0.3f];
+}
+
+- (void)moveFrameToVerticalPosition:(float)position forDuration:(float)duration {
+    CGRect frame = self.view.frame;
+    frame.origin.y = position;
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.view.frame = frame;
+    }];
+}
+
+- (void)addGestureToDismissKeyboardOnTap {
+    UITapGestureRecognizer *tapOutsideOfKeyboard = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(disableFocusFromAllTextFields)];
+    [self.view addGestureRecognizer:tapOutsideOfKeyboard];
 }
 
 @end

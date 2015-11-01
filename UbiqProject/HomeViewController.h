@@ -45,6 +45,10 @@
 - (void) setFirstLocationTextFieldEnabled;
 - (void) setUpKeyboardToDismissOnReturn;
 - (void) shake:(UIView*) shakeThisObject;
+- (void) keyboardWillShow:(NSNotification *)notification;
+- (void) keyboardWillHide:(NSNotification *)notification;
+- (void) moveFrameToVerticalPosition:(float)position forDuration:(float)duration;
+- (void) addGestureToDismissKeyboardOnTap;
 
 @end
 
