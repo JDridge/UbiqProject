@@ -1,10 +1,3 @@
-//
-//  ViewController.m
-//  UbiqProject
-//
-//  Created by Joey on 10/2/15.
-//  Copyright © 2015 Joey. All rights reserved.
-//
 
 #import "HomeViewController.h"
 #import "Query.h"
@@ -23,19 +16,17 @@
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
     [self addGestureToDismissKeyboardOnTap];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+# warning Find a way to prevent the user from spamming the "Converge" button.
 - (IBAction)ConvergeLocations:(id)sender {
+    
     [self disableFocusFromAllTextFields];
-    
     Query *setUpQueryToPass = [[Query alloc] init];
-    
     isValidTextField = YES;
     [self validateTextField:FirstLocation];
     [self validateTextField:SecondLocation];
@@ -48,6 +39,7 @@
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
         setUpQueryToPass.locations = [[NSMutableArray alloc] init];
         
+        //If the switch is turned on, the location is found, and the second location text field is a valid location.
         if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
             [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
             [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
@@ -56,6 +48,7 @@
             [self performSegueWithIdentifier:@"mapVC" sender:nil];
             
         }
+        //If the first and second location text fields are valid locations.
         else if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry:SecondLocation.text]) {
             [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
             [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
@@ -63,6 +56,7 @@
             queryToPass = setUpQueryToPass;
             [self performSegueWithIdentifier:@"mapVC" sender:nil];
         }
+        //Shouldn't reach here. But it is possible, I guess.
         else {
             [self displayErrorForUnableToConverge];
         }
@@ -72,6 +66,7 @@
     }
 }
 
+//Checks if the TextField passed in is valid or not.
 - (void) validateTextField:(UITextField*)textField {
     if([self isTextFieldDefaultOrEmpty:textField]) {
         direction = 1;
@@ -86,11 +81,12 @@
         [self setFirstLocationTextFieldDisabled];
         [self requestUsersCurrentLocation];
     }
-    else {
+    else { //FirstLocationSwitch is turned off.
         [self setFirstLocationTextFieldEnabled];
     }
 }
 
+# warning Find a way to terminate the process if it is taking too long.
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location {
     __block CLPlacemark *placemark = nil;
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -105,7 +101,7 @@
     return placemark;
 }
 
-
+//Validates whether the location entered is valid or not.
 - (BOOL) isValidLocationEntry:(NSString*) location {
     BOOL isValid = NO;
     
@@ -135,19 +131,22 @@
     }
 }
 
+//Needed to make the keyboard dismiss when the return key is pressed.
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
 
+//Removes the focus off of all of the text fields.
 - (void) disableFocusFromAllTextFields {
     [FirstLocation resignFirstResponder];
     [SecondLocation resignFirstResponder];
     [CommonInterestPoints resignFirstResponder];
 }
 
+//Displays an alert if the user denies their location services.
 - (void) displayCurrentLocationDeniedByUser {
-    
+
     [self.FirstLocationSwitch setOn:NO animated:YES];
     [self setFirstLocationTextFieldEnabled];
     
@@ -177,6 +176,7 @@
     
 }
 
+//Displays an alert if the application is unable to converge.
 - (void) displayErrorForUnableToConverge {
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Error!"
@@ -213,6 +213,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+//Delegate method that is called if the user denies permission for the app to access their location services.
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     if([CLLocationManager locationServicesEnabled]) {
         if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
@@ -226,8 +227,8 @@
     locationFound = YES; //user's location has been obtained.
 }
 
+//gets the user's current location.
 - (void)requestUsersCurrentLocation {
-    //gets current location.
     locationFound = NO; //this flag is to let us know if the user's location has been obtained
     currentLocationManager = [[CLLocationManager alloc] init];
     currentLocationManager.delegate = self;
@@ -308,6 +309,7 @@
     }];
 }
 
+//Dismisses keyboard on tap anywhere outside the keyboard.
 - (void)addGestureToDismissKeyboardOnTap {
     UITapGestureRecognizer *tapOutsideOfKeyboard = [[UITapGestureRecognizer alloc]
                                                     initWithTarget:self
