@@ -7,7 +7,6 @@
 //
 //
 
-
 #import "MapViewController.h"
 #import "Query.h"
 #import "CustomAnnotation.h"
@@ -45,19 +44,7 @@
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
     
     
-    CLLocationCoordinate2D firstLocationPlacemarkCoordinates;
-    
-    if ([[queryToShow.locations objectAtIndex:0] isKindOfClass:[CLPlacemark class]]) {
-        CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:0];
-        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
-    }
-    else if([[queryToShow.locations objectAtIndex:0] isKindOfClass:[CLLocation class]]) {
-        CLLocation *currentLocationFromUser = [queryToShow.locations objectAtIndex:0];
-        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(currentLocationFromUser.coordinate.latitude, currentLocationFromUser.coordinate.longitude);
-    }
-    else { //If for some reason it gets here, set the first location coordinates to 0, 0. 
-        firstLocationPlacemarkCoordinates = CLLocationCoordinate2DMake(0, 0);
-    }
+    CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self firstLocationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
 
     //new code
     CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:1];
@@ -121,12 +108,29 @@
     
 }
 
+- (CLLocationCoordinate2D)firstLocationPlacemarkCoordinatesFactoryMethod:(id)firstLocation {
+    if ([firstLocation isKindOfClass:[CLPlacemark class]]) {
+        CLPlacemark *firstAddressPlacemark = (CLPlacemark*) firstLocation;
+        return CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    }
+    else if([firstLocation isKindOfClass:[CLLocation class]]) {
+        CLLocation *currentLocationFromUser = (CLLocation*) firstLocation;
+        return CLLocationCoordinate2DMake(currentLocationFromUser.coordinate.latitude, currentLocationFromUser.coordinate.longitude);
+    }
+    else { //If for some reason it gets here, set the first location coordinates to 0, 0.
+        return CLLocationCoordinate2DMake(0, 0);
+    }
+    return CLLocationCoordinate2DMake(0, 0);
+}
+
 
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = commonPoints;
+    
+    //one degree of latitude is always approximately 111 kilometers (69 miles)
     request.region = MKCoordinateRegionMake(halfwayCoordinates,
-                                            MKCoordinateSpanMake(0.125, 0.125));
+                                            MKCoordinateSpanMake(0.00289855, 0.00289855));
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
     
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
@@ -142,14 +146,13 @@
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 - (void) loadConvergeMapViewForConvergedPoint {
     ConvergeMapView.delegate = self;

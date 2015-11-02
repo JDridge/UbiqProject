@@ -30,6 +30,7 @@
 - (IBAction)settingsButtonClick:(id)sender;
 
 - (void) loadConvergeMapViewForConvergedPoint;
-- (void) loadMapAtCurrentLocation;
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
+- (CLLocationCoordinate2D)firstLocationPlacemarkCoordinatesFactoryMethod:(id)firstLocation;
+
 @end
