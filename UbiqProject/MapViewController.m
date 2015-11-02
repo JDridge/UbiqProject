@@ -105,8 +105,8 @@
 
 - (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates {
     if ([locationCoordinates isKindOfClass:[CLPlacemark class]]) {
-        CLPlacemark *firstAddressPlacemark = (CLPlacemark*) locationCoordinates;
-        return CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+        CLPlacemark *addressPlacemark = (CLPlacemark*) locationCoordinates;
+        return CLLocationCoordinate2DMake(addressPlacemark.location.coordinate.latitude, addressPlacemark.location.coordinate.longitude);
     }
     else if([locationCoordinates isKindOfClass:[CLLocation class]]) {
         CLLocation *currentLocationFromUser = (CLLocation*) locationCoordinates;

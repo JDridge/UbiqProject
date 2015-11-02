@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D479401B1BE2AA1A002A9297 /* map-.png in Resources */ = {isa = PBXBuildFile; fileRef = D479401A1BE2AA1A002A9297 /* map-.png */; settings = {ASSET_TAGS = (); }; };
+		D479401B1BE2AA1A002A9297 /* map-.png in Resources */ = {isa = PBXBuildFile; fileRef = D479401A1BE2AA1A002A9297 /* map-.png */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
@@ -202,6 +202,7 @@
 				TargetAttributes = {
 					D4F2B9081BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = AJ63TV53BF;
 					};
 					D4F2B9211BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -389,9 +390,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Ubiq.UbiqProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -400,9 +403,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Ubiq.UbiqProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
