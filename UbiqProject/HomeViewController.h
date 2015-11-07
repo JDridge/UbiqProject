@@ -27,6 +27,7 @@
 
 - (IBAction) ConvergeLocations:(id)sender;
 - (IBAction) SwitchTrigger:(id)sender;
+- (IBAction)PopulateFields:(id)sender;
 
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location;
 

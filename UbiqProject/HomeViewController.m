@@ -11,6 +11,13 @@
 
 @synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, CommonInterestPoints, currentLocationManager, locationFound, isValidTextField;
 
+# pragma Method to populate the text fields with bars, houston, midtown houston.
+- (IBAction)PopulateFields:(id)sender {
+    CommonInterestPoints.text = @"bars";
+    FirstLocation.text = @"Houston, TX";
+    SecondLocation.text = @"Midtown Houston, TX";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
@@ -85,6 +92,8 @@
         [self setFirstLocationTextFieldEnabled];
     }
 }
+
+
 
 # warning Find a way to terminate the process if it is taking too long.
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location {
