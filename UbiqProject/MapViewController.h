@@ -31,6 +31,6 @@
 
 - (void) loadConvergeMapViewForConvergedPoint;
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
-- (CLLocationCoordinate2D)firstLocationPlacemarkCoordinatesFactoryMethod:(id)firstLocation;
+- (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates;
 
 @end

@@ -16,7 +16,6 @@
 		D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */; };
 		D4F2B9271BBF12EE007F6955 /* UbiqProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */; };
 		E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */; };
-		E10E4A2D1BE1AD47004932FD /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = E10E4A2C1BE1AD47004932FD /* Icons */; };
 		E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D8641D1BEDA11E00C772F6 /* Images.xcassets */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
@@ -52,7 +51,6 @@
 		D4F2B9281BBF12EE007F6955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModalViewController.h; sourceTree = "<group>"; };
 		E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModalViewController.m; sourceTree = "<group>"; };
-		E10E4A2C1BE1AD47004932FD /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Icons; path = UbiqProject/Icons; sourceTree = "<group>"; };
 		E1D8641D1BEDA11E00C772F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -82,23 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D48E57C21BDF35B300B544FF /* Avatars */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Avatars;
-			sourceTree = "<group>";
-		};
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
-				D48E57C21BDF35B300B544FF /* Avatars */,
 				E1F593611BD4E36A00CC612D /* CoreLocation.framework */,
 				E1F5935F1BD4D4EF00CC612D /* MapKit.framework */,
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
 				D4F2B9251BBF12EE007F6955 /* UbiqProjectTests */,
 				D4F2B90A1BBF12EE007F6955 /* Products */,
-				E10E4A2C1BE1AD47004932FD /* Icons */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
-				E10E4A2D1BE1AD47004932FD /* Icons in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 				D4F2B9171BBF12EE007F6955 /* Main.storyboard in Resources */,
