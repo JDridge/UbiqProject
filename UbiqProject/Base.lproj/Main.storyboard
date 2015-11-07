@@ -111,7 +111,7 @@
                                     <action selector="ConvergeLocations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u5U-MM-YJB"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="map.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
                                 <rect key="frame" x="198" y="139" width="205" height="192"/>
                                 <animations/>
                                 <constraints>
@@ -130,6 +130,18 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cb-E1-fSZ">
+                                <rect key="frame" x="155" y="392" width="290" height="38"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="WzM-Ll-uuh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="TEST - Populate Fields"/>
+                                <connections>
+                                    <action selector="PopulateFields:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RSX-mO-EZR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.69803921570000005" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -149,13 +161,16 @@
                             <constraint firstItem="848-0g-HzG" firstAttribute="leading" secondItem="rAI-Jo-OeF" secondAttribute="leading" id="aY2-4X-zJA"/>
                             <constraint firstItem="848-0g-HzG" firstAttribute="top" secondItem="o6L-vp-ED8" secondAttribute="bottom" constant="55" id="ahZ-p1-kTf"/>
                             <constraint firstItem="Z91-8d-1Ug" firstAttribute="centerX" secondItem="o6L-vp-ED8" secondAttribute="centerX" id="b4E-w3-zS4"/>
+                            <constraint firstItem="3Cb-E1-fSZ" firstAttribute="centerX" secondItem="o6L-vp-ED8" secondAttribute="centerX" id="c0v-Rv-rtd"/>
                             <constraint firstItem="rAI-Jo-OeF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dAx-9N-FT8"/>
                             <constraint firstItem="o6L-vp-ED8" firstAttribute="leading" secondItem="848-0g-HzG" secondAttribute="leading" id="dgo-9c-dTF"/>
                             <constraint firstItem="rAI-Jo-OeF" firstAttribute="trailing" secondItem="TXz-HG-aPs" secondAttribute="trailing" id="edq-a7-NGJ"/>
+                            <constraint firstItem="gbJ-9v-Npl" firstAttribute="top" secondItem="3Cb-E1-fSZ" secondAttribute="bottom" constant="8" symbolic="YES" id="fZR-pn-uhm"/>
                             <constraint firstItem="848-0g-HzG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iYA-W7-YoX"/>
                             <constraint firstItem="848-0g-HzG" firstAttribute="trailing" secondItem="rAI-Jo-OeF" secondAttribute="trailing" id="igd-HL-OyR"/>
                             <constraint firstItem="o6L-vp-ED8" firstAttribute="top" secondItem="Z91-8d-1Ug" secondAttribute="bottom" constant="23" id="kPt-6T-Juv"/>
                             <constraint firstItem="o6L-vp-ED8" firstAttribute="top" secondItem="Z91-8d-1Ug" secondAttribute="bottom" constant="36" id="qUZ-Tr-Xxi"/>
+                            <constraint firstItem="3Cb-E1-fSZ" firstAttribute="top" secondItem="o6L-vp-ED8" secondAttribute="bottom" constant="8" symbolic="YES" id="qh4-Gw-OHQ"/>
                             <constraint firstItem="rAI-Jo-OeF" firstAttribute="centerX" secondItem="TXz-HG-aPs" secondAttribute="centerX" id="rO3-uc-89R"/>
                             <constraint firstItem="TXz-HG-aPs" firstAttribute="top" secondItem="rAI-Jo-OeF" secondAttribute="bottom" constant="25" id="sn4-Zi-eEn"/>
                             <constraint firstItem="848-0g-HzG" firstAttribute="trailing" secondItem="o6L-vp-ED8" secondAttribute="trailing" id="tKa-cK-kuB"/>
@@ -189,7 +204,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="403.5" y="309"/>
+            <point key="canvasLocation" x="403" y="309"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bjj-FY-PZI">
@@ -352,6 +367,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map.png" width="128" height="128"/>
+        <image name="map" width="128" height="128"/>
     </resources>
 </document>
