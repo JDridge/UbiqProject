@@ -22,24 +22,24 @@
     }
     return self;
 }
+
 -(MKAnnotationView*) annotationView {
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Custom Annotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
     
-    annotationView.image = [UIImage imageNamed:@"bluepin.ico"];
+    //Custom pin image
+    annotationView.image = [UIImage imageNamed:@"map"];
     
-    UIButton *mapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [mapButton setTitle:@"hi" forState:UIControlStateNormal];
-    [mapButton setBackgroundImage:[UIImage imageNamed:@"images-ex4/female-sign.png"] forState:UIControlStateNormal];
+    //Setting up the right callout button
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    //The right callout button is the halfwayarrow for now.
+    UIImage *buttonImage = [UIImage imageNamed:@"halfwayarrow"];
+    [rightButton setImage:buttonImage forState:UIControlStateNormal];
+    annotationView.rightCalloutAccessoryView = rightButton;
+
     return annotationView;
 }
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-}
-
 
 @end

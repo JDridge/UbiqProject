@@ -132,11 +132,11 @@
         NSMutableArray *placemarks = [NSMutableArray array];
         
         for (MKMapItem *item in response.mapItems) {
-            MKPointAnnotation *updatedAnnotation = [[MKPointAnnotation alloc] init];
-            updatedAnnotation.title = item.name;
-            updatedAnnotation.coordinate = item.placemark.coordinate;
-            updatedAnnotation.subtitle = item.placemark.title;
-            [placemarks addObject:updatedAnnotation];
+            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] init];
+            updatedCustomAnnotation.title = item.name;
+            updatedCustomAnnotation.coordinate = item.placemark.coordinate;
+            updatedCustomAnnotation.subtitle = item.placemark.title;
+            [placemarks addObject:updatedCustomAnnotation];
         }
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
@@ -204,5 +204,29 @@
     viewController.secondLocationLatitude = secondLocationLatitude;
     viewController.secondLocationLongitude = secondLocationLongitude;
 }
+
+
+#pragma Called when the right callout is tapped, which is shown after you click on the pin and the halfway icon in the bubble.
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    CustomAnnotation *selectedPin = (CustomAnnotation*) view.annotation;
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Converge"
+                                message:[NSString stringWithFormat:@"You have selected %@", selectedPin.title]
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+
 
 @end
