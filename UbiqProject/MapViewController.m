@@ -118,7 +118,7 @@
     return CLLocationCoordinate2DMake(0, 0);
 }
 
-
+#pragma I changed this load CustomAnnotation pins. I think we should create another set of custom annotations instead.
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = commonPoints;
@@ -163,7 +163,7 @@
     
 }
 
-# warning Cleaup ((CustomAnnotation*).annotation).name is reused too many times. Don't repeat yourself.
+#warning For some reason, either chris's or joseph's pin won't show up.
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if([annotation isKindOfClass:[CustomAnnotation class]]) {
         CustomAnnotation *myLocation = (CustomAnnotation*) annotation;
@@ -172,13 +172,13 @@
         if(annotationViewOfMap == nil) {
             annotationViewOfMap = myLocation.annotationView;
         }
-        if (([((CustomAnnotation *)annotation).name isEqualToString: @"1"])){
+        if (([myLocation.name isEqualToString: @"1"])){
             annotationViewOfMap.image = [UIImage imageNamed:@"smallCHRIS"];
         }
-        if (([((CustomAnnotation *)annotation).name isEqualToString: @"2"])){
+        if (([myLocation.name isEqualToString: @"2"])){
             annotationViewOfMap.image = [UIImage imageNamed:@"smallJOSEPH"];
         }
-        if (([((CustomAnnotation *)annotation).name isEqualToString: @"3"])){
+        if (([myLocation.name isEqualToString: @"3"])){
             annotationViewOfMap.image = [UIImage imageNamed:@"halfwayarrow"];
         }
         else {
