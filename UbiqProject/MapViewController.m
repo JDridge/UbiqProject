@@ -91,16 +91,18 @@
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
-    
-    //Put logic into loadConvergeMapViewForConvergedPoint.
+
+    [self loadConvergeMapViewForConvergedPoint:halfwayAnnotation];
+}
+
+- (void)loadConvergeMapViewForConvergedPoint:(MKPointAnnotation *)annotation {
     MKCoordinateSpan zoom;
     zoom.latitudeDelta = .3f; //the zoom level in degrees
     zoom.longitudeDelta = .3f;//the zoom level in degrees
     MKCoordinateRegion myRegion;
-    myRegion.center = halfwayAnnotation.coordinate;
+    myRegion.center = annotation.coordinate;
     myRegion.span = zoom;
     [ConvergeMapView setRegion:myRegion animated:YES];
-    
 }
 
 - (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates {
@@ -147,20 +149,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-# warning unused at the moment.
-- (void) loadConvergeMapViewForConvergedPoint {
-    ConvergeMapView.delegate = self;
-    addressCoordinates = [[queryToShow.locations objectAtIndex:0] coordinate];
-    MKCoordinateSpan zoom;
-    zoom.latitudeDelta = .01f; //the zoom level in degrees
-    zoom.longitudeDelta = .01f;//the zoom level in degrees
-    MKCoordinateRegion myRegion;
-    myRegion.center = addressCoordinates;
-    myRegion.span = zoom;
-    [ConvergeMapView setRegion:myRegion animated:YES];
-    
 }
 
 #warning For some reason, either chris's or joseph's pin won't show up.
