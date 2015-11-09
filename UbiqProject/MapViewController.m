@@ -187,10 +187,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     SettingsModalViewController *viewController = [segue destinationViewController];
     viewController.printQuery = queryToShow;
-    viewController.firstLocationLatitude = firstLocationLatitude;
-    viewController.firstLocationLongitude = firstLocationLongitude;
-    viewController.secondLocationLatitude = secondLocationLatitude;
-    viewController.secondLocationLongitude = secondLocationLongitude;
 }
 
 

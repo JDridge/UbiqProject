@@ -16,12 +16,4 @@
 - (IBAction)BackButton:(id)sender;
 
 @property Query *printQuery;
-
-@property (weak, nonatomic) IBOutlet UILabel *labelLatitude1;
-@property (weak, nonatomic) IBOutlet UILabel *labelLongitude1;
-@property (weak, nonatomic) IBOutlet UILabel *labelLatitude2;
-@property (weak, nonatomic) IBOutlet UILabel *labelLongitude2;
-
-@property double firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
-
 @end
