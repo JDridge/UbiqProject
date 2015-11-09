@@ -17,6 +17,7 @@
 		D4F2B9271BBF12EE007F6955 /* UbiqProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* UbiqProjectTests.m */; };
 		E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */; };
 		E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D8641D1BEDA11E00C772F6 /* Images.xcassets */; };
+		E1DF867C1BF10FED00935996 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1DF867B1BF10FED00935996 /* README.md */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
 		E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F5935F1BD4D4EF00CC612D /* MapKit.framework */; };
@@ -52,6 +53,7 @@
 		E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModalViewController.h; sourceTree = "<group>"; };
 		E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModalViewController.m; sourceTree = "<group>"; };
 		E1D8641D1BEDA11E00C772F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E1DF867B1BF10FED00935996 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E1F5935C1BD4A7F100CC612D /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
+				E1DF867B1BF10FED00935996 /* README.md */,
 				E1F593611BD4E36A00CC612D /* CoreLocation.framework */,
 				E1F5935F1BD4D4EF00CC612D /* MapKit.framework */,
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
@@ -253,6 +256,7 @@
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
+				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
