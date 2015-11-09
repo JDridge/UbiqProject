@@ -27,14 +27,9 @@
 
 # warning The method for viewDidLoad is extremely long. Try condensing the functionality into other (new) methods.
 - (void)viewDidLoad {
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     [super viewDidLoad];
-    annotationViewOfMap.canShowCallout = YES;
+    [self setUpConvergeMapViewController];
 
-    [self.ConvergeMapView setShowsUserLocation:YES];
-    [self.ConvergeMapView setUserInteractionEnabled:YES];
-    [self.ConvergeMapView setUserTrackingMode:MKUserTrackingModeFollow];
-    
     MKPointAnnotation *firstAddressAnnotation = [[MKPointAnnotation alloc] init];
     MKPointAnnotation *secondAddressAnnotation = [[MKPointAnnotation alloc] init];
     MKPointAnnotation *halfwayAnnotation = [[MKPointAnnotation alloc] init];
@@ -93,6 +88,14 @@
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
 
     [self loadConvergeMapViewForConvergedPoint:halfwayAnnotation];
+}
+
+- (void)setUpConvergeMapViewController {
+    [self.ConvergeMapView setShowsUserLocation:YES];
+    [self.ConvergeMapView setUserInteractionEnabled:YES];
+    [self.ConvergeMapView setUserTrackingMode:MKUserTrackingModeFollow];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    annotationViewOfMap.canShowCallout = YES;
 }
 
 - (void)loadConvergeMapViewForConvergedPoint:(MKPointAnnotation *)annotation {
