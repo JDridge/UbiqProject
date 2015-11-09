@@ -23,7 +23,7 @@
     MKLocalSearch *localSearch;
     MKLocalSearchResponse *results;
 }
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, annotationViewOfMap, commonPoints, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
+@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, annotationViewOfMap, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
 
 # warning The method for viewDidLoad is extremely long. Try condensing the functionality into other (new) methods.
 - (void)viewDidLoad {
@@ -126,7 +126,7 @@
 #pragma I changed this load CustomAnnotation pins. I think we should create another set of custom annotations instead.
 -(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = commonPoints;
+    request.naturalLanguageQuery = queryToShow.category;
     
     //one degree of latitude is always approximately 111 kilometers (69 miles)
     request.region = MKCoordinateRegionMake(halfwayCoordinates,
@@ -199,11 +199,9 @@
 
 #pragma Called when the right callout is tapped, which is shown after you click on the pin and the halfway icon in the bubble.
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    CustomAnnotation *selectedPin = (CustomAnnotation*) view.annotation;
-    
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Converge"
-                                message:[NSString stringWithFormat:@"You have selected %@", selectedPin.title]
+                                message:[NSString stringWithFormat:@"You have selected %@", ((CustomAnnotation*)view.annotation).title]
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okayButton = [UIAlertAction

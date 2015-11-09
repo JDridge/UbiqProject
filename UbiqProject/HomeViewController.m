@@ -45,6 +45,7 @@
         
         NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
         setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+        setUpQueryToPass.category = SearchCategory.text;
         
         //If the switch is turned on, the location is found, and the second location text field is a valid location.
         if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
@@ -286,7 +287,6 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
-    viewController.commonPoints = SearchCategory.text;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
