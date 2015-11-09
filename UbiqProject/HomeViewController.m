@@ -9,11 +9,11 @@
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, CommonInterestPoints, currentLocationManager, locationFound, isValidTextField;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, SearchCategory, currentLocationManager, locationFound, isValidTextField;
 
 # pragma Method to populate the text fields with bars, houston, midtown houston.
 - (IBAction)PopulateFields:(id)sender {
-    CommonInterestPoints.text = @"bars";
+    SearchCategory.text = @"bars";
     FirstLocation.text = @"Houston, TX";
     SecondLocation.text = @"Midtown Houston, TX";
 }
@@ -150,7 +150,7 @@
 - (void) disableFocusFromAllTextFields {
     [FirstLocation resignFirstResponder];
     [SecondLocation resignFirstResponder];
-    [CommonInterestPoints resignFirstResponder];
+    [SearchCategory resignFirstResponder];
 }
 
 //Displays an alert if the user denies their location services.
@@ -264,7 +264,7 @@
 - (void) setUpKeyboardToDismissOnReturn {
     [FirstLocation setDelegate:self];
     [SecondLocation setDelegate:self];
-    [CommonInterestPoints setDelegate:self];
+    [SearchCategory setDelegate:self];
 }
 
 - (void) shake:(UIView *)shakeThisObject {
@@ -286,7 +286,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
-    viewController.commonPoints = CommonInterestPoints.text;
+    viewController.commonPoints = SearchCategory.text;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

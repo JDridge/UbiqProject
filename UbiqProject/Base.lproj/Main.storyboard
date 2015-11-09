@@ -186,9 +186,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="qzh-8w-qjC"/>
                     <connections>
-                        <outlet property="CommonInterestPoints" destination="o6L-vp-ED8" id="dt6-ZF-V9r"/>
                         <outlet property="FirstLocation" destination="848-0g-HzG" id="shE-aG-SIx"/>
                         <outlet property="FirstLocationSwitch" destination="gbJ-9v-Npl" id="kn2-wo-fjd"/>
+                        <outlet property="SearchCategory" destination="o6L-vp-ED8" id="aDr-19-Iko"/>
                         <outlet property="SecondLocation" destination="rAI-Jo-OeF" id="yAI-Ti-46K"/>
                         <outlet property="searchDisplayController" destination="Bfc-iN-06W" id="w6S-Fd-vgL"/>
                         <segue destination="YhL-mf-dhP" kind="show" identifier="mapVC" id="trV-AO-lhE"/>

@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
 @property (weak, nonatomic) IBOutlet UITextField *SecondLocation;
-@property (weak, nonatomic) IBOutlet UITextField *CommonInterestPoints;
+@property (weak, nonatomic) IBOutlet UITextField *SearchCategory;
 @property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 @property (strong, retain) CLLocationManager *currentLocationManager;
 
