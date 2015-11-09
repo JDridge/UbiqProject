@@ -18,11 +18,6 @@
 @property Query *queryToShow;
 @property MKAnnotationView *annotationViewOfMap;
 
-@property double firstLocationLatitude;
-@property double firstLocationLongitude;
-@property double secondLocationLatitude;
-@property double secondLocationLongitude;
-
 - (IBAction)settingsButtonClick:(id)sender;
 
 - (void) loadConvergeMapViewForConvergedPoint:(MKPointAnnotation *)annotation;

@@ -19,9 +19,8 @@
 
 @implementation MapViewController
 
-@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
+@synthesize ConvergeMapView, queryToShow, annotationViewOfMap;
 
-# warning The method for viewDidLoad is extremely long. Try condensing the functionality into other (new) methods.
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpConvergeMapView];
@@ -35,67 +34,38 @@
     annotationViewOfMap.canShowCallout = YES;
 
 
-    MKPointAnnotation *firstAddressAnnotation = [[MKPointAnnotation alloc] init];
-    MKPointAnnotation *secondAddressAnnotation = [[MKPointAnnotation alloc] init];
-    MKPointAnnotation *halfwayAnnotation = [[MKPointAnnotation alloc] init];
-
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
-
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
     CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
-
-    //new code
-    CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:1];
-    //end of new code
-    CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
-
-    CLLocationDegrees halfwayLatitude = (firstLocationPlacemarkCoordinates.latitude + secondLocationPlacemarkCoordinates.latitude)/2.0;
-    CLLocationDegrees halfwayLongitude = (firstLocationPlacemarkCoordinates.longitude + secondLocationPlacemarkCoordinates.longitude)/2.0;
-
-    CLLocationCoordinate2D halfwayCoordinates = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
 
     firstCustomAnnotation.name = @"1";
     secondCustomAnnotation.name = @"2";
     halfwayCustomAnnotation.name = @"3";
 
-    firstAddressAnnotation.coordinate =
-            CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    firstCustomAnnotation.coordinate = firstLocationPlacemarkCoordinates;
+    secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
+    halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
 
-    //new code
-    firstLocationLatitude =  firstAddressAnnotation.coordinate.latitude;
-    firstLocationLongitude = firstAddressAnnotation.coordinate.longitude;
-    //end of new
-
-    NSLog(@"*****first location latitude*****");
-    NSLog(@"%f", firstLocationLatitude);
-
-
-    secondAddressAnnotation.coordinate = CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
-    halfwayAnnotation.coordinate = halfwayCoordinates;
-
-    //new code
-    secondLocationLongitude = secondAddressAnnotation.coordinate.longitude;
-    secondLocationLatitude = secondAddressAnnotation.coordinate.latitude;
-    //end of new
-
-    firstCustomAnnotation.coordinate = CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
-    secondCustomAnnotation.coordinate = CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
-    halfwayCustomAnnotation.coordinate = halfwayCoordinates;
-
-    //loads all results from natural language queries
-    [self loadPlacesFromNaturalLanguageQuery:halfwayCoordinates];
+    [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
 
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
 
-    [self loadConvergeMapViewForConvergedPoint:halfwayAnnotation];
+    [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
 
 }
 
-- (void)loadConvergeMapViewForConvergedPoint:(MKPointAnnotation *)annotation {
+- (CLLocationCoordinate2D)getHalfwayCoordinates:(CLLocationCoordinate2D)firstLocation secondLocation:(CLLocationCoordinate2D)secondLocation {
+    CLLocationDegrees halfwayLatitude = (firstLocation.latitude + secondLocation.latitude)/2.0;
+    CLLocationDegrees halfwayLongitude = (firstLocation.longitude + secondLocation.longitude)/2.0;
+    return CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
+}
+
+
+- (void)loadConvergeMapViewForConvergedPoint:(CustomAnnotation *)annotation {
     MKCoordinateSpan zoom;
     zoom.latitudeDelta = .3f; //the zoom level in degrees
     zoom.longitudeDelta = .3f;//the zoom level in degrees
@@ -117,7 +87,6 @@
     else { //If for some reason it gets here, set the first location coordinates to 0, 0.
         return CLLocationCoordinate2DMake(0, 0);
     }
-    return CLLocationCoordinate2DMake(0, 0);
 }
 
 #pragma I changed this load CustomAnnotation pins. I think we should create another set of custom annotations instead.
@@ -129,7 +98,7 @@
     request.region = MKCoordinateRegionMake(halfwayCoordinates,
                                             MKCoordinateSpanMake(0.00289855, 0.00289855));
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
-    
+
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         NSMutableArray *placemarks = [NSMutableArray array];
         
@@ -143,8 +112,9 @@
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
-    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -183,9 +153,8 @@
     [self performSegueWithIdentifier:@"settingsVC" sender:nil];
 }
 
-# warning These variables are being set arbitrarily in the viewDidLoad method. Why not synthesize them?
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SettingsModalViewController *viewController = [segue destinationViewController];
+    SettingsModalViewController *viewController = (SettingsModalViewController *) segue.destinationViewController;
     viewController.printQuery = queryToShow;
 }
 
