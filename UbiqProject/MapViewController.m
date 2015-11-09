@@ -13,89 +13,86 @@
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
 
-#define METERS_PER_MILE 1609.344
-
 @interface MapViewController ()
 
 @end
 
-@implementation MapViewController {
-    MKLocalSearch *localSearch;
-    MKLocalSearchResponse *results;
-}
-@synthesize ConvergeMapView, queryToShow, locationManager, addressCoordinates, annotationViewOfMap, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
+@implementation MapViewController
+
+@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, firstLocationLatitude, firstLocationLongitude, secondLocationLatitude, secondLocationLongitude;
 
 # warning The method for viewDidLoad is extremely long. Try condensing the functionality into other (new) methods.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpConvergeMapViewController];
-
-    MKPointAnnotation *firstAddressAnnotation = [[MKPointAnnotation alloc] init];
-    MKPointAnnotation *secondAddressAnnotation = [[MKPointAnnotation alloc] init];
-    MKPointAnnotation *halfwayAnnotation = [[MKPointAnnotation alloc] init];
-    
-    CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
-    CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
-    CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
-    
-    CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
-    CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
-    
-    //new code
-    # warning What is going on here? Why is there firstLocationPlacemarkCoordinates and firstAddressPlacemark?
-    CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:1];
-    //end of new code
-    CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
-    
-    CLLocationDegrees halfwayLatitude = (firstLocationPlacemarkCoordinates.latitude + secondLocationPlacemarkCoordinates.latitude)/2.0;
-    CLLocationDegrees halfwayLongitude = (firstLocationPlacemarkCoordinates.longitude + secondLocationPlacemarkCoordinates.longitude)/2.0;
-    
-    CLLocationCoordinate2D halfwayCoordinates = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
-    
-    firstCustomAnnotation.name = @"1";
-    secondCustomAnnotation.name = @"2";
-    halfwayCustomAnnotation.name = @"3";
-    
-    firstAddressAnnotation.coordinate =
-    CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
-   
-    //new code
-    firstLocationLatitude =  firstAddressAnnotation.coordinate.latitude;
-    firstLocationLongitude = firstAddressAnnotation.coordinate.longitude;
-    //end of new
-    
-    NSLog(@"*****first location latitude*****");
-    NSLog(@"%f", firstLocationLatitude);
-    
-    
-    secondAddressAnnotation.coordinate = CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
-    halfwayAnnotation.coordinate = halfwayCoordinates;
-    
-    //new code
-    secondLocationLongitude = secondAddressAnnotation.coordinate.longitude;
-    secondLocationLatitude = secondAddressAnnotation.coordinate.latitude;
-    //end of new
-    
-    firstCustomAnnotation.coordinate = CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
-    secondCustomAnnotation.coordinate = CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
-    halfwayCustomAnnotation.coordinate = halfwayCoordinates;
-    
-    //loads all results from natural language queries
-    [self loadPlacesFromNaturalLanguageQuery:halfwayCoordinates];
-    
-    [ConvergeMapView addAnnotation:firstCustomAnnotation];
-    [ConvergeMapView addAnnotation:secondCustomAnnotation];
-    [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
-
-    [self loadConvergeMapViewForConvergedPoint:halfwayAnnotation];
+    [self setUpConvergeMapView];
 }
 
-- (void)setUpConvergeMapViewController {
+- (void)setUpConvergeMapView {
     [self.ConvergeMapView setShowsUserLocation:YES];
     [self.ConvergeMapView setUserInteractionEnabled:YES];
     [self.ConvergeMapView setUserTrackingMode:MKUserTrackingModeFollow];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     annotationViewOfMap.canShowCallout = YES;
+
+
+    MKPointAnnotation *firstAddressAnnotation = [[MKPointAnnotation alloc] init];
+    MKPointAnnotation *secondAddressAnnotation = [[MKPointAnnotation alloc] init];
+    MKPointAnnotation *halfwayAnnotation = [[MKPointAnnotation alloc] init];
+
+    CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
+    CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
+    CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
+
+    CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
+    CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
+
+    //new code
+    CLPlacemark *firstAddressPlacemark = [queryToShow.locations objectAtIndex:1];
+    //end of new code
+    CLPlacemark *secondAddressPlacemark = [queryToShow.locations objectAtIndex:1];
+
+    CLLocationDegrees halfwayLatitude = (firstLocationPlacemarkCoordinates.latitude + secondLocationPlacemarkCoordinates.latitude)/2.0;
+    CLLocationDegrees halfwayLongitude = (firstLocationPlacemarkCoordinates.longitude + secondLocationPlacemarkCoordinates.longitude)/2.0;
+
+    CLLocationCoordinate2D halfwayCoordinates = CLLocationCoordinate2DMake(halfwayLatitude, halfwayLongitude);
+
+    firstCustomAnnotation.name = @"1";
+    secondCustomAnnotation.name = @"2";
+    halfwayCustomAnnotation.name = @"3";
+
+    firstAddressAnnotation.coordinate =
+            CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+
+    //new code
+    firstLocationLatitude =  firstAddressAnnotation.coordinate.latitude;
+    firstLocationLongitude = firstAddressAnnotation.coordinate.longitude;
+    //end of new
+
+    NSLog(@"*****first location latitude*****");
+    NSLog(@"%f", firstLocationLatitude);
+
+
+    secondAddressAnnotation.coordinate = CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
+    halfwayAnnotation.coordinate = halfwayCoordinates;
+
+    //new code
+    secondLocationLongitude = secondAddressAnnotation.coordinate.longitude;
+    secondLocationLatitude = secondAddressAnnotation.coordinate.latitude;
+    //end of new
+
+    firstCustomAnnotation.coordinate = CLLocationCoordinate2DMake(firstAddressPlacemark.location.coordinate.latitude, firstAddressPlacemark.location.coordinate.longitude);
+    secondCustomAnnotation.coordinate = CLLocationCoordinate2DMake(secondAddressPlacemark.location.coordinate.latitude, secondAddressPlacemark.location.coordinate.longitude);
+    halfwayCustomAnnotation.coordinate = halfwayCoordinates;
+
+    //loads all results from natural language queries
+    [self loadPlacesFromNaturalLanguageQuery:halfwayCoordinates];
+
+    [ConvergeMapView addAnnotation:firstCustomAnnotation];
+    [ConvergeMapView addAnnotation:secondCustomAnnotation];
+    [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
+
+    [self loadConvergeMapViewForConvergedPoint:halfwayAnnotation];
+
 }
 
 - (void)loadConvergeMapViewForConvergedPoint:(MKPointAnnotation *)annotation {

@@ -16,9 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *ConvergeMapView;
 @property Query *queryToShow;
-@property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic,assign) CLLocationCoordinate2D addressCoordinates;
-@property (strong, nonatomic) IBOutlet UISearchBar *ibSearchBar;
 @property MKAnnotationView *annotationViewOfMap;
 
 @property double firstLocationLatitude;
@@ -28,7 +25,7 @@
 
 - (IBAction)settingsButtonClick:(id)sender;
 
-- (void) loadConvergeMapViewForConvergedPoint;
+- (void) loadConvergeMapViewForConvergedPoint:(MKPointAnnotation *)annotation;
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
 - (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates;
 
