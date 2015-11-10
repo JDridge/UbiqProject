@@ -29,6 +29,7 @@
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
+    
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
     CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
 
@@ -101,11 +102,8 @@
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         NSMutableArray *placemarks = [NSMutableArray array];
         
-        for (MKMapItem *item in response.mapItems) {
-            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] init];
-            updatedCustomAnnotation.title = item.name;
-            updatedCustomAnnotation.coordinate = item.placemark.coordinate;
-            updatedCustomAnnotation.subtitle = item.placemark.title;
+        for (MKMapItem *item in response.mapItems) {            
+            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
             [placemarks addObject:updatedCustomAnnotation];
         }
         
