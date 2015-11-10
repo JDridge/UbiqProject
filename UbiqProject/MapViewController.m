@@ -1,12 +1,3 @@
-//
-//  MapViewController.m
-//  UbiqProject
-//
-//  Created by Robert Vo on 10/18/15.
-//  Copyright © 2015 Joey. All rights reserved.
-//
-//
-
 #import "MapViewController.h"
 #import "Query.h"
 #import "CustomAnnotation.h"
@@ -19,9 +10,10 @@
 
 @implementation MapViewController
 
-@synthesize ConvergeMapView, queryToShow, annotationViewOfMap;
+@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, didFinishLoading;
 
 - (void)viewDidLoad {
+    didFinishLoading = NO;
     [super viewDidLoad];
     [self setUpConvergeMapView];
 }
@@ -48,7 +40,10 @@
     secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
     halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
 
-    [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
+    while(!didFinishLoading) {
+        [self displayAnimationForLoading];
+        [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
+    }
 
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
@@ -56,6 +51,10 @@
 
     [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
 
+}
+
+- (void) displayAnimationForLoading {
+    NSLog(@"Display animation here.");
 }
 
 - (CLLocationCoordinate2D)getHalfwayCoordinates:(CLLocationCoordinate2D)firstLocation secondLocation:(CLLocationCoordinate2D)secondLocation {
@@ -67,8 +66,8 @@
 
 - (void)loadConvergeMapViewForConvergedPoint:(CustomAnnotation *)annotation {
     MKCoordinateSpan zoom;
-    zoom.latitudeDelta = .3f; //the zoom level in degrees
-    zoom.longitudeDelta = .3f;//the zoom level in degrees
+    zoom.latitudeDelta = .3f;
+    zoom.longitudeDelta = .3f;
     MKCoordinateRegion myRegion;
     myRegion.center = annotation.coordinate;
     myRegion.span = zoom;
@@ -112,6 +111,7 @@
         
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
+    didFinishLoading = YES;
 }
 
 
