@@ -102,8 +102,8 @@
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         NSMutableArray *placemarks = [NSMutableArray array];
         
-        for (MKMapItem *item in response.mapItems) {            
-            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
+        for (MKMapItem *item in response.mapItems) {
+            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
             [placemarks addObject:updatedCustomAnnotation];
         }
         
@@ -111,6 +111,7 @@
     }];
     didFinishLoading = YES;
 }
+
 
 
 

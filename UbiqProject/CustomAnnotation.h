@@ -17,7 +17,10 @@
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *name;
 
--(id)initWithTitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)subtitle;
+-(id)initWithTitleCoordinateSubtitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)newSubtitle;
+
+- (id)initWithTitleCoordinateSubtitleName:(NSString *)newTitle coordinate:(CLLocationCoordinate2D)location subtitle:(NSString *)newSubtitle name:(NSString *)newName;
+
 -(MKAnnotationView*) annotationView;
 
 @end
