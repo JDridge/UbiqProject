@@ -10,13 +10,16 @@
 #import "HomeViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface UbiqProjectTests : XCTestCase
+@interface HomeViewControllerTest : XCTestCase {
+    HomeViewController *homeVC;
+}
 
 @end
 
-@implementation UbiqProjectTests
+@implementation HomeViewControllerTest
 
 - (void)setUp {
+    homeVC = [[HomeViewController alloc] init];
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
@@ -34,23 +37,20 @@
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
     }];
 }
 
 -(void) testForUHValidAddress{
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
     XCTAssertTrue([homeVC isValidLocationEntry:@"University of Houston, Houston TX"]);
 }
 
 -(void) testForEmptyAddressInvalid{
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
     XCTAssertFalse([homeVC isValidLocationEntry:@""]);
 }
 
 -(void) testForHouseEmojiInvalid{
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
     XCTAssertFalse([homeVC isValidLocationEntry:@"🏩"]);
 }
+
 
 @end
