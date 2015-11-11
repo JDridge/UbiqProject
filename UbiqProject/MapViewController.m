@@ -119,7 +119,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#warning For some reason, either chris's or joseph's pin won't show up.
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if([annotation isKindOfClass:[CustomAnnotation class]]) {
         CustomAnnotation *myLocation = (CustomAnnotation*) annotation;
