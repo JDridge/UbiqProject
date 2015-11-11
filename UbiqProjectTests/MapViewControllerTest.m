@@ -43,21 +43,11 @@
 - (void) testCurrentLocationObjectAsLocationPlacemarkCoordinates {
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:28.00 longitude:92.00];
     XCTAssertTrue(CLLocationCoordinate2DIsValid([mapVC locationPlacemarkCoordinatesFactoryMethod:currentLocation]));
-    
-}
-
-- (void) testUserInputLocationObjectAsLocationPlacemarkCoordinates {
-    //CLPlacemark
 }
 
 - (void) testInvalidObjectAsLocationPlacemarkCoordinates {
-    
+    NSObject *invalidObject;
+    XCTAssertTrue(CLLocationCoordinate2DIsValid([mapVC locationPlacemarkCoordinatesFactoryMethod:invalidObject]));
 }
-
-//- (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates {
-
-
-//-(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
-
 
 @end
