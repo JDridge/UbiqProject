@@ -13,13 +13,25 @@
 
 @synthesize title, coordinate, subtitle,name;
 
--(id)initWithTitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)thissubtitle {
+-(id)initWithTitleCoordinateSubtitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)newSubtitle {
     self = [super init];
     if(self) {
         title = newTitle;
         coordinate = location;
-        subtitle = thissubtitle;
+        subtitle = newSubtitle;
     }
+    return self;
+}
+
+- (id)initWithTitleCoordinateSubtitleName:(NSString *)newTitle coordinate:(CLLocationCoordinate2D)location subtitle:(NSString *)newSubtitle name:(NSString *)newName {
+    self = [super init];
+    if (self) {
+        title = newTitle;
+        coordinate = location;
+        subtitle = newSubtitle;
+        name = newName;
+    }
+
     return self;
 }
 

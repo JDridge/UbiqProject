@@ -102,8 +102,8 @@
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         NSMutableArray *placemarks = [NSMutableArray array];
         
-        for (MKMapItem *item in response.mapItems) {            
-            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
+        for (MKMapItem *item in response.mapItems) {
+            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
             [placemarks addObject:updatedCustomAnnotation];
         }
         
@@ -114,12 +114,12 @@
 
 
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#warning For some reason, either chris's or joseph's pin won't show up.
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if([annotation isKindOfClass:[CustomAnnotation class]]) {
         CustomAnnotation *myLocation = (CustomAnnotation*) annotation;
