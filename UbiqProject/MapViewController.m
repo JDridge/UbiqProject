@@ -16,6 +16,7 @@
     didFinishLoading = NO;
     [super viewDidLoad];
     [self setUpConvergeMapView];
+    //[self createTheCustomAnnotations];
 }
 
 - (void)setUpConvergeMapView {
@@ -25,7 +26,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     annotationViewOfMap.canShowCallout = YES;
 
-
+    
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
@@ -106,14 +107,10 @@
             CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
             [placemarks addObject:updatedCustomAnnotation];
         }
-        
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
     didFinishLoading = YES;
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -175,6 +172,11 @@
     [self presentViewController:alert animated:YES completion:nil];
 
 }
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+    NSLog(@"done loading map!");
+}
+
 
 
 
