@@ -1,11 +1,3 @@
-//
-//  MapViewControllerTest.m
-//  UbiqProject
-//
-//  Created by Robert Vo on 11/11/15.
-//  Copyright © 2015 Joey. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "MapViewController.h"
 

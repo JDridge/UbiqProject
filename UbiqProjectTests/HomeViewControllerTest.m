@@ -1,11 +1,3 @@
-//
-//  UbiqProjectTests.m
-//  UbiqProjectTests
-//
-//  Created by Joey on 10/2/15.
-//  Copyright © 2015 Joey. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "HomeViewController.h"
 #import <CoreLocation/CoreLocation.h>
