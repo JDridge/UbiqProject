@@ -10,12 +10,13 @@
 
 @implementation MapViewController
 
-@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, didFinishLoading;
+@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, didFinishLoading, numberOfLocations;
 
 - (void)viewDidLoad {
     didFinishLoading = NO;
     [super viewDidLoad];
     [self setUpConvergeMapView];
+    [self createTheCustomAnnotations];
 }
 
 - (void)setUpConvergeMapView {
@@ -24,34 +25,34 @@
     [self.ConvergeMapView setUserTrackingMode:MKUserTrackingModeFollow];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     annotationViewOfMap.canShowCallout = YES;
+}
 
-
+- (void) createTheCustomAnnotations {
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
     
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
     CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
-
+    
     firstCustomAnnotation.name = @"1";
     secondCustomAnnotation.name = @"2";
     halfwayCustomAnnotation.name = @"3";
-
+    
     firstCustomAnnotation.coordinate = firstLocationPlacemarkCoordinates;
     secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
     halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
-
+    
     while(!didFinishLoading) {
         [self displayAnimationForLoading];
         [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
     }
-
+    
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
-
+    
     [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
-
 }
 
 - (void) displayAnimationForLoading {
@@ -106,14 +107,10 @@
             CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
             [placemarks addObject:updatedCustomAnnotation];
         }
-        
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
     }];
     didFinishLoading = YES;
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -175,6 +172,11 @@
     [self presentViewController:alert animated:YES completion:nil];
 
 }
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+    NSLog(@"done loading map!");
+}
+
 
 
 

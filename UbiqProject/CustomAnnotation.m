@@ -35,13 +35,13 @@
     return self;
 }
 
--(MKAnnotationView*) annotationView {
+- (MKAnnotationView*) annotationView {
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Custom Annotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
     
     //Custom pin image
-    annotationView.image = [UIImage imageNamed:@"map"];
+    annotationView.image = [UIImage imageNamed:@"halfwayarrow"];
     
     //Setting up the right callout button
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];

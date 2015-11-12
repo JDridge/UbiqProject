@@ -287,6 +287,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
+    viewController.numberOfLocations = [queryToPass.locations count];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

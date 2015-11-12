@@ -9,6 +9,7 @@
 @property Query *queryToShow;
 @property MKAnnotationView *annotationViewOfMap;
 @property BOOL didFinishLoading;
+@property NSUInteger const numberOfLocations;
 
 - (IBAction)settingsButtonClick:(id)sender;
 
