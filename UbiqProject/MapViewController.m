@@ -16,7 +16,7 @@
     didFinishLoading = NO;
     [super viewDidLoad];
     [self setUpConvergeMapView];
-    //[self createTheCustomAnnotations];
+    [self createTheCustomAnnotations];
 }
 
 - (void)setUpConvergeMapView {
@@ -25,34 +25,34 @@
     [self.ConvergeMapView setUserTrackingMode:MKUserTrackingModeFollow];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     annotationViewOfMap.canShowCallout = YES;
+}
 
-    
+- (void) createTheCustomAnnotations {
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
     
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
     CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
-
+    
     firstCustomAnnotation.name = @"1";
     secondCustomAnnotation.name = @"2";
     halfwayCustomAnnotation.name = @"3";
-
+    
     firstCustomAnnotation.coordinate = firstLocationPlacemarkCoordinates;
     secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
     halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
-
+    
     while(!didFinishLoading) {
         [self displayAnimationForLoading];
         [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
     }
-
+    
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
     [ConvergeMapView addAnnotation:secondCustomAnnotation];
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
-
+    
     [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
-
 }
 
 - (void) displayAnimationForLoading {
