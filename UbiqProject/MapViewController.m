@@ -10,7 +10,7 @@
 
 @implementation MapViewController
 
-@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, didFinishLoading;
+@synthesize ConvergeMapView, queryToShow, annotationViewOfMap, didFinishLoading, numberOfLocations;
 
 - (void)viewDidLoad {
     didFinishLoading = NO;
