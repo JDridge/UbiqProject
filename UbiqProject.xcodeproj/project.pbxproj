@@ -17,6 +17,7 @@
 		D4F2B9271BBF12EE007F6955 /* HomeViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* HomeViewControllerTest.m */; };
 		E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */; };
 		E1569C361BF79F5C00C1E8ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E1569C351BF79F5C00C1E8ED /* .gitignore */; };
+		E1569C381BF7A99900C1E8ED /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1569C371BF7A99900C1E8ED /* APIKeys.plist */; };
 		E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D8641D1BEDA11E00C772F6 /* Images.xcassets */; };
 		E1D89D771BF3B43000587796 /* MapViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D89D761BF3B43000587796 /* MapViewControllerTest.m */; };
 		E1DF867C1BF10FED00935996 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1DF867B1BF10FED00935996 /* README.md */; };
@@ -55,6 +56,7 @@
 		E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModalViewController.h; sourceTree = "<group>"; };
 		E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModalViewController.m; sourceTree = "<group>"; };
 		E1569C351BF79F5C00C1E8ED /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E1569C371BF7A99900C1E8ED /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		E1D8641D1BEDA11E00C772F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1D89D761BF3B43000587796 /* MapViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerTest.m; sourceTree = "<group>"; };
 		E1DF867B1BF10FED00935996 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		D4F2B90C1BBF12EE007F6955 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1569C371BF7A99900C1E8ED /* APIKeys.plist */,
 				D4F2B90D1BBF12EE007F6955 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -238,6 +241,7 @@
 				E1569C361BF79F5C00C1E8ED /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
+				E1569C381BF7A99900C1E8ED /* APIKeys.plist in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 				D4F2B9171BBF12EE007F6955 /* Main.storyboard in Resources */,
 			);
