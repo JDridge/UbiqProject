@@ -28,13 +28,6 @@
 }
 
 - (void) createTheCustomAnnotations {
-//    for (int i = 0; i < numberOfLocations; i++) {
-//        CustomAnnotation *thisCustomAnnotation = [[CustomAnnotation alloc] init];
-//        CLLocationCoordinate2D thisLocationPlacemark = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:i]];
-//        thisCustomAnnotation.name = [NSString stringWithFormat:@"%i", i];
-//        thisCustomAnnotation.coordinate = thisLocationPlacemark;
-//        [ConvergeMapView addAnnotation:thisCustomAnnotation];
-//    }
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
@@ -60,8 +53,6 @@
     [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
     
     [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
-    
-    //[self getHalfwayCoordinates:@[@"hi", @"hi"]];
 }
 
 - (void) displayAnimationForLoading {
