@@ -42,4 +42,23 @@
     XCTAssertTrue(CLLocationCoordinate2DIsValid([mapVC locationPlacemarkCoordinatesFactoryMethod:invalidObject]));
 }
 
+- (void) testGetHalfwayCoordinatesForOneLocationWithCLLocation {
+    CLLocation *aLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
+    NSArray *allLocations = @[aLocation];
+    XCTAssertTrue(CLLocationCoordinate2DMake(0, 0).longitude == [mapVC getHalfwayCoordinates:allLocations].longitude
+                  && CLLocationCoordinate2DMake(0, 0).latitude == [mapVC getHalfwayCoordinates:allLocations].longitude);
+}
+
+- (void) testGetHalfwayCoordinatesForTwoLocationsUsingCLLocationCoordinate2D {
+    CLLocationCoordinate2D firstLocation = CLLocationCoordinate2DMake(10, 10);
+    CLLocationCoordinate2D secondLocation = CLLocationCoordinate2DMake(-10, -10);
+    
+    NSMutableArray *allLocations = [NSMutableArray array];
+    [allLocations addObject:[[CLLocation alloc] initWithLatitude:firstLocation.latitude longitude:firstLocation.longitude]];
+    [allLocations addObject:[[CLLocation alloc] initWithLatitude:secondLocation.latitude longitude:secondLocation.longitude]];
+    
+    XCTAssertTrue(CLLocationCoordinate2DMake(0, 0).longitude == [mapVC getHalfwayCoordinates:allLocations].longitude
+                  && CLLocationCoordinate2DMake(0, 0).latitude == [mapVC getHalfwayCoordinates:allLocations].latitude);
+}
+
 @end

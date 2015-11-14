@@ -16,5 +16,6 @@
 - (void) loadConvergeMapViewForConvergedPoint:(CustomAnnotation *)annotation;
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
 - (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates;
+- (CLLocationCoordinate2D)getHalfwayCoordinates:(NSArray*)allLocations;
 
 @end
