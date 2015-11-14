@@ -1,5 +1,6 @@
 #import <XCTest/XCTest.h>
 #import "MapViewController.h"
+#define kDeltaValue (0.00001)
 
 @interface MapViewControllerTest : XCTestCase {
     MapViewController *mapVC;
@@ -45,8 +46,11 @@
 - (void) testGetHalfwayCoordinatesForOneLocationWithCLLocation {
     CLLocation *aLocation = [[CLLocation alloc] initWithLatitude:0 longitude:0];
     NSArray *allLocations = @[aLocation];
-    XCTAssertTrue(CLLocationCoordinate2DMake(0, 0).longitude == [mapVC getHalfwayCoordinates:allLocations].longitude
-                  && CLLocationCoordinate2DMake(0, 0).latitude == [mapVC getHalfwayCoordinates:allLocations].longitude);
+    
+    CLLocationCoordinate2D coordinatesForZeroZero = CLLocationCoordinate2DMake(0, 0);
+    CLLocationCoordinate2D halfwayCoordinates = [mapVC getHalfwayCoordinates:allLocations numberOfLocations:(int) [allLocations count]];
+    XCTAssertTrue(coordinatesForZeroZero.longitude == halfwayCoordinates.longitude
+                  && coordinatesForZeroZero.latitude == halfwayCoordinates.longitude);
 }
 
 - (void) testGetHalfwayCoordinatesForTwoLocationsUsingCLLocationCoordinate2D {
@@ -57,8 +61,29 @@
     [allLocations addObject:[[CLLocation alloc] initWithLatitude:firstLocation.latitude longitude:firstLocation.longitude]];
     [allLocations addObject:[[CLLocation alloc] initWithLatitude:secondLocation.latitude longitude:secondLocation.longitude]];
     
-    XCTAssertTrue(CLLocationCoordinate2DMake(0, 0).longitude == [mapVC getHalfwayCoordinates:allLocations].longitude
-                  && CLLocationCoordinate2DMake(0, 0).latitude == [mapVC getHalfwayCoordinates:allLocations].latitude);
+    CLLocationCoordinate2D coordinatesForZeroZero = CLLocationCoordinate2DMake(0, 0);
+    CLLocationCoordinate2D halfwayCoordinates = [mapVC getHalfwayCoordinates:allLocations numberOfLocations:(int) [allLocations count]];
+    XCTAssertTrue(coordinatesForZeroZero.longitude == halfwayCoordinates.longitude
+                  && coordinatesForZeroZero.latitude == halfwayCoordinates.longitude);
 }
+
+- (void) testGetHalfwayCoordinatesForThreeLocations {
+    CLLocationCoordinate2D firstLocation = CLLocationCoordinate2DMake(50.2, 20.1);
+    CLLocationCoordinate2D secondLocation = CLLocationCoordinate2DMake(40.456, 0.54634563);
+    CLLocationCoordinate2D thirdLocation = CLLocationCoordinate2DMake(12.456, 20.54634563);
+
+    NSMutableArray *allLocations = [NSMutableArray array];
+    [allLocations addObject:[[CLLocation alloc] initWithLatitude:firstLocation.latitude longitude:firstLocation.longitude]];
+    [allLocations addObject:[[CLLocation alloc] initWithLatitude:secondLocation.latitude longitude:secondLocation.longitude]];
+    [allLocations addObject:[[CLLocation alloc] initWithLatitude:thirdLocation.latitude longitude:thirdLocation.longitude]];
+
+    CLLocationCoordinate2D expectedHalfwayCoordinates = CLLocationCoordinate2DMake((firstLocation.latitude + secondLocation.latitude + thirdLocation.latitude)/3, (firstLocation.longitude + secondLocation.longitude + thirdLocation.longitude)/3);
+    CLLocationCoordinate2D calculatedHalfwayCoordinates = [mapVC getHalfwayCoordinates:allLocations numberOfLocations:(int) [allLocations count]];
+    
+    XCTAssertTrue(fabs(expectedHalfwayCoordinates.longitude - calculatedHalfwayCoordinates.longitude) < kDeltaValue
+                  && fabs(expectedHalfwayCoordinates.latitude - calculatedHalfwayCoordinates.latitude) < kDeltaValue);
+}
+
+
 
 @end
