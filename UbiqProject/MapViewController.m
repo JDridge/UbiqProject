@@ -59,17 +59,19 @@
     NSLog(@"Display animation here.");
 }
 
-- (CLLocationCoordinate2D)getHalfwayCoordinates:(NSArray*)allLocations {
+- (CLLocationCoordinate2D)getHalfwayCoordinates:(NSArray*)allLocations numberOfLocations:(int)locationsCount {
     float allLatitudes = 0;
     float allLongitudes = 0;
+    
     for (NSObject *thisLocation in allLocations) {
         if([thisLocation isKindOfClass:[CLLocation class]]) {
-            CLLocation *thisLocationAsCLLocation = thisLocation;
+            CLLocation *thisLocationAsCLLocation = (CLLocation*) thisLocation;
             allLatitudes += thisLocationAsCLLocation.coordinate.latitude;
             allLongitudes += thisLocationAsCLLocation.coordinate.longitude;
         }
     }
-    return CLLocationCoordinate2DMake(allLatitudes, allLongitudes);
+    
+    return CLLocationCoordinate2DMake(allLatitudes/locationsCount, allLongitudes/locationsCount);
 }
 
 - (CLLocationCoordinate2D)getHalfwayCoordinates:(CLLocationCoordinate2D)firstLocation secondLocation:(CLLocationCoordinate2D)secondLocation {
