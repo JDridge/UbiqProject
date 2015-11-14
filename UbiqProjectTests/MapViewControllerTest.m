@@ -84,6 +84,33 @@
                   && fabs(expectedHalfwayCoordinates.latitude - calculatedHalfwayCoordinates.latitude) < kDeltaValue);
 }
 
+- (void) testGetHalfwayCoordinatesForOneHundredPositiveLocations {
+    NSMutableArray *allLocations = [NSMutableArray array];
+    
+    for(int aLocation = 0; aLocation < 100; aLocation++) {
+        [allLocations addObject:[[CLLocation alloc] initWithLatitude:aLocation longitude:aLocation]];
+    }
+    
+    CLLocationCoordinate2D expectedHalfwayCoordinates = CLLocationCoordinate2DMake(49.5, 49.5);
+    CLLocationCoordinate2D calculatedHalfwayCoordinates = [mapVC getHalfwayCoordinates:allLocations numberOfLocations:(int) [allLocations count]];
+    
+    XCTAssertTrue(fabs(expectedHalfwayCoordinates.longitude - calculatedHalfwayCoordinates.longitude) < kDeltaValue
+                  && fabs(expectedHalfwayCoordinates.latitude - calculatedHalfwayCoordinates.latitude) < kDeltaValue);
+}
+
+- (void) testGetHalfwayCoordinatesForOneHundredNegativeLocations {
+    NSMutableArray *allLocations = [NSMutableArray array];
+    
+    for(int aLocation = -100; aLocation < 0; aLocation++) {
+        [allLocations addObject:[[CLLocation alloc] initWithLatitude:aLocation longitude:aLocation]];
+    }
+    
+    CLLocationCoordinate2D expectedHalfwayCoordinates = CLLocationCoordinate2DMake(-50.5, -50.5);
+    CLLocationCoordinate2D calculatedHalfwayCoordinates = [mapVC getHalfwayCoordinates:allLocations numberOfLocations:(int) [allLocations count]];
+    
+    XCTAssertTrue(fabs(expectedHalfwayCoordinates.longitude - calculatedHalfwayCoordinates.longitude) < kDeltaValue
+                  && fabs(expectedHalfwayCoordinates.latitude - calculatedHalfwayCoordinates.latitude) < kDeltaValue);
+}
 
 
 @end
