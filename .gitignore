@@ -85,3 +85,8 @@ build/
 xcuserdata/
 *./xcuserspace
 *./xcworkspacedata
+
+
+*xcworkspace/xcuserdata/*
+
+*/xcuserdata/*
