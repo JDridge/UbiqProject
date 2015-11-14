@@ -19,6 +19,15 @@
 }
 
 - (void)viewDidLoad {
+    
+    //Access the API Keys using these two lines.
+    NSString *pathToApiKeys = [[NSBundle mainBundle] pathForResource: @"APIKeys" ofType: @"plist"];
+    NSDictionary *allKeys = [NSDictionary dictionaryWithContentsOfFile:pathToApiKeys];
+    NSString *yelpApiKey = [allKeys objectForKey:@"Yelp API Key"];
+    NSString *parseApiKey = [allKeys objectForKey:@"Parse API Key"];
+    NSLog(yelpApiKey);
+    NSLog(parseApiKey);
+    
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
