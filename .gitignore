@@ -49,4 +49,8 @@ xcuserdata/
 *APIKeys.plist
 APIKeys.plist
 UbiqProject/APIKeys.plist
+UbiqProject/*.plist
+UbiqProject/Supporting Files/APIKeys.plist
+UbiqProject/Supporting Files/*
+*~.plist
 *.plist
