@@ -51,4 +51,5 @@ UbiqProject/*.plist
 UbiqProject/Supporting Files/APIKeys.plist
 UbiqProject/Supporting Files/*
 *~.plist
-*.plist
+*.plist\\.*
+*.txt
