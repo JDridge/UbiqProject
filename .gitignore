@@ -49,3 +49,4 @@ xcuserdata/
 *APIKeys.plist
 APIKeys.plist
 UbiqProject/APIKeys.plist
+*.plist
