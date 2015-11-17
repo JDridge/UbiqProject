@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailedViewController.h; sourceTree = "<group>"; };
+		D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailedViewController.m; sourceTree = "<group>"; };
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		D4F2B9091BBF12EE007F6955 /* UbiqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +132,8 @@
 				D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */,
 				D4F2B91D1BBF12EE007F6955 /* Info.plist */,
 				D4F2B90C1BBF12EE007F6955 /* Supporting Files */,
+				D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */,
+				D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */,
 			);
 			path = UbiqProject;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
+				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
