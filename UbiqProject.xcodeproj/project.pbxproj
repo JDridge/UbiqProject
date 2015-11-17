@@ -119,6 +119,8 @@
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
+				E13DE0491BFAD1FD000C9C30 /* HomeUIAlertViewController.h */,
+				E13DE04A1BFAD1FD000C9C30 /* HomeUIAlertViewController.m */,
 				D4F2B9131BBF12EE007F6955 /* HomeViewController.m */,
 				E1F593591BD4A6E700CC612D /* MapViewController.h */,
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
