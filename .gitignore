@@ -5,6 +5,9 @@
 apikeys.plist
 [aA][pP][iI][kK][eE][yY][sS].[pP][lL][iI][sS][tT]
 ApiKeys.plist
+APIKEYS.plist
+*.txt
+*~.txt
 
 ## Build generated
 build/
