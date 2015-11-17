@@ -28,6 +28,15 @@
 }
 
 - (void) createTheCustomAnnotations {
+    
+    //    for (int i = 0; i < numberOfLocations; i++) {
+    //        CustomAnnotation *thisCustomAnnotation = [[CustomAnnotation alloc] init];
+    //        CLLocationCoordinate2D thisLocationPlacemark = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:i]];
+    //        thisCustomAnnotation.name = [NSString stringWithFormat:@"%i", i];
+    //        thisCustomAnnotation.coordinate = thisLocationPlacemark;
+    //        [ConvergeMapView addAnnotation:thisCustomAnnotation];
+    //    }
+    
     CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
@@ -57,6 +66,21 @@
 
 - (void) displayAnimationForLoading {
     NSLog(@"Display animation here.");
+}
+
+- (CLLocationCoordinate2D)getHalfwayCoordinates:(NSArray*)allLocations numberOfLocations:(int)locationsCount {
+    float allLatitudes = 0;
+    float allLongitudes = 0;
+    
+    for (NSObject *thisLocation in allLocations) {
+        if([thisLocation isKindOfClass:[CLLocation class]]) {
+            CLLocation *thisLocationAsCLLocation = (CLLocation*) thisLocation;
+            allLatitudes += thisLocationAsCLLocation.coordinate.latitude;
+            allLongitudes += thisLocationAsCLLocation.coordinate.longitude;
+        }
+    }
+    
+    return CLLocationCoordinate2DMake(allLatitudes/locationsCount, allLongitudes/locationsCount);
 }
 
 - (CLLocationCoordinate2D)getHalfwayCoordinates:(CLLocationCoordinate2D)firstLocation secondLocation:(CLLocationCoordinate2D)secondLocation {
@@ -144,13 +168,10 @@
     }
 }
 
-- (IBAction)settingsButtonClick:(id)sender {
-    [self performSegueWithIdentifier:@"settingsVC" sender:nil];
-}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SettingsModalViewController *viewController = (SettingsModalViewController *) segue.destinationViewController;
-    viewController.printQuery = queryToShow;
+    
 }
 
 
@@ -169,6 +190,8 @@
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     [alert addAction:okayButton];
+    
+    [self performSegueWithIdentifier:@"MapDetailedVC" sender:view];
     [self presentViewController:alert animated:YES completion:nil];
 
 }

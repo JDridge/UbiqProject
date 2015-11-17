@@ -11,10 +11,10 @@
 @property BOOL didFinishLoading;
 @property NSUInteger const numberOfLocations;
 
-- (IBAction)settingsButtonClick:(id)sender;
 
 - (void) loadConvergeMapViewForConvergedPoint:(CustomAnnotation *)annotation;
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
 - (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates;
+- (CLLocationCoordinate2D)getHalfwayCoordinates:(NSArray*)allLocations numberOfLocations:(int)locationsCount;
 
 @end
