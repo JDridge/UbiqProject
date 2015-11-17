@@ -36,7 +36,7 @@ Description needed.
     * There should be two custom annotations classes. 
       * One for search results and another for location1, loc2, halfway.
   * Zoom out the map accordingly to see all of the pins. Work with Robert on it.
-    * Add filters to common interest points search.
+  * Add filters to common interest points search.
     * Distance filter (1 mi, 2 mi, etc). 
       * Look at Map VC for request.region = MKCoordinate....
       * Distance filter has to be transferred over and converted to degrees.
