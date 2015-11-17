@@ -121,6 +121,8 @@
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
 				D4F2B9131BBF12EE007F6955 /* HomeViewController.m */,
+				D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */,
+				D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */,
 				E1F593591BD4A6E700CC612D /* MapViewController.h */,
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
 				D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */,
@@ -132,8 +134,6 @@
 				D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */,
 				D4F2B91D1BBF12EE007F6955 /* Info.plist */,
 				D4F2B90C1BBF12EE007F6955 /* Supporting Files */,
-				D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */,
-				D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */,
 			);
 			path = UbiqProject;
 			sourceTree = "<group>";
