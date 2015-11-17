@@ -15,6 +15,15 @@
 @implementation MapDetailedViewController
 
 - (void)viewDidLoad {
+    NSString *pathToApiKeys = [[NSBundle mainBundle] pathForResource: @"APIKeys" ofType: @"plist"];
+    if([[NSFileManager defaultManager] fileExistsAtPath:pathToApiKeys]) {
+        NSLog(@"APIKeys.plist is found.");
+        NSDictionary *allKeys = [NSDictionary dictionaryWithContentsOfFile:pathToApiKeys];
+        NSString *yelpApiKey = [allKeys objectForKey:@"Yelp API Key"];
+    }
+    else {
+        NSLog(@"APIKeys.plist missing!");
+    }
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

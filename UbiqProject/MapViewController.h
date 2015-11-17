@@ -11,7 +11,6 @@
 @property BOOL didFinishLoading;
 @property NSUInteger const numberOfLocations;
 
-- (IBAction)settingsButtonClick:(id)sender;
 
 - (void) loadConvergeMapViewForConvergedPoint:(CustomAnnotation *)annotation;
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;

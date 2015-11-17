@@ -168,13 +168,10 @@
     }
 }
 
-- (IBAction)settingsButtonClick:(id)sender {
-    [self performSegueWithIdentifier:@"settingsVC" sender:nil];
-}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SettingsModalViewController *viewController = (SettingsModalViewController *) segue.destinationViewController;
-    viewController.printQuery = queryToShow;
+    
 }
 
 
@@ -193,6 +190,8 @@
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     [alert addAction:okayButton];
+    
+    [self performSegueWithIdentifier:@"MapDetailedVC" sender:view];
     [self presentViewController:alert animated:YES completion:nil];
 
 }

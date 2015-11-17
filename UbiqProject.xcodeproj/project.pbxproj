@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */; };
+		D40D7D651BFBA9E1008C748D /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D40D7D641BFBA9E1008C748D /* APIKeys.plist */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailedViewController.h; sourceTree = "<group>"; };
 		D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailedViewController.m; sourceTree = "<group>"; };
+		D40D7D641BFBA9E1008C748D /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		D4F2B9091BBF12EE007F6955 /* UbiqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
 				D4F2B9131BBF12EE007F6955 /* HomeViewController.m */,
 				D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */,
+				D40D7D641BFBA9E1008C748D /* APIKeys.plist */,
 				D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */,
 				E1F593591BD4A6E700CC612D /* MapViewController.h */,
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
@@ -243,6 +246,7 @@
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
+				D40D7D651BFBA9E1008C748D /* APIKeys.plist in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 				D4F2B9171BBF12EE007F6955 /* Main.storyboard in Resources */,
 			);
