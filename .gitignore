@@ -1,7 +1,5 @@
 [aA][pP][iI][kK][eE][yY][sS].plist
 ApiKeys.plist
-*~.plist
-*.plist
 *.iml
 .idea/
 build/
