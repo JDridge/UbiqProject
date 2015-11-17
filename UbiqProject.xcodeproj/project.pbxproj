@@ -17,6 +17,7 @@
 		D4F2B9271BBF12EE007F6955 /* HomeViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* HomeViewControllerTest.m */; };
 		E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */; };
 		E13DE0461BFACE73000C9C30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0451BFACE73000C9C30 /* .gitignore */; };
+		E13DE0481BFACEFB000C9C30 /* anything.txt in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0471BFACEFB000C9C30 /* anything.txt */; };
 		E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D8641D1BEDA11E00C772F6 /* Images.xcassets */; };
 		E1D89D771BF3B43000587796 /* MapViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D89D761BF3B43000587796 /* MapViewControllerTest.m */; };
 		E1DF867C1BF10FED00935996 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1DF867B1BF10FED00935996 /* README.md */; };
@@ -55,6 +56,7 @@
 		E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModalViewController.h; sourceTree = "<group>"; };
 		E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModalViewController.m; sourceTree = "<group>"; };
 		E13DE0451BFACE73000C9C30 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E13DE0471BFACEFB000C9C30 /* anything.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = anything.txt; sourceTree = "<group>"; };
 		E1D8641D1BEDA11E00C772F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1D89D761BF3B43000587796 /* MapViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerTest.m; sourceTree = "<group>"; };
 		E1DF867B1BF10FED00935996 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */,
 				D4F2B91D1BBF12EE007F6955 /* Info.plist */,
 				D4F2B90C1BBF12EE007F6955 /* Supporting Files */,
+				E13DE0471BFACEFB000C9C30 /* anything.txt */,
 			);
 			path = UbiqProject;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
+				E13DE0481BFACEFB000C9C30 /* anything.txt in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
