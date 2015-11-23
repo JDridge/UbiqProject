@@ -19,14 +19,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 @property (strong, retain) CLLocationManager *currentLocationManager;
 
-@property UITextField *textField;
-@property NSMutableArray *textFieldArray;
-
 @property int direction;
 @property int shakes;
-@property int xCoordinatePlacement;
-@property int yCoordinatePlacement;
-@property int textFieldTagNumber;
 @property Query *queryToPass;
 @property BOOL locationFound;
 @property BOOL isValidTextField;
@@ -34,10 +28,6 @@
 - (IBAction) ConvergeLocations:(id)sender;
 - (IBAction) SwitchTrigger:(id)sender;
 - (IBAction)PopulateFields:(id)sender;
-- (IBAction)addButton:(id)sender;
-- (IBAction)removeButton:(id)sender;
-
-
 
 - (CLPlacemark*) getCoordinateEquivalent:(NSString*) location;
 
