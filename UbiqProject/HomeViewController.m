@@ -4,12 +4,12 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface HomeViewController ()
+@interface HomeViewController () 
 @end
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, SearchCategory, currentLocationManager, locationFound, isValidTextField;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, SearchCategory, currentLocationManager, locationFound, isValidTextField, textField, xCoordinatePlacement, yCoordinatePlacement, textFieldTagNumber, textFieldArray;
 
 # pragma Method to populate the text fields with bars, houston, midtown houston.
 - (IBAction)PopulateFields:(id)sender {
@@ -21,8 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     queryToPass = [[Query alloc] init];
+    textFieldArray = [[NSMutableArray alloc] init];
     [self setUpKeyboardToDismissOnReturn];
     [self addGestureToDismissKeyboardOnTap];
+    
+    xCoordinatePlacement = 200;
+    yCoordinatePlacement = 200;
+    textFieldTagNumber = 0;
     
     NSString *pathToApiKeys = [[NSBundle mainBundle] pathForResource: @"APIKeys" ofType: @"plist"];
     if([[NSFileManager defaultManager] fileExistsAtPath:pathToApiKeys]) {
@@ -86,6 +91,35 @@
     }
 }
 
+- (IBAction)addButton:(id)sender {
+    yCoordinatePlacement += 60;
+    textField = [[UITextField alloc]initWithFrame:CGRectMake(xCoordinatePlacement, yCoordinatePlacement, 148, 30)];
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.font = [UIFont systemFontOfSize:15];
+    textField.keyboardType = UIKeyboardTypeDefault;
+    textField.returnKeyType = UIReturnKeyDone;
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    textField.tag = textFieldTagNumber;
+    textField.delegate = self;
+    textField.text = @"Enter Location";
+    [textFieldArray addObject:textField];
+    [self.view addSubview:textField];
+    NSLog(@"add object count: %i", textFieldArray.count);
+    textFieldTagNumber ++;
+}
+
+- (IBAction)removeButton:(id)sender {
+    if (textFieldTagNumber >= 0){
+        UITextField *textFieldToRemove = [textFieldArray objectAtIndex:(textFieldTagNumber-1)];
+            NSLog(@"baaaaaaam! remove %i", textFieldArray.count);
+            [textFieldArray removeObject:textFieldToRemove];
+            [textFieldToRemove removeFromSuperview];
+        textFieldTagNumber --;
+    }
+
+}
+
+
 //Checks if the TextField passed in is valid or not.
 - (void) validateTextField:(UITextField*)textField {
     if([self isTextFieldDefaultOrEmpty:textField]) {
@@ -105,7 +139,6 @@
         [self setFirstLocationTextFieldEnabled];
     }
 }
-
 
 
 # warning Find a way to terminate the process if it is taking too long.
