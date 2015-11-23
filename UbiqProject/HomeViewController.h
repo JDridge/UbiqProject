@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 @property (strong, retain) CLLocationManager *currentLocationManager;
 
-@property UITextField *textField;
 @property NSMutableArray *textFieldArray;
 
 @property int direction;
@@ -30,6 +29,7 @@
 @property Query *queryToPass;
 @property BOOL locationFound;
 @property BOOL isValidTextField;
+@property (nonatomic) IBOutlet UIStackView *allLocations;
 
 - (IBAction) ConvergeLocations:(id)sender;
 - (IBAction) SwitchTrigger:(id)sender;

@@ -9,7 +9,7 @@
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, SearchCategory, currentLocationManager, locationFound, isValidTextField, textField, xCoordinatePlacement, yCoordinatePlacement, textFieldTagNumber, textFieldArray;
+@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, SearchCategory, currentLocationManager, locationFound, isValidTextField, xCoordinatePlacement, yCoordinatePlacement, textFieldTagNumber, textFieldArray, allLocations;
 
 # pragma Method to populate the text fields with bars, houston, midtown houston.
 - (IBAction)PopulateFields:(id)sender {
@@ -25,9 +25,14 @@
     [self setUpKeyboardToDismissOnReturn];
     [self addGestureToDismissKeyboardOnTap];
     
+    
+    [self createStackView]; //look here chris
+    
     xCoordinatePlacement = 200;
     yCoordinatePlacement = 200;
     textFieldTagNumber = 0;
+    
+    
     
     NSString *pathToApiKeys = [[NSBundle mainBundle] pathForResource: @"APIKeys" ofType: @"plist"];
     if([[NSFileManager defaultManager] fileExistsAtPath:pathToApiKeys]) {
@@ -40,6 +45,33 @@
         NSLog(@"APIKeys.plist missing!");
     }
     
+}
+
+- (void) createStackView {
+    /*
+     *
+     * LOOK HERE CHRIS
+     *
+     *
+     *
+     * hi
+     */
+
+    for(int i = 1; i <= 2; i++) {
+        textFieldTagNumber = i;
+        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 70)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"hello there";
+        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
+        textFieldToAdd.returnKeyType = UIReturnKeyDone;
+        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textFieldToAdd.tag = textFieldTagNumber;
+        [allLocations addArrangedSubview:textFieldToAdd];
+    }
+    textFieldTagNumber = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,31 +124,42 @@
 }
 
 - (IBAction)addButton:(id)sender {
-    yCoordinatePlacement += 60;
-    textField = [[UITextField alloc]initWithFrame:CGRectMake(xCoordinatePlacement, yCoordinatePlacement, 148, 30)];
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.font = [UIFont systemFontOfSize:15];
-    textField.keyboardType = UIKeyboardTypeDefault;
-    textField.returnKeyType = UIReturnKeyDone;
-    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    textField.tag = textFieldTagNumber;
-    textField.delegate = self;
-    textField.text = @"Enter Location";
-    [textFieldArray addObject:textField];
-    [self.view addSubview:textField];
-    NSLog(@"add object count: %i", textFieldArray.count);
-    textFieldTagNumber ++;
+    NSLog(@"%i", textFieldTagNumber);
+    if(textFieldTagNumber < 2) {
+        textFieldTagNumber++;
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 70)];
+            textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+            textFieldToAdd.font = [UIFont systemFontOfSize:15];
+            textFieldToAdd.placeholder = @"hello there";
+            textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
+            textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
+            textFieldToAdd.returnKeyType = UIReturnKeyDone;
+            textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
+            textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            textFieldToAdd.tag = textFieldTagNumber;
+            [allLocations addArrangedSubview:textFieldToAdd];
+        }];
+    }
+    else {
+        NSLog(@"can't add anymore :(");
+    }
 }
 
 - (IBAction)removeButton:(id)sender {
-    if (textFieldTagNumber >= 0){
-        UITextField *textFieldToRemove = [textFieldArray objectAtIndex:(textFieldTagNumber-1)];
-            NSLog(@"baaaaaaam! remove %i", textFieldArray.count);
-            [textFieldArray removeObject:textFieldToRemove];
-            [textFieldToRemove removeFromSuperview];
-        textFieldTagNumber --;
+    NSLog(@"%i", textFieldTagNumber);
+    
+    if(textFieldTagNumber > 0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            UIView * firstView = self.allLocations.arrangedSubviews[textFieldTagNumber];
+            firstView.hidden = YES;
+        }];
+        textFieldTagNumber = textFieldTagNumber - 1;
     }
-
+    else {
+        NSLog(@"cant remove anymore :(");
+    }
 }
 
 
