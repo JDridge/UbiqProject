@@ -20,9 +20,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cii-mJ-XbV">
                                 <rect key="frame" x="168" y="359" width="264" height="30"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="264" id="KAn-LQ-RgP"/>
-                                </constraints>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="LoginButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="wH0-zc-3c1"/>
@@ -36,29 +33,44 @@
                                     <action selector="SignUpButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="Pde-Wf-fjX"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zKZ-a8-QdX">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zKZ-a8-QdX">
                                 <rect key="frame" x="168" y="130" width="264" height="200"/>
                                 <animations/>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSD-vv-BRB">
+                                <rect key="frame" x="168" y="57" width="264" height="55"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="264" id="DWO-8O-n6I"/>
+                                    <constraint firstAttribute="height" constant="55" id="Mfp-bM-GgQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cii-mJ-XbV" firstAttribute="leading" secondItem="zKZ-a8-QdX" secondAttribute="leading" id="0sf-Un-Aq3"/>
-                            <constraint firstItem="cii-mJ-XbV" firstAttribute="centerX" secondItem="T7R-Rg-YEv" secondAttribute="centerX" id="5rQ-B3-5WL"/>
-                            <constraint firstItem="3eG-Ka-yNB" firstAttribute="top" secondItem="Q74-GR-QMi" secondAttribute="bottom" constant="111" id="6Bo-oe-Cmi"/>
-                            <constraint firstItem="cii-mJ-XbV" firstAttribute="trailing" secondItem="Q74-GR-QMi" secondAttribute="trailing" id="Ash-7g-U9Z"/>
-                            <constraint firstItem="zKZ-a8-QdX" firstAttribute="top" secondItem="38J-N3-TIx" secondAttribute="bottom" constant="110" id="IgJ-74-EWK"/>
-                            <constraint firstItem="cii-mJ-XbV" firstAttribute="top" secondItem="zKZ-a8-QdX" secondAttribute="bottom" constant="29" id="Kl7-KV-avf"/>
-                            <constraint firstItem="Q74-GR-QMi" firstAttribute="top" secondItem="cii-mJ-XbV" secondAttribute="bottom" constant="70" id="KoX-9v-6g5"/>
-                            <constraint firstItem="cii-mJ-XbV" firstAttribute="trailing" secondItem="zKZ-a8-QdX" secondAttribute="trailing" id="ggp-ew-zsy"/>
-                            <constraint firstItem="Q74-GR-QMi" firstAttribute="leading" secondItem="cii-mJ-XbV" secondAttribute="leading" id="hh3-uk-bQE"/>
+                            <constraint firstItem="cii-mJ-XbV" firstAttribute="centerX" secondItem="T7R-Rg-YEv" secondAttribute="centerX" id="2Va-AU-COI"/>
+                            <constraint firstItem="zKZ-a8-QdX" firstAttribute="top" secondItem="vSD-vv-BRB" secondAttribute="bottom" constant="18" id="LMf-3p-xMf"/>
+                            <constraint firstItem="vSD-vv-BRB" firstAttribute="top" secondItem="38J-N3-TIx" secondAttribute="bottom" constant="37" id="UyU-qt-4KQ"/>
+                            <constraint firstItem="zKZ-a8-QdX" firstAttribute="leading" secondItem="vSD-vv-BRB" secondAttribute="leading" id="ZYO-Ih-Gay"/>
+                            <constraint firstItem="3eG-Ka-yNB" firstAttribute="top" secondItem="Q74-GR-QMi" secondAttribute="bottom" constant="111" id="bCz-bR-gv9"/>
+                            <constraint firstItem="zKZ-a8-QdX" firstAttribute="leading" secondItem="cii-mJ-XbV" secondAttribute="leading" id="c38-Xs-lMB"/>
+                            <constraint firstItem="Q74-GR-QMi" firstAttribute="top" secondItem="cii-mJ-XbV" secondAttribute="bottom" constant="70" id="dnk-Rj-j97"/>
+                            <constraint firstItem="cii-mJ-XbV" firstAttribute="top" secondItem="zKZ-a8-QdX" secondAttribute="bottom" constant="29" id="gIz-Zg-chM"/>
+                            <constraint firstItem="Q74-GR-QMi" firstAttribute="trailing" secondItem="cii-mJ-XbV" secondAttribute="trailing" id="liB-yu-mNe"/>
+                            <constraint firstItem="cii-mJ-XbV" firstAttribute="leading" secondItem="Q74-GR-QMi" secondAttribute="leading" id="na3-Kr-Oi5"/>
+                            <constraint firstItem="zKZ-a8-QdX" firstAttribute="trailing" secondItem="vSD-vv-BRB" secondAttribute="trailing" id="pUn-YZ-HNT"/>
+                            <constraint firstItem="cii-mJ-XbV" firstAttribute="trailing" secondItem="zKZ-a8-QdX" secondAttribute="trailing" id="qsN-lK-bIB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="LoginButton" destination="cii-mJ-XbV" id="ZXw-kE-9op"/>
                         <outlet property="LoginSignUpForm" destination="zKZ-a8-QdX" id="ccd-ZU-xou"/>
                         <outlet property="SignUpButton" destination="Q74-GR-QMi" id="o6J-f4-cxc"/>
+                        <outlet property="WelcomeLabel" destination="vSD-vv-BRB" id="SIk-yA-U7L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJO-VI-C44" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,13 +10,13 @@
 
 @implementation LoginFormViewController
 
-@synthesize LoginButton, SignUpButton, LoginSignUpForm;
+@synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel;
 
 - (void)viewDidLoad
 {
+    LoginSignUpForm.hidden = YES;
     [super viewDidLoad];
     [self createVideo];
-    
     [self createLabels];
 }
 
@@ -51,12 +51,12 @@
     filter.alpha = 0.05;
     [self.view addSubview:filter];
     
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 100)];
-    welcomeLabel.text = @"WELCOME";
-    welcomeLabel.textColor = [UIColor whiteColor];
-    welcomeLabel.font = [UIFont systemFontOfSize:50];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:welcomeLabel];
+    //WelcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 100)];
+    WelcomeLabel.text = @"WELCOME";
+    WelcomeLabel.textColor = [UIColor whiteColor];
+    WelcomeLabel.font = [UIFont systemFontOfSize:50];
+    WelcomeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:WelcomeLabel];
     
     LoginButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     LoginButton.layer.borderWidth = 2.0;
@@ -85,11 +85,66 @@
 
 - (IBAction)LoginButtonTouched:(id)sender {
     SignUpButton.hidden = YES;
+    LoginButton.hidden = YES;
+    LoginSignUpForm.hidden = NO;
+
     NSLog(@"Login...");
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.frame = CGRectMake(10, 200, 500, 150);
+        //textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"First Name";
+        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+        [textFieldToAdd becomeFirstResponder];
+        
+        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"Last Name";
+        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
+        textFieldToAdd.returnKeyType = UIReturnKeyDone;
+        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+        
+        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"Email Address";
+        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
+        textFieldToAdd.returnKeyType = UIReturnKeyDone;
+        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+
+        UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        [registerButton setTitle:@"Register!" forState:UIControlStateNormal];
+        registerButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+        registerButton.layer.borderWidth = 2.0f;
+        registerButton.titleLabel.font = [UIFont systemFontOfSize:24];
+        [registerButton setTintColor:[UIColor whiteColor]];
+        [registerButton addTarget:self action:@selector(registerForm:) forControlEvents:UIControlEventTouchUpInside];
+        [LoginSignUpForm addArrangedSubview:registerButton];
+
+    }];
+    
+    
+    [self.view addSubview:LoginSignUpForm];
+    
 }
 
 - (IBAction)SignUpButtonTouched:(id)sender {
     LoginButton.hidden = YES;
     NSLog(@"Signup...");
+}
+
+- (void) registerForm:(UIButton*)sender {
+    NSLog(@"Registering...");
 }
 @end

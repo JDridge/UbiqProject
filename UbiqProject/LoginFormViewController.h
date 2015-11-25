@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 @import MediaPlayer;
 
-@interface LoginFormViewController : UIViewController
+@interface LoginFormViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) MPMoviePlayerController *moviePlayer;
 - (IBAction)LoginButtonTouched:(id)sender;
@@ -18,5 +18,6 @@
 @property IBOutlet UIButton *LoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *SignUpButton;
 @property (weak, nonatomic) IBOutlet UIStackView *LoginSignUpForm;
+@property (weak, nonatomic) IBOutlet UILabel *WelcomeLabel;
 
 @end
