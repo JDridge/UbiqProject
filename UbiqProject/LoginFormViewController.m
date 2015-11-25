@@ -12,19 +12,17 @@
 
 @synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     LoginSignUpForm.hidden = YES;
     [super viewDidLoad];
     [self createVideo];
     [self createLabels];
+    [self addGestureToDismissKeyboardOnTap];
 }
 
+//TODO - Convert to AVPlayerViewController in AVKit.
 - (void)createVideo {
-    // Load the video from the app bundle.
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"video" withExtension:@"mov"];
-    
-    // Create and configure the movie player.
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
     
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -35,7 +33,6 @@
     
     [self.moviePlayer play];
     
-    // Loop video.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loopVideo) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
     
 }
@@ -51,7 +48,6 @@
     filter.alpha = 0.05;
     [self.view addSubview:filter];
     
-    //WelcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 100)];
     WelcomeLabel.text = @"WELCOME";
     WelcomeLabel.textColor = [UIColor whiteColor];
     WelcomeLabel.font = [UIFont systemFontOfSize:50];
@@ -84,6 +80,7 @@
 
 
 - (IBAction)LoginButtonTouched:(id)sender {
+    [self removeAllFromStackView];
     SignUpButton.hidden = YES;
     LoginButton.hidden = YES;
     LoginSignUpForm.hidden = NO;
@@ -94,8 +91,51 @@
         
         UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
         textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.frame = CGRectMake(10, 200, 500, 150);
-        //textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"Email Address";
+        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+        [textFieldToAdd becomeFirstResponder];
+        
+        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"Password";
+        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
+        textFieldToAdd.returnKeyType = UIReturnKeyDone;
+        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+
+        UIButton *signInButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        [signInButton setTitle:@"Sign In!" forState:UIControlStateNormal];
+        signInButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+        signInButton.layer.borderWidth = 2.0f;
+        signInButton.titleLabel.font = [UIFont systemFontOfSize:24];
+        [signInButton setTintColor:[UIColor whiteColor]];
+        [signInButton addTarget:self action:@selector(signIn:) forControlEvents:UIControlEventTouchUpInside];
+        [LoginSignUpForm addArrangedSubview:signInButton];
+        
+        UIButton *backButton = [self getBackButton];
+        [LoginSignUpForm addArrangedSubview:backButton];
+
+    }];
+    
+    
+    [self.view addSubview:LoginSignUpForm];
+    
+}
+
+- (IBAction)SignUpButtonTouched:(id)sender {
+    [self removeAllFromStackView];
+    SignUpButton.hidden = YES;
+    LoginButton.hidden = YES;
+    LoginSignUpForm.hidden = NO;
+    NSLog(@"Signup...");
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
         textFieldToAdd.font = [UIFont systemFontOfSize:15];
         textFieldToAdd.placeholder = @"First Name";
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
@@ -122,7 +162,7 @@
         textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
         textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
-
+        
         UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
         [registerButton setTitle:@"Register!" forState:UIControlStateNormal];
         registerButton.layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -131,20 +171,72 @@
         [registerButton setTintColor:[UIColor whiteColor]];
         [registerButton addTarget:self action:@selector(registerForm:) forControlEvents:UIControlEventTouchUpInside];
         [LoginSignUpForm addArrangedSubview:registerButton];
+        
+        UIButton *backButton = [self getBackButton];
+        [LoginSignUpForm addArrangedSubview:backButton];
 
+        
     }];
     
     
     [self.view addSubview:LoginSignUpForm];
-    
+
 }
 
-- (IBAction)SignUpButtonTouched:(id)sender {
-    LoginButton.hidden = YES;
-    NSLog(@"Signup...");
+- (UIButton*) getBackButton {
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+    [backButton setTitle:@"Back!" forState:UIControlStateNormal];
+    backButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    backButton.layer.borderWidth = 2.0f;
+    backButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    [backButton setTintColor:[UIColor whiteColor]];
+    [backButton addTarget:self action:@selector(backButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    return backButton;
 }
 
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
 }
+
+- (void) signIn:(UIButton*)sender {
+    NSLog(@"Signing in...");
+}
+
+- (void) backButtonTouched:(UIButton*)sender {
+    [self disableFocusFromAllTextFields];
+    NSLog(@"Going Back...");
+    LoginSignUpForm.hidden = YES;
+    SignUpButton.hidden = NO;
+    LoginButton.hidden = NO;
+}
+
+-(void) removeAllFromStackView {
+    for(int i = 0; i < [self.LoginSignUpForm.arrangedSubviews count]; i++) {
+        UIView * view = self.LoginSignUpForm.arrangedSubviews[i];
+        view.hidden = YES;
+    }
+    
+}
+
+//Dismisses keyboard on tap anywhere outside the keyboard.
+- (void)addGestureToDismissKeyboardOnTap {
+    UITapGestureRecognizer *tapOutsideOfKeyboard = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(disableFocusFromAllTextFields)];
+    [self.view addGestureRecognizer:tapOutsideOfKeyboard];
+}
+
+//Removes the focus off of all of the text fields.
+- (void) disableFocusFromAllTextFields {
+    for(int i = 0; i < [self.LoginSignUpForm.arrangedSubviews count]; i++) {
+        if([self.LoginSignUpForm.arrangedSubviews[i] isKindOfClass:[UITextField class]]) {
+            UITextField * thisTextField = self.LoginSignUpForm.arrangedSubviews[i];
+            [thisTextField resignFirstResponder];
+        }
+    }
+}
+
+
+
+
 @end
