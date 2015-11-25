@@ -15,20 +15,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self createGif];
     [self createVideo];
     
     [self createLabels];
-}
-
-- (void) createGif {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"railway" ofType:@"gif"];
-    NSData *gif = [NSData dataWithContentsOfFile:filePath];
-    
-    UIWebView *webViewBG = [[UIWebView alloc] initWithFrame:self.view.frame];
-    [webViewBG loadData:gif MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
-    webViewBG.userInteractionEnabled = NO;
-    [self.view addSubview:webViewBG];
 }
 
 - (void)createVideo {
