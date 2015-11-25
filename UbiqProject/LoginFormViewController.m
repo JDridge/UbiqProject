@@ -94,6 +94,8 @@
         textFieldToAdd.font = [UIFont systemFontOfSize:15];
         textFieldToAdd.placeholder = @"Email Address";
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+        textFieldToAdd.delegate = self;
+
         [textFieldToAdd becomeFirstResponder];
         
         textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
@@ -105,6 +107,8 @@
         textFieldToAdd.returnKeyType = UIReturnKeyDone;
         textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
         textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textFieldToAdd.delegate = self;
+
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
 
         UIButton *signInButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
@@ -138,6 +142,7 @@
         textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
         textFieldToAdd.font = [UIFont systemFontOfSize:15];
         textFieldToAdd.placeholder = @"First Name";
+        textFieldToAdd.delegate = self;
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
         [textFieldToAdd becomeFirstResponder];
         
@@ -150,6 +155,8 @@
         textFieldToAdd.returnKeyType = UIReturnKeyDone;
         textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
         textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textFieldToAdd.delegate = self;
+
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
         
         textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
@@ -161,7 +168,24 @@
         textFieldToAdd.returnKeyType = UIReturnKeyDone;
         textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
         textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textFieldToAdd.delegate = self;
+
         [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+        
+        
+        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
+        textFieldToAdd.font = [UIFont systemFontOfSize:15];
+        textFieldToAdd.placeholder = @"Password";
+        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
+        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
+        textFieldToAdd.returnKeyType = UIReturnKeyDone;
+        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textFieldToAdd.delegate = self;
+        
+        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+
         
         UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
         [registerButton setTitle:@"Register!" forState:UIControlStateNormal];
@@ -170,6 +194,7 @@
         registerButton.titleLabel.font = [UIFont systemFontOfSize:24];
         [registerButton setTintColor:[UIColor whiteColor]];
         [registerButton addTarget:self action:@selector(registerForm:) forControlEvents:UIControlEventTouchUpInside];
+
         [LoginSignUpForm addArrangedSubview:registerButton];
         
         UIButton *backButton = [self getBackButton];
@@ -236,6 +261,20 @@
     }
 }
 
+//TODO - Make hitting the 'return' key move to the next text field.
+//TODO - Make hitting the 'done' key (on password field) to submit the form.
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if ([theTextField.placeholder isEqualToString:@"Password"]) {
+        [theTextField resignFirstResponder];
+    }
+    
+//    if (theTextField == self.textPassword) {
+//        [theTextField resignFirstResponder];
+//    } else if (theTextField == self.textUsername) {
+//        [self.textPassword becomeFirstResponder];
+//    }
+    return YES;
+}
 
 
 
