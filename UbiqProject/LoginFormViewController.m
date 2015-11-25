@@ -10,7 +10,7 @@
 
 @implementation LoginFormViewController
 
-@synthesize LoginButton, SignUpButton;
+@synthesize LoginButton, SignUpButton, LoginSignUpForm;
 
 - (void)viewDidLoad
 {
@@ -84,24 +84,23 @@
 
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    NSLog(@"Memory Warning");
     // Dispose of any resources that can be recreated.
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
 
 - (IBAction)LoginButtonTouched:(id)sender {
+    SignUpButton.hidden = YES;
     NSLog(@"Login...");
 }
 
 - (IBAction)SignUpButtonTouched:(id)sender {
+    LoginButton.hidden = YES;
     NSLog(@"Signup...");
 }
 @end

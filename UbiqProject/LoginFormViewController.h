@@ -17,5 +17,6 @@
 - (IBAction)SignUpButtonTouched:(id)sender;
 @property IBOutlet UIButton *LoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *SignUpButton;
+@property (weak, nonatomic) IBOutlet UIStackView *LoginSignUpForm;
 
 @end
