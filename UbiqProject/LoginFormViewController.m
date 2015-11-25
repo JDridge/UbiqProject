@@ -10,6 +10,8 @@
 
 @implementation LoginFormViewController
 
+@synthesize LoginButton, SignUpButton;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -67,22 +69,19 @@
     welcomeLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:welcomeLabel];
     
-    UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.height, self.view.bounds.size.width/2, 240, 40)];
-    loginBtn.layer.borderColor = [[UIColor whiteColor] CGColor];
-    loginBtn.layer.borderWidth = 2.0;
-    loginBtn.titleLabel.font = [UIFont systemFontOfSize:24];
-    [loginBtn setTintColor:[UIColor whiteColor]];
-    [loginBtn setTitle:@"Login" forState:UIControlStateNormal];
-    [self.view addSubview:loginBtn];
-    
-    UIButton *signUpBtn = [[UIButton alloc] initWithFrame:CGRectMake(40, 420, 240, 40)];
-    signUpBtn.layer.borderColor = [[UIColor whiteColor] CGColor];
-    signUpBtn.layer.borderWidth = 2.0f;
-    signUpBtn.titleLabel.font = [UIFont systemFontOfSize:24];
-    [signUpBtn setTintColor:[UIColor whiteColor]];
-    [signUpBtn setTitle:@"Sign Up" forState:UIControlStateNormal];
-    [self.view addSubview:signUpBtn];
-    
+    LoginButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    LoginButton.layer.borderWidth = 2.0;
+    LoginButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    [LoginButton setTintColor:[UIColor whiteColor]];
+    [self.view addSubview:LoginButton];
+
+
+    SignUpButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    SignUpButton.layer.borderWidth = 2.0f;
+    SignUpButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    [SignUpButton setTintColor:[UIColor whiteColor]];
+    [self.view addSubview:SignUpButton];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,8 +98,10 @@
 
 
 - (IBAction)LoginButtonTouched:(id)sender {
+    NSLog(@"Login...");
 }
 
 - (IBAction)SignUpButtonTouched:(id)sender {
+    NSLog(@"Signup...");
 }
 @end

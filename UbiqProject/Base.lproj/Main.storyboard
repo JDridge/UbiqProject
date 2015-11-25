@@ -17,35 +17,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AzC-rv-e2j">
-                                <rect key="frame" x="277" y="449" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cii-mJ-XbV">
+                                <rect key="frame" x="168" y="359" width="264" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="264" id="Ril-7U-sZF"/>
+                                </constraints>
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="LoginButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="FZw-QG-ygw"/>
+                                    <action selector="LoginButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="wH0-zc-3c1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsz-Mh-ohD">
-                                <rect key="frame" x="277" y="487" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q74-GR-QMi">
+                                <rect key="frame" x="168" y="459" width="264" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="SignUpButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="YL1-3m-E7g"/>
+                                    <action selector="SignUpButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="Pde-Wf-fjX"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jsz-Mh-ohD" firstAttribute="leading" secondItem="AzC-rv-e2j" secondAttribute="leading" id="NAK-13-AUR"/>
-                            <constraint firstItem="AzC-rv-e2j" firstAttribute="centerX" secondItem="T7R-Rg-YEv" secondAttribute="centerX" id="Xgf-sA-ibs"/>
-                            <constraint firstItem="jsz-Mh-ohD" firstAttribute="top" secondItem="AzC-rv-e2j" secondAttribute="bottom" constant="8" symbolic="YES" id="np2-Hs-zG6"/>
-                            <constraint firstItem="3eG-Ka-yNB" firstAttribute="top" secondItem="jsz-Mh-ohD" secondAttribute="bottom" constant="83" id="qJU-BC-Igf"/>
+                            <constraint firstItem="Q74-GR-QMi" firstAttribute="leading" secondItem="cii-mJ-XbV" secondAttribute="leading" id="4F8-jq-zaD"/>
+                            <constraint firstItem="3eG-Ka-yNB" firstAttribute="top" secondItem="Q74-GR-QMi" secondAttribute="bottom" constant="111" id="4wo-JY-d0K"/>
+                            <constraint firstItem="cii-mJ-XbV" firstAttribute="centerX" secondItem="T7R-Rg-YEv" secondAttribute="centerX" id="AkP-Wm-ExE"/>
+                            <constraint firstItem="Q74-GR-QMi" firstAttribute="top" secondItem="cii-mJ-XbV" secondAttribute="bottom" constant="70" id="OwO-wo-ziC"/>
+                            <constraint firstItem="cii-mJ-XbV" firstAttribute="trailing" secondItem="Q74-GR-QMi" secondAttribute="trailing" id="k96-K4-xD5"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="LoginButton" destination="AzC-rv-e2j" id="hOU-5g-u06"/>
-                        <outlet property="SignUpButton" destination="jsz-Mh-ohD" id="HMj-aY-1ho"/>
+                        <outlet property="LoginButton" destination="cii-mJ-XbV" id="ZXw-kE-9op"/>
+                        <outlet property="SignUpButton" destination="Q74-GR-QMi" id="o6J-f4-cxc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJO-VI-C44" userLabel="First Responder" sceneMemberID="firstResponder"/>
