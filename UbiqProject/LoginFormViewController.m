@@ -19,7 +19,7 @@
     LoginSignUpForm.hidden = YES;
     [super viewDidLoad];
     [self playVideo];
-    [self createLabels];
+    [self setupLabelsAndButtonsOnStart];
     [self addGestureToDismissKeyboardOnTap];
 }
 
@@ -45,7 +45,7 @@
     [playerItem seekToTime:kCMTimeZero];
 }
 
-- (void) createLabels {
+- (void) setupLabelsAndButtonsOnStart {
     UIView *filter = [[UIView alloc] initWithFrame:self.view.frame];
     filter.backgroundColor = [UIColor blackColor];
     filter.alpha = 0.05;
@@ -93,28 +93,19 @@
         [emailAddressTextField becomeFirstResponder];
         [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
-        UITextField *passwordTextField = [self createPasswordTextField];
+        UITextField *passwordTextField = [self createPasswordTextField:@"Password"];
         [LoginSignUpForm addArrangedSubview:passwordTextField];
 
-        UIButton *signInButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        [signInButton setTitle:@"Sign In!" forState:UIControlStateNormal];
-        signInButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-        signInButton.layer.borderWidth = 2.0f;
-        signInButton.titleLabel.font = [UIFont systemFontOfSize:24];
-        [signInButton setTintColor:[UIColor whiteColor]];
-        [signInButton addTarget:self action:@selector(signIn:) forControlEvents:UIControlEventTouchUpInside];
+        UIButton *signInButton = [self getGenericButton:@"Sign In!" selectorActionName:@"signIn:"];
         [LoginSignUpForm addArrangedSubview:signInButton];
         
-        UIButton *backButton = [self getBackButton];
+        UIButton *backButton = [self getGenericButton:@"Back!" selectorActionName:@"backButtonTouched:"];
         [LoginSignUpForm addArrangedSubview:backButton];
-
     }];
-    
     
     [self.view addSubview:LoginSignUpForm];
     
 }
-
 
 - (CGRect)getDefaultRectangleSize {
     return CGRectMake(10, 200, 500, 150);
@@ -125,67 +116,33 @@
     [self flipHiddenStatus:YES];
     NSLog(@"Signup...");
     
-    UITextField *firstNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-    firstNameTextField.borderStyle = UITextBorderStyleRoundedRect;
-    firstNameTextField.font = [UIFont systemFontOfSize:15];
-    firstNameTextField.placeholder = @"First Name";
-    firstNameTextField.delegate = self;
-    firstNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    UITextField *firstNameTextField = [self getNameTextField:@"First Name"];
     [firstNameTextField becomeFirstResponder];
     [LoginSignUpForm addArrangedSubview:firstNameTextField];
 
-    UITextField *lastNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-    lastNameTextField.borderStyle = UITextBorderStyleRoundedRect;
-    lastNameTextField.font = [UIFont systemFontOfSize:15];
-    lastNameTextField.placeholder = @"Last Name";
-    lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    lastNameTextField.keyboardType = UIKeyboardTypeDefault;
-    lastNameTextField.returnKeyType = UIReturnKeyDone;
-    lastNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    lastNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    lastNameTextField.delegate = self;
-
+    UITextField *lastNameTextField = [self getNameTextField:@"Last Name"];
     [LoginSignUpForm addArrangedSubview:lastNameTextField];
 
     UITextField *emailAddressTextField = [self createEmailAddressTextField];
     [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
-    UITextField *passwordTextField = [self createPasswordTextField];
+    UITextField *passwordTextField = [self createPasswordTextField:@"Password"];
     [LoginSignUpForm addArrangedSubview:passwordTextField];
+
+    UITextField *verifyPasswordTextField = [self createPasswordTextField:@"Verify Password"];
+    [LoginSignUpForm addArrangedSubview:verifyPasswordTextField];
 
     UIButton *registerButton = [self getGenericButton:@"Register!" selectorActionName:@"registerForm:"];
     [LoginSignUpForm addArrangedSubview:registerButton];
 
-    UIButton *backButton = [self getBackButton];
+    UIButton *backButton = [self getGenericButton:@"Back!" selectorActionName:@"backButtonTouched:"];
     [LoginSignUpForm addArrangedSubview:backButton];
     
     [self.view addSubview:LoginSignUpForm];
 
 }
 
-- (UIButton *)getGenericButton:(NSString *)title selectorActionName:(NSString *)selectorMethod {
-    UIButton *newButton = [[UIButton alloc] initWithFrame:[self getDefaultRectangleSize]];
-    [newButton setTitle:title forState:UIControlStateNormal];
-    newButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-    newButton.layer.borderWidth = 2.0f;
-    newButton.titleLabel.font = [UIFont systemFontOfSize:24];
-    [newButton setTintColor:[UIColor whiteColor]];
-    SEL method = NSSelectorFromString(selectorMethod);
-    [newButton addTarget:self action:method forControlEvents:UIControlEventTouchUpInside];
 
-    return newButton;
-}
-
-- (UIButton*) getBackButton {
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-    [backButton setTitle:@"Back!" forState:UIControlStateNormal];
-    backButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-    backButton.layer.borderWidth = 2.0f;
-    backButton.titleLabel.font = [UIFont systemFontOfSize:24];
-    [backButton setTintColor:[UIColor whiteColor]];
-    [backButton addTarget:self action:@selector(backButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
-    return backButton;
-}
 
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
@@ -231,9 +188,9 @@
 
 //Removes the focus off of all of the text fields.
 - (void) disableFocusFromAllTextFields {
-    for(int i = 0; i < [self.LoginSignUpForm.arrangedSubviews count]; i++) {
+    for(NSUInteger i = 0; i < [self.LoginSignUpForm.arrangedSubviews count]; i++) {
         if([self.LoginSignUpForm.arrangedSubviews[i] isKindOfClass:[UITextField class]]) {
-            UITextField * thisTextField = self.LoginSignUpForm.arrangedSubviews[i];
+            UITextField * thisTextField = (UITextField *) self.LoginSignUpForm.arrangedSubviews[i];
             [thisTextField resignFirstResponder];
         }
     }
@@ -243,6 +200,7 @@
 //TODO - Make hitting the 'done' key (on password field) to submit the form.
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if ([theTextField.placeholder isEqualToString:@"Password"]) {
+
         [theTextField resignFirstResponder];
     }
     
@@ -277,31 +235,57 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (UITextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder {
+    UITextField *newGenericTextField = [[UITextField alloc] initWithFrame:[self getDefaultRectangleSize]];
+    newGenericTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    newGenericTextField.borderStyle = UITextBorderStyleRoundedRect;
+    newGenericTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    newGenericTextField.font = [UIFont systemFontOfSize:15];
+    newGenericTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    newGenericTextField.delegate = self;
+    newGenericTextField.placeholder = placeholder;
+
+    return newGenericTextField;
+}
+
 - (UITextField *)createEmailAddressTextField {
-    UITextField *newEmailAddressTextField = [[UITextField alloc] initWithFrame:[self getDefaultRectangleSize]];
-    newEmailAddressTextField.borderStyle = UITextBorderStyleRoundedRect;
-    newEmailAddressTextField.font = [UIFont systemFontOfSize:15];
-    newEmailAddressTextField.placeholder = @"Email Address";
-    newEmailAddressTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    UITextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Email Address"];
     newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    newEmailAddressTextField.delegate = self;
+
     return newEmailAddressTextField;
 }
 
-- (UITextField *)createPasswordTextField {
-    UITextField *newPasswordTextField = [[UITextField alloc] initWithFrame:[self getDefaultRectangleSize]];
-    newPasswordTextField.borderStyle = UITextBorderStyleRoundedRect;
-    newPasswordTextField.font = [UIFont systemFontOfSize:15];
-    newPasswordTextField.placeholder = @"Password";
-    newPasswordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+- (UITextField *)createPasswordTextField:(NSString *)passwordField {
+    UITextField *newPasswordTextField = [self createGenericTextFieldWithPlaceholder:passwordField];
     newPasswordTextField.keyboardType = UIKeyboardTypeDefault;
     newPasswordTextField.returnKeyType = UIReturnKeyDone;
-    newPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    newPasswordTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    newPasswordTextField.delegate = self;
+    newPasswordTextField.secureTextEntry = YES;
+
     return newPasswordTextField;
 }
 
+- (UITextField*)getNameTextField:(NSString*)name {
+    UITextField *nameTextField = [self createGenericTextFieldWithPlaceholder:name];
+    nameTextField.keyboardType = UIKeyboardTypeDefault;
+    nameTextField.placeholder = name;
+    nameTextField.returnKeyType = UIReturnKeyDone;
+    
+    return nameTextField;
+}
+
+- (UIButton *)getGenericButton:(NSString *)title selectorActionName:(NSString *)selectorMethod {
+    UIButton *newButton = [[UIButton alloc] initWithFrame:[self getDefaultRectangleSize]];
+    [newButton setTitle:title forState:UIControlStateNormal];
+    newButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    newButton.layer.borderWidth = 2.0f;
+    newButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    [newButton setTintColor:[UIColor whiteColor]];
+    
+    SEL method = NSSelectorFromString(selectorMethod);
+    [newButton addTarget:self action:method forControlEvents:UIControlEventTouchUpInside];
+    
+    return newButton;
+}
 
 
 @end
