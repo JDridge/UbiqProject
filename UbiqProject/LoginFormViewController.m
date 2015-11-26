@@ -7,40 +7,43 @@
 //
 
 #import "LoginFormViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
-@implementation LoginFormViewController
+@implementation LoginFormViewController {
+    AVPlayer *player;
+}
 
 @synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel;
 
 - (void)viewDidLoad {
     LoginSignUpForm.hidden = YES;
     [super viewDidLoad];
-    [self createVideo];
+    [self playVideo];
     [self createLabels];
     [self addGestureToDismissKeyboardOnTap];
 }
 
-//TODO - Convert to AVPlayerViewController in AVKit.
-- (void)createVideo {
+-(void)playVideo {
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"video" withExtension:@"mov"];
-    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
+    player = [AVPlayer playerWithURL:videoURL];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    playerLayer.frame = self.view.frame;
+    [self.view.layer addSublayer:playerLayer];
+    [player play];
     
-    self.moviePlayer.controlStyle = MPMovieControlStyleNone;
-    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
+    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     
-    self.moviePlayer.view.frame = self.view.frame;
-    [self.view insertSubview:self.moviePlayer.view atIndex:0];
-    
-    [self.moviePlayer play];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loopVideo) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[player currentItem]];
+
 }
 
-- (void)loopVideo {
-    [self.moviePlayer play];
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem *playerItem = [notification object];
+    [playerItem seekToTime:kCMTimeZero];
 }
-
 
 - (void) createLabels {
     UIView *filter = [[UIView alloc] initWithFrame:self.view.frame];
@@ -81,24 +84,23 @@
 
 - (IBAction)LoginButtonTouched:(id)sender {
     [self removeAllFromStackView];
-    SignUpButton.hidden = YES;
-    LoginButton.hidden = YES;
-    LoginSignUpForm.hidden = NO;
+    [self flipHiddenStatus:YES];
 
     NSLog(@"Login...");
     
     [UIView animateWithDuration:0.25 animations:^{
         
-        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.font = [UIFont systemFontOfSize:15];
-        textFieldToAdd.placeholder = @"Email Address";
-        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
-        textFieldToAdd.delegate = self;
+        UITextField *emailAddressTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        emailAddressTextField.borderStyle = UITextBorderStyleRoundedRect;
+        emailAddressTextField.font = [UIFont systemFontOfSize:15];
+        emailAddressTextField.placeholder = @"Email Address";
+        [emailAddressTextField setKeyboardType:UIKeyboardTypeEmailAddress];
+        [LoginSignUpForm addArrangedSubview:emailAddressTextField];
+        emailAddressTextField.delegate = self;
 
-        [textFieldToAdd becomeFirstResponder];
+        [emailAddressTextField becomeFirstResponder];
         
-        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
         textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
         textFieldToAdd.font = [UIFont systemFontOfSize:15];
         textFieldToAdd.placeholder = @"Password";
@@ -132,12 +134,9 @@
 
 - (IBAction)SignUpButtonTouched:(id)sender {
     [self removeAllFromStackView];
-    SignUpButton.hidden = YES;
-    LoginButton.hidden = YES;
-    LoginSignUpForm.hidden = NO;
+    [self flipHiddenStatus:YES];
     NSLog(@"Signup...");
-    [UIView animateWithDuration:0.25 animations:^{
-        
+    
         UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
         textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
         textFieldToAdd.font = [UIFont systemFontOfSize:15];
@@ -200,8 +199,7 @@
         UIButton *backButton = [self getBackButton];
         [LoginSignUpForm addArrangedSubview:backButton];
 
-        
-    }];
+    
     
     
     [self.view addSubview:LoginSignUpForm];
@@ -230,9 +228,7 @@
 - (void) backButtonTouched:(UIButton*)sender {
     [self disableFocusFromAllTextFields];
     NSLog(@"Going Back...");
-    LoginSignUpForm.hidden = YES;
-    SignUpButton.hidden = NO;
-    LoginButton.hidden = NO;
+    [self flipHiddenStatus:NO];
 }
 
 -(void) removeAllFromStackView {
@@ -240,7 +236,6 @@
         UIView * view = self.LoginSignUpForm.arrangedSubviews[i];
         view.hidden = YES;
     }
-    
 }
 
 //Dismisses keyboard on tap anywhere outside the keyboard.
@@ -276,6 +271,12 @@
     return YES;
 }
 
+- (void) flipHiddenStatus:(BOOL)status {
+    SignUpButton.hidden = status;
+    LoginButton.hidden = status;
+    LoginSignUpForm.hidden = !status;
+
+}
 
 
 @end
