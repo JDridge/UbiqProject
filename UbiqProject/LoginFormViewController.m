@@ -7,17 +7,14 @@
 //
 
 #import "LoginFormViewController.h"
-#import <AVFoundation/AVFoundation.h>
 #import "UITextField+Utilities.h"
+#import "UIButton+Utilities.h"
 
-@implementation LoginFormViewController {
-    AVPlayer *player;
-}
+@implementation LoginFormViewController
 
-@synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel;
+@synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel, backgroundVideo;
 
 - (void)viewDidLoad {
-    LoginSignUpForm.hidden = YES;
     [super viewDidLoad];
     [self playVideo];
     [self setupLabelsAndButtonsOnStart];
@@ -26,18 +23,18 @@
 
 -(void)playVideo {
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"video" withExtension:@"mov"];
-    player = [AVPlayer playerWithURL:videoURL];
-    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    backgroundVideo = [AVPlayer playerWithURL:videoURL];
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:backgroundVideo];
     playerLayer.frame = self.view.frame;
     [self.view.layer addSublayer:playerLayer];
-    [player play];
-    
-    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    [backgroundVideo play];
+
+    backgroundVideo.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerItemDidReachEnd:)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[player currentItem]];
+                                               object:[backgroundVideo currentItem]];
 
 }
 
@@ -97,18 +94,16 @@
         UITextField *passwordTextField = [UITextField createPasswordTextField:@"Password"];
         [LoginSignUpForm addArrangedSubview:passwordTextField];
 
-        UIButton *signInButton = [self getGenericButton:@"Sign In!" selectorActionName:@"signIn:"];
+        UIButton *signInButton = [UIButton getGenericButton:@"Sign In!" selectorActionName:@"signIn:"];
         [LoginSignUpForm addArrangedSubview:signInButton];
         
-        UIButton *backButton = [self getGenericButton:@"Back!" selectorActionName:@"backButtonTouched:"];
+        UIButton *backButton = [UIButton getGenericButton:@"Back!" selectorActionName:@"backButtonTouched:"];
         [LoginSignUpForm addArrangedSubview:backButton];
     }];
     
     [self.view addSubview:LoginSignUpForm];
     
 }
-
-
 
 - (IBAction)SignUpButtonTouched:(id)sender {
     [self removeAllFromStackView];
@@ -131,17 +126,15 @@
     UITextField *verifyPasswordTextField = [UITextField createPasswordTextField:@"Verify Password"];
     [LoginSignUpForm addArrangedSubview:verifyPasswordTextField];
 
-    UIButton *registerButton = [self getGenericButton:@"Register!" selectorActionName:@"registerForm:"];
+    UIButton *registerButton = [UIButton getGenericButton:@"Register!" selectorActionName:@"registerForm:"];
     [LoginSignUpForm addArrangedSubview:registerButton];
 
-    UIButton *backButton = [self getGenericButton:@"Back!" selectorActionName:@"backButtonTouched:"];
+    UIButton *backButton = [UIButton getGenericButton:@"Back!" selectorActionName:@"backButtonTouched:"];
     [LoginSignUpForm addArrangedSubview:backButton];
     
     [self.view addSubview:LoginSignUpForm];
 
 }
-
-
 
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
@@ -232,24 +225,6 @@
                                  }];
     [alert addAction:okayButton];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (UIButton *)getGenericButton:(NSString *)title selectorActionName:(NSString *)selectorMethod {
-    UIButton *newButton = [[UIButton alloc] initWithFrame:[self getDefaultRectangleSize]];
-    [newButton setTitle:title forState:UIControlStateNormal];
-    newButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-    newButton.layer.borderWidth = 2.0f;
-    newButton.titleLabel.font = [UIFont systemFontOfSize:24];
-    [newButton setTintColor:[UIColor whiteColor]];
-    
-    SEL method = NSSelectorFromString(selectorMethod);
-    [newButton addTarget:self action:method forControlEvents:UIControlEventTouchUpInside];
-    
-    return newButton;
-}
-
-+ (CGRect)getDefaultRectangleSize {
-    return CGRectMake(10, 200, 500, 150);
 }
 
 

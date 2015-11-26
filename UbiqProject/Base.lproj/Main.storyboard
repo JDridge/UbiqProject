@@ -32,7 +32,7 @@
                                     <action selector="SignUpButtonTouched:" destination="1lL-Hj-JOB" eventType="touchUpInside" id="Pde-Wf-fjX"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zKZ-a8-QdX">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zKZ-a8-QdX">
                                 <rect key="frame" x="168" y="130" width="264" height="200"/>
                                 <animations/>
                             </stackView>
