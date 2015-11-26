@@ -89,29 +89,12 @@
     NSLog(@"Login...");
     
     [UIView animateWithDuration:0.25 animations:^{
-        
-        UITextField *emailAddressTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        emailAddressTextField.borderStyle = UITextBorderStyleRoundedRect;
-        emailAddressTextField.font = [UIFont systemFontOfSize:15];
-        emailAddressTextField.placeholder = @"Email Address";
-        [emailAddressTextField setKeyboardType:UIKeyboardTypeEmailAddress];
-        [LoginSignUpForm addArrangedSubview:emailAddressTextField];
-        emailAddressTextField.delegate = self;
-
+        UITextField *emailAddressTextField = [self createEmailAddressTextField];
         [emailAddressTextField becomeFirstResponder];
-        
-        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.font = [UIFont systemFontOfSize:15];
-        textFieldToAdd.placeholder = @"Password";
-        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
-        textFieldToAdd.returnKeyType = UIReturnKeyDone;
-        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        textFieldToAdd.delegate = self;
+        [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
-        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+        UITextField *passwordTextField = [self createPasswordTextField];
+        [LoginSignUpForm addArrangedSubview:passwordTextField];
 
         UIButton *signInButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
         [signInButton setTitle:@"Sign In!" forState:UIControlStateNormal];
@@ -132,78 +115,65 @@
     
 }
 
+
+- (CGRect)getDefaultRectangleSize {
+    return CGRectMake(10, 200, 500, 150);
+}
+
 - (IBAction)SignUpButtonTouched:(id)sender {
     [self removeAllFromStackView];
     [self flipHiddenStatus:YES];
     NSLog(@"Signup...");
     
-        UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.font = [UIFont systemFontOfSize:15];
-        textFieldToAdd.placeholder = @"First Name";
-        textFieldToAdd.delegate = self;
-        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
-        [textFieldToAdd becomeFirstResponder];
-        
-        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.font = [UIFont systemFontOfSize:15];
-        textFieldToAdd.placeholder = @"Last Name";
-        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
-        textFieldToAdd.returnKeyType = UIReturnKeyDone;
-        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        textFieldToAdd.delegate = self;
+    UITextField *firstNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+    firstNameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    firstNameTextField.font = [UIFont systemFontOfSize:15];
+    firstNameTextField.placeholder = @"First Name";
+    firstNameTextField.delegate = self;
+    firstNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [firstNameTextField becomeFirstResponder];
+    [LoginSignUpForm addArrangedSubview:firstNameTextField];
 
-        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
-        
-        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.font = [UIFont systemFontOfSize:15];
-        textFieldToAdd.placeholder = @"Email Address";
-        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
-        textFieldToAdd.returnKeyType = UIReturnKeyDone;
-        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        textFieldToAdd.delegate = self;
+    UITextField *lastNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
+    lastNameTextField.borderStyle = UITextBorderStyleRoundedRect;
+    lastNameTextField.font = [UIFont systemFontOfSize:15];
+    lastNameTextField.placeholder = @"Last Name";
+    lastNameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    lastNameTextField.keyboardType = UIKeyboardTypeDefault;
+    lastNameTextField.returnKeyType = UIReturnKeyDone;
+    lastNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    lastNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    lastNameTextField.delegate = self;
 
-        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
-        
-        
-        textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
-        textFieldToAdd.font = [UIFont systemFontOfSize:15];
-        textFieldToAdd.placeholder = @"Password";
-        textFieldToAdd.autocorrectionType = UITextAutocorrectionTypeNo;
-        textFieldToAdd.keyboardType = UIKeyboardTypeDefault;
-        textFieldToAdd.returnKeyType = UIReturnKeyDone;
-        textFieldToAdd.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textFieldToAdd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        textFieldToAdd.delegate = self;
-        
-        [LoginSignUpForm addArrangedSubview:textFieldToAdd];
+    [LoginSignUpForm addArrangedSubview:lastNameTextField];
 
-        
-        UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 200, 500, 150)];
-        [registerButton setTitle:@"Register!" forState:UIControlStateNormal];
-        registerButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-        registerButton.layer.borderWidth = 2.0f;
-        registerButton.titleLabel.font = [UIFont systemFontOfSize:24];
-        [registerButton setTintColor:[UIColor whiteColor]];
-        [registerButton addTarget:self action:@selector(registerForm:) forControlEvents:UIControlEventTouchUpInside];
+    UITextField *emailAddressTextField = [self createEmailAddressTextField];
+    [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
-        [LoginSignUpForm addArrangedSubview:registerButton];
-        
-        UIButton *backButton = [self getBackButton];
-        [LoginSignUpForm addArrangedSubview:backButton];
+    UITextField *passwordTextField = [self createPasswordTextField];
+    [LoginSignUpForm addArrangedSubview:passwordTextField];
 
-    
-    
+    UIButton *registerButton = [self getGenericButton:@"Register!" selectorActionName:@"registerForm:"];
+    [LoginSignUpForm addArrangedSubview:registerButton];
+
+    UIButton *backButton = [self getBackButton];
+    [LoginSignUpForm addArrangedSubview:backButton];
     
     [self.view addSubview:LoginSignUpForm];
 
+}
+
+- (UIButton *)getGenericButton:(NSString *)title selectorActionName:(NSString *)selectorMethod {
+    UIButton *newButton = [[UIButton alloc] initWithFrame:[self getDefaultRectangleSize]];
+    [newButton setTitle:title forState:UIControlStateNormal];
+    newButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    newButton.layer.borderWidth = 2.0f;
+    newButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    [newButton setTintColor:[UIColor whiteColor]];
+    SEL method = NSSelectorFromString(selectorMethod);
+    [newButton addTarget:self action:method forControlEvents:UIControlEventTouchUpInside];
+
+    return newButton;
 }
 
 - (UIButton*) getBackButton {
@@ -219,6 +189,19 @@
 
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
+
+    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
+    gameScore[@"score"] = @1337;
+    gameScore[@"playerName"] = @123;
+    gameScore[@"ragisuvhfds"] = @"maybe";
+    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"success");
+            // The object has been saved.
+        } else {
+            [self displayError:error];
+        }
+    }];
 }
 
 - (void) signIn:(UIButton*)sender {
@@ -275,8 +258,50 @@
     SignUpButton.hidden = status;
     LoginButton.hidden = status;
     LoginSignUpForm.hidden = !status;
-
 }
+
+- (void) displayError:(NSError*) error {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Error"
+                                message:[error localizedDescription]
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay 🙃"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (UITextField *)createEmailAddressTextField {
+    UITextField *newEmailAddressTextField = [[UITextField alloc] initWithFrame:[self getDefaultRectangleSize]];
+    newEmailAddressTextField.borderStyle = UITextBorderStyleRoundedRect;
+    newEmailAddressTextField.font = [UIFont systemFontOfSize:15];
+    newEmailAddressTextField.placeholder = @"Email Address";
+    newEmailAddressTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    newEmailAddressTextField.delegate = self;
+    return newEmailAddressTextField;
+}
+
+- (UITextField *)createPasswordTextField {
+    UITextField *newPasswordTextField = [[UITextField alloc] initWithFrame:[self getDefaultRectangleSize]];
+    newPasswordTextField.borderStyle = UITextBorderStyleRoundedRect;
+    newPasswordTextField.font = [UIFont systemFontOfSize:15];
+    newPasswordTextField.placeholder = @"Password";
+    newPasswordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    newPasswordTextField.keyboardType = UIKeyboardTypeDefault;
+    newPasswordTextField.returnKeyType = UIReturnKeyDone;
+    newPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    newPasswordTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    newPasswordTextField.delegate = self;
+    return newPasswordTextField;
+}
+
 
 
 @end
