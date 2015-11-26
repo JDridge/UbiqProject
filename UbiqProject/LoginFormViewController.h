@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *SignUpButton;
 @property (weak, nonatomic) IBOutlet UIStackView *LoginSignUpForm;
 @property (weak, nonatomic) IBOutlet UILabel *WelcomeLabel;
++ (CGRect)getDefaultRectangleSize;
 
 @end

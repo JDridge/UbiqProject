@@ -108,9 +108,7 @@
     
 }
 
-- (CGRect)getDefaultRectangleSize {
-    return CGRectMake(10, 200, 500, 150);
-}
+
 
 - (IBAction)SignUpButtonTouched:(id)sender {
     [self removeAllFromStackView];
@@ -248,6 +246,10 @@
     [newButton addTarget:self action:method forControlEvents:UIControlEventTouchUpInside];
     
     return newButton;
+}
+
++ (CGRect)getDefaultRectangleSize {
+    return CGRectMake(10, 200, 500, 150);
 }
 
 
