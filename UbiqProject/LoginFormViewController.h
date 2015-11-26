@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-@import MediaPlayer;
 
 @interface LoginFormViewController : UIViewController <UITextFieldDelegate>
 
-@property (strong, nonatomic) MPMoviePlayerController *moviePlayer;
 - (IBAction)LoginButtonTouched:(id)sender;
 - (IBAction)SignUpButtonTouched:(id)sender;
 @property IBOutlet UIButton *LoginButton;
