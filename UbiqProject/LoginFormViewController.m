@@ -8,6 +8,7 @@
 
 #import "LoginFormViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "UITextField+Utilities.h"
 
 @implementation LoginFormViewController {
     AVPlayer *player;
@@ -89,11 +90,11 @@
     NSLog(@"Login...");
     
     [UIView animateWithDuration:0.25 animations:^{
-        UITextField *emailAddressTextField = [self createEmailAddressTextField];
+        UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
         [emailAddressTextField becomeFirstResponder];
         [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
-        UITextField *passwordTextField = [self createPasswordTextField:@"Password"];
+        UITextField *passwordTextField = [UITextField createPasswordTextField:@"Password"];
         [LoginSignUpForm addArrangedSubview:passwordTextField];
 
         UIButton *signInButton = [self getGenericButton:@"Sign In!" selectorActionName:@"signIn:"];
@@ -116,20 +117,20 @@
     [self flipHiddenStatus:YES];
     NSLog(@"Signup...");
     
-    UITextField *firstNameTextField = [self getNameTextField:@"First Name"];
+    UITextField *firstNameTextField = [UITextField getNameTextField:@"First Name"];
     [firstNameTextField becomeFirstResponder];
     [LoginSignUpForm addArrangedSubview:firstNameTextField];
 
-    UITextField *lastNameTextField = [self getNameTextField:@"Last Name"];
+    UITextField *lastNameTextField = [UITextField getNameTextField:@"Last Name"];
     [LoginSignUpForm addArrangedSubview:lastNameTextField];
 
-    UITextField *emailAddressTextField = [self createEmailAddressTextField];
+    UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
     [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
-    UITextField *passwordTextField = [self createPasswordTextField:@"Password"];
+    UITextField *passwordTextField = [UITextField createPasswordTextField:@"Password"];
     [LoginSignUpForm addArrangedSubview:passwordTextField];
 
-    UITextField *verifyPasswordTextField = [self createPasswordTextField:@"Verify Password"];
+    UITextField *verifyPasswordTextField = [UITextField createPasswordTextField:@"Verify Password"];
     [LoginSignUpForm addArrangedSubview:verifyPasswordTextField];
 
     UIButton *registerButton = [self getGenericButton:@"Register!" selectorActionName:@"registerForm:"];
@@ -233,44 +234,6 @@
                                  }];
     [alert addAction:okayButton];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (UITextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder {
-    UITextField *newGenericTextField = [[UITextField alloc] initWithFrame:[self getDefaultRectangleSize]];
-    newGenericTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    newGenericTextField.borderStyle = UITextBorderStyleRoundedRect;
-    newGenericTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    newGenericTextField.font = [UIFont systemFontOfSize:15];
-    newGenericTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    newGenericTextField.delegate = self;
-    newGenericTextField.placeholder = placeholder;
-
-    return newGenericTextField;
-}
-
-- (UITextField *)createEmailAddressTextField {
-    UITextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Email Address"];
-    newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
-
-    return newEmailAddressTextField;
-}
-
-- (UITextField *)createPasswordTextField:(NSString *)passwordField {
-    UITextField *newPasswordTextField = [self createGenericTextFieldWithPlaceholder:passwordField];
-    newPasswordTextField.keyboardType = UIKeyboardTypeDefault;
-    newPasswordTextField.returnKeyType = UIReturnKeyDone;
-    newPasswordTextField.secureTextEntry = YES;
-
-    return newPasswordTextField;
-}
-
-- (UITextField*)getNameTextField:(NSString*)name {
-    UITextField *nameTextField = [self createGenericTextFieldWithPlaceholder:name];
-    nameTextField.keyboardType = UIKeyboardTypeDefault;
-    nameTextField.placeholder = name;
-    nameTextField.returnKeyType = UIReturnKeyDone;
-    
-    return nameTextField;
 }
 
 - (UIButton *)getGenericButton:(NSString *)title selectorActionName:(NSString *)selectorMethod {
