@@ -10,4 +10,6 @@
 
 @interface UIButton (Utilities)
 
++ (UIButton *)getGenericButton:(NSString *)title selectorActionName:(NSString *)selectorMethod;
+
 @end
