@@ -1,10 +1,9 @@
 #import "UITextField+Utilities.h"
-#import "LoginFormViewController.h"
 
 @implementation UITextField (Utilities)
 
 + (UITextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder {
-    UITextField *newGenericTextField = [[UITextField alloc] initWithFrame:[LoginFormViewController getDefaultRectangleSize]];
+    UITextField *newGenericTextField = [[UITextField alloc] initWithFrame:[UITextField getDefaultTextFieldSize]];
     newGenericTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     newGenericTextField.borderStyle = UITextBorderStyleRoundedRect;
     newGenericTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -39,6 +38,10 @@
     nameTextField.returnKeyType = UIReturnKeyDone;
     
     return nameTextField;
+}
+
++ (CGRect)getDefaultTextFieldSize {
+    return CGRectMake(10, 200, 500, 150);
 }
 
 
