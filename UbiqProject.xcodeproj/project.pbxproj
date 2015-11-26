@@ -33,6 +33,7 @@
 		E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */; };
 		E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC51C058323000A9EE9 /* railway.gif */; };
 		E1CE8FC81C058323000A9EE9 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC61C058323000A9EE9 /* video.mov */; };
+		E1D468BA1C0703D40080C855 /* UIButton+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D468B91C0703D40080C855 /* UIButton+Utilities.m */; };
 		E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D8641D1BEDA11E00C772F6 /* Images.xcassets */; };
 		E1D89D771BF3B43000587796 /* MapViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D89D761BF3B43000587796 /* MapViewControllerTest.m */; };
 		E1DF867C1BF10FED00935996 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1DF867B1BF10FED00935996 /* README.md */; };
@@ -90,6 +91,8 @@
 		E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		E1CE8FC51C058323000A9EE9 /* railway.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = railway.gif; sourceTree = "<group>"; };
 		E1CE8FC61C058323000A9EE9 /* video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.mov; sourceTree = "<group>"; };
+		E1D468B81C0703D40080C855 /* UIButton+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Utilities.h"; sourceTree = "<group>"; };
+		E1D468B91C0703D40080C855 /* UIButton+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Utilities.m"; sourceTree = "<group>"; };
 		E1D8641D1BEDA11E00C772F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1D89D761BF3B43000587796 /* MapViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerTest.m; sourceTree = "<group>"; };
 		E1DF867B1BF10FED00935996 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -169,8 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				E1D8641D1BEDA11E00C772F6 /* Images.xcassets */,
-				E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */,
-				E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */,
+				D4F2B9151BBF12EE007F6955 /* Main.storyboard */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
@@ -181,9 +183,12 @@
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
 				D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */,
 				D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */,
-				D4F2B9151BBF12EE007F6955 /* Main.storyboard */,
 				E1CE8FBE1C052AAC000A9EE9 /* LoginFormViewController.h */,
 				E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */,
+				E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */,
+				E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */,
+				E1D468B81C0703D40080C855 /* UIButton+Utilities.h */,
+				E1D468B91C0703D40080C855 /* UIButton+Utilities.m */,
 				E14FA41A1C06FD0800E3FEB0 /* UITextField+Utilities.h */,
 				E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */,
 				E1F5935C1BD4A7F100CC612D /* Query.h */,
@@ -332,6 +337,7 @@
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
 				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
+				E1D468BA1C0703D40080C855 /* UIButton+Utilities.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
 				E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */,
