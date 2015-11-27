@@ -31,17 +31,28 @@
     return newPasswordTextField;
 }
 
-+ (UITextField *)getNameTextField:(NSString*)name {
++ (UITextField *)createNameTextField:(NSString*)name {
     UITextField *nameTextField = [self createGenericTextFieldWithPlaceholder:name];
     nameTextField.keyboardType = UIKeyboardTypeDefault;
     nameTextField.placeholder = name;
     nameTextField.returnKeyType = UIReturnKeyDone;
     
+    
+    [nameTextField addTarget:self
+                  action:@selector(editingChanged:)
+        forControlEvents:UIControlEventEditingChanged];
+
     return nameTextField;
 }
 
 + (CGRect)getDefaultTextFieldSize {
     return CGRectMake(10, 200, 500, 150);
+}
+
++ (void) editingChanged:(id)sender {
+    NSString *text = ((UITextField*)sender).text;
+    
+    NSLog(text);
 }
 
 

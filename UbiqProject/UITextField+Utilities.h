@@ -8,6 +8,8 @@
 
 + (UITextField *)createPasswordTextField:(NSString *)passwordField;
 
-+ (UITextField *)getNameTextField:(NSString*)name;
++ (UITextField *)createNameTextField:(NSString*)name;
+
++ (void) editingChanged:(id)sender;
 
 @end

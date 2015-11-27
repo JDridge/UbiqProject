@@ -87,9 +87,18 @@
     NSLog(@"Login...");
     
     [UIView animateWithDuration:0.25 animations:^{
+        
+        UILabel *newLabel = [[UILabel alloc] init];
+        newLabel.text = @"✅";
+        newLabel.frame = CGRectMake(0, 0, 0, 0);
+        
         UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
         [emailAddressTextField becomeFirstResponder];
-        [LoginSignUpForm addArrangedSubview:emailAddressTextField];
+        UIStackView *currentStack = [[UIStackView alloc] initWithArrangedSubviews:@[newLabel, emailAddressTextField]];
+
+        //[LoginSignUpForm addArrangedSubview:newLabel];
+
+        [LoginSignUpForm addArrangedSubview:currentStack];
 
         UITextField *passwordTextField = [UITextField createPasswordTextField:@"Password"];
         [LoginSignUpForm addArrangedSubview:passwordTextField];
@@ -110,11 +119,11 @@
     [self flipHiddenStatus:YES];
     NSLog(@"Signup...");
     
-    UITextField *firstNameTextField = [UITextField getNameTextField:@"First Name"];
+    UITextField *firstNameTextField = [UITextField createNameTextField:@"First Name"];
     [firstNameTextField becomeFirstResponder];
     [LoginSignUpForm addArrangedSubview:firstNameTextField];
 
-    UITextField *lastNameTextField = [UITextField getNameTextField:@"Last Name"];
+    UITextField *lastNameTextField = [UITextField createNameTextField:@"Last Name"];
     [LoginSignUpForm addArrangedSubview:lastNameTextField];
 
     UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
