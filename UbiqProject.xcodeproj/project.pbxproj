@@ -17,6 +17,7 @@
 		D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */; };
 		D4F2B9271BBF12EE007F6955 /* HomeViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9261BBF12EE007F6955 /* HomeViewControllerTest.m */; };
 		E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */; };
+		E13CA0A41C082C680070D2CA /* FormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E13CA0A31C082C680070D2CA /* FormTextField.m */; };
 		E13DE0461BFACE73000C9C30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0451BFACE73000C9C30 /* .gitignore */; };
 		E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */; };
 		E1CE8FAA1C05298D000A9EE9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CE8FA81C05298D000A9EE9 /* Bolts.framework */; };
@@ -73,6 +74,8 @@
 		D4F2B9281BBF12EE007F6955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E10E4A291BE1AC55004932FD /* SettingsModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModalViewController.h; sourceTree = "<group>"; };
 		E10E4A2A1BE1AC55004932FD /* SettingsModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModalViewController.m; sourceTree = "<group>"; };
+		E13CA0A21C082C680070D2CA /* FormTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormTextField.h; sourceTree = "<group>"; };
+		E13CA0A31C082C680070D2CA /* FormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormTextField.m; sourceTree = "<group>"; };
 		E13DE0451BFACE73000C9C30 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E14FA41A1C06FD0800E3FEB0 /* UITextField+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Utilities.h"; sourceTree = "<group>"; };
 		E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Utilities.m"; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				E1D468B91C0703D40080C855 /* UIButton+Utilities.m */,
 				E14FA41A1C06FD0800E3FEB0 /* UITextField+Utilities.h */,
 				E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */,
+				E13CA0A21C082C680070D2CA /* FormTextField.h */,
+				E13CA0A31C082C680070D2CA /* FormTextField.m */,
 				E1F5935C1BD4A7F100CC612D /* Query.h */,
 				E1F5935D1BD4A7F100CC612D /* Query.m */,
 				D4F2B9181BBF12EE007F6955 /* Assets.xcassets */,
@@ -341,6 +346,7 @@
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
 				E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */,
+				E13CA0A41C082C680070D2CA /* FormTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
