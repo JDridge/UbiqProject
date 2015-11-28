@@ -9,6 +9,7 @@
 #import "LoginFormViewController.h"
 #import "UITextField+Utilities.h"
 #import "UIButton+Utilities.h"
+#import "FormTextField.h"
 
 @implementation LoginFormViewController
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self playVideo];
+    //[self playVideo];
     [self setupLabelsAndButtonsOnStart];
     [self addGestureToDismissKeyboardOnTap];
 }
@@ -88,17 +89,10 @@
     
     [UIView animateWithDuration:0.25 animations:^{
         
-        UILabel *newLabel = [[UILabel alloc] init];
-        newLabel.text = @"✅";
-        newLabel.frame = CGRectMake(0, 0, 0, 0);
-        
         UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
         [emailAddressTextField becomeFirstResponder];
-        UIStackView *currentStack = [[UIStackView alloc] initWithArrangedSubviews:@[newLabel, emailAddressTextField]];
-
-        //[LoginSignUpForm addArrangedSubview:newLabel];
-
-        [LoginSignUpForm addArrangedSubview:currentStack];
+        
+        [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
         UITextField *passwordTextField = [UITextField createPasswordTextField:@"Password"];
         [LoginSignUpForm addArrangedSubview:passwordTextField];
@@ -148,18 +142,18 @@
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
 
-    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
-    gameScore[@"score"] = @1337;
-    gameScore[@"playerName"] = @123;
-    gameScore[@"ragisuvhfds"] = @"maybe";
-    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"success");
-            // The object has been saved.
-        } else {
-            [self displayError:error];
-        }
-    }];
+//    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
+//    gameScore[@"score"] = @1337;
+//    gameScore[@"playerName"] = @123;
+//    gameScore[@"ragisuvhfds"] = @"maybe";
+//    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            NSLog(@"success");
+//            // The object has been saved.
+//        } else {
+//            [self displayError:error];
+//        }
+//    }];
 }
 
 - (void) signIn:(UIButton*)sender {
