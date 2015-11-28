@@ -86,6 +86,8 @@ static const CGFloat kTextEdgeInset = 6;
         case FormValidatingTextFieldTypeName:
             [self applyNameValidation];
             break;
+        case FormValidatingTextFieldTypePassword:
+            [self applyPasswordValidation];
         default:
             [self clearAllValidationMethods];
             break;
@@ -144,7 +146,7 @@ static const CGFloat kTextEdgeInset = 6;
             return FormValidatingTextFieldStatusIndeterminate;
         }
         NSCharacterSet *onlyCharacters = [[NSCharacterSet letterCharacterSet] invertedSet];
-        NSRange  range = [weakSelf.text rangeOfCharacterFromSet:onlyCharacters];
+        NSRange range = [weakSelf.text rangeOfCharacterFromSet:onlyCharacters];
         if (NSNotFound != range.location) {
             return FormValidatingTextFieldStatusInvalid;
         }
@@ -152,6 +154,12 @@ static const CGFloat kTextEdgeInset = 6;
     };
     [self validate];
 }
+
+
+- (void)applyPasswordValidation {
+
+}
+
 
 - (void)clearAllValidationMethods;
 {
@@ -166,9 +174,11 @@ static const CGFloat kTextEdgeInset = 6;
 {
     if (self.validationDelegate) {
         self.validationStatus = [self.validationDelegate textFieldStatus:self];
-    } else if (self.validationBlock) {
+    }
+    else if (self.validationBlock) {
         self.validationStatus = self.validationBlock();
-    } else if (self.validationRegularExpression) {
+    }
+    else if (self.validationRegularExpression) {
         [self validateWithRegularExpression];
     }
 }
@@ -177,9 +187,13 @@ static const CGFloat kTextEdgeInset = 6;
 {
     if (self.text.length == 0 && !self.isRequired) {
         self.validationStatus = FormValidatingTextFieldStatusIndeterminate;
-    } else if ([self.validationRegularExpression numberOfMatchesInString:self.text options:0 range:NSMakeRange(0, self.text.length)]) {
+    }
+    else if ([self.validationRegularExpression numberOfMatchesInString:self.text
+                                                               options:0
+                                                                 range:NSMakeRange(0, self.text.length)]) {
         self.validationStatus = FormValidatingTextFieldStatusValid;
-    } else {
+    }
+    else {
         self.validationStatus = FormValidatingTextFieldStatusInvalid;
     }
 }
@@ -236,9 +250,12 @@ static const CGFloat kTextEdgeInset = 6;
     CGContextSetLineJoin(context, kCGLineJoinRound);
     
     CGColorRef strokeColor = self.indeterminateColor.CGColor;
-    if (self.validationStatus == FormValidatingTextFieldStatusInvalid) strokeColor = self.invalidColor.CGColor;
-    if (self.validationStatus == FormValidatingTextFieldStatusValid) strokeColor = self.validColor.CGColor;
-    
+    if (self.validationStatus == FormValidatingTextFieldStatusInvalid) {
+        strokeColor = self.invalidColor.CGColor;
+    }
+    else if (self.validationStatus == FormValidatingTextFieldStatusValid) {
+        strokeColor = self.validColor.CGColor;
+    }
     CGContextSetStrokeColorWithColor(context, strokeColor);
     return context;
 }
