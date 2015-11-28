@@ -1,16 +1,14 @@
 //
-//  CustomAnnotation.m
+//  SearchCustomAnnotation.m
 //  UbiqProject
 //
-//  Created by Joey on 10/26/15.
+//  Created by Lorenzo Bermillo on 11/25/15.
 //  Copyright © 2015 Joey. All rights reserved.
 //
 
-#import "CustomAnnotation.h"
-#import <MapKit/MapKit.h>
+#import "SearchCustomAnnotation.h"
 
-@implementation CustomAnnotation
-
+@implementation SearchCustomAnnotation
 @synthesize title, coordinate, subtitle,name;
 
 -(id)initWithTitleCoordinateSubtitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)newSubtitle {
@@ -31,29 +29,28 @@
         subtitle = newSubtitle;
         name = newName;
     }
-
+    
     return self;
 }
 
 - (MKAnnotationView*) annotationView {
-    MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"CustomAnnotation"];
+    MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"SearchCustomAnnotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
     
     //Custom pin image
     annotationView.image = [UIImage imageNamed:@"halfwayarrow"];
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    
     
     //Setting up the right callout button
-//    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     //The right callout button is the halfwayarrow for now.
-//    UIImage *buttonImage = [UIImage imageNamed:@"halfwayarrow"];
-//    [rightButton setImage:buttonImage forState:UIControlStateNormal];
-//    annotationView.rightCalloutAccessoryView = rightButton;
-
+    UIImage *buttonImage = [UIImage imageNamed:@"halfwayarrow"];
+    [rightButton setImage:buttonImage forState:UIControlStateNormal];
+    annotationView.rightCalloutAccessoryView = rightButton;
+    
     return annotationView;
 }
+
 
 @end

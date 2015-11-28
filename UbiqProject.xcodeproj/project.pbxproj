@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2037E5C1C06291900B9860B /* UserCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2037E5B1C06291900B9860B /* UserCustomAnnotation.m */; };
+		D2037E5F1C06293400B9860B /* SearchCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2037E5E1C06293400B9860B /* SearchCustomAnnotation.m */; };
 		D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2037E5A1C06291900B9860B /* UserCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCustomAnnotation.h; sourceTree = "<group>"; };
+		D2037E5B1C06291900B9860B /* UserCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCustomAnnotation.m; sourceTree = "<group>"; };
+		D2037E5D1C06293400B9860B /* SearchCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCustomAnnotation.h; sourceTree = "<group>"; };
+		D2037E5E1C06293400B9860B /* SearchCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCustomAnnotation.m; sourceTree = "<group>"; };
 		D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailedViewController.h; sourceTree = "<group>"; };
 		D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailedViewController.m; sourceTree = "<group>"; };
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
@@ -127,6 +133,10 @@
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
 				D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */,
 				D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */,
+				D2037E5A1C06291900B9860B /* UserCustomAnnotation.h */,
+				D2037E5B1C06291900B9860B /* UserCustomAnnotation.m */,
+				D2037E5D1C06293400B9860B /* SearchCustomAnnotation.h */,
+				D2037E5E1C06293400B9860B /* SearchCustomAnnotation.m */,
 				D4F2B9151BBF12EE007F6955 /* Main.storyboard */,
 				E1F5935C1BD4A7F100CC612D /* Query.h */,
 				E1F5935D1BD4A7F100CC612D /* Query.m */,
@@ -208,7 +218,7 @@
 				TargetAttributes = {
 					D4F2B9081BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = AJ63TV53BF;
+						DevelopmentTeam = G64BY3BAY5;
 					};
 					D4F2B9211BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -262,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2037E5C1C06291900B9860B /* UserCustomAnnotation.m in Sources */,
 				E1F5935E1BD4A7F100CC612D /* Query.m in Sources */,
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
@@ -270,6 +281,7 @@
 				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
+				D2037E5F1C06293400B9860B /* SearchCustomAnnotation.m in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,11 +412,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -413,11 +427,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
