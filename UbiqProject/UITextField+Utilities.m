@@ -1,9 +1,10 @@
 #import "UITextField+Utilities.h"
+#import "FormTextField.h"
 
 @implementation UITextField (Utilities)
 
-+ (UITextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder {
-    UITextField *newGenericTextField = [[UITextField alloc] initWithFrame:[UITextField getDefaultTextFieldSize]];
++ (FormTextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder {
+    FormTextField *newGenericTextField = [[FormTextField alloc] initWithFrame:[UITextField getDefaultTextFieldSize]];
     newGenericTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     newGenericTextField.borderStyle = UITextBorderStyleRoundedRect;
     newGenericTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -11,19 +12,19 @@
     newGenericTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     newGenericTextField.delegate = (id <UITextFieldDelegate>) self;
     newGenericTextField.placeholder = placeholder;
-    
     return newGenericTextField;
 }
 
-+ (UITextField *)createEmailAddressTextField {
-    UITextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Email Address"];
++ (FormTextField *)createEmailAddressTextField {
+    FormTextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Email Address"];
     newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    newEmailAddressTextField.validationType = FormValidatingTextFieldTypeEmail;
     
     return newEmailAddressTextField;
 }
 
-+ (UITextField *)createPasswordTextField:(NSString *)passwordField {
-    UITextField *newPasswordTextField = [self createGenericTextFieldWithPlaceholder:passwordField];
++ (FormTextField *)createPasswordTextField:(NSString *)passwordField {
+    FormTextField *newPasswordTextField = [self createGenericTextFieldWithPlaceholder:passwordField];
     newPasswordTextField.keyboardType = UIKeyboardTypeDefault;
     newPasswordTextField.returnKeyType = UIReturnKeyDone;
     newPasswordTextField.secureTextEntry = YES;
@@ -31,16 +32,13 @@
     return newPasswordTextField;
 }
 
-+ (UITextField *)createNameTextField:(NSString*)name {
-    UITextField *nameTextField = [self createGenericTextFieldWithPlaceholder:name];
++ (FormTextField *)createNameTextField:(NSString*)name {
+    FormTextField *nameTextField = [self createGenericTextFieldWithPlaceholder:name];
     nameTextField.keyboardType = UIKeyboardTypeDefault;
     nameTextField.placeholder = name;
     nameTextField.returnKeyType = UIReturnKeyDone;
     
-    
-    [nameTextField addTarget:self
-                  action:@selector(editingChanged:)
-        forControlEvents:UIControlEventEditingChanged];
+    nameTextField.validationType = FormValidatingTextFieldTypeName;
 
     return nameTextField;
 }
@@ -49,11 +47,6 @@
     return CGRectMake(10, 200, 500, 150);
 }
 
-+ (void) editingChanged:(id)sender {
-    NSString *text = ((UITextField*)sender).text;
-    
-    NSLog(text);
-}
 
 
 @end

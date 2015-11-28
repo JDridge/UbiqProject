@@ -1,15 +1,11 @@
 #import <UIKit/UIKit.h>
+#import "FormTextField.h"
 
 @interface UITextField (Utilities) <UITextFieldDelegate>
 
-+ (UITextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder;
-
-+ (UITextField *)createEmailAddressTextField;
-
-+ (UITextField *)createPasswordTextField:(NSString *)passwordField;
-
-+ (UITextField *)createNameTextField:(NSString*)name;
-
-+ (void) editingChanged:(id)sender;
++ (FormTextField *)createGenericTextFieldWithPlaceholder:(NSString*)placeholder;
++ (FormTextField *)createEmailAddressTextField;
++ (FormTextField *)createPasswordTextField:(NSString *)passwordField;
++ (FormTextField *)createNameTextField:(NSString*)name;
 
 @end
