@@ -28,7 +28,6 @@ typedef NS_ENUM(NSUInteger, FormTextFieldValidatingType) {
     -(FormTextFieldStatus)textFieldStatus:(FormTextField *)textField;
 @end
 
-
 @interface FormTextField : UITextField
 
 @property (nonatomic, readonly) FormTextFieldStatus validationStatus;
@@ -40,6 +39,11 @@ typedef NS_ENUM(NSUInteger, FormTextFieldValidatingType) {
 @property (nonatomic, copy) FormTextFieldStatus (^validationBlock)(void);
 @property (nonatomic) NSRegularExpression *validationRegularExpression;
 @property (nonatomic, weak) id <FormValidatingTextFieldValidationDelegate> validationDelegate;
+
+- (UIImageView *)imageViewForValidStatus;
+- (UIImageView *)imageViewForInvalidStatus;
+- (UIImageView *)imageViewForIndeterminateStatus;
+- (void)setValidationStatus:(FormTextFieldStatus)status;
 
 @end
 

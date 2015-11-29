@@ -9,7 +9,10 @@
 #import "FormTextField.h"
 
 @interface FormTextField ()
+
 @property (nonatomic, readwrite) FormTextFieldStatus validationStatus;
+@property FormTextField* passwordField;
+@property FormTextField* verifyPasswordField;
 @end
 
 @implementation FormTextField
@@ -87,7 +90,8 @@ static const CGFloat kTextEdgeInset = 6;
             [self applyNameValidation];
             break;
         case FormValidatingTextFieldTypePassword:
-            [self applyPasswordValidation];
+            [self applyPasswordLengthValidation];
+            break;
         default:
             [self clearAllValidationMethods];
             break;
@@ -156,8 +160,21 @@ static const CGFloat kTextEdgeInset = 6;
 }
 
 
-- (void)applyPasswordValidation {
-
+- (void)applyPasswordLengthValidation {
+    [self clearAllValidationMethods];
+    __weak FormTextField *weakSelf = self;
+    self.validationBlock = ^{
+        if (weakSelf.text.length < 6 && !weakSelf.isRequired) {
+            return FormValidatingTextFieldStatusIndeterminate;
+        }
+        NSCharacterSet *illegalCharacters = [NSCharacterSet illegalCharacterSet];
+        NSRange range = [weakSelf.text rangeOfCharacterFromSet:illegalCharacters];
+        if (weakSelf.text.length < 6 || NSNotFound != range.location) {
+            return FormValidatingTextFieldStatusInvalid;
+        }
+        return FormValidatingTextFieldStatusValid;
+    };
+    [self validate];
 }
 
 
@@ -249,8 +266,12 @@ static const CGFloat kTextEdgeInset = 6;
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetLineJoin(context, kCGLineJoinRound);
     
-    CGColorRef strokeColor = self.indeterminateColor.CGColor;
-    if (self.validationStatus == FormValidatingTextFieldStatusInvalid) {
+    CGColorRef strokeColor = self.validColor.CGColor;
+    
+    if(self.validationStatus == FormValidatingTextFieldStatusIndeterminate) {
+        strokeColor = self.indeterminateColor.CGColor;
+    }
+    else if (self.validationStatus == FormValidatingTextFieldStatusInvalid) {
         strokeColor = self.invalidColor.CGColor;
     }
     else if (self.validationStatus == FormValidatingTextFieldStatusValid) {

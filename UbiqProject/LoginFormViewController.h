@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import <Parse/Parse.h>
+//#import <Parse/Parse.h>
 
 @interface LoginFormViewController : UIViewController <UITextFieldDelegate>
 

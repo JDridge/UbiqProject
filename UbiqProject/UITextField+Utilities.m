@@ -1,5 +1,6 @@
 #import "UITextField+Utilities.h"
 #import "FormTextField.h"
+#import "LoginFormViewController.h"
 
 @implementation UITextField (Utilities)
 
@@ -29,6 +30,13 @@
     newPasswordTextField.returnKeyType = UIReturnKeyDone;
     newPasswordTextField.secureTextEntry = YES;
     
+//    if([passwordField isEqualToString:@"Password"]) {
+//        newPasswordTextField.validationType = FormValidatingTextFieldTypePassword;
+//    }
+//    else {
+//        newPasswordTextField.validationType = FormValidatingTextFieldTypeNothing;
+//    }
+    
     return newPasswordTextField;
 }
 
@@ -37,7 +45,6 @@
     nameTextField.keyboardType = UIKeyboardTypeDefault;
     nameTextField.placeholder = name;
     nameTextField.returnKeyType = UIReturnKeyDone;
-    
     nameTextField.validationType = FormValidatingTextFieldTypeName;
 
     return nameTextField;
