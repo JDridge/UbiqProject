@@ -174,7 +174,7 @@
 }
 
 - (BOOL) checkIfAllFieldsAreValid {
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < [LoginSignUpForm.arrangedSubviews count]; i++) {
         if([self.LoginSignUpForm.arrangedSubviews[i] isKindOfClass:[FormTextField class]]) {
             FormTextField *currentTextField = self.LoginSignUpForm.arrangedSubviews[i];
             if(currentTextField.validationStatus != FormValidatingTextFieldStatusValid) {
@@ -183,11 +183,19 @@
         }
     }
     return YES;
-
 }
 
 - (void) signIn:(UIButton*)sender {
     NSLog(@"Signing in...");
+    
+    BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
+    
+    if(areAllFieldsValid) {
+        NSLog(@"all valid");
+    }
+    else {
+        NSLog(@"not valid");
+    }
 }
 
 - (void) backButtonTouched:(UIButton*)sender {
