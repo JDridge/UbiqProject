@@ -27,6 +27,8 @@
     backgroundVideo = [AVPlayer playerWithURL:videoURL];
     AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:backgroundVideo];
     playerLayer.frame = self.view.frame;
+    playerLayer.videoGravity = AVLayerVideoGravityResize;
+    
     [self.view.layer addSublayer:playerLayer];
     [backgroundVideo play];
 
@@ -148,6 +150,7 @@
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
 
+    
 //    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
 //    gameScore[@"score"] = @1337;
 //    gameScore[@"playerName"] = @123;
@@ -212,122 +215,38 @@
 }
 
 
-//- (void) editingChanged:(FormTextField*)sender {
-//    if([sender tag] == 20) {
-//        FormTextField* firstPasswordField = (FormTextField*) [self.view viewWithTag:10];
-//        
-//        if([firstPasswordField.text isEqualToString:sender.text]) {
-//            sender.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-//            sender.rightView = [[FormTextField alloc] init].imageViewForInvalidStatus;
-//        }
-//    }
-//    else if([sender tag] == 10 && ((FormTextField*) [self.view viewWithTag:20]).text.length > 1) {
-//        if(![sender.text isEqualToString:((FormTextField*)[self.view viewWithTag:20]).text]) {
-//            sender.rightView = [[FormTextField alloc] init].imageViewForInvalidStatus;
-//        }
-//    }
-//    //            self.layer.borderColor = self.validColor.CGColor;
-////    self.rightView = self.imageViewForValidStatus;
-//
-////    - (void)setValidationStatus:(FormTextFieldStatus)status;
-//
-//}
-
-
 - (BOOL)textField:(FormTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *searchStr = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    FormTextField *passwordField = LoginSignUpForm.arrangedSubviews[4];
-    FormTextField *verifyPasswordField = LoginSignUpForm.arrangedSubviews[5];
 
-    //FormTextField *passwordField = (FormTextField*) [self.view viewWithTag:10];
-    //FormTextField *verifyPasswordField = (FormTextField*) [self.view viewWithTag:20];
-
-    if(textField.tag == 10 || textField.tag == 20) {
-        if(searchStr.length < 6) {
-            textField.validationStatus = FormValidatingTextFieldStatusIndeterminate;
-            textField.layer.borderColor = ([[[FormTextField alloc] init] indeterminateColor]).CGColor;
-            textField.rightView = textField.imageViewForIndeterminateStatus;
-        }
-    }
-    
-    if(textField.tag == 10 && searchStr.length > 5) {
-        if(verifyPasswordField.validationStatus == FormValidatingTextFieldStatusValid && !([verifyPasswordField.text isEqualToString:searchStr])) {
-            textField.validationStatus = FormValidatingTextFieldStatusInvalid;
-            textField.layer.borderColor = ([[[FormTextField alloc] init] invalidColor]).CGColor;
-            textField.rightView = textField.imageViewForInvalidStatus;
-            
-            verifyPasswordField.validationStatus = FormValidatingTextFieldStatusInvalid;
-            verifyPasswordField.layer.borderColor = ([[[FormTextField alloc] init] invalidColor]).CGColor;
-            verifyPasswordField.rightView = verifyPasswordField.imageViewForInvalidStatus;
-        }
-        else if ([verifyPasswordField.text isEqualToString:searchStr]) {
-            verifyPasswordField.validationStatus = FormValidatingTextFieldStatusValid;
-            verifyPasswordField.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-            verifyPasswordField.rightView = textField.imageViewForValidStatus;
-            
+    if(textField.tag == 20 && ((FormTextField*) [self.view viewWithTag:10]).validationStatus == FormValidatingTextFieldStatusValid) {
+        if([searchStr isEqualToString:((FormTextField*)[self.view viewWithTag:10]).text]) {
             textField.validationStatus = FormValidatingTextFieldStatusValid;
-            textField.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-            textField.rightView = textField.imageViewForValidStatus;
-
-        }
-        else {
-            textField.validationStatus = FormValidatingTextFieldStatusValid;
-            textField.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-            textField.rightView = textField.imageViewForValidStatus;
-        }
-    }
-    
-    
-    if(textField.tag == 20) {
-        if([searchStr isEqualToString:passwordField.text]) {
-            textField.validationStatus = FormValidatingTextFieldStatusValid;
-            textField.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-            textField.rightView = textField.imageViewForValidStatus;
         }
         else {
             textField.validationStatus = FormValidatingTextFieldStatusInvalid;
-            textField.layer.borderColor = ([[[FormTextField alloc] init] invalidColor]).CGColor;
-            textField.rightView = textField.imageViewForInvalidStatus;
         }
     }
-    
-    
-    
-//    if(theTextField.tag == 20) {
-//        FormTextField* firstPasswordField = (FormTextField*) [self.view viewWithTag:10];
-//        
-//        
-//        if([firstPasswordField.text isEqualToString:searchStr]) {
-//            theTextField.validationStatus = FormValidatingTextFieldStatusValid;
-//            theTextField.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-//            theTextField.rightView = theTextField.imageViewForValidStatus;
-//            
-//        }
-//        else {
-//            theTextField.validationStatus = FormValidatingTextFieldStatusInvalid;
-//            theTextField.layer.borderColor = ([[[FormTextField alloc] init] invalidColor]).CGColor;
-//            theTextField.rightView = theTextField.imageViewForInvalidStatus;
-//        }
-//    }
-//    else if(theTextField.tag == 10 && ((FormTextField*) [self.view viewWithTag:10]).validationStatus == FormValidatingTextFieldStatusValid) {
-//        FormTextField* verifyPasswordField = (FormTextField*) [self.view viewWithTag:20];
-//        if([verifyPasswordField.text isEqualToString:searchStr]) {
-//            theTextField.validationStatus = FormValidatingTextFieldStatusValid;
-//            theTextField.layer.borderColor = ([[[FormTextField alloc] init] validColor]).CGColor;
-//            theTextField.rightView = theTextField.imageViewForValidStatus;
-//            
-//        }
-//        else {
-//            theTextField.validationStatus = FormValidatingTextFieldStatusInvalid;
-//            theTextField.layer.borderColor = ([[[FormTextField alloc] init] invalidColor]).CGColor;
-//            theTextField.rightView = theTextField.imageViewForInvalidStatus;
-//        }
-//    }
-
-    
+    else if(textField.tag == 10 && ((FormTextField*) [self.view viewWithTag:20]).validationStatus == FormValidatingTextFieldStatusInvalid && [searchStr isEqualToString:((FormTextField*)[self.view viewWithTag:20]).text]) {
+        [(FormTextField*) [self.view viewWithTag:20] setValidationStatus:FormValidatingTextFieldStatusValid];
+    }
     return YES;
 }
+
+
+-(void) textFieldDidBeginEditing:(FormTextField *)textField {
+    if(textField.tag == 10 || textField.tag == 20) {
+        [textField setText:@""];
+        textField.validationStatus = FormValidatingTextFieldStatusIndeterminate;
+    }
+    
+    if(textField.tag == 10 && ((FormTextField*) [self.view viewWithTag:20]).validationStatus == FormValidatingTextFieldStatusValid) {
+        [(FormTextField*) [self.view viewWithTag:20] setValidationStatus:FormValidatingTextFieldStatusInvalid];
+    }
+}
+
+
+
 
 - (void) flipHiddenStatus:(BOOL)status {
     SignUpButton.hidden = status;
