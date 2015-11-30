@@ -150,6 +150,14 @@
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
 
+    BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
+    
+    if(areAllFieldsValid) {
+        NSLog(@"all valid");
+    }
+    else {
+        NSLog(@"not valid");
+    }
     
 //    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
 //    gameScore[@"score"] = @1337;
@@ -163,6 +171,19 @@
 //            [self displayError:error];
 //        }
 //    }];
+}
+
+- (BOOL) checkIfAllFieldsAreValid {
+    for(int i = 0; i < 5; i++) {
+        if([self.LoginSignUpForm.arrangedSubviews[i] isKindOfClass:[FormTextField class]]) {
+            FormTextField *currentTextField = self.LoginSignUpForm.arrangedSubviews[i];
+            if(currentTextField.validationStatus != FormValidatingTextFieldStatusValid) {
+                return NO;
+            }
+        }
+    }
+    return YES;
+
 }
 
 - (void) signIn:(UIButton*)sender {
