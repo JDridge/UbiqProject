@@ -155,24 +155,45 @@
     
     if(areAllFieldsValid) {
         NSLog(@"all valid");
+        
+        //Sample of how to add into Parse Database
+        //TODO - Retrieve from database to see if there's a duplicate email in the Users table.
+        //TODO - Salt/Hash the password before sending it over.
+        PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
+        gameScore[@"score"] = @1337;
+        gameScore[@"playerName"] = @"hi";
+        [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"success");
+                // The object has been saved.
+            } else {
+                [self displayError:error];
+            }
+        }];
+    }
+    else {
+        //TODO - Shake relevant text boxes that are not valid
+        //TODO - Possibly change the focus to the first non-valid text field?
+        NSLog(@"not valid");
+    }
+}
+
+
+- (void) signIn:(UIButton*)sender {
+    NSLog(@"Signing in...");
+    
+    BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
+    
+    //TODO - Check if fields are valid. If valid, check if email exists and password+salt+hash matches.
+    //TODO - Have a remember me box?
+    if(areAllFieldsValid) {
+        NSLog(@"all valid");
     }
     else {
         NSLog(@"not valid");
     }
-    
-    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
-    gameScore[@"score"] = @1337;
-    gameScore[@"playerName"] = @123;
-    gameScore[@"ragisuvhfds"] = @"maybe";
-    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"success");
-            // The object has been saved.
-        } else {
-            [self displayError:error];
-        }
-    }];
 }
+
 
 - (BOOL) checkIfAllFieldsAreValid {
     for(int i = 0; i < [LoginSignUpForm.arrangedSubviews count]; i++) {
@@ -184,19 +205,6 @@
         }
     }
     return YES;
-}
-
-- (void) signIn:(UIButton*)sender {
-    NSLog(@"Signing in...");
-    
-    BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
-    
-    if(areAllFieldsValid) {
-        NSLog(@"all valid");
-    }
-    else {
-        NSLog(@"not valid");
-    }
 }
 
 - (void) backButtonTouched:(UIButton*)sender {
