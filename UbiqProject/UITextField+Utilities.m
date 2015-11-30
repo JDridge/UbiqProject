@@ -30,12 +30,12 @@
     newPasswordTextField.returnKeyType = UIReturnKeyDone;
     newPasswordTextField.secureTextEntry = YES;
     
-//    if([passwordField isEqualToString:@"Password"]) {
-//        newPasswordTextField.validationType = FormValidatingTextFieldTypePassword;
-//    }
-//    else {
-//        newPasswordTextField.validationType = FormValidatingTextFieldTypeNothing;
-//    }
+    if([passwordField isEqualToString:@"Password"]) {
+        newPasswordTextField.validationType = FormValidatingTextFieldTypePassword;
+    }
+    else {
+        newPasswordTextField.validationType = FormValidatingTextFieldTypeNothing;
+    }
     
     return newPasswordTextField;
 }
