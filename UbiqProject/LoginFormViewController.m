@@ -10,6 +10,7 @@
 #import "UITextField+Utilities.h"
 #import "UIButton+Utilities.h"
 #import "FormTextField.h"
+#import <Parse/Parse.h>
 
 @implementation LoginFormViewController
 
@@ -159,18 +160,18 @@
         NSLog(@"not valid");
     }
     
-//    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
-//    gameScore[@"score"] = @1337;
-//    gameScore[@"playerName"] = @123;
-//    gameScore[@"ragisuvhfds"] = @"maybe";
-//    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (succeeded) {
-//            NSLog(@"success");
-//            // The object has been saved.
-//        } else {
-//            [self displayError:error];
-//        }
-//    }];
+    PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
+    gameScore[@"score"] = @1337;
+    gameScore[@"playerName"] = @123;
+    gameScore[@"ragisuvhfds"] = @"maybe";
+    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"success");
+            // The object has been saved.
+        } else {
+            [self displayError:error];
+        }
+    }];
 }
 
 - (BOOL) checkIfAllFieldsAreValid {
