@@ -141,21 +141,9 @@
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
-				E1CE8FBC1C0529EA000A9EE9 /* libsqlite3.tbd */,
-				E1CE8FBA1C0529E3000A9EE9 /* libz.tbd */,
-				E1CE8FB81C0529DD000A9EE9 /* SystemConfiguration.framework */,
-				E1CE8FB61C0529D7000A9EE9 /* StoreKit.framework */,
-				E1CE8FB41C0529D0000A9EE9 /* Security.framework */,
-				E1CE8FB21C0529C8000A9EE9 /* QuartzCore.framework */,
-				E1CE8FB01C0529BA000A9EE9 /* CoreGraphics.framework */,
-				E1CE8FAE1C0529B5000A9EE9 /* CFNetwork.framework */,
-				E1CE8FAC1C0529AE000A9EE9 /* AudioToolbox.framework */,
+				E1FD713A1C0C0A51007245D3 /* Frameworks */,
 				E13DE0451BFACE73000C9C30 /* .gitignore */,
 				E1DF867B1BF10FED00935996 /* README.md */,
-				E1CE8FA81C05298D000A9EE9 /* Bolts.framework */,
-				E1CE8FA91C05298D000A9EE9 /* Parse.framework */,
-				E1F593611BD4E36A00CC612D /* CoreLocation.framework */,
-				E1F5935F1BD4D4EF00CC612D /* MapKit.framework */,
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
 				D4F2B9251BBF12EE007F6955 /* UbiqProjectTests */,
 				D4F2B90A1BBF12EE007F6955 /* Products */,
@@ -224,6 +212,26 @@
 				E1D89D761BF3B43000587796 /* MapViewControllerTest.m */,
 			);
 			path = UbiqProjectTests;
+			sourceTree = "<group>";
+		};
+		E1FD713A1C0C0A51007245D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1CE8FBC1C0529EA000A9EE9 /* libsqlite3.tbd */,
+				E1CE8FBA1C0529E3000A9EE9 /* libz.tbd */,
+				E1CE8FB81C0529DD000A9EE9 /* SystemConfiguration.framework */,
+				E1CE8FB61C0529D7000A9EE9 /* StoreKit.framework */,
+				E1CE8FB41C0529D0000A9EE9 /* Security.framework */,
+				E1CE8FB21C0529C8000A9EE9 /* QuartzCore.framework */,
+				E1CE8FB01C0529BA000A9EE9 /* CoreGraphics.framework */,
+				E1CE8FAE1C0529B5000A9EE9 /* CFNetwork.framework */,
+				E1CE8FAC1C0529AE000A9EE9 /* AudioToolbox.framework */,
+				E1CE8FA81C05298D000A9EE9 /* Bolts.framework */,
+				E1CE8FA91C05298D000A9EE9 /* Parse.framework */,
+				E1F593611BD4E36A00CC612D /* CoreLocation.framework */,
+				E1F5935F1BD4D4EF00CC612D /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
