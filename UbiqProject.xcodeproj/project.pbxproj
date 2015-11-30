@@ -29,7 +29,6 @@
 		E1DF867C1BF10FED00935996 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1DF867B1BF10FED00935996 /* README.md */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
-		E1FD713C1C0C2602007245D3 /* Frameworks in Resources */ = {isa = PBXBuildFile; fileRef = E1FD713B1C0C2602007245D3 /* Frameworks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E1F5935C1BD4A7F100CC612D /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
 		E1F5935D1BD4A7F100CC612D /* Query.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Query.m; sourceTree = "<group>"; };
-		E1FD713B1C0C2602007245D3 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frameworks; path = UbiqProject/Frameworks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +102,6 @@
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
-				E1FD713B1C0C2602007245D3 /* Frameworks */,
 				E13DE0451BFACE73000C9C30 /* .gitignore */,
 				E1DF867B1BF10FED00935996 /* README.md */,
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
@@ -264,7 +261,6 @@
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
-				E1FD713C1C0C2602007245D3 /* Frameworks in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
