@@ -19,7 +19,9 @@
 + (FormTextField *)createEmailAddressTextField {
     FormTextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Email Address"];
     newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    newEmailAddressTextField.validationType = FormValidatingTextFieldTypeEmail;
+    newEmailAddressTextField.validationRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$" options:NSRegularExpressionCaseInsensitive error:NULL];
+    newEmailAddressTextField.returnKeyType = UIReturnKeyNext;
+    newEmailAddressTextField.delegate = (id <UITextFieldDelegate>) self;
     
     return newEmailAddressTextField;
 }
@@ -29,6 +31,7 @@
     newPasswordTextField.keyboardType = UIKeyboardTypeDefault;
     newPasswordTextField.returnKeyType = UIReturnKeyDone;
     newPasswordTextField.secureTextEntry = YES;
+    newPasswordTextField.delegate = (id <UITextFieldDelegate>) self;
     
     if([passwordField isEqualToString:@"Password"]) {
         newPasswordTextField.validationType = FormValidatingTextFieldTypePassword;
@@ -44,9 +47,10 @@
     FormTextField *nameTextField = [self createGenericTextFieldWithPlaceholder:name];
     nameTextField.keyboardType = UIKeyboardTypeDefault;
     nameTextField.placeholder = name;
-    nameTextField.returnKeyType = UIReturnKeyDone;
+    nameTextField.returnKeyType = UIReturnKeyNext;
     nameTextField.validationType = FormValidatingTextFieldTypeName;
-
+    nameTextField.delegate = (id <UITextFieldDelegate>) self;
+    
     return nameTextField;
 }
 
