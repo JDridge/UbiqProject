@@ -118,12 +118,16 @@
     
     UITextField *firstNameTextField = [UITextField createNameTextField:@"First Name"];
     [firstNameTextField becomeFirstResponder];
+    firstNameTextField.delegate = self;
+    
     [LoginSignUpForm addArrangedSubview:firstNameTextField];
 
     UITextField *lastNameTextField = [UITextField createNameTextField:@"Last Name"];
+    lastNameTextField.delegate = self;
     [LoginSignUpForm addArrangedSubview:lastNameTextField];
 
     UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
+    emailAddressTextField.delegate = self;
     [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
     UITextField *passwordTextField = [UITextField createPasswordTextField:@"Password"];
@@ -159,15 +163,14 @@
         //Sample of how to add into Parse Database
         //TODO - Retrieve from database to see if there's a duplicate email in the Users table.
         //TODO - Salt/Hash the password before sending it over.
-        PFObject *gameScore = [PFObject objectWithClassName:@"GameTable"];
-        gameScore[@"score"] = @1337;
-        gameScore[@"playerName"] = @"hi";
-        [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                NSLog(@"success");
-                // The object has been saved.
+        PFUser *user = [PFUser user];
+        user.username = @"hi";
+        user.password = @"whatisthis";
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                NSLog(@"no error!!!");
             } else {
-                [self displayError:error];
+                NSLog(@"already username");
             }
         }];
     }
@@ -181,6 +184,20 @@
 
 - (void) signIn:(UIButton*)sender {
     NSLog(@"Signing in...");
+    
+    [PFUser logInWithUsernameInBackground:@"hi"
+                                 password:@"whatisthis" block:^(PFUser *user, NSError *error)
+     {
+         if (!error) {
+             NSLog(@"no error");
+             //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
+         } else {
+             NSLog(@"ERROR");
+             // The login failed. Check error to see why.
+         }
+     }];
+    
+    
     
     BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
     
@@ -242,7 +259,26 @@
 //TODO - Make hitting the 'done' key (on password field) to submit the form.
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
 
-        [theTextField resignFirstResponder];
+    FormTextField* testingergnisdf = self.LoginSignUpForm.arrangedSubviews[1];
+    if([testingergnisdf canBecomeFirstResponder]) {
+        [self.LoginSignUpForm.arrangedSubviews[1] becomeFirstResponder];
+        NSLog(@"hi");
+    }
+    else {
+        NSLog(@"no no");
+    }
+//    canBecomeFirstResponder
+//    [NSThread sleepForTimeInterval:2.0f];
+//
+//    [testingergnisdf becomeFirstResponder];
+    
+//    if([theTextField.placeholder isEqualToString:@"First Name"]) {
+//        [theTextField resignFirstResponder];
+//        [(FormTextField*)self.LoginSignUpForm.arrangedSubviews[1] becomeFirstResponder];
+//    }
+    
+    
+        //[theTextField resignFirstResponder];
     
 //    if (theTextField == self.textPassword) {
 //        [theTextField resignFirstResponder];
@@ -251,6 +287,8 @@
 //    }
     return YES;
 }
+
+
 
 
 - (BOOL)textField:(FormTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -282,9 +320,6 @@
         [(FormTextField*) [self.view viewWithTag:20] setValidationStatus:FormValidatingTextFieldStatusInvalid];
     }
 }
-
-
-
 
 - (void) flipHiddenStatus:(BOOL)status {
     SignUpButton.hidden = status;
