@@ -154,23 +154,21 @@
 
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
-
-    BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
     
-    if(areAllFieldsValid) {
+    if([self checkIfAllFieldsAreValid]) {
         NSLog(@"all valid");
-        
-        //Sample of how to add into Parse Database
-        //TODO - Retrieve from database to see if there's a duplicate email in the Users table.
-        //TODO - Salt/Hash the password before sending it over.
         PFUser *user = [PFUser user];
-        user.username = @"hi";
-        user.password = @"whatisthis";
+        user.username = ((FormTextField*) LoginSignUpForm.arrangedSubviews[2]).text;
+        user.password = ((FormTextField*) LoginSignUpForm.arrangedSubviews[3]).text;
+        user.email = ((FormTextField*) LoginSignUpForm.arrangedSubviews[2]).text;
+        user[@"firstName"] = ((FormTextField*) LoginSignUpForm.arrangedSubviews[0]).text;
+        user[@"lastName"] = ((FormTextField*) LoginSignUpForm.arrangedSubviews[1]).text;
+        
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"no error!!!");
             } else {
-                NSLog(@"already username");
+                [self displayError:error];
             }
         }];
     }
@@ -185,30 +183,22 @@
 - (void) signIn:(UIButton*)sender {
     NSLog(@"Signing in...");
     
-    [PFUser logInWithUsernameInBackground:@"hi"
-                                 password:@"whatisthis" block:^(PFUser *user, NSError *error)
-     {
-         if (!error) {
-             NSLog(@"no error");
-             //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
-         } else {
-             NSLog(@"ERROR");
-             // The login failed. Check error to see why.
-         }
-     }];
-    
-    
-    
-    BOOL areAllFieldsValid = [self checkIfAllFieldsAreValid];
-    
-    //TODO - Check if fields are valid. If valid, check if email exists and password+salt+hash matches.
-    //TODO - Have a remember me box?
-    if(areAllFieldsValid) {
-        NSLog(@"all valid");
+    if([self checkIfAllFieldsAreValid]) {
+        [PFUser logInWithUsernameInBackground:((FormTextField*) LoginSignUpForm.arrangedSubviews[0]).text
+                                     password:((FormTextField*) LoginSignUpForm.arrangedSubviews[1]).text
+                                        block:^(PFUser *user, NSError *error) {
+                                            if (!error) {
+                                                NSLog(@"no error");
+                                                //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
+                                            } else {
+                                                [self displayError:error];
+                                            }
+                                        }];
     }
     else {
-        NSLog(@"not valid");
+        NSLog(@"all fields are not valid!");
     }
+    
 }
 
 
