@@ -173,9 +173,8 @@
         }];
     }
     else {
-        //TODO - Shake relevant text boxes that are not valid
-        //TODO - Possibly change the focus to the first non-valid text field?
-        NSLog(@"not valid");
+        [self findAllInvalidFormsThenDisplayErrorNotification];
+        NSLog(@"all fields are not valid!");
     }
 }
 
@@ -196,11 +195,58 @@
                                         }];
     }
     else {
-        NSLog(@"all fields are not valid!");
+        [self findAllInvalidFormsThenDisplayErrorNotification];
     }
     
 }
 
+//change?
+- (void) findAllInvalidFormsThenDisplayErrorNotification {
+    NSMutableArray *invalidViews = [NSMutableArray array];
+    for(int i = 0; i < [LoginSignUpForm.arrangedSubviews count]; i++) {
+        if([LoginSignUpForm.arrangedSubviews[i] isKindOfClass:[FormTextField class]] &&
+           ((FormTextField*)LoginSignUpForm.arrangedSubviews[i]).validationStatus != FormValidatingTextFieldStatusValid) {
+            [invalidViews addObject:((FormTextField*)LoginSignUpForm.arrangedSubviews[i])];
+        }
+    }
+    [self displayInvalidFormsFor:invalidViews];
+}
+
+- (void) displayInvalidFormsFor:(NSArray*)invalidViews {
+    NSString *stringToDisplay = @"The following fields are invalid:";
+    
+    for(int i = 0; i < [invalidViews count]; i++) {
+        if([invalidViews count] == 1) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ %@!", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
+        }
+    
+        if(i == [invalidViews count] - 1) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ and %@!", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
+        }
+        else {
+            stringToDisplay = [NSString stringWithFormat:@"%@ %@,", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
+        }
+    }
+
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Error"
+                                message:stringToDisplay
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay 🙃"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    
+    [(FormTextField*)invalidViews[0] becomeFirstResponder];
+
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
 
 - (BOOL) checkIfAllFieldsAreValid {
     for(int i = 0; i < [LoginSignUpForm.arrangedSubviews count]; i++) {
