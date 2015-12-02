@@ -166,7 +166,7 @@
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                NSLog(@"no error!!!");
+                [self displaySuccessfulLogin:user];
             } else {
                 [self displayError:error];
             }
@@ -174,10 +174,28 @@
     }
     else {
         [self findAllInvalidFormsThenDisplayErrorNotification];
-        NSLog(@"all fields are not valid!");
     }
 }
 
+- (void) displaySuccessfulLogin:(PFUser*)userToGreet {
+    NSString *greetingMessage = [NSString stringWithFormat:@"Welcome %@ %@!", userToGreet[@"firstName"], userToGreet[@"lastName"]];
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Greetings"
+                                message:greetingMessage
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
 
 - (void) signIn:(UIButton*)sender {
     NSLog(@"Signing in...");
@@ -188,7 +206,7 @@
                                         block:^(PFUser *user, NSError *error) {
                                             if (!error) {
                                                 NSLog(@"no error");
-                                                //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
+                                                [self displaySuccessfulLogin:user];
                                             } else {
                                                 [self displayError:error];
                                             }
@@ -200,7 +218,6 @@
     
 }
 
-//change?
 - (void) findAllInvalidFormsThenDisplayErrorNotification {
     NSMutableArray *invalidViews = [NSMutableArray array];
     for(int i = 0; i < [LoginSignUpForm.arrangedSubviews count]; i++) {
