@@ -4,6 +4,7 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 
+
 @interface HomeViewController () 
 @end
 
@@ -46,17 +47,8 @@
     }
     
 }
-
 - (void) createStackView {
-    /*
-     *
-     * LOOK HERE CHRIS
-     *
-     *
-     *
-     * hi
-     */
-
+    
     for(int i = 1; i <= 2; i++) {
         textFieldTagNumber = i;
         UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 70)];
@@ -74,6 +66,8 @@
     textFieldTagNumber = 0;
 }
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -81,53 +75,87 @@
 # warning Find a way to prevent the user from spamming the "Converge" button.
 - (IBAction)ConvergeLocations:(id)sender {
     
-    [self disableFocusFromAllTextFields];
+    int sizeOfAllLocation;
+    sizeOfAllLocation = 2 + textFieldTagNumber;
     Query *setUpQueryToPass = [[Query alloc] init];
     isValidTextField = YES;
-    [self validateTextField:FirstLocation];
-    [self validateTextField:SecondLocation];
     
-    if(locationFound == NO && [FirstLocationSwitch isOn]) {
-        [self displayLocationCouldNotBeFoundAlert];
+    for(int i = 0; i < sizeOfAllLocation; i++){
+        [self validateTextField: allLocations.arrangedSubviews[i]];
     }
-    else if (isValidTextField) {
-        
-        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
+    
+    if (isValidTextField) {
+        NSMutableArray *locationsToPassRepresentedAsCoordinates = [[NSMutableArray alloc] init];
         setUpQueryToPass.locations = [[NSMutableArray alloc] init];
         setUpQueryToPass.category = SearchCategory.text;
         
-        //If the switch is turned on, the location is found, and the second location text field is a valid location.
-        if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
-            [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
-            queryToPass = setUpQueryToPass;
-            [self performSegueWithIdentifier:@"mapVC" sender:nil];
-            
+        //when all are valid
+        for (int i = 0; i < sizeOfAllLocation; i++) {
+            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:((UITextField*) allLocations.arrangedSubviews[i]).text]];
         }
-        //If the first and second location text fields are valid locations.
-        else if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry:SecondLocation.text]) {
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
-            queryToPass = setUpQueryToPass;
-            [self performSegueWithIdentifier:@"mapVC" sender:nil];
-        }
-        //Shouldn't reach here. But it is possible, I guess.
-        else {
-            [self displayErrorForUnableToConverge];
-        }
+        
+        //send to map vc
+        setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+        queryToPass = setUpQueryToPass;
+        [self performSegueWithIdentifier:@"mapVC" sender:nil];
+
+        
+    }else{
+        [self displayLocationCouldNotBeFoundAlert];
     }
-    else {
-        [self displayErrorForUnableToConverge];
-    }
+    
+    
+    
+    
+    
+    
+//    [self disableFocusFromAllTextFields];
+//    Query *setUpQueryToPass = [[Query alloc] init];
+//    isValidTextField = YES;
+//    
+//    [self validateTextField:FirstLocation];
+//    [self validateTextField:SecondLocation];
+//    
+//    if(locationFound == NO && [FirstLocationSwitch isOn]) {
+//        [self displayLocationCouldNotBeFoundAlert];
+//    }
+//    else if (isValidTextField) {
+//        
+//        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
+//        setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+//        setUpQueryToPass.category = SearchCategory.text;
+//        
+//        //If the switch is turned on, the location is found, and the second location text field is a valid location.
+//        if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
+//            [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
+//            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+//            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+//            queryToPass = setUpQueryToPass;
+//            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+//            
+//        }
+//        //If the first and second location text fields are valid locations.
+//        else if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry:SecondLocation.text]) {
+//            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
+//            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+//            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+//            queryToPass = setUpQueryToPass;
+//            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+//        }
+//        //Shouldn't reach here. But it is possible, I guess.
+//        else {
+//            [self displayErrorForUnableToConverge];
+//        }
+//    }
+//    else {
+//        [self displayErrorForUnableToConverge];
+//    }
 }
 
 - (IBAction)addButton:(id)sender {
     NSLog(@"%i", textFieldTagNumber);
     if(textFieldTagNumber < 2) {
         textFieldTagNumber++;
-        
         [UIView animateWithDuration:0.25 animations:^{
             UITextField *textFieldToAdd = [[UITextField alloc] initWithFrame:CGRectMake(10, 200, 500, 70)];
             textFieldToAdd.borderStyle = UITextBorderStyleRoundedRect;
@@ -149,13 +177,12 @@
 
 - (IBAction)removeButton:(id)sender {
     NSLog(@"%i", textFieldTagNumber);
-    
     if(textFieldTagNumber > 0) {
         [UIView animateWithDuration:0.25 animations:^{
             UIView * firstView = self.allLocations.arrangedSubviews[textFieldTagNumber];
-            firstView.hidden = YES;
+            [firstView removeFromSuperview];
         }];
-        textFieldTagNumber = textFieldTagNumber - 1;
+        textFieldTagNumber --;
     }
     else {
         NSLog(@"cant remove anymore :(");
