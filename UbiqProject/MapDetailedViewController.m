@@ -9,6 +9,7 @@
 #import "MapDetailedViewController.h"
 #import "YPAPISample.h"
 
+
 @interface MapDetailedViewController ()
 
 @end
@@ -61,10 +62,20 @@
                 //TODO - set labels for result
                 
                 NSLog(@"Top business info: \n %@", topBusinessJSON);
-                
+                nameLabel.text = [topBusinessJSON objectForKey:@"name"];
+                phoneLabel.text = [topBusinessJSON objectForKey:@"phone"];
+                //addressLabel.text =  [[[topBusinessJSON objectForKey:@"location"] objectAtIndex:0] objectForKey:@"display_address"];
+                reviewCountLabel.text = [NSString stringWithFormat:@"%i", [[topBusinessJSON objectForKey:@"review_count"] intValue]];
+             
+               
+             
+                yelpURL =[topBusinessJSON objectForKey:@"url"];
                 //po [topBusinessJSON objectForKey:@"url"]
 
                 
+             
+            
+             
                 
             } else {
                 NSLog(@"No business was found");
