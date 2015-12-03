@@ -5,6 +5,7 @@
 #import "SearchCustomAnnotation.h"
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
+#import "MapDetailedViewController.h"
 
 @interface MapViewController ()
 
@@ -31,13 +32,13 @@
 
 - (void) createTheCustomAnnotations {
     
-    //    for (int i = 0; i < numberOfLocations; i++) {
-    //        CustomAnnotation *thisCustomAnnotation = [[CustomAnnotation alloc] init];
-    //        CLLocationCoordinate2D thisLocationPlacemark = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:i]];
-    //        thisCustomAnnotation.name = [NSString stringWithFormat:@"%i", i];
-    //        thisCustomAnnotation.coordinate = thisLocationPlacemark;
-    //        [ConvergeMapView addAnnotation:thisCustomAnnotation];
-    //    }
+//        for (int i = 0; i < numberOfLocations; i++) {
+//            CustomAnnotation *thisCustomAnnotation = [[CustomAnnotation alloc] init];
+//            CLLocationCoordinate2D thisLocationPlacemark = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:i]];
+//            thisCustomAnnotation.name = [NSString stringWithFormat:@"%i", i];
+//            thisCustomAnnotation.coordinate = thisLocationPlacemark;
+//            [ConvergeMapView addAnnotation:thisCustomAnnotation];
+//        }
     
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
     CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
@@ -189,6 +190,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    MapDetailedViewController *vc = [segue destinationViewController];
+    vc.pinLocation = ((MKAnnotationView *)sender).annotation;
+    vc.category = queryToShow.category;
     
 }
 
@@ -212,7 +216,7 @@
         
         [self presentViewController:alert animated:YES completion:nil];
         
-    } else if ([view.annotation isKindOfClass:[SearchCustomAnnotation class]]) 
+    } else if ([view.annotation isKindOfClass:[SearchCustomAnnotation class]])
         [self performSegueWithIdentifier:@"MapDetailedVC" sender:view];
     else
          NSLog(@"Balls!!!");

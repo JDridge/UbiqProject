@@ -7,6 +7,7 @@
 //
 
 #import "MapDetailedViewController.h"
+#import "YPAPISample.h"
 
 @interface MapDetailedViewController ()
 
@@ -14,16 +15,47 @@
 
 @implementation MapDetailedViewController
 
+@synthesize nameLabel, phoneLabel, addressLabel, reviewCountLabel, urlImage, ratingImage, category, pinLocation, yelpURL;
+
 - (void)viewDidLoad {
-    NSString *pathToApiKeys = [[NSBundle mainBundle] pathForResource: @"APIKeys" ofType: @"plist"];
-    if([[NSFileManager defaultManager] fileExistsAtPath:pathToApiKeys]) {
-        NSLog(@"APIKeys.plist is found.");
-        NSDictionary *allKeys = [NSDictionary dictionaryWithContentsOfFile:pathToApiKeys];
-        NSString *yelpApiKey = [allKeys objectForKey:@"Yelp API Key"];
+    
+    @autoreleasepool {
+        NSString *defaultTerm = category;
+        NSString *defaultCoordinates = [NSString stringWithFormat:@"%f,%f", pinLocation.coordinate.latitude, pinLocation.coordinate.longitude];
+    
+        //Get the term and location from the command line if there were any, otherwise assign default values.
+        NSString *term = [[NSUserDefaults standardUserDefaults] valueForKey:@"term"] ?: defaultTerm;
+        NSString *ll = [[NSUserDefaults standardUserDefaults] valueForKey:@"ll"] ?: defaultCoordinates;
+        
+        
+        YPAPISample *APISample = [[YPAPISample alloc] init];
+        
+        dispatch_group_t requestGroup = dispatch_group_create();
+        
+        dispatch_group_enter(requestGroup);
+        [APISample queryTopBusinessInfoForTerm:term ll:ll completionHandler:^(NSDictionary *topBusinessJSON, NSError *error) {
+            
+            if (error) {
+                NSLog(@"An error happened during the request: %@", error);
+            } else if (topBusinessJSON) {
+                //TODO - assign yelpURL
+                //TODO - set labels for result
+                
+                NSLog(@"Top business info: \n %@", topBusinessJSON);
+                
+                //po [topBusinessJSON objectForKey:@"url"]
+
+                
+                
+            } else {
+                NSLog(@"No business was found");
+            }
+            
+            dispatch_group_leave(requestGroup);
+        }];
+        dispatch_group_wait(requestGroup, DISPATCH_TIME_FOREVER); // This avoids the program exiting before all our asynchronous callbacks have been made.
     }
-    else {
-        NSLog(@"APIKeys.plist missing!");
-    }
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -33,14 +65,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#warning DO THIS
+- (IBAction)backButtonTouched:(id)sender {
+    //dismiss modal (google it)
 }
-*/
+
+- (IBAction)openInYelpButtonTouched:(id)sender {
+    [self maybeDoSomethingWithYelp];
+}
+
+- (BOOL)isYelpInstalled {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"yelp5.3:"]];
+}
+
+- (void)maybeDoSomethingWithYelp {
+    if ([self isYelpInstalled]) {
+        NSString *yelpStringFormat = @"yelp5.3://";
+        yelpStringFormat = [NSString stringWithFormat:@"%@%@", yelpStringFormat, [yelpURL substringFromIndex:18]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:yelpStringFormat]];
+        
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:yelpURL]];
+    }
+}
+
 
 @end
