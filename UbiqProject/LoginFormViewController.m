@@ -11,20 +11,25 @@
 #import "UIButton+Utilities.h"
 #import "FormTextField.h"
 #import <Parse/Parse.h>
+#import "HomeViewController.h" 
 
 @implementation LoginFormViewController
 
 @synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel, backgroundVideo;
 
-- (void)viewDidLoad {
-    if(![PFUser currentUser]) {
-        //login screen
-        NSLog(@"going to login screen");
-    }
-    else {
-        [self performSegueWithIdentifier:@"homeVC" sender:self];
-    }
+-(void) transitionToHomeViewController {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
     
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        HomeViewController *detailViewController = (HomeViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"homeVC"];
+        [self presentViewController:detailViewController animated:YES completion:nil];
+        [[[self parentViewController] parentViewController] dismissViewControllerAnimated:YES completion:nil];
+
+    });
+}
+
+- (void)viewDidLoad {
+
     [super viewDidLoad];
     [self playVideo];
     [self setupLabelsAndButtonsOnStart];
@@ -162,6 +167,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSLog(@"hi");
+    //HomeViewController *vc = [segue destinationViewController];
+    
 }
 
 
@@ -179,9 +186,8 @@
         
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [self displaySuccessfulLogin:user];
-                [self performSegueWithIdentifier:@"homeVC" sender:self];
-
+                //[self displaySuccessfulLogin:user];
+                [self transitionToHomeViewController];
             } else {
                 [self displayError:error];
             }
@@ -221,8 +227,8 @@
                                         block:^(PFUser *user, NSError *error) {
                                             if (!error) {
                                                 NSLog(@"no error");
-                                                [self displaySuccessfulLogin:user];
-                                                [self performSegueWithIdentifier:@"homeVC" sender:self];
+                                                //[self displaySuccessfulLogin:user];
+                                                [self transitionToHomeViewController];
                                             } else {
                                                 [self displayError:error];
                                             }
