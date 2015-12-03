@@ -16,5 +16,8 @@
 - (void) loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D) halfwayCoordinates;
 - (CLLocationCoordinate2D)locationPlacemarkCoordinatesFactoryMethod:(id)locationCoordinates;
 - (CLLocationCoordinate2D)getHalfwayCoordinates:(NSArray*)allLocations numberOfLocations:(int)locationsCount;
+- (MKCoordinateSpan)filterDistance:(double)distance inUnitsOf:(NSString *)metricUnit;
+- (double)convertMilesToDegrees:(double)miles;
+- (double)convertKilometersToDegrees:(double)kilometers;
 
 @end

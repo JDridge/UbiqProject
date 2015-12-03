@@ -36,20 +36,22 @@
 }
 
 - (MKAnnotationView*) annotationView {
-    MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Custom Annotation"];
+    MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"CustomAnnotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
     
     //Custom pin image
     annotationView.image = [UIImage imageNamed:@"halfwayarrow"];
+    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
     
     //Setting up the right callout button
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     //The right callout button is the halfwayarrow for now.
-    UIImage *buttonImage = [UIImage imageNamed:@"halfwayarrow"];
-    [rightButton setImage:buttonImage forState:UIControlStateNormal];
-    annotationView.rightCalloutAccessoryView = rightButton;
+//    UIImage *buttonImage = [UIImage imageNamed:@"halfwayarrow"];
+//    [rightButton setImage:buttonImage forState:UIControlStateNormal];
+//    annotationView.rightCalloutAccessoryView = rightButton;
 
     return annotationView;
 }
