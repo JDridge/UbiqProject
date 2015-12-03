@@ -232,7 +232,7 @@
 - (void) displayInvalidFormsFor:(NSArray*)invalidViews {
     NSString *stringToDisplay = @"The following fields are invalid:";
     
-    for(int i = 0; i < [invalidViews count]; i++) {
+    for(int i = 0; i < MAX([invalidViews count], 0); i++) {
         if([invalidViews count] == 1) {
             stringToDisplay = [NSString stringWithFormat:@"%@ %@!", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
         }
@@ -312,14 +312,16 @@
 //TODO - Make hitting the 'done' key (on password field) to submit the form.
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
 
-    FormTextField* testingergnisdf = self.LoginSignUpForm.arrangedSubviews[1];
-    if([testingergnisdf canBecomeFirstResponder]) {
-        [self.LoginSignUpForm.arrangedSubviews[1] becomeFirstResponder];
-        NSLog(@"hi");
-    }
-    else {
-        NSLog(@"no no");
-    }
+    [theTextField resignFirstResponder];
+    
+//    FormTextField* testingergnisdf = self.LoginSignUpForm.arrangedSubviews[1];
+//    if([testingergnisdf canBecomeFirstResponder]) {
+//        [self.LoginSignUpForm.arrangedSubviews[1] becomeFirstResponder];
+//        NSLog(@"hi");
+//    }
+//    else {
+//        NSLog(@"no no");
+//    }
 //    canBecomeFirstResponder
 //    [NSThread sleepForTimeInterval:2.0f];
 //
