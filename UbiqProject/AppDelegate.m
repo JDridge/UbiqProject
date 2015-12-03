@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "HomeViewController.h"
+#import "LoginFormViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,9 +19,50 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
     // Override point for customization after application launch.
+
+    
+#warning ADD PARSE MATERIAL HERE
+    
+    if(![PFUser currentUser]) {
+        //login screen
+        NSLog(@"going to login screen");
+        //[self transitionToLoginViewController];
+    }
+    else {
+        NSLog(@"current user!");
+        [self transitionToHomeViewController];
+        //   [self transitionToHomeViewController];
+    }
+    
+    
+    
     return YES;
 }
+
+-(void) transitionToLoginViewController {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginFormViewController *loginFormViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginVC"];
+        [self.window makeKeyAndVisible];
+        [self.window.rootViewController presentViewController:loginFormViewController animated:YES completion:NULL];
+        
+    });
+}
+
+-(void) transitionToHomeViewController {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        HomeViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
+        [self.window makeKeyAndVisible];
+        [self.window.rootViewController presentViewController:homeViewController animated:YES completion:NULL];
+
+    });
+}
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
