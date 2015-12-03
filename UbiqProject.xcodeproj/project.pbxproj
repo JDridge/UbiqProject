@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2037E5C1C06291900B9860B /* UserCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2037E5B1C06291900B9860B /* UserCustomAnnotation.m */; };
+		D2037E5F1C06293400B9860B /* SearchCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D2037E5E1C06293400B9860B /* SearchCustomAnnotation.m */; };
 		D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */; };
-		D424199ACE34474F1B6FEE21 /* libPods-UbiqProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3082746B2CFDBA0B00B5CF1F /* libPods-UbiqProject.a */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
@@ -39,9 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3080CB3EB1D818ED1377BF23 /* Pods-UbiqProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UbiqProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-UbiqProject/Pods-UbiqProject.release.xcconfig"; sourceTree = "<group>"; };
-		3082746B2CFDBA0B00B5CF1F /* libPods-UbiqProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UbiqProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C50218BF8879985446645394 /* Pods-UbiqProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UbiqProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UbiqProject/Pods-UbiqProject.debug.xcconfig"; sourceTree = "<group>"; };
+		D2037E5A1C06291900B9860B /* UserCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCustomAnnotation.h; sourceTree = "<group>"; };
+		D2037E5B1C06291900B9860B /* UserCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCustomAnnotation.m; sourceTree = "<group>"; };
+		D2037E5D1C06293400B9860B /* SearchCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCustomAnnotation.h; sourceTree = "<group>"; };
+		D2037E5E1C06293400B9860B /* SearchCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCustomAnnotation.m; sourceTree = "<group>"; };
 		D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailedViewController.h; sourceTree = "<group>"; };
 		D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailedViewController.m; sourceTree = "<group>"; };
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
@@ -80,7 +82,6 @@
 			files = (
 				E1F593621BD4E36A00CC612D /* CoreLocation.framework in Frameworks */,
 				E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */,
-				D424199ACE34474F1B6FEE21 /* libPods-UbiqProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,23 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0512150FC2D90A7966A88004 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3082746B2CFDBA0B00B5CF1F /* libPods-UbiqProject.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BD636DE1AC5A80A2733B8F0A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C50218BF8879985446645394 /* Pods-UbiqProject.debug.xcconfig */,
-				3080CB3EB1D818ED1377BF23 /* Pods-UbiqProject.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +105,6 @@
 				D4F2B90B1BBF12EE007F6955 /* UbiqProject */,
 				D4F2B9251BBF12EE007F6955 /* UbiqProjectTests */,
 				D4F2B90A1BBF12EE007F6955 /* Products */,
-				BD636DE1AC5A80A2733B8F0A /* Pods */,
-				0512150FC2D90A7966A88004 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +133,10 @@
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
 				D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */,
 				D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */,
+				D2037E5A1C06291900B9860B /* UserCustomAnnotation.h */,
+				D2037E5B1C06291900B9860B /* UserCustomAnnotation.m */,
+				D2037E5D1C06293400B9860B /* SearchCustomAnnotation.h */,
+				D2037E5E1C06293400B9860B /* SearchCustomAnnotation.m */,
 				D4F2B9151BBF12EE007F6955 /* Main.storyboard */,
 				E1F5935C1BD4A7F100CC612D /* Query.h */,
 				E1F5935D1BD4A7F100CC612D /* Query.m */,
@@ -187,12 +173,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F2B92B1BBF12EE007F6955 /* Build configuration list for PBXNativeTarget "UbiqProject" */;
 			buildPhases = (
-				61A169B62754B51224B15A77 /* Check Pods Manifest.lock */,
 				D4F2B9051BBF12EE007F6955 /* Sources */,
 				D4F2B9061BBF12EE007F6955 /* Frameworks */,
 				D4F2B9071BBF12EE007F6955 /* Resources */,
-				94C8789DAA7F512BF184D1B2 /* Embed Pods Frameworks */,
-				8C733A0B12A8502C3E47670B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -235,7 +218,7 @@
 				TargetAttributes = {
 					D4F2B9081BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = AJ63TV53BF;
+						DevelopmentTeam = G64BY3BAY5;
 					};
 					D4F2B9211BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -284,59 +267,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		61A169B62754B51224B15A77 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8C733A0B12A8502C3E47670B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UbiqProject/Pods-UbiqProject-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94C8789DAA7F512BF184D1B2 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UbiqProject/Pods-UbiqProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		D4F2B9051BBF12EE007F6955 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2037E5C1C06291900B9860B /* UserCustomAnnotation.m in Sources */,
 				E1F5935E1BD4A7F100CC612D /* Query.m in Sources */,
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
@@ -345,6 +281,7 @@
 				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
+				D2037E5F1C06293400B9860B /* SearchCustomAnnotation.m in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,29 +409,31 @@
 		};
 		D4F2B92C1BBF12EE007F6955 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C50218BF8879985446645394 /* Pods-UbiqProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		D4F2B92D1BBF12EE007F6955 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3080CB3EB1D818ED1377BF23 /* Pods-UbiqProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

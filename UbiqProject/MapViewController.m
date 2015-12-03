@@ -1,6 +1,8 @@
 #import "MapViewController.h"
 #import "Query.h"
 #import "CustomAnnotation.h"
+#import "UserCustomAnnotation.h"
+#import "SearchCustomAnnotation.h"
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
 
@@ -37,21 +39,24 @@
     //        [ConvergeMapView addAnnotation:thisCustomAnnotation];
     //    }
     
-    CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
-    CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
-    CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
-    
     CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
     CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
+    CLLocationCoordinate2D halfwayPlaceMarkCoordinates = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
     
-    firstCustomAnnotation.name = @"1";
-    secondCustomAnnotation.name = @"2";
-    halfwayCustomAnnotation.name = @"3";
+    CustomAnnotation *firstCustomAnnotation = [[UserCustomAnnotation alloc]
+                                               initWithTitleCoordinateSubtitle:@"Joseph"
+                                               Location:firstLocationPlacemarkCoordinates
+                                               subtitle:@"Joseph's address"];
     
-    firstCustomAnnotation.coordinate = firstLocationPlacemarkCoordinates;
-    secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
-    halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
+    CustomAnnotation *secondCustomAnnotation = [[UserCustomAnnotation alloc]
+                                                initWithTitleCoordinateSubtitle:@"Chris"
+                                                Location:secondLocationPlacemarkCoordinates
+                                                subtitle:@"Chris' address"];
     
+    CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc]
+                                                 initWithTitleCoordinateSubtitle:@"Halfway Point"
+                                                 Location:halfwayPlaceMarkCoordinates
+                                                 subtitle:@"Halfway address"];
     while(!didFinishLoading) {
         [self displayAnimationForLoading];
         [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
@@ -119,16 +124,14 @@
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = queryToShow.category;
     
-    //one degree of latitude is always approximately 111 kilometers (69 miles)
-    request.region = MKCoordinateRegionMake(halfwayCoordinates,
-                                            MKCoordinateSpanMake(0.00289855, 0.00289855));
+    request.region = MKCoordinateRegionMake(halfwayCoordinates, [self filterDistance:10 inUnitsOf:@"mi"]);
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
 
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         NSMutableArray *placemarks = [NSMutableArray array];
         
         for (MKMapItem *item in response.mapItems) {
-            CustomAnnotation *updatedCustomAnnotation = [[CustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
+            CustomAnnotation *updatedCustomAnnotation = [[SearchCustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
             [placemarks addObject:updatedCustomAnnotation];
         }
         [self.ConvergeMapView showAnnotations:placemarks animated:YES];
@@ -136,71 +139,87 @@
     didFinishLoading = YES;
 }
 
+-(MKCoordinateSpan)filterDistance:(double)distance inUnitsOf:(NSString *)metricUnit {
+    float convertedUnit;
+    
+    if ([metricUnit isEqualToString:@"mi"])
+        convertedUnit = [self convertMilesToDegrees:distance];
+    else if ([metricUnit isEqualToString:@"km"])
+        convertedUnit = [self convertKilometersToDegrees:distance];
+    else
+        convertedUnit = (2/69.0); // 2 mile radius by default
+    
+    return MKCoordinateSpanMake(convertedUnit, convertedUnit);
+}
+
+-(double)convertMilesToDegrees:(double)miles { return miles/69.0; }
+
+-(double)convertKilometersToDegrees:(double)kilometers { return kilometers/111.0; }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 -(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    if([annotation isKindOfClass:[CustomAnnotation class]]) {
-        CustomAnnotation *myLocation = (CustomAnnotation*) annotation;
-        annotationViewOfMap = [mapView dequeueReusableAnnotationViewWithIdentifier:@"Custom Annotation"];
-        annotationViewOfMap.canShowCallout = YES;
-        if(annotationViewOfMap == nil) {
-            annotationViewOfMap = myLocation.annotationView;
+    
+    if ([annotation isKindOfClass:[CustomAnnotation class]]){
+        MKAnnotationView *annotationView;
+        CustomAnnotation *location;
+        
+        if ([annotation isKindOfClass:[UserCustomAnnotation class]]) {
+            location = (UserCustomAnnotation *) annotation;
+            annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"UserCustomAnnotation"];
+        } else if ([annotation isKindOfClass:[SearchCustomAnnotation class]]){
+            location = (SearchCustomAnnotation *) annotation;
+            annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"SearchCustomAnnotation"];
+        } else {
+            location = (CustomAnnotation *) annotation;
+            annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
         }
-        if (([myLocation.name isEqualToString: @"1"])){
-            annotationViewOfMap.image = [UIImage imageNamed:@"smallCHRIS"];
-        }
-        if (([myLocation.name isEqualToString: @"2"])){
-            annotationViewOfMap.image = [UIImage imageNamed:@"smallJOSEPH"];
-        }
-        if (([myLocation.name isEqualToString: @"3"])){
-            annotationViewOfMap.image = [UIImage imageNamed:@"halfwayarrow"];
-        }
-        else {
-            annotationViewOfMap.annotation = annotation;
-        }
-        return annotationViewOfMap;
-    }
-    else {
+        
+        if (annotationView == nil)
+            annotationView = location.annotationView;
+        else
+            annotationView.annotation = annotation;
+        
+        return annotationView;
+    } else
         return nil;
-    }
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
 }
 
-
 #pragma Called when the right callout is tapped, which is shown after you click on the pin and the halfway icon in the bubble.
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:@"Converge"
-                                message:[NSString stringWithFormat:@"You have selected %@", ((CustomAnnotation*)view.annotation).title]
-                                preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *okayButton = [UIAlertAction
-                                 actionWithTitle:@"Okay"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                 }];
-    [alert addAction:okayButton];
-    
-    [self performSegueWithIdentifier:@"MapDetailedVC" sender:view];
-    [self presentViewController:alert animated:YES completion:nil];
-
+    if ([view.annotation isKindOfClass:[UserCustomAnnotation class]]){
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:@"Converge"
+                                    message:[NSString stringWithFormat:@"%@ phone number here", ((CustomAnnotation*)view.annotation).title]
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okayButton = [UIAlertAction
+                                     actionWithTitle:@"OK"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                     }];
+        [alert addAction:okayButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    } else if ([view.annotation isKindOfClass:[SearchCustomAnnotation class]]) 
+        [self performSegueWithIdentifier:@"MapDetailedVC" sender:view];
+    else
+         NSLog(@"Balls!!!");
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
     NSLog(@"done loading map!");
 }
-
-
-
 
 @end
