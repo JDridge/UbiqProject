@@ -17,6 +17,17 @@
 @synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel, backgroundVideo;
 
 - (void)viewDidLoad {
+    self.view.hidden = YES;
+    if(![PFUser currentUser]) {
+        //login screen
+        self.view.hidden = NO;
+        NSLog(@"going to login screen");
+    }
+    else {
+        [self performSegueWithIdentifier:@"homeVC" sender:self];
+        self.view.hidden = NO; 
+    }
+    
     [super viewDidLoad];
     [self playVideo];
     [self setupLabelsAndButtonsOnStart];
@@ -152,6 +163,11 @@
 
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"hi");
+}
+
+
 - (void) registerForm:(UIButton*)sender {
     NSLog(@"Registering...");
     
@@ -167,6 +183,8 @@
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 [self displaySuccessfulLogin:user];
+                [self performSegueWithIdentifier:@"homeVC" sender:self];
+
             } else {
                 [self displayError:error];
             }
@@ -207,6 +225,7 @@
                                             if (!error) {
                                                 NSLog(@"no error");
                                                 [self displaySuccessfulLogin:user];
+                                                [self performSegueWithIdentifier:@"homeVC" sender:self];
                                             } else {
                                                 [self displayError:error];
                                             }

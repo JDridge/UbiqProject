@@ -69,11 +69,12 @@
                         <outlet property="LoginSignUpForm" destination="zKZ-a8-QdX" id="ccd-ZU-xou"/>
                         <outlet property="SignUpButton" destination="Q74-GR-QMi" id="o6J-f4-cxc"/>
                         <outlet property="WelcomeLabel" destination="vSD-vv-BRB" id="SIk-yA-U7L"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="homeVC" id="C64-f0-UdX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJO-VI-C44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="-294"/>
+            <point key="canvasLocation" x="-211" y="-388"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Sl3-G6-RyI">
@@ -95,7 +96,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" id="BYZ-38-t0r" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -356,4 +357,7 @@
     <resources>
         <image name="map" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="C64-f0-UdX"/>
+    </inferredMetricsTieBreakers>
 </document>
