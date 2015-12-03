@@ -334,13 +334,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teO-aS-5R6">
-                                <rect key="frame" x="290" y="202" width="23" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGb-zT-6nM">
                                 <rect key="frame" x="213" y="153" width="100" height="21"/>
                                 <animations/>
@@ -356,10 +349,34 @@
                                 <rect key="frame" x="20" y="367" width="288" height="225"/>
                                 <animations/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2h-eL-ZU2">
+                                <rect key="frame" x="13" y="5" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonTouched:" destination="WKf-E8-bOy" eventType="touchUpInside" id="4Yf-RB-80z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tx-5a-44K">
+                                <rect key="frame" x="258" y="269" width="87" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Open in Yelp"/>
+                                <connections>
+                                    <action selector="openInYelpButtonTouched:" destination="WKf-E8-bOy" eventType="touchUpInside" id="dHE-dy-354"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="zRi-18-ZNP" id="cSM-6h-yv5"/>
+                        <outlet property="nameLabel" destination="Lef-Yq-GWO" id="n78-rr-1iZ"/>
+                        <outlet property="phoneLabel" destination="GSj-ko-r92" id="zDB-hP-l7f"/>
+                        <outlet property="ratingImage" destination="hBg-Wh-3VY" id="adp-H9-LSk"/>
+                        <outlet property="reviewCountLabel" destination="KGb-zT-6nM" id="u6F-Yp-4pq"/>
+                        <outlet property="urlImage" destination="28y-Wz-PWl" id="Iji-Ww-8Wt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ze-vb-99Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

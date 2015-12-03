@@ -5,6 +5,7 @@
 #import "SearchCustomAnnotation.h"
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
+#import "MapDetailedViewController.h"
 
 @interface MapViewController ()
 
@@ -189,6 +190,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    MapDetailedViewController *vc = [segue destinationViewController];
+    vc.pinLocation = ((MKAnnotationView *)sender).annotation;
+    vc.category = queryToShow.category;
     
 }
 
