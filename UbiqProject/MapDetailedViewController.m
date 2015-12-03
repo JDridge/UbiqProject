@@ -18,7 +18,26 @@
 @synthesize nameLabel, phoneLabel, addressLabel, reviewCountLabel, urlImage, ratingImage, category, pinLocation, yelpURL;
 
 - (void)viewDidLoad {
-    
+    /*
+    "display_phone" = "+1-415-777-1413";
+    "image_url" = "http://s3-media4.fl.yelpcdn.com/bphoto/uweSiOf0XBB4BPk_ibHVyg/ms.jpg";
+    location =     {
+        coordinate =         {
+            latitude = "37.7783200510611";
+            longitude = "-122.396771288052";
+        };
+        "display_address" =         (
+            "500 Brannan St",
+            SoMa,
+            "San Francisco, CA 94107"
+        );
+    };
+    name = Marlowe;
+    rating = 4;
+    "rating_img_url_large" = "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png";
+    "review_count" = 1682;
+    url = "http://www.yelp.com/biz/marlowe-san-francisco-2";
+     */
     @autoreleasepool {
         NSString *defaultTerm = category;
         NSString *defaultCoordinates = [NSString stringWithFormat:@"%f,%f", pinLocation.coordinate.latitude, pinLocation.coordinate.longitude];
