@@ -23,6 +23,12 @@
 		E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D8641D1BEDA11E00C772F6 /* Images.xcassets */; };
 		E1D89D771BF3B43000587796 /* MapViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D89D761BF3B43000587796 /* MapViewControllerTest.m */; };
 		E1DF867C1BF10FED00935996 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1DF867B1BF10FED00935996 /* README.md */; };
+		E1EE0E5A1C1006280004C3B5 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EE0E4F1C1006280004C3B5 /* NSURLRequest+OAuth.m */; };
+		E1EE0E5B1C1006280004C3B5 /* OMGFormURLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EE0E511C1006280004C3B5 /* OMGFormURLEncode.m */; };
+		E1EE0E5C1C1006280004C3B5 /* OMGHTTPURLRQ.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EE0E531C1006280004C3B5 /* OMGHTTPURLRQ.m */; };
+		E1EE0E5D1C1006280004C3B5 /* OMGUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EE0E551C1006280004C3B5 /* OMGUserAgent.m */; };
+		E1EE0E5E1C1006280004C3B5 /* TDOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EE0E571C1006280004C3B5 /* TDOAuth.m */; };
+		E1EE0E5F1C1006280004C3B5 /* YPAPISample.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EE0E591C1006280004C3B5 /* YPAPISample.m */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
 		E1F593601BD4D4EF00CC612D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F5935F1BD4D4EF00CC612D /* MapKit.framework */; };
@@ -67,6 +73,18 @@
 		E1D8641D1BEDA11E00C772F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1D89D761BF3B43000587796 /* MapViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewControllerTest.m; sourceTree = "<group>"; };
 		E1DF867B1BF10FED00935996 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E1EE0E4E1C1006280004C3B5 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
+		E1EE0E4F1C1006280004C3B5 /* NSURLRequest+OAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+OAuth.m"; sourceTree = "<group>"; };
+		E1EE0E501C1006280004C3B5 /* OMGFormURLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGFormURLEncode.h; sourceTree = "<group>"; };
+		E1EE0E511C1006280004C3B5 /* OMGFormURLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGFormURLEncode.m; sourceTree = "<group>"; };
+		E1EE0E521C1006280004C3B5 /* OMGHTTPURLRQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGHTTPURLRQ.h; sourceTree = "<group>"; };
+		E1EE0E531C1006280004C3B5 /* OMGHTTPURLRQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGHTTPURLRQ.m; sourceTree = "<group>"; };
+		E1EE0E541C1006280004C3B5 /* OMGUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGUserAgent.h; sourceTree = "<group>"; };
+		E1EE0E551C1006280004C3B5 /* OMGUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMGUserAgent.m; sourceTree = "<group>"; };
+		E1EE0E561C1006280004C3B5 /* TDOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDOAuth.h; sourceTree = "<group>"; };
+		E1EE0E571C1006280004C3B5 /* TDOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDOAuth.m; sourceTree = "<group>"; };
+		E1EE0E581C1006280004C3B5 /* YPAPISample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YPAPISample.h; sourceTree = "<group>"; };
+		E1EE0E591C1006280004C3B5 /* YPAPISample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YPAPISample.m; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E1F5935C1BD4A7F100CC612D /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
@@ -151,6 +169,18 @@
 		D4F2B90C1BBF12EE007F6955 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1EE0E4E1C1006280004C3B5 /* NSURLRequest+OAuth.h */,
+				E1EE0E4F1C1006280004C3B5 /* NSURLRequest+OAuth.m */,
+				E1EE0E501C1006280004C3B5 /* OMGFormURLEncode.h */,
+				E1EE0E511C1006280004C3B5 /* OMGFormURLEncode.m */,
+				E1EE0E521C1006280004C3B5 /* OMGHTTPURLRQ.h */,
+				E1EE0E531C1006280004C3B5 /* OMGHTTPURLRQ.m */,
+				E1EE0E541C1006280004C3B5 /* OMGUserAgent.h */,
+				E1EE0E551C1006280004C3B5 /* OMGUserAgent.m */,
+				E1EE0E561C1006280004C3B5 /* TDOAuth.h */,
+				E1EE0E571C1006280004C3B5 /* TDOAuth.m */,
+				E1EE0E581C1006280004C3B5 /* YPAPISample.h */,
+				E1EE0E591C1006280004C3B5 /* YPAPISample.m */,
 				D4F2B90D1BBF12EE007F6955 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -218,7 +248,7 @@
 				TargetAttributes = {
 					D4F2B9081BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = G64BY3BAY5;
+						DevelopmentTeam = AJ63TV53BF;
 					};
 					D4F2B9211BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -276,13 +306,19 @@
 				E1F5935E1BD4A7F100CC612D /* Query.m in Sources */,
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
+				E1EE0E5A1C1006280004C3B5 /* NSURLRequest+OAuth.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
+				E1EE0E5F1C1006280004C3B5 /* YPAPISample.m in Sources */,
 				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
+				E1EE0E5C1C1006280004C3B5 /* OMGHTTPURLRQ.m in Sources */,
+				E1EE0E5B1C1006280004C3B5 /* OMGFormURLEncode.m in Sources */,
 				D2037E5F1C06293400B9860B /* SearchCustomAnnotation.m in Sources */,
+				E1EE0E5E1C1006280004C3B5 /* TDOAuth.m in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
+				E1EE0E5D1C1006280004C3B5 /* OMGUserAgent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +450,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,7 +465,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UbiqProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
