@@ -261,6 +261,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="SWRevealViewControllerSegue" id="3Kq-mF-r8F"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="second" textLabel="BZi-Fi-MqC" style="IBUITableViewCellStyleDefault" id="y0U-9k-49D">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
@@ -281,6 +284,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="mbI-6l-6uM" kind="custom" customClass="SWRevealViewControllerSegue" id="yM2-qj-gLa"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="third" textLabel="cZy-T3-zJU" style="IBUITableViewCellStyleDefault" id="oE1-wU-dHj">
                                 <rect key="frame" x="0.0" y="116" width="600" height="44"/>
@@ -301,6 +307,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="eez-1O-skf" kind="custom" customClass="SWRevealViewControllerSegue" id="7B1-PL-vGt"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fourth" textLabel="AkT-nT-bXx" style="IBUITableViewCellStyleDefault" id="jFe-DX-5GL">
                                 <rect key="frame" x="0.0" y="160" width="600" height="44"/>
@@ -321,6 +330,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="8zG-kl-lsd" kind="custom" customClass="SWRevealViewControllerSegue" id="bDI-GP-Pzl"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fifth" textLabel="izE-bQ-8a9" style="IBUITableViewCellStyleDefault" id="CDO-hC-9Wu">
                                 <rect key="frame" x="0.0" y="204" width="600" height="44"/>
@@ -341,6 +353,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="rNk-ot-EGi" kind="custom" customClass="SWRevealViewControllerSegue" id="ZXd-mr-wM8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -351,7 +366,91 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgR-eP-Zya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-560" y="-22"/>
+            <point key="canvasLocation" x="-524" y="26"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LID-MO-W6A">
+            <objects>
+                <viewController id="eez-1O-skf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ht4-Th-xIu"/>
+                        <viewControllerLayoutGuide type="bottom" id="7ZE-0s-MYc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kUt-Mx-Sbh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2v-KY-GSs">
+                                <rect key="frame" x="266" y="103" width="55" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xax-Se-GY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="-1434"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ku9-2r-onx">
+            <objects>
+                <viewController id="8zG-kl-lsd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ceV-f5-t6j"/>
+                        <viewControllerLayoutGuide type="bottom" id="XZu-Rh-Rpx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o0Q-83-4KS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waa-Ur-fco">
+                                <rect key="frame" x="251" y="117" width="70" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zhb-mq-dlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="-761"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ycu-Wr-poV">
+            <objects>
+                <viewController id="rNk-ot-EGi" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z31-cd-Ezt"/>
+                        <viewControllerLayoutGuide type="bottom" id="12L-QR-xN5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ENM-BV-Nmp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gu-Xn-vSs">
+                                <rect key="frame" x="249" y="106" width="72" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yNe-mc-xXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="-84"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="bjj-FY-PZI">
@@ -447,4 +546,8 @@
     <resources>
         <image name="map" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3Kq-mF-r8F"/>
+        <segue reference="yM2-qj-gLa"/>
+    </inferredMetricsTieBreakers>
 </document>
