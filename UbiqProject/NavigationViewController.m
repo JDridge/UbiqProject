@@ -54,21 +54,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     
-    /*
-    if([segue isKindOfClass:[SWRevealViewControllerSegue class]]){
-        SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
-        
-        swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc){
-            UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
-            [self.revealViewController setFrontViewPosition:FrontViewPositionLeft animated:YES];
-        };
-        
-    }
-     
-     */
     
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;

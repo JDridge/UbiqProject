@@ -1,33 +1,29 @@
 //
-//  Modal.m
+//  AboutUsViewController.m
 //  UbiqProject
 //
-//  Created by Joey on 10/2/15.
-//
+//  Created by Mario Laiseca-Ruiz on 12/3/15.
+//  Copyright © 2015 Joey. All rights reserved.
 //
 
-#import "SettingsModalViewController.h"
+#import "AboutUsViewController.h"
 #import "SWRevealViewController.h"
 
-
-@interface SettingsModalViewController ()
+@interface AboutUsViewController ()
 
 @end
 
-@implementation SettingsModalViewController
-
-@synthesize printQuery;
+@implementation AboutUsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,14 +32,10 @@
 }
 
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 
 
-- (IBAction)BackButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 @end

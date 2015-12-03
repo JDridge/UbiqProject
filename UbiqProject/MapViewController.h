@@ -10,6 +10,7 @@
 @property MKAnnotationView *annotationViewOfMap;
 @property BOOL didFinishLoading;
 @property NSUInteger const numberOfLocations;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 
 - (IBAction)settingsButtonClick:(id)sender;
 

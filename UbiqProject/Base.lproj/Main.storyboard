@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -368,10 +369,10 @@
             </objects>
             <point key="canvasLocation" x="-524" y="26"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="LID-MO-W6A">
             <objects>
-                <viewController id="eez-1O-skf" sceneMemberID="viewController">
+                <viewController id="eez-1O-skf" customClass="HistoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ht4-Th-xIu"/>
                         <viewControllerLayoutGuide type="bottom" id="7ZE-0s-MYc"/>
@@ -380,26 +381,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2v-KY-GSs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2v-KY-GSs">
                                 <rect key="frame" x="266" y="103" width="55" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXK-bV-Afc">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="History" id="RbJ-67-4WZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="ep0-sp-m6o"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S2v-KY-GSs" firstAttribute="top" secondItem="QXK-bV-Afc" secondAttribute="bottom" constant="31" id="Rw7-AJ-FVQ"/>
+                            <constraint firstAttribute="trailing" secondItem="QXK-bV-Afc" secondAttribute="trailing" id="SKm-ac-VKt"/>
+                            <constraint firstItem="QXK-bV-Afc" firstAttribute="top" secondItem="ht4-Th-xIu" secondAttribute="bottom" constant="8" id="TtC-6f-LFU"/>
+                            <constraint firstItem="QXK-bV-Afc" firstAttribute="leading" secondItem="kUt-Mx-Sbh" secondAttribute="leading" id="qvL-jZ-UaE"/>
+                            <constraint firstItem="S2v-KY-GSs" firstAttribute="leading" secondItem="kUt-Mx-Sbh" secondAttribute="leading" constant="266" id="xWI-uo-L9F"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="barButton" destination="ep0-sp-m6o" id="JBg-tu-Mpw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xax-Se-GY4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150" y="-1434"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="Ku9-2r-onx">
             <objects>
-                <viewController id="8zG-kl-lsd" sceneMemberID="viewController">
+                <viewController id="8zG-kl-lsd" customClass="FavoritesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ceV-f5-t6j"/>
                         <viewControllerLayoutGuide type="bottom" id="XZu-Rh-Rpx"/>
@@ -408,26 +428,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waa-Ur-fco">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waa-Ur-fco">
                                 <rect key="frame" x="251" y="117" width="70" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3QN-XQ-Jvj">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="Favorites" id="3i5-bP-Ivm">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="UPD-Bw-eCl"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="waa-Ur-fco" firstAttribute="leading" secondItem="o0Q-83-4KS" secondAttribute="leading" constant="251" id="8de-F9-6EX"/>
+                            <constraint firstAttribute="trailing" secondItem="3QN-XQ-Jvj" secondAttribute="trailing" id="AJ5-0x-2DJ"/>
+                            <constraint firstItem="3QN-XQ-Jvj" firstAttribute="top" secondItem="ceV-f5-t6j" secondAttribute="bottom" id="igf-mM-8gt"/>
+                            <constraint firstItem="waa-Ur-fco" firstAttribute="top" secondItem="3QN-XQ-Jvj" secondAttribute="bottom" constant="53" id="tVw-7W-xDF"/>
+                            <constraint firstItem="3QN-XQ-Jvj" firstAttribute="leading" secondItem="o0Q-83-4KS" secondAttribute="leading" id="vXK-yJ-M9X"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="barButton" destination="UPD-Bw-eCl" id="ajP-5o-gwo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zhb-mq-dlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150" y="-761"/>
         </scene>
-        <!--View Controller-->
+        <!--About Us View Controller-->
         <scene sceneID="Ycu-Wr-poV">
             <objects>
-                <viewController id="rNk-ot-EGi" sceneMemberID="viewController">
+                <viewController id="rNk-ot-EGi" customClass="AboutUsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z31-cd-Ezt"/>
                         <viewControllerLayoutGuide type="bottom" id="12L-QR-xN5"/>
@@ -436,17 +475,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gu-Xn-vSs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gu-Xn-vSs">
                                 <rect key="frame" x="249" y="106" width="72" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Aa-Pi-Pbs">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="About Us" id="e4b-Aa-UG5">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="uzP-Pv-3KA"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3Aa-Pi-Pbs" secondAttribute="trailing" id="AT1-UO-n9U"/>
+                            <constraint firstItem="6Gu-Xn-vSs" firstAttribute="top" secondItem="3Aa-Pi-Pbs" secondAttribute="bottom" constant="42" id="IvN-qk-8lF"/>
+                            <constraint firstItem="3Aa-Pi-Pbs" firstAttribute="leading" secondItem="ENM-BV-Nmp" secondAttribute="leading" id="OHs-l5-IO7"/>
+                            <constraint firstItem="3Aa-Pi-Pbs" firstAttribute="top" secondItem="Z31-cd-Ezt" secondAttribute="bottom" id="dUX-XL-w9S"/>
+                            <constraint firstItem="6Gu-Xn-vSs" firstAttribute="leading" secondItem="ENM-BV-Nmp" secondAttribute="leading" constant="249" id="wNO-dO-fLl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="barButton" destination="uzP-Pv-3KA" id="fei-nu-Abu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNe-mc-xXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -475,28 +533,18 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RUO-eO-4A3" firstAttribute="bottom" secondItem="8Bk-eH-bmd" secondAttribute="top" id="1TO-Mf-kPb"/>
-                            <constraint firstItem="RUO-eO-4A3" firstAttribute="top" secondItem="DOX-mU-n1B" secondAttribute="bottom" id="U4S-tZ-r4C"/>
-                            <constraint firstItem="RUO-eO-4A3" firstAttribute="leading" secondItem="i0C-cc-cgg" secondAttribute="leading" id="cny-bH-14X"/>
-                            <constraint firstAttribute="trailing" secondItem="RUO-eO-4A3" secondAttribute="trailing" id="fb6-m9-xGY"/>
+                            <constraint firstItem="RUO-eO-4A3" firstAttribute="leading" secondItem="i0C-cc-cgg" secondAttribute="leading" id="8dh-Mh-XoG"/>
+                            <constraint firstAttribute="trailing" secondItem="RUO-eO-4A3" secondAttribute="trailing" id="Mrw-NX-ybs"/>
+                            <constraint firstItem="RUO-eO-4A3" firstAttribute="bottom" secondItem="8Bk-eH-bmd" secondAttribute="top" id="Vk6-pa-5oi"/>
+                            <constraint firstItem="RUO-eO-4A3" firstAttribute="top" secondItem="DOX-mU-n1B" secondAttribute="bottom" id="XWZ-Rt-CLt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p1a-Zo-hdG">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="XcU-hG-CZV">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PmK-Io-vel">
-                                <rect key="frame" x="523" y="7" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <action selector="settingsButtonClick:" destination="YhL-mf-dhP" eventType="touchUpInside" id="01u-xB-Hrr"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="w3G-3a-RcO"/>
                     </navigationItem>
                     <connections>
                         <outlet property="ConvergeMapView" destination="RUO-eO-4A3" id="wn8-aK-maG"/>
+                        <outlet property="barButton" destination="w3G-3a-RcO" id="xfa-4f-tWt"/>
                         <outlet property="searchDisplayController" destination="DX9-CS-KNk" id="pl9-66-kcX"/>
                         <segue destination="mbI-6l-6uM" kind="presentation" identifier="settingsVC" id="dGh-cS-GrH"/>
                     </connections>
@@ -525,7 +573,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1b-Mc-vOR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1b-Mc-vOR">
                                 <rect key="frame" x="89" y="412" width="39" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Close"/>
@@ -533,10 +581,29 @@
                                     <action selector="BackButton:" destination="mbI-6l-6uM" eventType="touchDown" id="58U-D0-Y0i"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1Z-op-sus">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <navigationItem title="settings" id="RvH-1C-ZXw">
+                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="CGs-Ss-MQ2"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="v1b-Mc-vOR" firstAttribute="leading" secondItem="CwE-Oz-jdA" secondAttribute="leadingMargin" constant="69" id="eeK-zz-r1B"/>
+                            <constraint firstAttribute="trailing" secondItem="t1Z-op-sus" secondAttribute="trailing" id="gt7-cZ-Ply"/>
+                            <constraint firstItem="Qg0-T0-j84" firstAttribute="top" secondItem="v1b-Mc-vOR" secondAttribute="bottom" constant="158" id="jAI-rD-NSX"/>
+                            <constraint firstItem="t1Z-op-sus" firstAttribute="top" secondItem="QRA-6D-Tfj" secondAttribute="bottom" id="lZy-7j-yGf"/>
+                            <constraint firstItem="t1Z-op-sus" firstAttribute="leading" secondItem="CwE-Oz-jdA" secondAttribute="leading" id="yLW-HL-MzB"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="barButton" destination="CGs-Ss-MQ2" id="Gcp-DS-atF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLP-8b-Deu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -547,7 +614,7 @@
         <image name="map" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Kq-mF-r8F"/>
-        <segue reference="yM2-qj-gLa"/>
+        <segue reference="MmE-ha-aFL"/>
+        <segue reference="dGh-cS-GrH"/>
     </inferredMetricsTieBreakers>
 </document>

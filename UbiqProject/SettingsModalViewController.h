@@ -16,4 +16,6 @@
 - (IBAction)BackButton:(id)sender;
 
 @property Query *printQuery;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
+
 @end

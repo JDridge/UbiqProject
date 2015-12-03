@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AC1F93021C101D6C0090E3AD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1F93011C101D6C0090E3AD /* SWRevealViewController.m */; };
 		AC8AB3A61C102471000178DB /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8AB3A51C102471000178DB /* NavigationViewController.m */; };
+		ACDD02861C1076880095239C /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDD02851C1076880095239C /* HistoryViewController.m */; };
+		ACDD02891C107C080095239C /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDD02881C107C080095239C /* AboutUsViewController.m */; };
+		ACDD028C1C107EBB0095239C /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDD028B1C107EBB0095239C /* FavoritesViewController.m */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
@@ -43,6 +46,12 @@
 		AC1F93011C101D6C0090E3AD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		AC8AB3A41C102471000178DB /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		AC8AB3A51C102471000178DB /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		ACDD02841C1076880095239C /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		ACDD02851C1076880095239C /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		ACDD02871C107C080095239C /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		ACDD02881C107C080095239C /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		ACDD028A1C107EBB0095239C /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		ACDD028B1C107EBB0095239C /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		D4F2B9091BBF12EE007F6955 /* UbiqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +135,12 @@
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
 				D4F2B9131BBF12EE007F6955 /* HomeViewController.m */,
+				ACDD028A1C107EBB0095239C /* FavoritesViewController.h */,
+				ACDD028B1C107EBB0095239C /* FavoritesViewController.m */,
+				ACDD02871C107C080095239C /* AboutUsViewController.h */,
+				ACDD02881C107C080095239C /* AboutUsViewController.m */,
+				ACDD02841C1076880095239C /* HistoryViewController.h */,
+				ACDD02851C1076880095239C /* HistoryViewController.m */,
 				E1F593591BD4A6E700CC612D /* MapViewController.h */,
 				E1F5935A1BD4A6E700CC612D /* MapViewController.m */,
 				AC8AB3A41C102471000178DB /* NavigationViewController.h */,
@@ -271,9 +286,12 @@
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				AC8AB3A61C102471000178DB /* NavigationViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
+				ACDD02861C1076880095239C /* HistoryViewController.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
+				ACDD028C1C107EBB0095239C /* FavoritesViewController.m in Sources */,
 				AC1F93021C101D6C0090E3AD /* SWRevealViewController.m in Sources */,
+				ACDD02891C107C080095239C /* AboutUsViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
