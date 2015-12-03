@@ -17,15 +17,12 @@
 @synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel, backgroundVideo;
 
 - (void)viewDidLoad {
-    self.view.hidden = YES;
     if(![PFUser currentUser]) {
         //login screen
-        self.view.hidden = NO;
         NSLog(@"going to login screen");
     }
     else {
         [self performSegueWithIdentifier:@"homeVC" sender:self];
-        self.view.hidden = NO; 
     }
     
     [super viewDidLoad];
