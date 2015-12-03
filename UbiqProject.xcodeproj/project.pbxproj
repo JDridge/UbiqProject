@@ -48,7 +48,6 @@
 		E1FD71CE1C0C3596007245D3 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71CB1C0C3596007245D3 /* ParseFacebookUtils.framework */; };
 		E1FD71CF1C0C35D3007245D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B21C0C2ED1007245D3 /* libsqlite3.tbd */; };
 		E1FD71D01C0C35D9007245D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B01C0C2ECD007245D3 /* libz.tbd */; };
-		E1FD71D41C0C36DA007245D3 /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = E1FD71D31C0C36DA007245D3 /* test.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +119,6 @@
 		E1FD71C91C0C3596007245D3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E1FD71CA1C0C3596007245D3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E1FD71CB1C0C3596007245D3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		E1FD71D31C0C36DA007245D3 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +159,6 @@
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
-				E1FD71D31C0C36DA007245D3 /* test.txt */,
 				E1FD71BC1C0C3300007245D3 /* Frameworks */,
 				E13DE0451BFACE73000C9C30 /* .gitignore */,
 				E1DF867B1BF10FED00935996 /* README.md */,
@@ -353,7 +350,6 @@
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
-				E1FD71D41C0C36DA007245D3 /* test.txt in Resources */,
 				D4F2B9171BBF12EE007F6955 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
