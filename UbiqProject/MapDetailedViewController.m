@@ -86,7 +86,7 @@
 
 #warning DO THIS
 - (IBAction)backButtonTouched:(id)sender {
-    //dismiss modal (google it)
+    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)openInYelpButtonTouched:(id)sender {
