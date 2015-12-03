@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1F93021C101D6C0090E3AD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1F93011C101D6C0090E3AD /* SWRevealViewController.m */; };
 		D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */; };
 		D4F2B90E1BBF12EE007F6955 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B90D1BBF12EE007F6955 /* main.m */; };
 		D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2B9101BBF12EE007F6955 /* AppDelegate.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC1F93001C101D6C0090E3AD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		AC1F93011C101D6C0090E3AD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		D48E57BE1BDF309F00B544FF /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		D48E57BF1BDF309F00B544FF /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		D4F2B9091BBF12EE007F6955 /* UbiqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UbiqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +92,8 @@
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
+				AC1F93001C101D6C0090E3AD /* SWRevealViewController.h */,
+				AC1F93011C101D6C0090E3AD /* SWRevealViewController.m */,
 				E1569C351BF79F5C00C1E8ED /* .gitignore */,
 				E1DF867B1BF10FED00935996 /* README.md */,
 				E1F593611BD4E36A00CC612D /* CoreLocation.framework */,
@@ -262,6 +267,7 @@
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
+				AC1F93021C101D6C0090E3AD /* SWRevealViewController.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
