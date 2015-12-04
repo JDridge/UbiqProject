@@ -25,4 +25,6 @@
  */
 + (NSURLRequest *)requestWithHost:(NSString *)host path:(NSString *)path params:(NSDictionary *)params;
 
++ (void) setAllkYelpKeys;
+
 @end

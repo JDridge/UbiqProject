@@ -4,6 +4,9 @@
 
 *.iml
 
+NSURLRequest+OAuth.m
+
+
 ## Directory-based project format:
 .idea/
 
@@ -15,6 +18,8 @@ ApiKeys.plist
 APIKEYS.plist
 *.txt
 *~.txt
+
+APIKeys.plist
 
 ## Build generated
 build/

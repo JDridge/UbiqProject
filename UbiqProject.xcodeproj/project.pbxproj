@@ -35,6 +35,8 @@
 		E1EA9D4D1C10BB5900573260 /* UserCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D4C1C10BB5900573260 /* UserCustomAnnotation.m */; };
 		E1EA9D551C10BD3B00573260 /* SearchCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D541C10BD3B00573260 /* SearchCustomAnnotation.m */; };
 		E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EA9D571C10EFC700573260 /* Main.storyboard */; };
+		E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1EA9D5A1C113BED00573260 /* APIKeys.plist */; };
+		E1EA9D5E1C113EB900573260 /* NSString+APIKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
 		E1FD71931C0C2E2D007245D3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71921C0C2E2D007245D3 /* MapKit.framework */; };
@@ -116,6 +118,9 @@
 		E1EA9D541C10BD3B00573260 /* SearchCustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCustomAnnotation.m; sourceTree = "<group>"; };
 		E1EA9D561C10BDD900573260 /* SearchCustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCustomAnnotation.h; sourceTree = "<group>"; };
 		E1EA9D581C10EFC700573260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1EA9D5A1C113BED00573260 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		E1EA9D5C1C113EB900573260 /* NSString+APIKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+APIKeys.h"; sourceTree = "<group>"; };
+		E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+APIKeys.m"; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E1F5935A1BD4A6E700CC612D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E1F5935C1BD4A7F100CC612D /* Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Query.h; sourceTree = "<group>"; };
@@ -226,6 +231,8 @@
 				E1EA9D4C1C10BB5900573260 /* UserCustomAnnotation.m */,
 				E1F5935C1BD4A7F100CC612D /* Query.h */,
 				E1F5935D1BD4A7F100CC612D /* Query.m */,
+				E1EA9D5C1C113EB900573260 /* NSString+APIKeys.h */,
+				E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */,
 				D4F2B9181BBF12EE007F6955 /* Assets.xcassets */,
 				D4F2B91A1BBF12EE007F6955 /* LaunchScreen.storyboard */,
 				D4F2B91D1BBF12EE007F6955 /* Info.plist */,
@@ -237,6 +244,7 @@
 		D4F2B90C1BBF12EE007F6955 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1EA9D5A1C113BED00573260 /* APIKeys.plist */,
 				D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */,
 				D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */,
 				D47FCD5F1C10EBA700DC0250 /* OMGFormURLEncode.h */,
@@ -379,6 +387,7 @@
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
+				E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 			);
@@ -404,6 +413,7 @@
 				E1EA9D4D1C10BB5900573260 /* UserCustomAnnotation.m in Sources */,
 				D47FCD6B1C10EBA700DC0250 /* OMGHTTPURLRQ.m in Sources */,
 				E1F5935E1BD4A7F100CC612D /* Query.m in Sources */,
+				E1EA9D5E1C113EB900573260 /* NSString+APIKeys.m in Sources */,
 				D47FCD6A1C10EBA700DC0250 /* OMGFormURLEncode.m in Sources */,
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */,
