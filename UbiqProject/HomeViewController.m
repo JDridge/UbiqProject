@@ -24,17 +24,6 @@
     [self setUpKeyboardToDismissOnReturn];
     [self addGestureToDismissKeyboardOnTap];
     
-    NSString *pathToApiKeys = [[NSBundle mainBundle] pathForResource: @"APIKeys" ofType: @"plist"];
-    if([[NSFileManager defaultManager] fileExistsAtPath:pathToApiKeys]) {
-        NSLog(@"APIKeys.plist is found.");
-        NSDictionary *allKeys = [NSDictionary dictionaryWithContentsOfFile:pathToApiKeys];
-        NSString *yelpApiKey = [allKeys objectForKey:@"Yelp API Key"];
-        NSString *parseApiKey = [allKeys objectForKey:@"Parse API Key"];
-    }
-    else {
-        NSLog(@"APIKeys.plist missing!");
-    }
-    
 }
 
 - (void)didReceiveMemoryWarning {
