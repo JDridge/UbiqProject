@@ -98,7 +98,6 @@
 
 
 - (IBAction)LoginButtonTouched:(id)sender {
-    [self removeAllFromStackView];
     [self flipHiddenStatus:YES];
 
     NSLog(@"Login...");
@@ -125,7 +124,6 @@
 }
 
 - (IBAction)SignUpButtonTouched:(id)sender {
-    [self removeAllFromStackView];
     [self flipHiddenStatus:YES];
     NSLog(@"Signup...");
     
@@ -254,7 +252,7 @@
 - (void) displayInvalidFormsFor:(NSArray*)invalidViews {
     NSString *stringToDisplay = @"The following fields are invalid:";
     
-    for(int i = 0; i < MAX([invalidViews count], 0); i++) {
+    for(int i = 0; i < [invalidViews count]; i++) {
         if([invalidViews count] == 1) {
             stringToDisplay = [NSString stringWithFormat:@"%@ %@!", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
         }
@@ -300,16 +298,26 @@
 }
 
 - (void) backButtonTouched:(UIButton*)sender {
+    [self removeAllFromStackView];
     [self disableFocusFromAllTextFields];
     NSLog(@"Going Back...");
     [self flipHiddenStatus:NO];
+
 }
 
 -(void) removeAllFromStackView {
-    for(int i = 0; i < [self.LoginSignUpForm.arrangedSubviews count]; i++) {
-        UIView * view = self.LoginSignUpForm.arrangedSubviews[i];
-        view.hidden = YES;
+    NSUInteger i = [self.LoginSignUpForm.arrangedSubviews count];
+    while(i > 0) {
+        i--;
+        NSLog(@"%i", i);
+        //[LoginSignUpForm removeArrangedSubview:LoginSignUpForm.arrangedSubviews[i]];
+        [LoginSignUpForm.arrangedSubviews[i] removeFromSuperview];
+        
     }
+//    for(int i = 0; i < [self.LoginSignUpForm.arrangedSubviews count]; i++) {
+//        UIView * view = self.LoginSignUpForm.arrangedSubviews[i];
+//        view.hidden = YES;
+//    }
 }
 
 //Dismisses keyboard on tap anywhere outside the keyboard.
