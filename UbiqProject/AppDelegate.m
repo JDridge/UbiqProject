@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "HomeViewController.h"
 #import "LoginFormViewController.h"
+#import "NSString+APIKeys.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +24,16 @@
     // Override point for customization after application launch.
 
     
-#warning ADD PARSE MATERIAL HERE
+    [Parse enableLocalDatastore];
+    // Initialize Parse.
+    [Parse setApplicationId:[NSString getParseApplicationID]
+                  clientKey:[NSString getParseClientKey]];
+
+//    [Parse setApplicationId:@"7NzdsvlbKBOT194rGdLXZhqjgcoqiADMCoDPRfNc"
+//                  clientKey:@"HwXD4oPh1W2Cqd5etAwVSikNWBkgZsXHM5hRS6LF"];
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     
     if(![PFUser currentUser]) {
         //login screen
