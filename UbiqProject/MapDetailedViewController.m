@@ -56,7 +56,7 @@
                 
                 NSLog(@"Top business info: \n %@", topBusinessJSON);
                 nameLabel.text = [topBusinessJSON objectForKey:@"name"];
-                phoneLabel.text = [topBusinessJSON objectForKey:@"phone"];
+                phoneLabel.text = [NSString stringWithFormat:@"%@%@", @"Phone Number: ", [topBusinessJSON objectForKey:@"phone"]];
                 
                 NSArray *addressObject = [[topBusinessJSON objectForKey:@"location"] objectForKey:@"display_address"];
                 
@@ -65,12 +65,9 @@
                     stringAddress = [stringAddress stringByAppendingString:[NSString stringWithFormat:@"%@\n", addressObject[i]]];
                 }
                 
-                //addressLabel.text = [NSString stringWithFormat:@"%@,\n %@,\n %@", addressObject[0], addressObject[1], addressObject[2]];
-                
                 addressLabel.text = stringAddress;
                 
-                reviewCountLabel.text = [NSString stringWithFormat:@"%i", [[topBusinessJSON objectForKey:@"review_count"] intValue]];
-                
+                reviewCountLabel.text = [NSString stringWithFormat:@"%@%i", @"Reviews: ",[[topBusinessJSON objectForKey:@"review_count"] intValue]];
                 
                 
                 yelpURL =[topBusinessJSON objectForKey:@"url"];
