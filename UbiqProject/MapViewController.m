@@ -28,40 +28,43 @@
 }
 
 - (void) createTheCustomAnnotations {
-    
-    //    for (int i = 0; i < numberOfLocations; i++) {
-    //        CustomAnnotation *thisCustomAnnotation = [[CustomAnnotation alloc] init];
-    //        CLLocationCoordinate2D thisLocationPlacemark = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:i]];
-    //        thisCustomAnnotation.name = [NSString stringWithFormat:@"%i", i];
-    //        thisCustomAnnotation.coordinate = thisLocationPlacemark;
-    //        [ConvergeMapView addAnnotation:thisCustomAnnotation];
-    //    }
-    
-    CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
-    CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
     CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
     
-    CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
-    CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
-    
-    firstCustomAnnotation.name = @"1";
-    secondCustomAnnotation.name = @"2";
-    halfwayCustomAnnotation.name = @"3";
-    
-    firstCustomAnnotation.coordinate = firstLocationPlacemarkCoordinates;
-    secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
-    halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
-    
-    while(!didFinishLoading) {
-        [self displayAnimationForLoading];
-        [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
-    }
-    
-    [ConvergeMapView addAnnotation:firstCustomAnnotation];
-    [ConvergeMapView addAnnotation:secondCustomAnnotation];
-    [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
-    
+        for (int i = 0; i < numberOfLocations; i++) {
+            CustomAnnotation *thisCustomAnnotation = [[CustomAnnotation alloc] init];
+            CLLocationCoordinate2D thisLocationPlacemark = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:i]];
+            thisCustomAnnotation.name = [NSString stringWithFormat:@"%i", i];
+            thisCustomAnnotation.coordinate = thisLocationPlacemark;
+            [ConvergeMapView addAnnotation:thisCustomAnnotation];
+        }
+
     [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
+    
+//    CustomAnnotation *firstCustomAnnotation = [[CustomAnnotation alloc] init];
+//    CustomAnnotation *secondCustomAnnotation = [[CustomAnnotation alloc] init];
+//    CustomAnnotation *halfwayCustomAnnotation = [[CustomAnnotation alloc] init];
+//    
+//    CLLocationCoordinate2D firstLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:0]];
+//    CLLocationCoordinate2D secondLocationPlacemarkCoordinates = [self locationPlacemarkCoordinatesFactoryMethod:[queryToShow.locations objectAtIndex:1]];
+//    
+//    firstCustomAnnotation.name = @"1";
+//    secondCustomAnnotation.name = @"2";
+//    halfwayCustomAnnotation.name = @"3";
+//    
+//    firstCustomAnnotation.coordinate = firstLocationPlacemarkCoordinates;
+//    secondCustomAnnotation.coordinate = secondLocationPlacemarkCoordinates;
+//    halfwayCustomAnnotation.coordinate = [self getHalfwayCoordinates:firstLocationPlacemarkCoordinates secondLocation:secondLocationPlacemarkCoordinates];
+//    
+//    while(!didFinishLoading) {
+//        [self displayAnimationForLoading];
+//        [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
+//    }
+//    
+//    [ConvergeMapView addAnnotation:firstCustomAnnotation];
+//    [ConvergeMapView addAnnotation:secondCustomAnnotation];
+//    [ConvergeMapView addAnnotation:halfwayCustomAnnotation];
+//    
+//    [self loadConvergeMapViewForConvergedPoint:halfwayCustomAnnotation];
 }
 
 - (void) displayAnimationForLoading {

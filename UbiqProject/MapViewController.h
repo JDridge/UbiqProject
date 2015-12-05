@@ -7,6 +7,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *ConvergeMapView;
 @property Query *queryToShow;
+@property NSMutableArray* listOfCoordinates;
 @property MKAnnotationView *annotationViewOfMap;
 @property BOOL didFinishLoading;
 @property NSUInteger const numberOfLocations;
