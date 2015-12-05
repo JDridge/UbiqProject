@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF534491C12C52C00854186 /* APIKeys.plist */; };
+		ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344D1C12C66800854186 /* FavoritesViewController.m */; };
+		ACF534531C12C66800854186 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344F1C12C66800854186 /* HistoryViewController.m */; };
+		ACF534541C12C66800854186 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF534501C12C66800854186 /* AboutUsViewController.m */; };
+		ACF534571C12C69C00854186 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF534561C12C69C00854186 /* SWRevealViewController.m */; };
+		ACF5345A1C12C86400854186 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF534581C12C86400854186 /* NavigationViewController.m */; };
 		D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */; };
 		D47FCD691C10EBA700DC0250 /* NSURLRequest+OAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */; };
 		D47FCD6A1C10EBA700DC0250 /* OMGFormURLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = D47FCD601C10EBA700DC0250 /* OMGFormURLEncode.m */; };
@@ -69,6 +75,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ACF534491C12C52C00854186 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		ACF5344C1C12C66800854186 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		ACF5344D1C12C66800854186 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		ACF5344E1C12C66800854186 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		ACF5344F1C12C66800854186 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		ACF534501C12C66800854186 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		ACF534511C12C66800854186 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		ACF534551C12C69C00854186 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		ACF534561C12C69C00854186 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		ACF534581C12C86400854186 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		ACF534591C12C86400854186 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailedViewController.h; sourceTree = "<group>"; };
 		D40D7D621BFBA8E4008C748D /* MapDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailedViewController.m; sourceTree = "<group>"; };
 		D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+OAuth.h"; sourceTree = "<group>"; };
@@ -179,6 +196,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ACF5344B1C12C55F00854186 /* hambugerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				ACF534581C12C86400854186 /* NavigationViewController.m */,
+				ACF534591C12C86400854186 /* NavigationViewController.h */,
+				ACF534551C12C69C00854186 /* SWRevealViewController.h */,
+				ACF534561C12C69C00854186 /* SWRevealViewController.m */,
+				ACF5344C1C12C66800854186 /* FavoritesViewController.h */,
+				ACF5344D1C12C66800854186 /* FavoritesViewController.m */,
+				ACF5344E1C12C66800854186 /* HistoryViewController.h */,
+				ACF5344F1C12C66800854186 /* HistoryViewController.m */,
+				ACF534501C12C66800854186 /* AboutUsViewController.m */,
+				ACF534511C12C66800854186 /* AboutUsViewController.h */,
+			);
+			name = hambugerMenu;
+			sourceTree = "<group>";
+		};
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +237,7 @@
 		D4F2B90B1BBF12EE007F6955 /* UbiqProject */ = {
 			isa = PBXGroup;
 			children = (
+				ACF5344B1C12C55F00854186 /* hambugerMenu */,
 				E1EA9D571C10EFC700573260 /* Main.storyboard */,
 				E1D8641D1BEDA11E00C772F6 /* Images.xcassets */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
@@ -247,6 +282,7 @@
 				E1EA9D5A1C113BED00573260 /* APIKeys.plist */,
 				D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */,
 				D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */,
+				ACF534491C12C52C00854186 /* APIKeys.plist */,
 				D47FCD5F1C10EBA700DC0250 /* OMGFormURLEncode.h */,
 				D47FCD601C10EBA700DC0250 /* OMGFormURLEncode.m */,
 				D47FCD611C10EBA700DC0250 /* OMGHTTPURLRQ.h */,
@@ -350,7 +386,7 @@
 				TargetAttributes = {
 					D4F2B9081BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = AJ63TV53BF;
+						DevelopmentTeam = B2PAFKV8UA;
 					};
 					D4F2B9211BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -388,6 +424,7 @@
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */,
+				ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 			);
@@ -407,16 +444,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF534541C12C66800854186 /* AboutUsViewController.m in Sources */,
+				ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */,
 				D47FCD6C1C10EBA700DC0250 /* OMGUserAgent.m in Sources */,
 				E1EA9D551C10BD3B00573260 /* SearchCustomAnnotation.m in Sources */,
 				D47FCD6E1C10EBA700DC0250 /* YPAPISample.m in Sources */,
 				E1EA9D4D1C10BB5900573260 /* UserCustomAnnotation.m in Sources */,
 				D47FCD6B1C10EBA700DC0250 /* OMGHTTPURLRQ.m in Sources */,
 				E1F5935E1BD4A7F100CC612D /* Query.m in Sources */,
+				ACF5345A1C12C86400854186 /* NavigationViewController.m in Sources */,
 				E1EA9D5E1C113EB900573260 /* NSString+APIKeys.m in Sources */,
 				D47FCD6A1C10EBA700DC0250 /* OMGFormURLEncode.m in Sources */,
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */,
+				ACF534531C12C66800854186 /* HistoryViewController.m in Sources */,
+				ACF534571C12C69C00854186 /* SWRevealViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
@@ -567,7 +609,7 @@
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.convergea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -588,7 +630,7 @@
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.convergea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
