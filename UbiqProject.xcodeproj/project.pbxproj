@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC93D3391C156EDE0087A6B0 /* APIKeys.plist */; };
 		ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF534491C12C52C00854186 /* APIKeys.plist */; };
 		ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344D1C12C66800854186 /* FavoritesViewController.m */; };
 		ACF534531C12C66800854186 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344F1C12C66800854186 /* HistoryViewController.m */; };
@@ -75,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC93D3391C156EDE0087A6B0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF534491C12C52C00854186 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF5344C1C12C66800854186 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		ACF5344D1C12C66800854186 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		D4F2B90C1BBF12EE007F6955 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AC93D3391C156EDE0087A6B0 /* APIKeys.plist */,
 				E1EA9D5A1C113BED00573260 /* APIKeys.plist */,
 				D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */,
 				D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */,
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
+				AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
