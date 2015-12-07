@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>ParseClientKey</key>
+        <string>VALUE REDACTED</string>
+        <key>ParseApplicationID</key>
+        <string>VALUE REDACTED</string>
+        <key>YelpkTokenSecret</key>
+        <string>VALUE REDACTED</string>
+        <key>YelpkToken</key>
+        <string>VALUE REDACTED</string>
+        <key>YelpkConsumerSecret</key>
+        <string>VALUE REDACTED</string>
+        <key>YelpkConsumerKey</key>
+        <string>VALUE REDACTED</string>
+    </dict>
+</plist>
