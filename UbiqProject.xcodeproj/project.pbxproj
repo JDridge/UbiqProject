@@ -196,23 +196,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ACF5344B1C12C55F00854186 /* hambugerMenu */ = {
-			isa = PBXGroup;
-			children = (
-				ACF534581C12C86400854186 /* NavigationViewController.m */,
-				ACF534591C12C86400854186 /* NavigationViewController.h */,
-				ACF534551C12C69C00854186 /* SWRevealViewController.h */,
-				ACF534561C12C69C00854186 /* SWRevealViewController.m */,
-				ACF5344C1C12C66800854186 /* FavoritesViewController.h */,
-				ACF5344D1C12C66800854186 /* FavoritesViewController.m */,
-				ACF5344E1C12C66800854186 /* HistoryViewController.h */,
-				ACF5344F1C12C66800854186 /* HistoryViewController.m */,
-				ACF534501C12C66800854186 /* AboutUsViewController.m */,
-				ACF534511C12C66800854186 /* AboutUsViewController.h */,
-			);
-			name = hambugerMenu;
-			sourceTree = "<group>";
-		};
 		D4F2B9001BBF12EE007F6955 = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +220,16 @@
 		D4F2B90B1BBF12EE007F6955 /* UbiqProject */ = {
 			isa = PBXGroup;
 			children = (
-				ACF5344B1C12C55F00854186 /* hambugerMenu */,
+				ACF534581C12C86400854186 /* NavigationViewController.m */,
+				ACF534591C12C86400854186 /* NavigationViewController.h */,
+				ACF534551C12C69C00854186 /* SWRevealViewController.h */,
+				ACF534561C12C69C00854186 /* SWRevealViewController.m */,
+				ACF5344C1C12C66800854186 /* FavoritesViewController.h */,
+				ACF5344D1C12C66800854186 /* FavoritesViewController.m */,
+				ACF5344E1C12C66800854186 /* HistoryViewController.h */,
+				ACF5344F1C12C66800854186 /* HistoryViewController.m */,
+				ACF534501C12C66800854186 /* AboutUsViewController.m */,
+				ACF534511C12C66800854186 /* AboutUsViewController.h */,
 				E1EA9D571C10EFC700573260 /* Main.storyboard */,
 				E1D8641D1BEDA11E00C772F6 /* Images.xcassets */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
