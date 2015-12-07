@@ -18,4 +18,12 @@
 
 @property Query *printQuery;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
+@property (weak, nonatomic) IBOutlet UILabel *setUnitType;
+@property (weak, nonatomic) IBOutlet UILabel *unitNumber;
+@property (weak, nonatomic) IBOutlet UILabel *unitType;
+@property (weak, nonatomic) IBOutlet UIStepper *unitStepper;
+
+
+
+
 @end

@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menu = @[@"first", @"second", @"third", @"fourth", @"fifth"];
+    menu = @[@"first", @"second", @"third", @"fourth"];
     
 }
 
