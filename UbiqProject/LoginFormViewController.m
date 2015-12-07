@@ -253,15 +253,20 @@
     NSString *stringToDisplay = @"The following fields are invalid:";
     
     for(int i = 0; i < [invalidViews count]; i++) {
-        if([invalidViews count] == 1) {
-            stringToDisplay = [NSString stringWithFormat:@"%@ %@!", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
+        if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"First Name"]) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"First Name can only contain characters."];
         }
-    
-        if(i == [invalidViews count] - 1) {
-            stringToDisplay = [NSString stringWithFormat:@"%@ and %@!", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
+        else if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"Last Name"]) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"Last Name can only contain characters."];
         }
-        else {
-            stringToDisplay = [NSString stringWithFormat:@"%@ %@,", stringToDisplay, ((FormTextField*)invalidViews[i]).placeholder];
+        else if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"Email Address"]) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"Invalid email format."];
+        }
+        else if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"Password"]) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"Password must contain at least 6 characters."];
+        }
+        else if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"Verify Password"]) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"Verify Password must contain at least 6 characters."];
         }
     }
 
