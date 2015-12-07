@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *SearchCategory;
 @property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 @property (strong, retain) CLLocationManager *currentLocationManager;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 
 @property int direction;
 @property int shakes;

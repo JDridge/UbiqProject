@@ -12,8 +12,10 @@
 #import "MapViewController.h"
 
 
+
 @interface SettingsModalViewController : UIViewController
-- (IBAction)BackButton:(id)sender;
+//- (IBAction)BackButton:(id)sender;
 
 @property Query *printQuery;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @end

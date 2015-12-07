@@ -3,6 +3,7 @@
 #import "Query.h"
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
+#import "SWRevealViewController.h"
 
 @interface HomeViewController ()
 @end
@@ -20,6 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _barButton.target = self.revealViewController;
+    _barButton.action = @selector(revealToggle:);
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
     [self addGestureToDismissKeyboardOnTap];
