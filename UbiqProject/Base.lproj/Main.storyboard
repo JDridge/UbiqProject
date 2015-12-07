@@ -129,6 +129,9 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="SWRevealViewControllerSegue" id="HeQ-40-vHk"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="second" id="DVr-hh-EAr" userLabel="second">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
@@ -215,7 +218,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zyQ-uj-bCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512" y="1438"/>
+            <point key="canvasLocation" x="-584" y="1350"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bU1-hm-Z5O">
@@ -605,4 +608,7 @@
     <resources>
         <image name="map" width="2079" height="2076"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HeQ-40-vHk"/>
+    </inferredMetricsTieBreakers>
 </document>
