@@ -11,6 +11,7 @@
 @interface Mailgun (Utilities)
 
 + (void) sendEmailToUser:(NSString*)user;
-
++ (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you;
++ (void) sendEmailAboutStatusOfBallot:(NSString*)user location:(NSString*)location status:(NSString*)status;
 
 @end
