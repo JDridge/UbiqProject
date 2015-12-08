@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC93D3391C156EDE0087A6B0 /* APIKeys.plist */; };
 		ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF534491C12C52C00854186 /* APIKeys.plist */; };
 		ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344D1C12C66800854186 /* FavoritesViewController.m */; };
 		ACF534531C12C66800854186 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344F1C12C66800854186 /* HistoryViewController.m */; };
@@ -43,7 +42,6 @@
 		E1EA9D4D1C10BB5900573260 /* UserCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D4C1C10BB5900573260 /* UserCustomAnnotation.m */; };
 		E1EA9D551C10BD3B00573260 /* SearchCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D541C10BD3B00573260 /* SearchCustomAnnotation.m */; };
 		E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EA9D571C10EFC700573260 /* Main.storyboard */; };
-		E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1EA9D5A1C113BED00573260 /* APIKeys.plist */; };
 		E1EA9D5E1C113EB900573260 /* NSString+APIKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
@@ -88,7 +86,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC93D3391C156EDE0087A6B0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF534491C12C52C00854186 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF5344C1C12C66800854186 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		ACF5344D1C12C66800854186 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
@@ -151,7 +148,6 @@
 		E1EA9D541C10BD3B00573260 /* SearchCustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCustomAnnotation.m; sourceTree = "<group>"; };
 		E1EA9D561C10BDD900573260 /* SearchCustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCustomAnnotation.h; sourceTree = "<group>"; };
 		E1EA9D581C10EFC700573260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E1EA9D5A1C113BED00573260 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		E1EA9D5C1C113EB900573260 /* NSString+APIKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+APIKeys.h"; sourceTree = "<group>"; };
 		E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+APIKeys.m"; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -335,8 +331,6 @@
 				E1FD46D21C165652008101E1 /* Mailgun.m */,
 				E1FD46D31C165652008101E1 /* MGMessage.h */,
 				E1FD46D41C165652008101E1 /* MGMessage.m */,
-				AC93D3391C156EDE0087A6B0 /* APIKeys.plist */,
-				E1EA9D5A1C113BED00573260 /* APIKeys.plist */,
 				D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */,
 				D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */,
 				ACF534491C12C52C00854186 /* APIKeys.plist */,
@@ -476,12 +470,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
-				AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
-				E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */,
 				ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
