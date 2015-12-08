@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC93D3391C156EDE0087A6B0 /* APIKeys.plist */; };
+		ACDE69661C169E850017951F /* BallotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69651C169E840017951F /* BallotTableViewController.m */; };
+		ACDE69691C16A4200017951F /* Ballot.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69681C16A4200017951F /* Ballot.m */; };
+		ACDE696C1C16B48A0017951F /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE696B1C16B48A0017951F /* CustomTableCell.m */; };
 		ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF534491C12C52C00854186 /* APIKeys.plist */; };
 		ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344D1C12C66800854186 /* FavoritesViewController.m */; };
 		ACF534531C12C66800854186 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344F1C12C66800854186 /* HistoryViewController.m */; };
@@ -88,6 +91,12 @@
 
 /* Begin PBXFileReference section */
 		AC93D3391C156EDE0087A6B0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		ACDE69641C169E840017951F /* BallotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallotTableViewController.h; path = ../BallotTableViewController.h; sourceTree = "<group>"; };
+		ACDE69651C169E840017951F /* BallotTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallotTableViewController.m; path = ../BallotTableViewController.m; sourceTree = "<group>"; };
+		ACDE69671C16A4200017951F /* Ballot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ballot.h; sourceTree = "<group>"; };
+		ACDE69681C16A4200017951F /* Ballot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ballot.m; sourceTree = "<group>"; };
+		ACDE696A1C16B48A0017951F /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
+		ACDE696B1C16B48A0017951F /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		ACF534491C12C52C00854186 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF5344C1C12C66800854186 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		ACF5344D1C12C66800854186 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
@@ -256,6 +265,12 @@
 		D4F2B90B1BBF12EE007F6955 /* UbiqProject */ = {
 			isa = PBXGroup;
 			children = (
+				ACDE69641C169E840017951F /* BallotTableViewController.h */,
+				ACDE69651C169E840017951F /* BallotTableViewController.m */,
+				ACDE696A1C16B48A0017951F /* CustomTableCell.h */,
+				ACDE696B1C16B48A0017951F /* CustomTableCell.m */,
+				ACDE69671C16A4200017951F /* Ballot.h */,
+				ACDE69681C16A4200017951F /* Ballot.m */,
 				ACF534581C12C86400854186 /* NavigationViewController.m */,
 				ACF534591C12C86400854186 /* NavigationViewController.h */,
 				ACF534551C12C69C00854186 /* SWRevealViewController.h */,
@@ -517,10 +532,12 @@
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
 				E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */,
 				E1FD46F11C16565C008101E1 /* AFXMLRequestOperation.m in Sources */,
+				ACDE69661C169E850017951F /* BallotTableViewController.m in Sources */,
 				ACF534531C12C66800854186 /* HistoryViewController.m in Sources */,
 				ACF534571C12C69C00854186 /* SWRevealViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
+				ACDE69691C16A4200017951F /* Ballot.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
 				D47FCD691C10EBA700DC0250 /* NSURLRequest+OAuth.m in Sources */,
 				E1FD46D61C165652008101E1 /* MGMessage.m in Sources */,
@@ -533,6 +550,7 @@
 				E1DF867C1BF10FED00935996 /* README.md in Sources */,
 				E1FD46EB1C16565C008101E1 /* AFHTTPRequestOperation.m in Sources */,
 				D48E57C01BDF309F00B544FF /* CustomAnnotation.m in Sources */,
+				ACDE696C1C16B48A0017951F /* CustomTableCell.m in Sources */,
 				E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */,
 				E13CA0A41C082C680070D2CA /* FormTextField.m in Sources */,
 			);

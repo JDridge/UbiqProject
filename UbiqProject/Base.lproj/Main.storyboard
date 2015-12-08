@@ -202,6 +202,29 @@
                                     <segue destination="AiE-DW-5g8" kind="custom" customClass="SWRevealViewControllerSegue" id="8Fh-Og-Ha3"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fifth" textLabel="sci-Sk-c0Q" style="IBUITableViewCellStyleDefault" id="Rhw-FB-Ehx">
+                                <rect key="frame" x="0.0" y="204" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rhw-FB-Ehx" id="GcE-Zz-64i">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ballots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sci-Sk-c0Q">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <segue destination="eVg-32-iWv" kind="custom" customClass="SWRevealViewControllerSegue" id="aFi-l8-D1u"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Esz-FL-1pc" id="x42-a8-Vds"/>
@@ -412,6 +435,37 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="402" y="309"/>
+        </scene>
+        <!--Ballot Table View Controller-->
+        <scene sceneID="l9E-a7-9cR">
+            <objects>
+                <tableViewController id="eVg-32-iWv" customClass="BallotTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fDz-Vf-bnx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="FLd-vl-3eT" customClass="CustomTableCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FLd-vl-3eT" id="26w-Uc-AFl">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eVg-32-iWv" id="hMl-a4-ejR"/>
+                            <outlet property="delegate" destination="eVg-32-iWv" id="Z3R-7h-6gi"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2BU-vx-Pn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-342" y="2574"/>
         </scene>
         <!--About Us View Controller-->
         <scene sceneID="kBx-ZB-E6f">
@@ -768,6 +822,6 @@
         <image name="map" width="2079" height="2076"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZTd-8Q-YU0"/>
+        <segue reference="YHX-vf-Jy3"/>
     </inferredMetricsTieBreakers>
 </document>
