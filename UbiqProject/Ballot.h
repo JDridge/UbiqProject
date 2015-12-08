@@ -6,6 +6,8 @@
 //  Copyright © 2015 Joey. All rights reserved.
 //
 
+
+
 #import <Foundation/Foundation.h>
 
 @interface Ballot : NSObject
