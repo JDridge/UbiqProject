@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kS9-qA-Scn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kS9-qA-Scn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -176,7 +176,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="8K5-ur-LA1" kind="custom" customClass="SWRevealViewControllerSegue" id="bxd-25-BTx"/>
+                                    <segue destination="65I-oM-UOA" kind="custom" customClass="SWRevealViewControllerSegue" id="69K-BM-Flm"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fourth" textLabel="81z-Ar-pPr" style="IBUITableViewCellStyleDefault" id="OrG-Lc-N49" userLabel="fourth">
@@ -693,43 +693,33 @@
             </objects>
             <point key="canvasLocation" x="1169" y="309"/>
         </scene>
-        <!--History View Controller-->
-        <scene sceneID="4KO-JL-tDa">
+        <!--History-->
+        <scene sceneID="fDL-5l-SFx">
             <objects>
-                <viewController id="8K5-ur-LA1" customClass="HistoryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ksc-Q3-LxQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="LVY-JS-7PI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2X8-Mp-9ZT">
+                <tableViewController title="History" id="65I-oM-UOA" customClass="HistoryTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MdZ-HN-LZo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uz9-Ue-EAo">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <animations/>
-                                <items>
-                                    <navigationItem title="History" id="1ry-vs-Kik">
-                                        <barButtonItem key="leftBarButtonItem" title="Menu" id="wdI-6U-5ni"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="uz9-Ue-EAo" firstAttribute="leading" secondItem="2X8-Mp-9ZT" secondAttribute="leading" id="8Kq-mo-YIg"/>
-                            <constraint firstAttribute="trailing" secondItem="uz9-Ue-EAo" secondAttribute="trailing" id="MP6-CX-NRQ"/>
-                            <constraint firstItem="uz9-Ue-EAo" firstAttribute="top" secondItem="Ksc-Q3-LxQ" secondAttribute="bottom" id="NIf-Tj-Jj4"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="barButton" destination="wdI-6U-5ni" id="Ynr-6b-4Hs"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZE0-X1-HZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="431-Uq-u5h">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="431-Uq-u5h" id="3xP-bl-Bkm">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="65I-oM-UOA" id="ip5-cv-WB4"/>
+                            <outlet property="delegate" destination="65I-oM-UOA" id="2th-HV-Tsz"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3RR-LN-4bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="1940"/>
+            <point key="canvasLocation" x="515" y="2004"/>
         </scene>
         <!--Settings Modal View Controller-->
         <scene sceneID="iiw-3B-8U7">
