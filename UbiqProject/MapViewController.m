@@ -189,11 +189,10 @@
         return nil;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView*)sender {
     MapDetailedViewController *vc = [segue destinationViewController];
-    vc.pinLocation = ((MKAnnotationView *)sender).annotation;
+    vc.pinLocation = sender.annotation;
     vc.category = queryToShow.category;
-    
 }
 
 #pragma Called when the right callout is tapped, which is shown after you click on the pin and the halfway icon in the bubble.

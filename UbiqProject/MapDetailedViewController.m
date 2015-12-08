@@ -1,7 +1,7 @@
 
 #import "MapDetailedViewController.h"
 #import "YPAPISample.h"
-
+#import <Parse/Parse.h>
 
 @interface MapDetailedViewController ()
 
@@ -12,6 +12,44 @@
 @synthesize nameLabel, phoneLabel, addressLabel, reviewCountLabel, urlImage, ratingImage, category, pinLocation, yelpURL;
 
 - (void)viewDidLoad {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Ballot"];
+    [query orderByDescending:@"createdAt"];
+    
+    PFObject *firstQuery = [query getFirstObject];
+    
+    NSString *mostRecentBallot = firstQuery[@"ballotID"];
+    int ballotID = [[mostRecentBallot substringFromIndex:2] intValue] + 1;
+
+    
+    PFObject *ballot = [PFObject objectWithClassName:@"Ballot"];
+    ballot[@"ballotID"] = [NSString stringWithFormat:@"BA%i", ballotID];
+    ballot[@"username"] = [[PFUser currentUser] username];
+    
+    NSString *title = [pinLocation title];
+    NSString *address = [pinLocation subtitle];
+    CLLocationCoordinate2D coordinate = [pinLocation coordinate];
+
+    ballot[@"nameOfPlace"] = title;
+    ballot[@"addressOfPlace"] = address;
+    
+    ballot[@"coordinates"] = [NSString stringWithFormat:@"%f, %f", coordinate.latitude, coordinate.longitude];
+    ballot[@"vote"] = @"Not yet voted";
+    
+    [ballot saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(succeeded) {
+            NSLog(@"ballot saved");
+        }
+        else {
+            NSLog(@"error: %@", [error description]);
+        }
+    }];
+    
+    /*
+     
+     */
+    
+    
     /*
      "display_phone" = "+1-415-777-1413";
      "image_url" = "http://s3-media4.fl.yelpcdn.com/bphoto/uweSiOf0XBB4BPk_ibHVyg/ms.jpg";
@@ -71,13 +109,7 @@
                 
                 
                 yelpURL =[topBusinessJSON objectForKey:@"url"];
-                //po [topBusinessJSON objectForKey:@"url"]
-                
-                
-                
-                
-                
-                
+                //po [topBusinessJSON objectForKey:@"url"
             } else {
                 NSLog(@"No business was found");
             }

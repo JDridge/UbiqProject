@@ -21,7 +21,7 @@
     [mailgun sendMessageTo:emailTo
                       from:@"Excited User <converge@converge.converge>"
                    subject:@"hello there"
-                      body:@"hi!"
+                      body:@"hi! Open the app here! converge://OPENME"
                    success:^(NSString *messageId) {
                        NSLog(@"success!");}
                    failure:^(NSError *error) {
@@ -31,7 +31,7 @@
 + (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you {
     NSString *emailTo = [NSString stringWithFormat:@"%@ %@", user, @"<xxx@uh.edu>"];
     NSString *subject = [NSString stringWithFormat:@"%@ %@", you, @" has requested for you to converge with them."];
-    NSString *body = [NSString stringWithFormat:@"Hello %@,\n%@ has requested for you to converge with then. Please open the converge app to see more!", user, you];
+    NSString *body = [NSString stringWithFormat:@"Hello %@,\n%@ has requested for you to converge with then. Please open the converge app to see more! Open the app here! converge://OPENME", user, you];
     Mailgun *mailgun = [Mailgun clientWithDomain:[NSString getMailgunClientWithDomain]
                                           apiKey:[NSString getMailgunApiKey]];
     [mailgun sendMessageTo:emailTo
@@ -45,9 +45,9 @@
 }
 
 + (void) sendEmailAboutStatusOfBallot:(NSString*)user location:(NSString*)location status:(NSString*)status {
-    NSString *emailTo = [NSString stringWithFormat:@"%@ %@", user, @"<xxx@uh.edu>"];
+    NSString *emailTo = [NSString stringWithFormat:@"%@ %@", user, @"<ubicomp6uh@gmail.com>"];
     NSString *subject = @"Status of your converge ballot";
-    NSString *body = [NSString stringWithFormat:@"Hello %@,\nThe status of the ballot for location %@ is: %@. Please open the converge app to see more information.", user, location, status];
+    NSString *body = [NSString stringWithFormat:@"Hello %@,\nThe status of the ballot for location %@ is: %@. Please open the converge app to see more information. Open the app here! converge://OPENME", user, location, status];
     Mailgun *mailgun = [Mailgun clientWithDomain:[NSString getMailgunClientWithDomain]
                                           apiKey:[NSString getMailgunApiKey]];
     [mailgun sendMessageTo:emailTo

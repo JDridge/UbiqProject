@@ -54,6 +54,17 @@
     return nameTextField;
 }
 
++ (FormTextField *)createAddressTextField {
+    FormTextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Your Address"];
+    newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    newEmailAddressTextField.validationRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$" options:NSRegularExpressionCaseInsensitive error:NULL];
+    newEmailAddressTextField.returnKeyType = UIReturnKeyNext;
+    newEmailAddressTextField.delegate = (id <UITextFieldDelegate>) self;
+    
+    return newEmailAddressTextField;
+}
+
+
 + (CGRect)getDefaultTextFieldSize {
     return CGRectMake(10, 200, 500, 150);
 }

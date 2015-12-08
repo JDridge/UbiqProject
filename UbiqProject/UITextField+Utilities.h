@@ -7,5 +7,6 @@
 + (FormTextField *)createEmailAddressTextField;
 + (FormTextField *)createPasswordTextField:(NSString *)passwordField;
 + (FormTextField *)createNameTextField:(NSString*)name;
++ (FormTextField *)createAddressTextField;
 
 @end

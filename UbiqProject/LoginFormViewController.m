@@ -137,7 +137,11 @@
     lastNameTextField.delegate = self;
     [LoginSignUpForm addArrangedSubview:lastNameTextField];
 
-    UITextField *emailAddressTextField = [UITextField createEmailAddressTextField];
+    UITextField *addressTextField = [UITextField createEmailAddressTextField];
+    addressTextField.delegate = self;
+    [LoginSignUpForm addArrangedSubview:addressTextField];
+
+    UITextField *emailAddressTextField = [UITextField createAddressTextField];
     emailAddressTextField.delegate = self;
     [LoginSignUpForm addArrangedSubview:emailAddressTextField];
 
@@ -267,6 +271,9 @@
         }
         else if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"Verify Password"]) {
             stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"Verify Password must contain at least 6 characters."];
+        }
+        else if([((FormTextField*)invalidViews[i]).placeholder isEqualToString:@"Your Address"]) {
+            stringToDisplay = [NSString stringWithFormat:@"%@ \n%@", stringToDisplay, @"Your Address must be a valid address."];
         }
     }
 

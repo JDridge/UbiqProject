@@ -22,7 +22,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     // Override point for customization after application launch.
-
     
     [Parse enableLocalDatastore];
     // Initialize Parse.
@@ -31,16 +30,55 @@
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    if(![PFUser currentUser]) {
-        //login screen
-        NSLog(@"going to login screen");
-        //[self transitionToLoginViewController];
-    }
-    else {
-        NSLog(@"current user!");
-        [self transitionToHomeViewController];
-        //   [self transitionToHomeViewController];
-    }
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Ballot"];
+
+    [[query whereKey:@"ballotID" equalTo:@"BA3"] whereKey:@"vote" equalTo:@"mike has voted"];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * userStats, NSError *error) {
+        if (!error) {
+            // Found UserStats
+            [userStats setObject:@"mike hunt has voted" forKey:@"vote"];
+            
+            // Save
+            [userStats saveInBackground];
+        } else {
+            // Did not find any UserStats for the current user
+            NSLog(@"Error: %@", error);
+        }
+    }];
+
+    
+//    NSArray *allObjects = [query findObjects];
+//    for(int i = 0; i < [allObjects count]; i++) {
+//        PFObject *currentObject = allObjects[i];
+//        if([currentObject[@"ballotID"] isEqualToString:@"BA3"] &&
+//           [currentObject[@"vote"] isEqualToString:@"Not yet voted"]) {
+//            NSLog(@"found");
+//            //[[query getObjectWithId:currentObject[@"objectId"]] setObject:@"voted" forKey:@"vote"];
+//            
+//            [query getObjectInBackgroundWithId:currentObject[@"objectId"]
+//                                         block:^(PFObject *currentObject2, NSError *error) {
+//                                             NSLog(@"higukguygyuguyigu");
+//                                             currentObject2[@"vote"] = @"voted";
+//                                             [currentObject2 saveInBackground];
+//                                         }];
+//    
+//            
+//        }
+//    }
+    
+//    if(![PFUser currentUser]) {
+//        //login screen
+//        NSLog(@"going to login screen");
+//        //[self transitionToLoginViewController];
+//    }
+//    else {
+//        NSLog(@"current user!");
+//        [self transitionToHomeViewController];
+//        //   [self transitionToHomeViewController];
+//    }
     
     
     
