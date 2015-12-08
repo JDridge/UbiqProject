@@ -17,5 +17,7 @@
 + (NSString*) getYelpTokenSecret;
 + (NSString*) getParseClientKey;
 + (NSString*) getParseApplicationID;
++ (NSString*) getMailgunClientWithDomain;
++ (NSString*) getMailgunApiKey;
 
 @end

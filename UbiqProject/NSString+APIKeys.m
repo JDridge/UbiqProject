@@ -46,4 +46,12 @@
     return [self getAllKeys][@"ParseApplicationID"];
 }
 
++ (NSString*) getMailgunClientWithDomain {
+    return [self getAllKeys][@"MailgunClientWithDomain"];
+}
+
++ (NSString*) getMailgunApiKey {
+    return [self getAllKeys][@"MailgunApiKey"];
+}
+
 @end
