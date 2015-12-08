@@ -32,6 +32,7 @@
 		E13CA0A41C082C680070D2CA /* FormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E13CA0A31C082C680070D2CA /* FormTextField.m */; };
 		E13DE0461BFACE73000C9C30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0451BFACE73000C9C30 /* .gitignore */; };
 		E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */; };
+		E1BAC4531C1658B600AE4035 /* Mailgun+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */; };
 		E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */; };
 		E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC51C058323000A9EE9 /* railway.gif */; };
 		E1CE8FC81C058323000A9EE9 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC61C058323000A9EE9 /* video.mov */; };
@@ -134,6 +135,8 @@
 		E13DE0451BFACE73000C9C30 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E14FA41A1C06FD0800E3FEB0 /* UITextField+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Utilities.h"; sourceTree = "<group>"; };
 		E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Utilities.m"; sourceTree = "<group>"; };
+		E1BAC4511C1658B600AE4035 /* Mailgun+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mailgun+Utilities.h"; sourceTree = "<group>"; };
+		E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mailgun+Utilities.m"; sourceTree = "<group>"; };
 		E1CE8FBE1C052AAC000A9EE9 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		E1CE8FC51C058323000A9EE9 /* railway.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = railway.gif; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				E1D8641D1BEDA11E00C772F6 /* Images.xcassets */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
+				E1BAC4511C1658B600AE4035 /* Mailgun+Utilities.h */,
+				E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
 				D4F2B9131BBF12EE007F6955 /* HomeViewController.m */,
 				D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */,
@@ -526,6 +531,7 @@
 				E1FD46D61C165652008101E1 /* MGMessage.m in Sources */,
 				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E1FD46EE1C16565C008101E1 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				E1BAC4531C1658B600AE4035 /* Mailgun+Utilities.m in Sources */,
 				D47FCD6D1C10EBA700DC0250 /* TDOAuth.m in Sources */,
 				E1FD46EC1C16565C008101E1 /* AFImageRequestOperation.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
