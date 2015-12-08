@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC93D3391C156EDE0087A6B0 /* APIKeys.plist */; };
 		ACDE69661C169E850017951F /* BallotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69651C169E840017951F /* BallotTableViewController.m */; };
 		ACDE69691C16A4200017951F /* Ballot.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69681C16A4200017951F /* Ballot.m */; };
 		ACDE696C1C16B48A0017951F /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE696B1C16B48A0017951F /* CustomTableCell.m */; };
-		ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF534491C12C52C00854186 /* APIKeys.plist */; };
 		ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344D1C12C66800854186 /* FavoritesViewController.m */; };
 		ACF534531C12C66800854186 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344F1C12C66800854186 /* HistoryViewController.m */; };
 		ACF534541C12C66800854186 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF534501C12C66800854186 /* AboutUsViewController.m */; };
@@ -100,14 +98,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC93D3391C156EDE0087A6B0 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACDE69641C169E840017951F /* BallotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallotTableViewController.h; path = ../BallotTableViewController.h; sourceTree = "<group>"; };
 		ACDE69651C169E840017951F /* BallotTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallotTableViewController.m; path = ../BallotTableViewController.m; sourceTree = "<group>"; };
 		ACDE69671C16A4200017951F /* Ballot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ballot.h; sourceTree = "<group>"; };
 		ACDE69681C16A4200017951F /* Ballot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ballot.m; sourceTree = "<group>"; };
 		ACDE696A1C16B48A0017951F /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		ACDE696B1C16B48A0017951F /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
-		ACF534491C12C52C00854186 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACF5344C1C12C66800854186 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		ACF5344D1C12C66800854186 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		ACF5344E1C12C66800854186 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -370,7 +366,6 @@
 				E1FD46D41C165652008101E1 /* MGMessage.m */,
 				D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */,
 				D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */,
-				ACF534491C12C52C00854186 /* APIKeys.plist */,
 				D47FCD5F1C10EBA700DC0250 /* OMGFormURLEncode.h */,
 				D47FCD601C10EBA700DC0250 /* OMGFormURLEncode.m */,
 				D47FCD611C10EBA700DC0250 /* OMGHTTPURLRQ.h */,
@@ -525,14 +520,11 @@
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
 				F457BEFF1C1685F500830580 /* ubiq8.mov in Resources */,
 				F457BF011C1685F500830580 /* ubiq10.mov in Resources */,
-				AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
-				E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */,
 				F457BEFE1C1685F500830580 /* ubiq7.mov in Resources */,
-				ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */,
 				F457BEFC1C1685F500830580 /* ubiq5.mov in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
