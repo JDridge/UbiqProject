@@ -35,6 +35,7 @@
 		E13CA0A41C082C680070D2CA /* FormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E13CA0A31C082C680070D2CA /* FormTextField.m */; };
 		E13DE0461BFACE73000C9C30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0451BFACE73000C9C30 /* .gitignore */; };
 		E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */; };
+		E1BAC4531C1658B600AE4035 /* Mailgun+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */; };
 		E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */; };
 		E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC51C058323000A9EE9 /* railway.gif */; };
 		E1CE8FC81C058323000A9EE9 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC61C058323000A9EE9 /* video.mov */; };
@@ -45,7 +46,6 @@
 		E1EA9D4D1C10BB5900573260 /* UserCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D4C1C10BB5900573260 /* UserCustomAnnotation.m */; };
 		E1EA9D551C10BD3B00573260 /* SearchCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D541C10BD3B00573260 /* SearchCustomAnnotation.m */; };
 		E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EA9D571C10EFC700573260 /* Main.storyboard */; };
-		E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1EA9D5A1C113BED00573260 /* APIKeys.plist */; };
 		E1EA9D5E1C113EB900573260 /* NSString+APIKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */; };
 		E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935A1BD4A6E700CC612D /* MapViewController.m */; };
 		E1F5935E1BD4A7F100CC612D /* Query.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5935D1BD4A7F100CC612D /* Query.m */; };
@@ -77,6 +77,16 @@
 		E1FD71CE1C0C3596007245D3 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71CB1C0C3596007245D3 /* ParseFacebookUtils.framework */; };
 		E1FD71CF1C0C35D3007245D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B21C0C2ED1007245D3 /* libsqlite3.tbd */; };
 		E1FD71D01C0C35D9007245D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B01C0C2ECD007245D3 /* libz.tbd */; };
+		F457BEF81C1685F500830580 /* ubiq1.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEEE1C1685F500830580 /* ubiq1.mov */; };
+		F457BEF91C1685F500830580 /* ubiq2.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEEF1C1685F500830580 /* ubiq2.mov */; };
+		F457BEFA1C1685F500830580 /* ubiq3.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF01C1685F500830580 /* ubiq3.mov */; };
+		F457BEFB1C1685F500830580 /* ubiq4.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF11C1685F500830580 /* ubiq4.mov */; };
+		F457BEFC1C1685F500830580 /* ubiq5.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF21C1685F500830580 /* ubiq5.mov */; };
+		F457BEFD1C1685F500830580 /* ubiq6.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF31C1685F500830580 /* ubiq6.mov */; };
+		F457BEFE1C1685F500830580 /* ubiq7.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF41C1685F500830580 /* ubiq7.mov */; };
+		F457BEFF1C1685F500830580 /* ubiq8.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF51C1685F500830580 /* ubiq8.mov */; };
+		F457BF001C1685F500830580 /* ubiq9.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF61C1685F500830580 /* ubiq9.mov */; };
+		F457BF011C1685F500830580 /* ubiq10.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF71C1685F500830580 /* ubiq10.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +153,8 @@
 		E13DE0451BFACE73000C9C30 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E14FA41A1C06FD0800E3FEB0 /* UITextField+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Utilities.h"; sourceTree = "<group>"; };
 		E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Utilities.m"; sourceTree = "<group>"; };
+		E1BAC4511C1658B600AE4035 /* Mailgun+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mailgun+Utilities.h"; sourceTree = "<group>"; };
+		E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mailgun+Utilities.m"; sourceTree = "<group>"; };
 		E1CE8FBE1C052AAC000A9EE9 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		E1CE8FC51C058323000A9EE9 /* railway.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = railway.gif; sourceTree = "<group>"; };
@@ -157,7 +169,6 @@
 		E1EA9D541C10BD3B00573260 /* SearchCustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCustomAnnotation.m; sourceTree = "<group>"; };
 		E1EA9D561C10BDD900573260 /* SearchCustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCustomAnnotation.h; sourceTree = "<group>"; };
 		E1EA9D581C10EFC700573260 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E1EA9D5A1C113BED00573260 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		E1EA9D5C1C113EB900573260 /* NSString+APIKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+APIKeys.h"; sourceTree = "<group>"; };
 		E1EA9D5D1C113EB900573260 /* NSString+APIKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+APIKeys.m"; sourceTree = "<group>"; };
 		E1F593591BD4A6E700CC612D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -204,6 +215,16 @@
 		E1FD71C91C0C3596007245D3 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		E1FD71CA1C0C3596007245D3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E1FD71CB1C0C3596007245D3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		F457BEEE1C1685F500830580 /* ubiq1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq1.mov; sourceTree = "<group>"; };
+		F457BEEF1C1685F500830580 /* ubiq2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq2.mov; sourceTree = "<group>"; };
+		F457BEF01C1685F500830580 /* ubiq3.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq3.mov; sourceTree = "<group>"; };
+		F457BEF11C1685F500830580 /* ubiq4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq4.mov; sourceTree = "<group>"; };
+		F457BEF21C1685F500830580 /* ubiq5.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq5.mov; sourceTree = "<group>"; };
+		F457BEF31C1685F500830580 /* ubiq6.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq6.mov; sourceTree = "<group>"; };
+		F457BEF41C1685F500830580 /* ubiq7.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq7.mov; sourceTree = "<group>"; };
+		F457BEF51C1685F500830580 /* ubiq8.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq8.mov; sourceTree = "<group>"; };
+		F457BEF61C1685F500830580 /* ubiq9.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq9.mov; sourceTree = "<group>"; };
+		F457BEF71C1685F500830580 /* ubiq10.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq10.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +306,8 @@
 				E1D8641D1BEDA11E00C772F6 /* Images.xcassets */,
 				D4F2B90F1BBF12EE007F6955 /* AppDelegate.h */,
 				D4F2B9101BBF12EE007F6955 /* AppDelegate.m */,
+				E1BAC4511C1658B600AE4035 /* Mailgun+Utilities.h */,
+				E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */,
 				D4F2B9121BBF12EE007F6955 /* HomeViewController.h */,
 				D4F2B9131BBF12EE007F6955 /* HomeViewController.m */,
 				D40D7D611BFBA8E4008C748D /* MapDetailedViewController.h */,
@@ -345,8 +368,6 @@
 				E1FD46D21C165652008101E1 /* Mailgun.m */,
 				E1FD46D31C165652008101E1 /* MGMessage.h */,
 				E1FD46D41C165652008101E1 /* MGMessage.m */,
-				AC93D3391C156EDE0087A6B0 /* APIKeys.plist */,
-				E1EA9D5A1C113BED00573260 /* APIKeys.plist */,
 				D47FCD5D1C10EBA700DC0250 /* NSURLRequest+OAuth.h */,
 				D47FCD5E1C10EBA700DC0250 /* NSURLRequest+OAuth.m */,
 				ACF534491C12C52C00854186 /* APIKeys.plist */,
@@ -363,6 +384,16 @@
 				E1CE8FC51C058323000A9EE9 /* railway.gif */,
 				E1CE8FC61C058323000A9EE9 /* video.mov */,
 				D4F2B90D1BBF12EE007F6955 /* main.m */,
+				F457BEEE1C1685F500830580 /* ubiq1.mov */,
+				F457BEEF1C1685F500830580 /* ubiq2.mov */,
+				F457BEF01C1685F500830580 /* ubiq3.mov */,
+				F457BEF11C1685F500830580 /* ubiq4.mov */,
+				F457BEF21C1685F500830580 /* ubiq5.mov */,
+				F457BEF31C1685F500830580 /* ubiq6.mov */,
+				F457BEF41C1685F500830580 /* ubiq7.mov */,
+				F457BEF51C1685F500830580 /* ubiq8.mov */,
+				F457BEF61C1685F500830580 /* ubiq9.mov */,
+				F457BEF71C1685F500830580 /* ubiq10.mov */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -485,14 +516,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F457BF001C1685F500830580 /* ubiq9.mov in Resources */,
+				F457BEFD1C1685F500830580 /* ubiq6.mov in Resources */,
+				F457BEFB1C1685F500830580 /* ubiq4.mov in Resources */,
+				F457BEF91C1685F500830580 /* ubiq2.mov in Resources */,
+				F457BEF81C1685F500830580 /* ubiq1.mov in Resources */,
+				F457BEFA1C1685F500830580 /* ubiq3.mov in Resources */,
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
+				F457BEFF1C1685F500830580 /* ubiq8.mov in Resources */,
+				F457BF011C1685F500830580 /* ubiq10.mov in Resources */,
 				AC93D33A1C156EDE0087A6B0 /* APIKeys.plist in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				E1EA9D5B1C113BED00573260 /* APIKeys.plist in Resources */,
+				F457BEFE1C1685F500830580 /* ubiq7.mov in Resources */,
 				ACF5344A1C12C52C00854186 /* APIKeys.plist in Resources */,
+				F457BEFC1C1685F500830580 /* ubiq5.mov in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 			);
@@ -543,6 +584,7 @@
 				E1FD46D61C165652008101E1 /* MGMessage.m in Sources */,
 				D40D7D631BFBA8E4008C748D /* MapDetailedViewController.m in Sources */,
 				E1FD46EE1C16565C008101E1 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				E1BAC4531C1658B600AE4035 /* Mailgun+Utilities.m in Sources */,
 				D47FCD6D1C10EBA700DC0250 /* TDOAuth.m in Sources */,
 				E1FD46EC1C16565C008101E1 /* AFImageRequestOperation.m in Sources */,
 				E10E4A2B1BE1AC55004932FD /* SettingsModalViewController.m in Sources */,
