@@ -35,6 +35,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
+    
     static NSString *myCellIdentifier = @"HistoryCustomCell";
     UINib *nib = [UINib nibWithNibName:@"HistoryCustomCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:myCellIdentifier];
@@ -86,6 +89,7 @@
     static NSString *myCellIdentifier = @"HistoryCustomCell";
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
     cell.firstPersonName.text = @"Tree";
+    cell.secondPersonName.text = @"Chris";
     return cell;
 }
 

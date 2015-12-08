@@ -10,6 +10,10 @@
 
 @interface HistoryTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *firstPersonImage;
+@property (weak, nonatomic) IBOutlet UIImageView *secondPersonImage;
+@property (weak, nonatomic) IBOutlet UIImageView *mapImage;
 @property (weak, nonatomic) IBOutlet UILabel *firstPersonName;
+@property (weak, nonatomic) IBOutlet UILabel *secondPersonName;
 
 @end
