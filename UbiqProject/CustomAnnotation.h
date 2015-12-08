@@ -16,6 +16,11 @@
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *address;
+@property (copy, nonatomic) NSString *phone;
+@property (copy, nonatomic) NSString *ratingImage;
+@property (copy, nonatomic) NSString *reviewCount;
+@property (copy, nonatomic) NSString *url;
 
 -(id)initWithTitleCoordinateSubtitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)newSubtitle;
 
