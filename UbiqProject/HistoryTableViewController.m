@@ -16,6 +16,8 @@
 
 @implementation HistoryTableViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"History";
@@ -41,6 +43,8 @@
     static NSString *myCellIdentifier = @"HistoryCustomCell";
     UINib *nib = [UINib nibWithNibName:@"HistoryCustomCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:myCellIdentifier];
+    
+    
 
 }
 
@@ -88,8 +92,18 @@
     
     static NSString *myCellIdentifier = @"HistoryCustomCell";
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
+    
+    NSURL *url = [NSURL URLWithString:@"http://www.advancedcustomfields.com/wp-content/uploads/2013/11/acf-google-maps-field-2.png"];
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    
     cell.firstPersonName.text = @"Tree";
     cell.secondPersonName.text = @"Chris";
+    [cell.mapImage setImage:image];
+    
+    
+    
     return cell;
 }
 
