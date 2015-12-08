@@ -26,6 +26,15 @@
 
 - (id)initWithTitleCoordinateSubtitleName:(NSString *)newTitle coordinate:(CLLocationCoordinate2D)location subtitle:(NSString *)newSubtitle name:(NSString *)newName;
 
+-(id)initWithTitleCoordinateTitle:(NSString *)newTitle
+                         Subtitle:(NSString *)newSubtitle
+                             Name:(NSString *)newName
+                          Address:(NSString *)newAddress
+                            Phone:(NSString *)newPhone
+                      RatingImage:(NSString *)newRatingImage 
+                      ReviewCount:(NSString *)newReviewCount 
+                              URL:(NSString *)newURL;
+
 -(MKAnnotationView*) annotationView;
 
 @end

@@ -33,6 +33,8 @@
     return self;
 }
 
+
+
 - (MKAnnotationView*) annotationView {
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"SearchCustomAnnotation"];
     annotationView.enabled = YES;

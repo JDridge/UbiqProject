@@ -10,5 +10,5 @@
 #import "CustomAnnotation.h"
 
 @interface SearchCustomAnnotation : CustomAnnotation
-
+    
 @end

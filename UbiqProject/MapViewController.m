@@ -7,7 +7,9 @@
 #import "SettingsModalViewController.h"
 #import "MapDetailedViewController.h"
 
-@interface MapViewController ()
+@interface MapViewController () {
+    NSMutableArray *allLocations;
+}
 
 @end
 
@@ -20,6 +22,8 @@
     [super viewDidLoad];
     [self setUpConvergeMapView];
     [self createTheCustomAnnotations];
+    
+    [self.ConvergeMapView showAnnotations:allLocations animated:YES];
 }
 
 - (void)setUpConvergeMapView {
@@ -60,7 +64,8 @@
                                                  subtitle:@"Halfway address"];
     while(!didFinishLoading) {
         [self displayAnimationForLoading];
-        [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate];
+        [self loadPlacesFromNaturalLanguageQuery:halfwayCustomAnnotation.coordinate]; //Apple Maps Query
+//        [self loadPlacesFromYelp:halfwayCustomAnnotation.coordinate];               //Yelp Query
     }
     
     [ConvergeMapView addAnnotation:firstCustomAnnotation];
@@ -139,6 +144,128 @@
     }];
     didFinishLoading = YES;
 }
+
+-(void)loadPlacesFromYelp:(CLLocationCoordinate2D) halfwayCoordinates {
+    @autoreleasepool {
+        NSString *defaultTerm = queryToShow.category;
+        NSString *defaultCoordinates = [NSString stringWithFormat:@"%f,%f", halfwayCoordinates.latitude, halfwayCoordinates.longitude];
+    
+        //Get the term and location from the command line if there were any, otherwise assign default values.
+        NSString *term = [[NSUserDefaults standardUserDefaults] valueForKey:@"term"] ?: defaultTerm;
+        NSString *ll = [[NSUserDefaults standardUserDefaults] valueForKey:@"ll"] ?: defaultCoordinates;
+        
+        
+        YPAPISample *APISample = [[YPAPISample alloc] init];
+        
+        dispatch_group_t requestGroup = dispatch_group_create();
+        
+        dispatch_group_enter(requestGroup);
+        [APISample queryTopBusinessInfoForTerm:term ll:ll completionHandler:^(NSDictionary *topBusinessJSON, NSError *error) {
+//        https://api.yelp.com/v2/search?term=german+food&location=Hayes&cll=37.77493,-122.419415
+            NSString *yelpSearch = [NSString stringWithFormat:@"https://api.yelp.com/v2/search?term=%@&cll=%f,%f", queryToShow.category, halfwayCoordinates.latitude, halfwayCoordinates.longitude
+                                    ];
+            NSLog(@"%f, %f", halfwayCoordinates.latitude, halfwayCoordinates.longitude);
+            NSLog(@"%@", yelpSearch);
+            if (error) {
+                NSLog(@"An error happened during the request: %@", error);
+            } else if (topBusinessJSON) {
+//                for (MKMapItem *item in response.mapItems) {
+//                    CustomAnnotation *updatedCustomAnnotation = [[SearchCustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
+//                    [placemarks addObject:updatedCustomAnnotation];
+                
+//
+                NSLog(@"Top business info: \n %@", topBusinessJSON);
+//                nameLabel.text = [topBusinessJSON objectForKey:@"name"];
+//                phoneLabel.text = [NSString stringWithFormat:@"%@%@", @"Phone Number: ", [topBusinessJSON objectForKey:@"phone"]];
+                
+                NSArray *addressObject = [[topBusinessJSON objectForKey:@"location"] objectForKey:@"display_address"];
+                
+                NSString *stringAddress = @"";
+                for(int i = 0; i < [addressObject count]; i++) {
+                    stringAddress = [stringAddress stringByAppendingString:[NSString stringWithFormat:@"%@\n", addressObject[i]]];
+                }
+                
+//                addressLabel.text = stringAddress;
+//                
+//                reviewCountLabel.text = [NSString stringWithFormat:@"%@%i", @"Reviews: ",[[topBusinessJSON objectForKey:@"review_count"] intValue]];
+//                
+//                
+//                yelpURL =[topBusinessJSON objectForKey:@"url"];
+                //po [topBusinessJSON objectForKey:@"url"]
+                
+                
+                
+                
+                
+                
+            } else {
+                NSLog(@"No business was found");
+            }
+            
+            dispatch_group_leave(requestGroup);
+        }];
+        dispatch_group_wait(requestGroup, DISPATCH_TIME_FOREVER); // This avoids the program exiting before all our asynchronous callbacks have been made.
+    }
+
+}
+/*
+ 
+ @autoreleasepool {
+ NSString *defaultTerm = category;
+ NSString *defaultCoordinates = [NSString stringWithFormat:@"%f,%f", pinLocation.coordinate.latitude, pinLocation.coordinate.longitude];
+ 
+ //Get the term and location from the command line if there were any, otherwise assign default values.
+ NSString *term = [[NSUserDefaults standardUserDefaults] valueForKey:@"term"] ?: defaultTerm;
+ NSString *ll = [[NSUserDefaults standardUserDefaults] valueForKey:@"ll"] ?: defaultCoordinates;
+ 
+ 
+ YPAPISample *APISample = [[YPAPISample alloc] init];
+ 
+ dispatch_group_t requestGroup = dispatch_group_create();
+ 
+ dispatch_group_enter(requestGroup);
+ [APISample queryTopBusinessInfoForTerm:term ll:ll completionHandler:^(NSDictionary *topBusinessJSON, NSError *error) {
+ 
+ if (error) {
+ NSLog(@"An error happened during the request: %@", error);
+ } else if (topBusinessJSON) {
+ //TODO - assign yelpURL
+ //TODO - set labels for result
+ 
+ NSLog(@"Top business info: \n %@", topBusinessJSON);
+ nameLabel.text = [topBusinessJSON objectForKey:@"name"];
+ phoneLabel.text = [NSString stringWithFormat:@"%@%@", @"Phone Number: ", [topBusinessJSON objectForKey:@"phone"]];
+ 
+ NSArray *addressObject = [[topBusinessJSON objectForKey:@"location"] objectForKey:@"display_address"];
+ 
+ NSString *stringAddress = @"";
+ for(int i = 0; i < [addressObject count]; i++) {
+ stringAddress = [stringAddress stringByAppendingString:[NSString stringWithFormat:@"%@\n", addressObject[i]]];
+ }
+ 
+ addressLabel.text = stringAddress;
+ 
+ reviewCountLabel.text = [NSString stringWithFormat:@"%@%i", @"Reviews: ",[[topBusinessJSON objectForKey:@"review_count"] intValue]];
+ 
+ 
+ yelpURL =[topBusinessJSON objectForKey:@"url"];
+ //po [topBusinessJSON objectForKey:@"url"]
+ 
+ 
+ 
+ 
+ 
+ 
+ } else {
+ NSLog(@"No business was found");
+ }
+ 
+ dispatch_group_leave(requestGroup);
+ }];
+ dispatch_group_wait(requestGroup, DISPATCH_TIME_FOREVER); // This avoids the program exiting before all our asynchronous callbacks have been made.
+ }
+ 
+ */
 
 -(MKCoordinateSpan)filterDistance:(double)distance inUnitsOf:(NSString *)metricUnit {
     float convertedUnit;

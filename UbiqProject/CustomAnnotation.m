@@ -11,7 +11,7 @@
 
 @implementation CustomAnnotation
 
-@synthesize title, coordinate, subtitle,name;
+@synthesize title, coordinate, subtitle, name, address, phone, ratingImage, reviewCount, url;
 
 -(id)initWithTitleCoordinateSubtitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)newSubtitle {
     self = [super init];
@@ -32,6 +32,28 @@
         name = newName;
     }
 
+    return self;
+}
+
+-(id)initWithTitleCoordinateTitle:(NSString *)newTitle
+                         Subtitle:(NSString *)newSubtitle
+                             Name:(NSString *)newName 
+                          Address:(NSString *)newAddress 
+                            Phone:(NSString *)newPhone 
+                      RatingImage:(NSString *)newRatingImage 
+                      ReviewCount:(NSString *)newReviewCount 
+                              URL:(NSString *)newURL {
+    
+    self = [super init];
+    if(self) {
+        title = newTitle;
+        subtitle = newSubtitle;
+        address = newAddress;
+        phone = newPhone;
+        ratingImage = newRatingImage;
+        reviewCount = newReviewCount;
+        url = newURL;
+    }
     return self;
 }
 

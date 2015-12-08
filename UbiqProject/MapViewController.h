@@ -2,6 +2,7 @@
 #import <MapKit/MapKit.h>
 #import "Query.h"
 #import "CustomAnnotation.h"
+#import "YPAPISample.h"
 
 @interface MapViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 
