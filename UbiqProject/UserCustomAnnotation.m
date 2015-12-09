@@ -45,7 +45,7 @@
     else if ([title isEqual: @"Chris"])
         annotationView.image = [UIImage imageNamed:@"smallCHRIS"];
     else
-        annotationView.image = [UIImage imageNamed:@"map"];
+        annotationView.image = [UIImage imageNamed:@"smallROBERT"];
     
     //Setting up the right callout button
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];

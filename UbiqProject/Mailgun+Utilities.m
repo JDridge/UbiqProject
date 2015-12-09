@@ -13,7 +13,7 @@
 @implementation Mailgun (Utilities)
 
 + (void) sendEmailToUser:(NSString*)user {
-    NSString *emailTo = [NSString stringWithFormat:@"%@ %@", user, @"<xxx@uh.edu>"];
+    NSString *emailTo = [NSString stringWithFormat:@"%@ %@", user, @"<ubicomp6uh@gmail.com>"];
     
     Mailgun *mailgun = [Mailgun clientWithDomain:[NSString getMailgunClientWithDomain]
                                           apiKey:[NSString getMailgunApiKey]];

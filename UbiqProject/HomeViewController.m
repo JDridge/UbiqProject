@@ -4,19 +4,19 @@
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "SWRevealViewController.h"
+#import <Parse/Parse.h>
 
 @interface HomeViewController ()
 @end
 
 @implementation HomeViewController
 
-@synthesize FirstLocation, SecondLocation, queryToPass, direction, shakes, FirstLocationSwitch, SearchCategory, currentLocationManager, locationFound, isValidTextField;
+@synthesize FriendsUsername, queryToPass, direction, shakes, SearchCategory, currentLocationManager, locationFound, isValidTextField, friendsUsernameToPass;
 
 # pragma Method to populate the text fields with bars, houston, midtown houston.
 - (IBAction)PopulateFields:(id)sender {
     SearchCategory.text = @"bars";
-    FirstLocation.text = @"Houston, TX";
-    SecondLocation.text = @"Midtown Houston, TX";
+    FriendsUsername.text = @"jenny@talias.com";
 }
 
 - (void)viewDidLoad {
@@ -25,7 +25,6 @@
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
     
     queryToPass = [[Query alloc] init];
     [self setUpKeyboardToDismissOnReturn];
@@ -37,49 +36,86 @@
     [super didReceiveMemoryWarning];
 }
 
-# warning Find a way to prevent the user from spamming the "Converge" button.
 - (IBAction)ConvergeLocations:(id)sender {
     
     [self disableFocusFromAllTextFields];
     Query *setUpQueryToPass = [[Query alloc] init];
     isValidTextField = YES;
-    [self validateTextField:FirstLocation];
-    [self validateTextField:SecondLocation];
+    [self validateTextField:FriendsUsername];
     
-    if(locationFound == NO && [FirstLocationSwitch isOn]) {
-        [self displayLocationCouldNotBeFoundAlert];
-    }
-    else if (isValidTextField) {
-        
-        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
-        setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    [query whereKey:@"username" equalTo:FriendsUsername.text];
+    PFObject *selectedUser = [[query findObjects] firstObject];
+    
+    if(selectedUser) {
+        NSLog(@"user found.");
         setUpQueryToPass.category = SearchCategory.text;
-        
-        //If the switch is turned on, the location is found, and the second location text field is a valid location.
-        if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
-            [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
-            queryToPass = setUpQueryToPass;
-            [self performSegueWithIdentifier:@"mapVC" sender:nil];
-            
-        }
-        //If the first and second location text fields are valid locations.
-        else if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry:SecondLocation.text]) {
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
-            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
-            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
-            queryToPass = setUpQueryToPass;
-            [self performSegueWithIdentifier:@"mapVC" sender:nil];
-        }
-        //Shouldn't reach here. But it is possible, I guess.
-        else {
-            [self displayErrorForUnableToConverge];
-        }
+        queryToPass = setUpQueryToPass;
+        friendsUsernameToPass = selectedUser;
+        [self performSegueWithIdentifier:@"mapVC" sender:nil];
     }
     else {
-        [self displayErrorForUnableToConverge];
+        [self displayFriendsUsernameCouldNotBeFound];
     }
+    
+    //if friends username is valid
+    
+    
+    //friends username is not valid
+        //display friends username could not be found
+    
+//    if(locationFound == NO && [FirstLocationSwitch isOn]) {
+//        [self displayLocationCouldNotBeFoundAlert];
+//    }
+//    else if (isValidTextField) {
+//        
+//        NSMutableArray *locationsToPassRepresentedAsCoordinates  = [[NSMutableArray alloc] init];
+//        setUpQueryToPass.locations = [[NSMutableArray alloc] init];
+//        setUpQueryToPass.category = SearchCategory.text;
+//        
+//        //If the switch is turned on, the location is found, and the second location text field is a valid location.
+//        if([FirstLocationSwitch isOn] && locationFound && [self isValidLocationEntry:SecondLocation.text]) {
+//            [locationsToPassRepresentedAsCoordinates addObject:currentLocationManager.location];
+//            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+//            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+//            queryToPass = setUpQueryToPass;
+//            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+//            
+//        }
+//        //If the first and second location text fields are valid locations.
+//        else if([self isValidLocationEntry:FirstLocation.text] && [self isValidLocationEntry:SecondLocation.text]) {
+//            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:FirstLocation.text]];
+//            [locationsToPassRepresentedAsCoordinates addObject:[self getCoordinateEquivalent:SecondLocation.text]];
+//            setUpQueryToPass.locations = locationsToPassRepresentedAsCoordinates;
+//            queryToPass = setUpQueryToPass;
+//            [self performSegueWithIdentifier:@"mapVC" sender:nil];
+//        }
+//        //Shouldn't reach here. But it is possible, I guess.
+//        else {
+//            [self displayErrorForUnableToConverge];
+//        }
+//    }
+//    else {
+//        [self displayErrorForUnableToConverge];
+//    }
+}
+
+- (void)displayFriendsUsernameCouldNotBeFound {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Error!"
+                                message:@"We could not find your friends username! Please try again."
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay 🙃"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 //Checks if the TextField passed in is valid or not.
@@ -92,50 +128,13 @@
     }
 }
 
-- (IBAction) SwitchTrigger:(id)sender {
-    if (FirstLocationSwitch.on) {
-        [self setFirstLocationTextFieldDisabled];
-        [self requestUsersCurrentLocation];
-    }
-    else { //FirstLocationSwitch is turned off.
-        [self setFirstLocationTextFieldEnabled];
-    }
-}
-
-
-
-# warning Find a way to terminate the process if it is taking too long.
-- (CLPlacemark*) getCoordinateEquivalent:(NSString*) location {
-    __block CLPlacemark *placemark = nil;
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-    [geocoder geocodeAddressString:location completionHandler:^(NSArray* placemarks, NSError* error) {
-        placemark = [placemarks objectAtIndex:0];
-    }];
-    
-    while(!placemark) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-    }
-    return placemark;
-}
-
-//Validates whether the location entered is valid or not.
-- (BOOL) isValidLocationEntry:(NSString*) location {
-    BOOL isValid = NO;
-    
-    if([self getCoordinateEquivalent:location] != nil) {
-        isValid = YES;
-    }
-    
-    return isValid;
-}
 
 //checks if the text boxes are equal to a set of defined strings.
 - (BOOL) isTextFieldDefaultOrEmpty:(UITextField *)locationTextField {
     NSString *emptyString = @"";
-    NSString *firstTextFieldDefault = @"Enter location!";
+    NSString *firstTextFieldDefault = @"Enter your friend's username!";
     NSString *secondTextFieldDefault = @"Enter another location!";
-    NSString *warningMessage = @"Please enter an appropriate location!";
+    NSString *warningMessage = @"Please enter in another username!";
     
     if([locationTextField.text isEqualToString:emptyString] ||
        [locationTextField.text isEqualToString:firstTextFieldDefault] ||
@@ -157,42 +156,10 @@
 
 //Removes the focus off of all of the text fields.
 - (void) disableFocusFromAllTextFields {
-    [FirstLocation resignFirstResponder];
-    [SecondLocation resignFirstResponder];
+    [FriendsUsername resignFirstResponder];
     [SearchCategory resignFirstResponder];
 }
 
-//Displays an alert if the user denies their location services.
-- (void) displayCurrentLocationDeniedByUser {
-
-    [self.FirstLocationSwitch setOn:NO animated:YES];
-    [self setFirstLocationTextFieldEnabled];
-    
-    UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:@"Location Services Denied!"
-                                message:@"To re-enable, please go to Settings and turn on Location Service for the Converge app."
-                                preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okayButton = [UIAlertAction
-                                 actionWithTitle:@"Take me to the settings!"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                                 }];
-    
-    UIAlertAction *dismissButton = [UIAlertAction
-                                 actionWithTitle:@"Dismiss"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                 }];
-    [alert addAction:okayButton];
-    [alert addAction:dismissButton];
-    [self presentViewController:alert animated:YES completion:nil];
-    
-}
 
 //Displays an alert if the application is unable to converge.
 - (void) displayErrorForUnableToConverge {
@@ -213,66 +180,8 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-//If the GPS is too slow to get the current location and they tried to converge, this will be called to let them know to wait.
-- (void) displayLocationCouldNotBeFoundAlert {
-    UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:@"No Location!"
-                                message:@"Hey there! We couldn't find your location. Try again in a bit!"
-                                preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okayButton = [UIAlertAction
-                                 actionWithTitle:@"Okay 🙃"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                 }];
-    [alert addAction:okayButton];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-//Delegate method that is called if the user denies permission for the app to access their location services.
-- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    if([CLLocationManager locationServicesEnabled]) {
-        if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-            [self displayCurrentLocationDeniedByUser];
-        }
-    }
-}
-
-//delegate method that runs when the current has been updated.
-- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    locationFound = YES; //user's location has been obtained.
-}
-
-//gets the user's current location.
-- (void)requestUsersCurrentLocation {
-    locationFound = NO; //this flag is to let us know if the user's location has been obtained
-    currentLocationManager = [[CLLocationManager alloc] init];
-    currentLocationManager.delegate = self;
-    [currentLocationManager requestWhenInUseAuthorization];
-    currentLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    currentLocationManager.distanceFilter = kCLDistanceFilterNone;
-    [self.currentLocationManager startUpdatingLocation];
-}
-
-- (void) setFirstLocationTextFieldDisabled {
-    [FirstLocation setEnabled: NO];
-    FirstLocation.text = @"Current Location";
-    FirstLocation.backgroundColor =  [UIColor orangeColor];
-    FirstLocation.textColor = [UIColor whiteColor];
-}
-
-- (void) setFirstLocationTextFieldEnabled {
-    [FirstLocation setEnabled: YES];
-    FirstLocation.text = @"";
-    FirstLocation.backgroundColor =  [UIColor whiteColor];
-    FirstLocation.textColor = [UIColor colorWithRed: 2.0f/255.0f green: 132.0f/255.0f blue: 130.0f/255.0f alpha:1.0f];
-}
-
 - (void) setUpKeyboardToDismissOnReturn {
-    [FirstLocation setDelegate:self];
-    [SecondLocation setDelegate:self];
+    [FriendsUsername setDelegate:self];
     [SearchCategory setDelegate:self];
 }
 
@@ -295,7 +204,8 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MapViewController *viewController = [segue destinationViewController];
     viewController.queryToShow = queryToPass;
-    viewController.numberOfLocations = [queryToPass.locations count];
+    //viewController.numberOfLocations = [queryToPass.locations count];
+    viewController.friendsUserInfo = friendsUsernameToPass;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

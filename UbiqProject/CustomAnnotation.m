@@ -13,6 +13,23 @@
 
 @synthesize title, coordinate, subtitle,name;
 
+- (instancetype)initWithTitle:(NSString *)title coordinate:(CLLocationCoordinate2D)coordinate subtitle:(NSString *)subtitle name:(NSString *)name email:(NSString *)email {
+    self = [super init];
+    if (self) {
+        self.title = title;
+        self.coordinate = coordinate;
+        self.subtitle = subtitle;
+        self.name = name;
+        self.email = email;
+    }
+
+    return self;
+}
+
++ (instancetype)annotationWithTitle:(NSString *)title coordinate:(CLLocationCoordinate2D)coordinate subtitle:(NSString *)subtitle name:(NSString *)name email:(NSString *)email {
+    return [[self alloc] initWithTitle:title coordinate:coordinate subtitle:subtitle name:name email:email];
+}
+
 -(id)initWithTitleCoordinateSubtitle:(NSString*)newTitle Location:(CLLocationCoordinate2D)location subtitle:(NSString*)newSubtitle {
     self = [super init];
     if(self) {

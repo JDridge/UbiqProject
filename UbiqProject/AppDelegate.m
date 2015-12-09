@@ -11,6 +11,7 @@
 #import "HomeViewController.h"
 #import "LoginFormViewController.h"
 #import "NSString+APIKeys.h"
+#import "SWRevealViewController.h"
 
 @interface AppDelegate ()
 
@@ -32,22 +33,22 @@
     
     
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Ballot"];
-
-    [[query whereKey:@"ballotID" equalTo:@"BA3"] whereKey:@"vote" equalTo:@"mike has voted"];
-    
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject * userStats, NSError *error) {
-        if (!error) {
-            // Found UserStats
-            [userStats setObject:@"mike hunt has voted" forKey:@"vote"];
-            
-            // Save
-            [userStats saveInBackground];
-        } else {
-            // Did not find any UserStats for the current user
-            NSLog(@"Error: %@", error);
-        }
-    }];
+//    PFQuery *query = [PFQuery queryWithClassName:@"Ballot"];
+//
+//    [[query whereKey:@"ballotID" equalTo:@"BA3"] whereKey:@"vote" equalTo:@"mike has voted"];
+//    
+//    [query getFirstObjectInBackgroundWithBlock:^(PFObject * userStats, NSError *error) {
+//        if (!error) {
+//            // Found UserStats
+//            [userStats setObject:@"mike hunt has voted" forKey:@"vote"];
+//            
+//            // Save
+//            [userStats saveInBackground];
+//        } else {
+//            // Did not find any UserStats for the current user
+//            NSLog(@"Error: %@", error);
+//        }
+//    }];
 
     
 //    NSArray *allObjects = [query findObjects];
@@ -69,16 +70,16 @@
 //        }
 //    }
     
-//    if(![PFUser currentUser]) {
-//        //login screen
-//        NSLog(@"going to login screen");
-//        //[self transitionToLoginViewController];
-//    }
-//    else {
-//        NSLog(@"current user!");
-//        [self transitionToHomeViewController];
-//        //   [self transitionToHomeViewController];
-//    }
+    if(![PFUser currentUser]) {
+        //login screen
+        NSLog(@"going to login screen");
+        //[self transitionToLoginViewController];
+    }
+    else {
+        NSLog(@"current user!");
+        [self transitionToHomeViewController];
+        //   [self transitionToHomeViewController];
+    }
     
     
     
@@ -98,7 +99,7 @@
 -(void) transitionToHomeViewController {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        HomeViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
+        SWRevealViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"hamVC"];
         [self.window makeKeyAndVisible];
         [self.window.rootViewController presentViewController:homeViewController animated:YES completion:NULL];
 

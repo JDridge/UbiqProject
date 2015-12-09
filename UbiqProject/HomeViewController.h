@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "Query.h"
+#import <Parse/Parse.h>
 
 @interface HomeViewController : UIViewController <UITextFieldDelegate, CLLocationManagerDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *FirstLocation;
-@property (weak, nonatomic) IBOutlet UITextField *SecondLocation;
+@property (weak, nonatomic) IBOutlet UITextField *FriendsUsername;
 @property (weak, nonatomic) IBOutlet UITextField *SearchCategory;
-@property (weak, nonatomic) IBOutlet UISwitch *FirstLocationSwitch;
 @property (strong, retain) CLLocationManager *currentLocationManager;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
 
@@ -25,6 +24,7 @@
 @property Query *queryToPass;
 @property BOOL locationFound;
 @property BOOL isValidTextField;
+@property PFObject *friendsUsernameToPass;
 
 - (IBAction) ConvergeLocations:(id)sender;
 - (IBAction) SwitchTrigger:(id)sender;
