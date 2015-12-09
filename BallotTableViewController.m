@@ -27,7 +27,7 @@
     self.title = @"Ballots";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Back"
+                                   initWithTitle:@"Menu"
                                    style:UIBarButtonItemStyleDone
                                    target:self.revealViewController
                                    action:@selector(revealToggle:)];

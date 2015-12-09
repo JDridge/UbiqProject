@@ -23,6 +23,18 @@
 - (void)viewDidLoad {
     didFinishLoading = NO;
     [super viewDidLoad];
+    
+    self.title = @"Map";
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Menu"
+                                   style:UIBarButtonItemStyleDone
+                                   target:self.revealViewController
+                                   action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
     NSString *friendsUserAddress = friendsUserInfo[@"address"];
     NSString *friendsEmailAddress = friendsUserInfo[@"email"];
     NSString *friendsFirstName = friendsUserInfo[@"firstName"];
