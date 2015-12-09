@@ -638,24 +638,6 @@
                             <constraint firstItem="RUO-eO-4A3" firstAttribute="top" secondItem="DOX-mU-n1B" secondAttribute="bottom" id="ifq-e2-8cD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="p1a-Zo-hdG">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="2H6-2D-ymW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PkB-RT-WUL">
-                                <rect key="frame" x="20" y="7" width="133" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <state key="normal" title="Back"/>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="XcU-hG-CZV">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PmK-Io-vel">
-                                <rect key="frame" x="523" y="7" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="ConvergeMapView" destination="RUO-eO-4A3" id="wn8-aK-maG"/>
                         <outlet property="searchDisplayController" destination="DX9-CS-KNk" id="pl9-66-kcX"/>
