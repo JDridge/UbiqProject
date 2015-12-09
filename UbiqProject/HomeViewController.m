@@ -103,7 +103,7 @@
 - (void)displayFriendsUsernameCouldNotBeFound {
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Error!"
-                                message:@"We could not find your friends username! Please try again."
+                                message:@"We could not find your friends username! Try entering in 'robertvo79@gmail.com' as a friend. 😀"
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okayButton = [UIAlertAction
