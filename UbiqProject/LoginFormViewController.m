@@ -304,10 +304,60 @@
             if(currentTextField.validationStatus != FormValidatingTextFieldStatusValid) {
                 return NO;
             }
+//            else if([currentTextField.placeholder isEqualToString:@"Your Address"]) {
+//                __block BOOL found = NO;
+//                dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+//
+//                CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//                    
+//                                    [geocoder geocodeAddressString:currentTextField.text completionHandler:^(NSArray* placemarks, NSError* error) {
+//                                        NSLog(@"start block");
+//                                        if([placemarks count] > 0) {
+//                                            found = YES;
+//                                        }
+//                                        else {
+//                                            found = NO;
+//                                        }
+//                                        dispatch_semaphore_signal(sema);
+//                                    }];
+//                while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) { [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]]; }
+//                
+//                found ? NSLog(@"valid address") : NSLog(@"invalid address");
+//                return found;
+//            }
         }
     }
+    
+
+    
     return YES;
 }
+
+//                NSLog(@"start");
+//                __block BOOL found = NO;
+//                CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//
+//                [geocoder geocodeAddressString:currentTextField.text completionHandler:^(NSArray* placemarks, NSError* error) {
+//                    NSLog(@"start block");
+//                    if([placemarks count] > 0) {
+//                        found = YES;
+//                    }
+//                    else {
+//                        found = NO;
+//                    }
+//                }];
+//
+//                while(!found) {
+//                    NSLog(@"looping");
+//                    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//                }
+//                if(found) {
+//                    NSLog(@"found");
+//                }
+//                else {
+//                    NSLog(@"not found");
+//                }
+//                return found;
 
 - (void) backButtonTouched:(UIButton*)sender {
     [self removeAllFromStackView];

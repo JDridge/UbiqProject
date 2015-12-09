@@ -7,6 +7,8 @@
 //
 
 #import "FormTextField.h"
+#import <MapKit/MapKit.h>
+
 
 @interface FormTextField ()
 
@@ -92,6 +94,9 @@ static const CGFloat kTextEdgeInset = 6;
         case FormValidatingTextFieldTypePassword:
             [self applyPasswordLengthValidation];
             break;
+        case FormValidatingTextFieldTypeAddress:
+            [self applyAddressValidation];
+            break;
         default:
             [self clearAllValidationMethods];
             break;
@@ -176,6 +181,44 @@ static const CGFloat kTextEdgeInset = 6;
     };
     [self validate];
 }
+
+- (void)applyAddressValidation {
+    [self clearAllValidationMethods];
+    __weak FormTextField *weakSelf = self;
+    self.validationBlock = ^{
+        if (weakSelf.text.length < 2 && !weakSelf.isRequired) {
+            return FormValidatingTextFieldStatusIndeterminate;
+        }
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        
+        __block BOOL found = NO;
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    
+        [geocoder geocodeAddressString:weakSelf.text completionHandler:^(NSArray* placemarks, NSError* error) {
+            NSLog(@"start block");
+            if([placemarks count] > 0) {
+                MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:placemarks[0]];
+
+                found = YES;
+                NSLog(@"%f, %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
+            }
+            else {
+                found = NO;
+            }
+            dispatch_semaphore_signal(sema);
+        }];
+        while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) { [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]]; }
+        
+        if(found) {
+            return FormValidatingTextFieldStatusValid;
+        }
+        else {
+            return FormValidatingTextFieldStatusInvalid;
+        }
+    };
+    [self validate];
+}
+
 
 
 - (void)clearAllValidationMethods;

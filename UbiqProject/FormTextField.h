@@ -20,7 +20,8 @@ typedef NS_ENUM(NSUInteger, FormTextFieldValidatingType) {
     FormValidatingTextFieldTypeNothing,
     FormValidatingTextFieldTypeEmail,
     FormValidatingTextFieldTypeName,
-    FormValidatingTextFieldTypePassword
+    FormValidatingTextFieldTypePassword,
+    FormValidatingTextFieldTypeAddress
 };
 
 @protocol FormValidatingTextFieldValidationDelegate <NSObject>
