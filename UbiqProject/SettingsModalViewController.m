@@ -21,9 +21,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    /*
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+     
+     */
+    
+    self.title = @"Settings";
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Menu"
+                                   style:UIBarButtonItemStyleDone
+                                   target:self.revealViewController
+                                   action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = backButton;
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 

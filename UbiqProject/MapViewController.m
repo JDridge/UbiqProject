@@ -6,6 +6,7 @@
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
 #import "MapDetailedViewController.h"
+#import "SWRevealViewController.h"
 
 @interface MapViewController () {
     CustomAnnotation *friendsCustomAnnotation;
@@ -22,7 +23,6 @@
 - (void)viewDidLoad {
     didFinishLoading = NO;
     [super viewDidLoad];
-    
     NSString *friendsUserAddress = friendsUserInfo[@"address"];
     NSString *friendsEmailAddress = friendsUserInfo[@"email"];
     NSString *friendsFirstName = friendsUserInfo[@"firstName"];
@@ -168,6 +168,7 @@
         return annotationView;
     } else
         return nil;
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MKAnnotationView*)sender {
@@ -273,6 +274,41 @@
     }
 }
 
+#pragma I changed this load CustomAnnotation pins. I think we should create another set of custom annotations instead.
+-(void)loadPlacesFromNaturalLanguageQuery:(CLLocationCoordinate2D)halfwayCoordinates{
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = queryToShow.category;
+    
+    request.region = MKCoordinateRegionMake(halfwayCoordinates, [self filterDistance:0.5 inUnitsOf:@"mi"]);
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        NSMutableArray *placemarks = [NSMutableArray array];
+        
+        for (MKMapItem *item in response.mapItems) {
+            CustomAnnotation *updatedCustomAnnotation = [[SearchCustomAnnotation alloc] initWithTitleCoordinateSubtitle:item.name Location:item.placemark.coordinate subtitle:item.placemark.title];
+            [placemarks addObject:updatedCustomAnnotation];
+        }
+        [self.ConvergeMapView showAnnotations:placemarks animated:YES];
+    }];
+    didFinishLoading = YES;
+}
+
+-(MKCoordinateSpan)filterDistance:(double)distance inUnitsOf:(NSString *)metricUnit {
+    float convertedUnit;
+    
+    if ([metricUnit isEqualToString:@"mi"])
+        convertedUnit = [self convertMilesToDegrees:distance];
+    else if ([metricUnit isEqualToString:@"km"])
+        convertedUnit = [self convertKilometersToDegrees:distance];
+    else
+        convertedUnit = (2/69.0); // 2 mile radius by default
+    
+    return MKCoordinateSpanMake(convertedUnit, convertedUnit);
+}
+
+-(double)convertMilesToDegrees:(double)miles { return miles/69.0; }
+>>>>>>> origin/master
 
 
 - (void)didReceiveMemoryWarning {
