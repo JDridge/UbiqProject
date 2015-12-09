@@ -30,7 +30,7 @@
 }
 
 + (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you email:(NSString*)email {
-    NSString *emailTo = [NSString stringWithFormat:@"%@ <ubicomp6uh@gmail.com>", user, email];
+    NSString *emailTo = [NSString stringWithFormat:@"%@ <%@>", user, email];
     NSString *subject = [NSString stringWithFormat:@"%@ %@", you, @"has requested for you to converge with them."];
     NSString *body = [NSString stringWithFormat:@"Hello %@,\n%@ has requested for you to converge with them. Please open the converge app to see more! \n🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥\n Open the app here! converge://OPENME \n🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥\n\nHave a good day! \n\n-Converge Team", user, you];
     Mailgun *mailgun = [Mailgun clientWithDomain:[NSString getMailgunClientWithDomain]
@@ -102,8 +102,7 @@
         status = @"Declined";
     }
     
-    NSString *emailTo = @"ubicomp6uh@gmail.com";
-    //NSString *emailTo = [NSString stringWithFormat:@"%@ <%@>", user, email];
+    NSString *emailTo = [NSString stringWithFormat:@"%@ <%@>", user, email];
     NSString *subject = @"Status of your converge ballot";
     
     MGMessage *message = [[MGMessage alloc] init];

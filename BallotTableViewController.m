@@ -265,11 +265,15 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
         
         [self changeVoteColumnOfBallotClassWith:@"Yes" for:cell.ballotID];
         
+        [self displaySuccess];
+        
     }
     else if([voted isEqualToString:@"Voted No"]) {
         [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:cell.ballotPersonName email:cell.ballotEmail location:cell.ballotAddressOfPlace status:voted comments:text image:cell.ballotImage];
         
         [self changeVoteColumnOfBallotClassWith:@"No" for:cell.ballotID];
+        
+        [self displaySuccess];
     }
     else {
         NSLog(@"what...?");
@@ -300,6 +304,26 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
         }
     }];
 }
+
+//Displays an alert if the application is unable to converge.
+- (void) displaySuccess {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Success!"
+                                message:@"The email has been sent!"
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+    [self.tableView reloadData];
+}
+
 
 
 @end
