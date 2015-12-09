@@ -41,7 +41,8 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
-    _nameLabel.text = [PFUser currentUser][@"name"];
+    NSString *name = [NSString stringWithFormat:@"%@ %@", [PFUser currentUser][@"firstName"], [PFUser currentUser][@"lastName"]];
+    _nameLabel.text = name;
     _addressLabel.text = [PFUser currentUser][@"address"];
     _emailLabel.text = [[PFUser currentUser] username];
 }
