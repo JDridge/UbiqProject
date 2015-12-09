@@ -99,7 +99,7 @@
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         LoginFormViewController *detailViewController = (LoginFormViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"loginVC"];
         [self presentViewController:detailViewController animated:YES completion:nil];
-        [[[self parentViewController] parentViewController] dismissViewControllerAnimated:YES completion:nil];
+        
         
     });
 }
