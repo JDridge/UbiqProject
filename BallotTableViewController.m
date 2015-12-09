@@ -15,7 +15,6 @@
 #import <Parse/Parse.h>
 #import "BallotTableViewCell.h"
 #import "Mailgun+Utilities.h"
-#import "HistoryTableViewCell.h"
 
 @interface BallotTableViewController () {
     NSArray *firstQueryObjects;
@@ -28,7 +27,7 @@
 
 @end
 
-static NSString *myCellIdentifier = @"HistoryCustomCell";
+static NSString *myCellIdentifier = @"BallotCustomCell";
 
 @implementation BallotTableViewController
 
@@ -147,7 +146,7 @@ static NSString *myCellIdentifier = @"HistoryCustomCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
+    BallotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
     
     NSArray *currentObjects = secondQueryObjects[indexPath.row];
     
@@ -163,13 +162,14 @@ static NSString *myCellIdentifier = @"HistoryCustomCell";
     NSString *hi = [NSString stringWithFormat:@"%@ <%@> has invited to meet up at %@, located at %@. \nTap here to accept their invite!", personThatIsNotYou[@"name"], personThatIsNotYou[@"username"], personThatIsNotYou[@"nameOfPlace"], personThatIsNotYou[@"addressOfPlace"]];
     
     NSLog(@"%@", hi);
+    cell.ballotLabel.text = hi;
     //Name
     //cell.firstPersonName.text = username1[@"username"];
     ///cell.secondPersonName.text = username2[@"username"];
     
     //Google Static Map
     NSString *staticMapURL = @"https://maps.googleapis.com/maps/api/staticmap?center=";
-    //NSString *coordinateString = username1[@"myCoordinate"];
+    NSString *coordinateString = personThatIsNotYou[@"coordinates"];
     //NSString *coordinateString2 = username2[@"friendsCoordinate"];
     //nameOfPlace = username1[@"nameOfPlace"];
     //NSArray *splitCoordinate = [NSArray arrayWithArray:[coordinateString componentsSeparatedByString:@","]];
@@ -179,15 +179,14 @@ static NSString *myCellIdentifier = @"HistoryCustomCell";
 //    NSString *stringLatitude = [NSString stringWithFormat:@"%1.6f", latitude];
 //    NSString *stringLongitude = [NSString stringWithFormat:@"%1.6f", longitude];
 //    NSString *midCoordinate = [NSString stringWithFormat:@"%@,%@", stringLatitude, stringLongitude];
-//    NSString *mapSpecifics = @"&zoom=15&size=300x300&markers=color:green%7Clabel:C%7C";
-//    NSString *theKey = @"&key=AIzaSyDuqaWuf7fMQ0gsFORLozfO4aDKHW38YWk";
-//    staticMapURL = [NSString stringWithFormat:@"%@%@%@%@%@", staticMapURL,midCoordinate,mapSpecifics,midCoordinate,theKey];
-//    
-//    NSURL *url = [NSURL URLWithString:staticMapURL];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    UIImage *image = [UIImage imageWithData:data];
-//    
-//    [cell.mapImage setImage:image];
+    NSString *mapSpecifics = @"&zoom=15&size=300x300&markers=color:green%7Clabel:C%7C";
+    NSString *theKey = @"&key=AIzaSyDuqaWuf7fMQ0gsFORLozfO4aDKHW38YWk";
+    staticMapURL = [NSString stringWithFormat:@"%@%@%@%@%@", staticMapURL,coordinateString,mapSpecifics,coordinateString,theKey];
+    NSURL *url = [NSURL URLWithString:staticMapURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    
+    [cell.ballotImage setImage:image];
     
     //ballot
     //NSString *userVote1 = username1[@"vote"];

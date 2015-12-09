@@ -10,11 +10,8 @@
 
 @interface BallotTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *mapImage;
-@property (weak, nonatomic) IBOutlet UILabel *firstPersonName;
-@property (weak, nonatomic) IBOutlet UILabel *secondPersonName;
-@property (weak, nonatomic) IBOutlet UILabel *firstPersonVote;
-@property (weak, nonatomic) IBOutlet UILabel *secondPersonVote;
+@property (weak, nonatomic) IBOutlet UILabel *ballotLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *ballotImage;
 
 
 @end

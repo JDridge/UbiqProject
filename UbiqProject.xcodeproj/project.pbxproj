@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93108C5A1C186C990055D1D7 /* BallotCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93108C591C186C990055D1D7 /* BallotCustomCell.xib */; settings = {ASSET_TAGS = (); }; };
 		9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9317A0D71C1769EA0093ED5D /* HistoryCustomCell.xib */; };
 		9317A0DB1C176A900093ED5D /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */; };
 		9317A0DE1C176B6E0093ED5D /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */; };
@@ -94,6 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		93108C591C186C990055D1D7 /* BallotCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BallotCustomCell.xib; path = ../BallotCustomCell.xib; sourceTree = "<group>"; };
 		9317A0D71C1769EA0093ED5D /* HistoryCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryCustomCell.xib; sourceTree = "<group>"; };
 		9317A0D91C176A900093ED5D /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */,
 				9317A0D91C176A900093ED5D /* HistoryTableViewController.h */,
 				9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */,
+				93108C591C186C990055D1D7 /* BallotCustomCell.xib */,
 				ACDE69641C169E840017951F /* BallotTableViewController.h */,
 				ACDE69651C169E840017951F /* BallotTableViewController.m */,
 				E1BAC4581C183CAD00AE4035 /* BallotTableViewCell.h */,
@@ -505,6 +508,7 @@
 			files = (
 				F457BEF81C1685F500830580 /* ubiq1.mov in Resources */,
 				F4782D891C1801810024BF1E /* Sequence.mov in Resources */,
+				93108C5A1C186C990055D1D7 /* BallotCustomCell.xib in Resources */,
 				D45B50F21C180AC20056B42B /* APIKeys.plist in Resources */,
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
