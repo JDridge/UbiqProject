@@ -6,6 +6,7 @@
 #import <MapKit/MapKit.h>
 #import "SettingsModalViewController.h"
 #import "MapDetailedViewController.h"
+#import "SWRevealViewController.h"
 
 @interface MapViewController ()
 
@@ -20,6 +21,19 @@
     [super viewDidLoad];
     [self setUpConvergeMapView];
     [self createTheCustomAnnotations];
+    
+    
+    self.title = @"Map";
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Menu"
+                                   style:UIBarButtonItemStyleDone
+                                   target:self.revealViewController
+                                   action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
 }
 
 - (void)setUpConvergeMapView {
