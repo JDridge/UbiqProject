@@ -28,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *friendPhone;
 @property (weak, nonatomic) IBOutlet UILabel *friendAddress;
 @property (weak, nonatomic) IBOutlet UILabel *placeName;
-@property (weak, nonatomic) IBOutlet UILabel *placePhone;
 @property (weak, nonatomic) IBOutlet UILabel *placeAddress;
 - (IBAction)yesTouched:(id)sender;
 - (IBAction)nahManTouched:(id)sender;

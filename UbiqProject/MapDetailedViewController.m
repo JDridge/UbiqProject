@@ -3,6 +3,7 @@
 #import "YPAPISample.h"
 #import <Parse/Parse.h>
 #import "Mailgun+Utilities.h"
+#import "SWRevealViewController.h"
 
 @interface MapDetailedViewController ()
 
@@ -10,7 +11,7 @@
 
 @implementation MapDetailedViewController
 
-@synthesize nameLabel, pinLocation, myCustomAnnotation, friendsCustomAnnotation, myName, myPhone, myAddress, friendName, friendPhone, friendAddress, placeName, placePhone, placeAddress;
+@synthesize nameLabel, pinLocation, myCustomAnnotation, friendsCustomAnnotation, myName, myPhone, myAddress, friendName, friendPhone, friendAddress, placeName, placeAddress;
 
 - (void)viewDidLoad {
     
@@ -24,7 +25,6 @@
     friendPhone.text = friendsCustomAnnotation.email;
     friendAddress.text = friendsCustomAnnotation.subtitle;
     placeName.text = [pinLocation.annotation title];
-    placePhone.text = @"phone";
     placeAddress.text = [pinLocation.annotation subtitle];
     
     [self putInBallotClass];
@@ -90,9 +90,9 @@
 }
 - (IBAction)yesTouched:(id)sender {
     NSLog(@"email isnt valid, but let's send it to robert's email address");
-    [Mailgun sendEmailToUser:@"rvo@uh.edu"/*friendsCustomAnnotation.email*/];
+    [Mailgun sendEmailToUserRequestingBallot:friendsCustomAnnotation.name from:myCustomAnnotation.name email:friendsCustomAnnotation.email];
     [self displayEmailSent];
-    [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    //[[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)nahManTouched:(id)sender {
@@ -112,9 +112,22 @@
                                  handler:^(UIAlertAction * action)
                                  {
                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                     [self transitionToHomeViewController];
                                  }];
     [alert addAction:okayButton];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+-(void) transitionToHomeViewController {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        SWRevealViewController *detailViewController = (SWRevealViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"hamVC"];
+        [self presentViewController:detailViewController animated:YES completion:nil];
+        [[[self parentViewController] parentViewController] dismissViewControllerAnimated:YES completion:nil];
+        
+    });
+}
+
+
 
 @end
