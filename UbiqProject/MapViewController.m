@@ -139,7 +139,7 @@
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = queryToShow.category;
     
-    request.region = MKCoordinateRegionMake(halfwayCoordinates, [self filterDistance:10 inUnitsOf:@"mi"]);
+    request.region = MKCoordinateRegionMake(halfwayCoordinates, [self filterDistance:0.5 inUnitsOf:@"mi"]);
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
 
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
