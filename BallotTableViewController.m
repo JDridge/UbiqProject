@@ -11,7 +11,6 @@
 #import "BallotTableViewController.h"
 #import "SWRevealViewController.h"
 #import "CustomTableCell.h"
-#import "Ballot.h"
 #import <Parse/Parse.h>
 #import "BallotTableViewCell.h"
 #import "Mailgun+Utilities.h"
@@ -166,6 +165,9 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
 
     NSLog(@"%@", hi);
     cell.ballotLabel.text = hi;
+    cell.ballotEmail = personThatIsNotYou[@"username"];
+    cell.ballotAddressOfPlace = personThatIsNotYou[@"addressOfPlace"];
+    cell.ballotPersonName = personThatIsNotYou[@"name"];
     //Name
     //cell.firstPersonName.text = username1[@"username"];
     ///cell.secondPersonName.text = username2[@"username"];
@@ -259,13 +261,13 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     NSLog(@"emailing...");
     if([voted isEqualToString:@"Voted Yes"]) {
         NSLog(@"yes!!!");
-        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:cell.ballotPersonName email:cell.ballotEmail location:cell.ballotAddressOfPlace status:voted comments:text image:cell.ballotImage];
         
         [self changeVoteColumnOfBallotClassWith:@"Yes" for:cell.ballotID];
         
     }
     else if([voted isEqualToString:@"Voted No"]) {
-        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:cell.ballotPersonName email:cell.ballotEmail location:cell.ballotAddressOfPlace status:voted comments:text image:cell.ballotImage];
         
         [self changeVoteColumnOfBallotClassWith:@"No" for:cell.ballotID];
     }
