@@ -10,6 +10,7 @@
 		9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9317A0D71C1769EA0093ED5D /* HistoryCustomCell.xib */; settings = {ASSET_TAGS = (); }; };
 		9317A0DB1C176A900093ED5D /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9317A0DE1C176B6E0093ED5D /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		93FDFEDA1C17A50900D47840 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93FDFED91C17A50900D47840 /* APIKeys.plist */; settings = {ASSET_TAGS = (); }; };
 		ACDE69661C169E850017951F /* BallotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69651C169E840017951F /* BallotTableViewController.m */; };
 		ACDE69691C16A4200017951F /* Ballot.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69681C16A4200017951F /* Ballot.m */; };
 		ACDE696C1C16B48A0017951F /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE696B1C16B48A0017951F /* CustomTableCell.m */; };
@@ -36,7 +37,6 @@
 		E13DE0461BFACE73000C9C30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0451BFACE73000C9C30 /* .gitignore */; };
 		E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */; };
 		E1BAC4531C1658B600AE4035 /* Mailgun+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */; };
-		E1BAC4571C17663A00AE4035 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1BAC4561C17663A00AE4035 /* APIKeys.plist */; };
 		E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */; };
 		E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC51C058323000A9EE9 /* railway.gif */; };
 		E1CE8FC81C058323000A9EE9 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC61C058323000A9EE9 /* video.mov */; };
@@ -106,6 +106,7 @@
 		9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		9317A0DC1C176B6E0093ED5D /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
 		9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		93FDFED91C17A50900D47840 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		ACDE69641C169E840017951F /* BallotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallotTableViewController.h; path = ../BallotTableViewController.h; sourceTree = "<group>"; };
 		ACDE69651C169E840017951F /* BallotTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallotTableViewController.m; path = ../BallotTableViewController.m; sourceTree = "<group>"; };
 		ACDE69671C16A4200017951F /* Ballot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ballot.h; sourceTree = "<group>"; };
@@ -157,7 +158,6 @@
 		E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Utilities.m"; sourceTree = "<group>"; };
 		E1BAC4511C1658B600AE4035 /* Mailgun+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mailgun+Utilities.h"; sourceTree = "<group>"; };
 		E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mailgun+Utilities.m"; sourceTree = "<group>"; };
-		E1BAC4561C17663A00AE4035 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		E1CE8FBE1C052AAC000A9EE9 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		E1CE8FC51C058323000A9EE9 /* railway.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = railway.gif; sourceTree = "<group>"; };
@@ -351,7 +351,7 @@
 		D4F2B90C1BBF12EE007F6955 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E1BAC4561C17663A00AE4035 /* APIKeys.plist */,
+				93FDFED91C17A50900D47840 /* APIKeys.plist */,
 				E1FD46D71C16565C008101E1 /* AFHTTPClient.h */,
 				E1FD46D81C16565C008101E1 /* AFHTTPClient.m */,
 				E1FD46D91C16565C008101E1 /* AFHTTPRequestOperation.h */,
@@ -490,7 +490,7 @@
 				TargetAttributes = {
 					D4F2B9081BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = B2PAFKV8UA;
+						DevelopmentTeam = G64BY3BAY5;
 					};
 					D4F2B9211BBF12EE007F6955 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -527,6 +527,7 @@
 				F457BEFB1C1685F500830580 /* ubiq4.mov in Resources */,
 				F457BEF91C1685F500830580 /* ubiq2.mov in Resources */,
 				F457BEF81C1685F500830580 /* ubiq1.mov in Resources */,
+				93FDFEDA1C17A50900D47840 /* APIKeys.plist in Resources */,
 				F457BEFA1C1685F500830580 /* ubiq3.mov in Resources */,
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
 				F457BEFF1C1685F500830580 /* ubiq8.mov in Resources */,
@@ -538,7 +539,6 @@
 				F457BEFE1C1685F500830580 /* ubiq7.mov in Resources */,
 				9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */,
 				F457BEFC1C1685F500830580 /* ubiq5.mov in Resources */,
-				E1BAC4571C17663A00AE4035 /* APIKeys.plist in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 			);
@@ -739,7 +739,7 @@
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.convergea;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -760,7 +760,7 @@
 				INFOPLIST_FILE = UbiqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.convergea;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ubiquitous.converge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
