@@ -11,7 +11,6 @@
 #import "BallotTableViewController.h"
 #import "SWRevealViewController.h"
 #import "CustomTableCell.h"
-#import "Ballot.h"
 #import <Parse/Parse.h>
 #import "BallotTableViewCell.h"
 #import "Mailgun+Utilities.h"
@@ -259,13 +258,13 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     NSLog(@"emailing...");
     if([voted isEqualToString:@"Voted Yes"]) {
         NSLog(@"yes!!!");
-        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
         
         [self changeVoteColumnOfBallotClassWith:@"Yes" for:cell.ballotID];
         
     }
     else if([voted isEqualToString:@"Voted No"]) {
-        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
         
         [self changeVoteColumnOfBallotClassWith:@"No" for:cell.ballotID];
     }

@@ -168,7 +168,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *myCellIdentifier = @"HistoryCustomCell";
-    
+    NSString *userVote1;
+    NSString *userVote2;
     
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
     
@@ -178,8 +179,17 @@
     PFObject *username2 = currentObjects[0];
     
     //Name
-    cell.firstPersonName.text = username1[@"username"];
-    cell.secondPersonName.text = username2[@"username"];
+    if([[[PFUser currentUser] username] isEqualToString: username1[@"username"]]){
+        cell.firstPersonName.text = username1[@"username"];
+        cell.secondPersonName.text = username2[@"username"];
+        userVote1 = username1[@"vote"];
+        userVote2 = username2[@"vote"];
+    }else{
+        cell.firstPersonName.text = username2[@"username"];
+        cell.secondPersonName.text = username1[@"username"];
+        userVote1 = username2[@"vote"];
+        userVote2 = username1[@"vote"];
+    }
     
     //Google Static Map
     NSString *staticMapURL = @"https://maps.googleapis.com/maps/api/staticmap?center=";
@@ -203,8 +213,6 @@
     [cell.mapImage setImage:image];
     
     //ballot
-    NSString *userVote1 = username1[@"vote"];
-    NSString *userVote2 = username2[@"vote"];
     
     if([userVote1 isEqualToString: @"Voted"]){
         userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
