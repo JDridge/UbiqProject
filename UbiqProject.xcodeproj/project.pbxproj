@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93108C5A1C186C990055D1D7 /* BallotCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93108C591C186C990055D1D7 /* BallotCustomCell.xib */; settings = {ASSET_TAGS = (); }; };
+		93108C5A1C186C990055D1D7 /* BallotCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93108C591C186C990055D1D7 /* BallotCustomCell.xib */; };
 		9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9317A0D71C1769EA0093ED5D /* HistoryCustomCell.xib */; };
 		9317A0DB1C176A900093ED5D /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */; };
 		9317A0DE1C176B6E0093ED5D /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */; };
