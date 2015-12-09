@@ -37,7 +37,7 @@
 }
 
 -(void)playVideo {
-    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"ubiq1" withExtension:@"mov"];
+    NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"Sequence" withExtension:@"mov"];
     backgroundVideo = [AVPlayer playerWithURL:videoURL];
     AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:backgroundVideo];
     playerLayer.frame = self.view.frame;
