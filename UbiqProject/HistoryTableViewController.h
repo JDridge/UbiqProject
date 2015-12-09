@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface HistoryTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (void)fetchParseData;
 
 @end

@@ -11,6 +11,7 @@
 #import "HomeViewController.h"
 #import "LoginFormViewController.h"
 #import "NSString+APIKeys.h"
+#import "SWRevealViewController.h"
 
 @interface AppDelegate ()
 
@@ -60,7 +61,7 @@
 -(void) transitionToHomeViewController {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        HomeViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
+        SWRevealViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"hamVC"];
         [self.window makeKeyAndVisible];
         [self.window.rootViewController presentViewController:homeViewController animated:YES completion:NULL];
 
