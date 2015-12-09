@@ -172,13 +172,15 @@
     NSArray *currentObjects = secondQueryObjects[indexPath.row];
     PFObject *username1 = currentObjects[1];
     PFObject *username2 = currentObjects[0];
-
+    
+    //Name
     cell.firstPersonName.text = username1[@"username"];
     cell.secondPersonName.text = username2[@"username"];
     
+    //Google Static Map
     NSString *staticMapURL = @"https://maps.googleapis.com/maps/api/staticmap?center=";
-    NSString *coordinateString = username1[@"coordinates"];
-    NSString *coordinateString2 = username2[@"coordinates"];
+    NSString *coordinateString = username1[@"myCoordinate"];
+    NSString *coordinateString2 = username2[@"friendsCoordinate"];
     NSArray *splitCoordinate = [NSArray arrayWithArray:[coordinateString componentsSeparatedByString:@","]];
     NSArray *splitCoordinate2 = [NSArray arrayWithArray:[coordinateString2 componentsSeparatedByString:@","]];
     float latitude = ([splitCoordinate[0] floatValue]+[splitCoordinate2[0] floatValue])/2;
@@ -195,6 +197,29 @@
     UIImage *image = [UIImage imageWithData:data];
     
     [cell.mapImage setImage:image];
+    
+    //ballot
+    NSString *userVote1 = username1[@"vote"];
+    NSString *userVote2 = username2[@"vote"];
+    
+    if([userVote1 isEqualToString: @"Yes"]){
+        userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
+    }else if([userVote1 isEqualToString: @"No"]){
+        userVote1 = [NSString stringWithFormat: @"%@ has voted No", username1[@"name"]];
+    }else{
+        userVote1 = [NSString stringWithFormat: @"%@ has not yet voted", username1[@"name"]];
+    }
+    cell.firstPersonVote.text = userVote1;
+    
+    if([userVote2 isEqualToString: @"Yes"]){
+        userVote2 = [NSString stringWithFormat: @"%@ has voted Yes", username2[@"name"]];
+    }else if([userVote2 isEqualToString: @"No"]){
+        userVote2 = [NSString stringWithFormat: @"%@ has voted No", username2[@"name"]];
+    }else{
+        userVote2 = [NSString stringWithFormat: @"%@ has not yet voted", username2[@"name"]];
+    }
+    cell.secondPersonVote.text = userVote2;
+    
     return cell;
 }
 
