@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93108C5A1C186C990055D1D7 /* BallotCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93108C591C186C990055D1D7 /* BallotCustomCell.xib */; settings = {ASSET_TAGS = (); }; };
+		93108C5A1C186C990055D1D7 /* BallotCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93108C591C186C990055D1D7 /* BallotCustomCell.xib */; };
 		9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9317A0D71C1769EA0093ED5D /* HistoryCustomCell.xib */; };
 		9317A0DB1C176A900093ED5D /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */; };
 		9317A0DE1C176B6E0093ED5D /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */; };
 		ACDE69661C169E850017951F /* BallotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69651C169E840017951F /* BallotTableViewController.m */; };
-		ACDE69691C16A4200017951F /* Ballot.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE69681C16A4200017951F /* Ballot.m */; };
 		ACDE696C1C16B48A0017951F /* CustomTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE696B1C16B48A0017951F /* CustomTableCell.m */; };
 		ACF534521C12C66800854186 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF5344D1C12C66800854186 /* FavoritesViewController.m */; };
 		ACF534541C12C66800854186 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF534501C12C66800854186 /* AboutUsViewController.m */; };
@@ -103,8 +102,6 @@
 		9317A0DD1C176B6E0093ED5D /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		ACDE69641C169E840017951F /* BallotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallotTableViewController.h; path = ../BallotTableViewController.h; sourceTree = "<group>"; };
 		ACDE69651C169E840017951F /* BallotTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallotTableViewController.m; path = ../BallotTableViewController.m; sourceTree = "<group>"; };
-		ACDE69671C16A4200017951F /* Ballot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ballot.h; sourceTree = "<group>"; };
-		ACDE69681C16A4200017951F /* Ballot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ballot.m; sourceTree = "<group>"; };
 		ACDE696A1C16B48A0017951F /* CustomTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCell.h; sourceTree = "<group>"; };
 		ACDE696B1C16B48A0017951F /* CustomTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCell.m; sourceTree = "<group>"; };
 		ACF5344C1C12C66800854186 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
@@ -290,8 +287,6 @@
 				E1BAC4591C183CAD00AE4035 /* BallotTableViewCell.m */,
 				ACDE696A1C16B48A0017951F /* CustomTableCell.h */,
 				ACDE696B1C16B48A0017951F /* CustomTableCell.m */,
-				ACDE69671C16A4200017951F /* Ballot.h */,
-				ACDE69681C16A4200017951F /* Ballot.m */,
 				ACF534581C12C86400854186 /* NavigationViewController.m */,
 				ACF534591C12C86400854186 /* NavigationViewController.h */,
 				ACF534551C12C69C00854186 /* SWRevealViewController.h */,
@@ -562,7 +557,6 @@
 				ACF534571C12C69C00854186 /* SWRevealViewController.m in Sources */,
 				D4F2B9111BBF12EE007F6955 /* AppDelegate.m in Sources */,
 				E1F5935B1BD4A6E700CC612D /* MapViewController.m in Sources */,
-				ACDE69691C16A4200017951F /* Ballot.m in Sources */,
 				D4F2B90E1BBF12EE007F6955 /* main.m in Sources */,
 				D47FCD691C10EBA700DC0250 /* NSURLRequest+OAuth.m in Sources */,
 				E1FD46D61C165652008101E1 /* MGMessage.m in Sources */,
