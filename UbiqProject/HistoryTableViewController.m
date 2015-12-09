@@ -20,6 +20,7 @@
 
 @implementation HistoryTableViewController
 
+//myCoordinate & friendsCoordinate
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -127,10 +128,8 @@
     
     static NSString *myCellIdentifier = @"HistoryCustomCell";
     
+    
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
-    NSURL *url = [NSURL URLWithString:@"https://scontent.fhou2-1.fna.fbcdn.net/hphotos-xla1/v/t1.0-9/1524765_781472518533443_811718135_n.jpg?oh=d8a3b8539862aeeed0ad835ee3a63f29&oe=56DDE7D4"];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [UIImage imageWithData:data];
     
     //SCALABILITY SUCKS HERE ONLY GOOD FOR TWO PEOPLE CHANGE LATER ON FOR FUTURE IMPLEMENTATIONS
     NSArray *currentObjects = secondQueryObjects[indexPath.row];
@@ -139,6 +138,25 @@
 
     cell.firstPersonName.text = username1[@"username"];
     cell.secondPersonName.text = username2[@"username"];
+    
+    NSString *staticMapURL = @"https://maps.googleapis.com/maps/api/staticmap?center=";
+    NSString *coordinateString = username1[@"coordinates"];
+    NSString *coordinateString2 = username2[@"coordinates"];
+    NSArray *splitCoordinate = [NSArray arrayWithArray:[coordinateString componentsSeparatedByString:@","]];
+    NSArray *splitCoordinate2 = [NSArray arrayWithArray:[coordinateString2 componentsSeparatedByString:@","]];
+    float latitude = ([splitCoordinate[0] floatValue]+[splitCoordinate2[0] floatValue])/2;
+    float longitude = ([splitCoordinate[1] floatValue]+[splitCoordinate2[1] floatValue])/2;
+    NSString *stringLatitude = [NSString stringWithFormat:@"%1.6f", latitude];
+    NSString *stringLongitude = [NSString stringWithFormat:@"%1.6f", longitude];
+    NSString *midCoordinate = [NSString stringWithFormat:@"%@,%@", stringLatitude, stringLongitude];
+    NSString *mapSpecifics = @"&zoom=15&size=300x300&markers=color:green%7Clabel:C%7C";
+    NSString *theKey = @"&key=AIzaSyDuqaWuf7fMQ0gsFORLozfO4aDKHW38YWk";
+    staticMapURL = [NSString stringWithFormat:@"%@%@%@%@%@", staticMapURL,midCoordinate,mapSpecifics,midCoordinate,theKey];
+    
+    NSURL *url = [NSURL URLWithString:staticMapURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    
     [cell.mapImage setImage:image];
     return cell;
 }
