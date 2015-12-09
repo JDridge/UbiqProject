@@ -36,7 +36,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     self.title = @"Ballots";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Back"
+                                   initWithTitle:@"≡"
                                    style:UIBarButtonItemStyleDone
                                    target:self.revealViewController
                                    action:@selector(revealToggle:)];
@@ -261,7 +261,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     NSLog(@"emailing...");
     if([voted isEqualToString:@"Voted Yes"]) {
         NSLog(@"yes!!!");
-        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:cell.ballotPersonName email:cell.ballotEmail location:cell.ballotAddressOfPlace status:voted comments:text image:cell.ballotImage];
+        //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
         
         [self changeVoteColumnOfBallotClassWith:@"Yes" for:cell.ballotID];
         
@@ -269,7 +269,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
         
     }
     else if([voted isEqualToString:@"Voted No"]) {
-        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:cell.ballotPersonName email:cell.ballotEmail location:cell.ballotAddressOfPlace status:voted comments:text image:cell.ballotImage];
+        //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
         
         [self changeVoteColumnOfBallotClassWith:@"No" for:cell.ballotID];
         

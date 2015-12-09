@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="502" height="173"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Person Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp0-3i-MKt">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kp0-3i-MKt">
                         <rect key="frame" x="49" y="17" width="165" height="28"/>
                         <animations/>
                         <constraints>
@@ -24,7 +24,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Person Vote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0h-hg-rCX">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0h-hg-rCX">
                         <rect key="frame" x="49" y="53" width="165" height="28"/>
                         <animations/>
                         <constraints>
@@ -34,7 +34,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second Person Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBg-Bg-qWN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBg-Bg-qWN">
                         <rect key="frame" x="49" y="96" width="165" height="28"/>
                         <animations/>
                         <constraints>
@@ -44,11 +44,11 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-M8k">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-6o-M8k">
                         <rect key="frame" x="254" y="8" width="240" height="157"/>
                         <animations/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second Person Vote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjJ-Nl-9rv">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjJ-Nl-9rv">
                         <rect key="frame" x="49" y="132" width="165" height="28"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -59,21 +59,23 @@
                 <animations/>
                 <constraints>
                     <constraint firstItem="OZA-6o-M8k" firstAttribute="bottom" secondItem="azq-PV-Fut" secondAttribute="bottomMargin" id="3co-Bl-UK6"/>
+                    <constraint firstItem="OZA-6o-M8k" firstAttribute="leading" secondItem="u0h-hg-rCX" secondAttribute="trailing" constant="40" id="5T1-wT-Vtt"/>
                     <constraint firstItem="u0h-hg-rCX" firstAttribute="trailing" secondItem="kp0-3i-MKt" secondAttribute="trailing" id="AJu-WR-FS2"/>
                     <constraint firstItem="OZA-6o-M8k" firstAttribute="top" secondItem="azq-PV-Fut" secondAttribute="topMargin" id="Cux-yF-Vxz"/>
                     <constraint firstItem="kp0-3i-MKt" firstAttribute="leading" secondItem="azq-PV-Fut" secondAttribute="leadingMargin" constant="41" id="D9H-G7-MCu"/>
                     <constraint firstItem="OZA-6o-M8k" firstAttribute="leading" secondItem="kp0-3i-MKt" secondAttribute="trailing" constant="40" id="DP5-QN-zXQ"/>
                     <constraint firstItem="GBg-Bg-qWN" firstAttribute="top" secondItem="u0h-hg-rCX" secondAttribute="bottom" constant="15" id="Npq-P4-6ch"/>
                     <constraint firstItem="WjJ-Nl-9rv" firstAttribute="leading" secondItem="GBg-Bg-qWN" secondAttribute="leading" id="Pvp-mB-1vc"/>
+                    <constraint firstItem="OZA-6o-M8k" firstAttribute="leading" secondItem="GBg-Bg-qWN" secondAttribute="trailing" constant="40" id="Tpl-ze-ti8"/>
                     <constraint firstItem="WjJ-Nl-9rv" firstAttribute="top" secondItem="GBg-Bg-qWN" secondAttribute="bottom" constant="8" symbolic="YES" id="UWN-WG-9A6"/>
                     <constraint firstItem="u0h-hg-rCX" firstAttribute="leading" secondItem="GBg-Bg-qWN" secondAttribute="leading" id="VW1-XX-0QJ"/>
                     <constraint firstItem="OZA-6o-M8k" firstAttribute="trailing" secondItem="azq-PV-Fut" secondAttribute="trailingMargin" id="aQx-Y7-NIh"/>
                     <constraint firstItem="u0h-hg-rCX" firstAttribute="top" secondItem="kp0-3i-MKt" secondAttribute="bottom" constant="8" symbolic="YES" id="eH0-Tj-gEc"/>
+                    <constraint firstItem="OZA-6o-M8k" firstAttribute="leading" secondItem="WjJ-Nl-9rv" secondAttribute="trailing" constant="40" id="i0D-fr-DH0"/>
                     <constraint firstItem="kp0-3i-MKt" firstAttribute="leading" secondItem="u0h-hg-rCX" secondAttribute="leading" id="i2c-Nb-z0O"/>
                     <constraint firstItem="GBg-Bg-qWN" firstAttribute="trailing" secondItem="WjJ-Nl-9rv" secondAttribute="trailing" id="iYO-B7-Hin"/>
                     <constraint firstItem="kp0-3i-MKt" firstAttribute="top" secondItem="azq-PV-Fut" secondAttribute="topMargin" constant="9" id="ybK-IV-tPJ"/>
                     <constraint firstItem="u0h-hg-rCX" firstAttribute="trailing" secondItem="GBg-Bg-qWN" secondAttribute="trailing" id="zDl-Tt-L98"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="WjJ-Nl-9rv" secondAttribute="bottom" constant="5" id="zjV-CQ-GZ3"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>

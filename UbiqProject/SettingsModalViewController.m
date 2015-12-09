@@ -33,7 +33,7 @@
     self.title = @"Settings";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Menu"
+                                   initWithTitle:@"≡"
                                    style:UIBarButtonItemStyleDone
                                    target:self.revealViewController
                                    action:@selector(revealToggle:)];
