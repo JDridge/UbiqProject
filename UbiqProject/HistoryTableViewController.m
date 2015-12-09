@@ -135,7 +135,7 @@
     
     
     // Return the number of sections.
-    if (secondQueryObjects) {
+    if ([secondQueryObjects count] > 0) {
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 1;
