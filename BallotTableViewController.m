@@ -14,14 +14,21 @@
 #import "Ballot.h"
 #import <Parse/Parse.h>
 #import "BallotTableViewCell.h"
+#import "Mailgun+Utilities.h"
+#import "HistoryTableViewCell.h"
 
 @interface BallotTableViewController () {
     NSArray *firstQueryObjects;
     NSMutableArray *secondQueryObjects;
     NSMutableDictionary *pairedObjects;
+    NSString *firstName;
+    NSString *secondName;
+    NSString *nameOfPlace;
 }
 
 @end
+
+static NSString *myCellIdentifier = @"HistoryCustomCell";
 
 @implementation BallotTableViewController
 
@@ -54,8 +61,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
     
-    static NSString *myCellIdentifier = @"HistoryCustomCell";
-    UINib *nib = [UINib nibWithNibName:@"HistoryCustomCell" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:myCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:myCellIdentifier];
 
 }
@@ -71,11 +77,9 @@
     
     NSMutableArray *ballotIDFromFirstQueryObjects = [[NSMutableArray alloc] init];
     secondQueryObjects = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *pairedArray = [[NSMutableArray alloc] init];
-    pairedObjects = [[NSMutableDictionary alloc] init];
+
     //filtering data
-    [getFirstUserQuery whereKey:@"username" equalTo:[[PFUser currentUser] username]];
+    [[getFirstUserQuery whereKey:@"username" equalTo:[[PFUser currentUser] username]] whereKey:@"vote" equalTo:@"Not yet voted"];
     firstQueryObjects = [getFirstUserQuery findObjects];
     
     for (PFObject *object in firstQueryObjects)
@@ -84,22 +88,12 @@
     
     for (int i = 0; i < [ballotIDFromFirstQueryObjects count]; i++) {
         [getSecondUserQuery whereKey:@"ballotID" equalTo:ballotIDFromFirstQueryObjects[i]];
+        
+        //[getSecondUserQuery whereKey:@"vote" equalTo:@"Not yet voted"];
         [secondQueryObjects  addObject:[getSecondUserQuery findObjects]];
     }
     
-    //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-    //        if (!error) {
-    //            NSLog(@"%@", objects);
-    //        } else {
-    //            // Log details of the failure
-    //            NSLog(@"Error: %@ %@", error, [error userInfo]);
-    //        }
-    //    }];
-    
-    
     [self reloadData];
-    NSLog(@"****This is where the URL should be updating****");
-    
 }
 
 - (void)reloadData
@@ -153,68 +147,60 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *myCellIdentifier = @"HistoryCustomCell";
+    HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
     
-    
-    BallotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
-    
-    //SCALABILITY SUCKS HERE ONLY GOOD FOR TWO PEOPLE CHANGE LATER ON FOR FUTURE IMPLEMENTATIONS
     NSArray *currentObjects = secondQueryObjects[indexPath.row];
-    PFObject *username1 = currentObjects[1];
-    PFObject *username2 = currentObjects[0];
+    
+    PFObject *personThatIsNotYou;
+    
+    if(![currentObjects[0][@"username"]  isEqualToString:[[PFUser currentUser] username]]) {
+        personThatIsNotYou = currentObjects[0];
+    }
+    else if(![currentObjects[1][@"username"] isEqualToString:[[PFUser currentUser] username]]) {
+        personThatIsNotYou = currentObjects[1];
+    }
     
     //Name
-    cell.firstPersonName.text = username1[@"username"];
-    cell.secondPersonName.text = username2[@"username"];
+    //cell.firstPersonName.text = username1[@"username"];
+    ///cell.secondPersonName.text = username2[@"username"];
     
     //Google Static Map
     NSString *staticMapURL = @"https://maps.googleapis.com/maps/api/staticmap?center=";
-    NSString *coordinateString = username1[@"myCoordinate"];
-    NSString *coordinateString2 = username2[@"friendsCoordinate"];
-    NSArray *splitCoordinate = [NSArray arrayWithArray:[coordinateString componentsSeparatedByString:@","]];
-    NSArray *splitCoordinate2 = [NSArray arrayWithArray:[coordinateString2 componentsSeparatedByString:@","]];
-    float latitude = ([splitCoordinate[0] floatValue]+[splitCoordinate2[0] floatValue])/2;
-    float longitude = ([splitCoordinate[1] floatValue]+[splitCoordinate2[1] floatValue])/2;
-    NSString *stringLatitude = [NSString stringWithFormat:@"%1.6f", latitude];
-    NSString *stringLongitude = [NSString stringWithFormat:@"%1.6f", longitude];
-    NSString *midCoordinate = [NSString stringWithFormat:@"%@,%@", stringLatitude, stringLongitude];
-    NSString *mapSpecifics = @"&zoom=15&size=300x300&markers=color:green%7Clabel:C%7C";
-    NSString *theKey = @"&key=AIzaSyDuqaWuf7fMQ0gsFORLozfO4aDKHW38YWk";
-    staticMapURL = [NSString stringWithFormat:@"%@%@%@%@%@", staticMapURL,midCoordinate,mapSpecifics,midCoordinate,theKey];
-    
-    NSURL *url = [NSURL URLWithString:staticMapURL];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [UIImage imageWithData:data];
-    
-    [cell.mapImage setImage:image];
+    //NSString *coordinateString = username1[@"myCoordinate"];
+    //NSString *coordinateString2 = username2[@"friendsCoordinate"];
+    //nameOfPlace = username1[@"nameOfPlace"];
+    //NSArray *splitCoordinate = [NSArray arrayWithArray:[coordinateString componentsSeparatedByString:@","]];
+    //NSArray *splitCoordinate2 = [NSArray arrayWithArray:[coordinateString2 componentsSeparatedByString:@","]];
+//    float latitude = ([splitCoordinate[0] floatValue]+[splitCoordinate2[0] floatValue])/2;
+//    float longitude = ([splitCoordinate[1] floatValue]+[splitCoordinate2[1] floatValue])/2;
+//    NSString *stringLatitude = [NSString stringWithFormat:@"%1.6f", latitude];
+//    NSString *stringLongitude = [NSString stringWithFormat:@"%1.6f", longitude];
+//    NSString *midCoordinate = [NSString stringWithFormat:@"%@,%@", stringLatitude, stringLongitude];
+//    NSString *mapSpecifics = @"&zoom=15&size=300x300&markers=color:green%7Clabel:C%7C";
+//    NSString *theKey = @"&key=AIzaSyDuqaWuf7fMQ0gsFORLozfO4aDKHW38YWk";
+//    staticMapURL = [NSString stringWithFormat:@"%@%@%@%@%@", staticMapURL,midCoordinate,mapSpecifics,midCoordinate,theKey];
+//    
+//    NSURL *url = [NSURL URLWithString:staticMapURL];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    UIImage *image = [UIImage imageWithData:data];
+//    
+//    [cell.mapImage setImage:image];
     
     //ballot
-    NSString *userVote1 = username1[@"vote"];
-    NSString *userVote2 = username2[@"vote"];
-    
-    if([userVote1 isEqualToString: @"Voted"]){
-        userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
-    }else if([userVote1 isEqualToString: @"No"]){
-        userVote1 = [NSString stringWithFormat: @"%@ has voted No", username1[@"name"]];
-    }else{
-        userVote1 = [NSString stringWithFormat: @"%@ has not yet voted", username1[@"name"]];
-    }
-    cell.firstPersonVote.text = userVote1;
-    
-    if([userVote2 isEqualToString: @"Voted"]){
-        userVote2 = [NSString stringWithFormat: @"%@ has voted Yes", username2[@"name"]];
-    }else if([userVote2 isEqualToString: @"No"]){
-        userVote2 = [NSString stringWithFormat: @"%@ has voted No", username2[@"name"]];
-    }else{
-        userVote2 = [NSString stringWithFormat: @"%@ has not yet voted", username2[@"name"]];
-    }
-    cell.secondPersonVote.text = userVote2;
+    //NSString *userVote1 = username1[@"vote"];
+//    NSString *userVote2 = username2[@"vote"];
+//
+//    //firstName = username1[@"name"];
+//    secondName = username2[@"name"];
+//
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BallotTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Voting Time"
                                 message:@"Would you like to meet up? \n Enter any comments you want to send to the other person below."
@@ -227,8 +213,7 @@
                                  handler:^(UIAlertAction * action)
                                  {
                                      NSString *text = ((UITextField *)[alertRef.textFields objectAtIndex:0]).text;
-                                     
-                                     [self emailTheOtherPersonWith:text status:@"Voted Yes"];
+                                     [self emailTheOtherPersonWith:text status:@"Voted Yes" cell:cell];
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     
@@ -238,7 +223,7 @@
                                  handler:^(UIAlertAction * action)
                                  {
                                      NSString *text = ((UITextField *)[alertRef.textFields objectAtIndex:0]).text;
-                                     [self emailTheOtherPersonWith:text status:@"Voted No"];
+                                     [self emailTheOtherPersonWith:text status:@"Voted No" cell:cell];
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     
@@ -264,8 +249,9 @@
 
 }
 
--(void) emailTheOtherPersonWith:(NSString*)text status:(NSString*)voted{
+-(void) emailTheOtherPersonWith:(NSString*)text status:(NSString*)voted cell:(BallotTableViewCell*)cell{
     NSLog(@"emailing...");
+    //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
     if([voted isEqualToString:@"Voted Yes"]) {
         NSLog(@"yes!!!");
     }
