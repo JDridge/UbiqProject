@@ -79,6 +79,7 @@
 		E1FD71CF1C0C35D3007245D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B21C0C2ED1007245D3 /* libsqlite3.tbd */; };
 		E1FD71D01C0C35D9007245D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B01C0C2ECD007245D3 /* libz.tbd */; };
 		F457BEF81C1685F500830580 /* ubiq1.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEEE1C1685F500830580 /* ubiq1.mov */; };
+		F4782D891C1801810024BF1E /* Sequence.mov in Resources */ = {isa = PBXBuildFile; fileRef = F4782D881C1801810024BF1E /* Sequence.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +211,7 @@
 		E1FD71CA1C0C3596007245D3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E1FD71CB1C0C3596007245D3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		F457BEEE1C1685F500830580 /* ubiq1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq1.mov; sourceTree = "<group>"; };
+		F4782D881C1801810024BF1E /* Sequence.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Sequence.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +374,7 @@
 				E1CE8FC51C058323000A9EE9 /* railway.gif */,
 				E1CE8FC61C058323000A9EE9 /* video.mov */,
 				D4F2B90D1BBF12EE007F6955 /* main.m */,
+				F4782D881C1801810024BF1E /* Sequence.mov */,
 				F457BEEE1C1685F500830580 /* ubiq1.mov */,
 			);
 			name = "Supporting Files";
@@ -496,13 +499,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F457BEF81C1685F500830580 /* ubiq1.mov in Resources */,
+				F4782D891C1801810024BF1E /* Sequence.mov in Resources */,
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
 				9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */,
-				E1BAC4571C17663A00AE4035 /* APIKeys.plist in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
 			);
