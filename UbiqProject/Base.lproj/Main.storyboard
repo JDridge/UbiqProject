@@ -543,22 +543,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-ns-oYD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="placeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-ns-oYD">
                                 <rect key="frame" x="234" y="235" width="87" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="87" id="Go1-bn-1Dr"/>
                                     <constraint firstAttribute="height" constant="21" id="LU8-Za-9Cb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placePhone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I3-9W-a4F">
-                                <rect key="frame" x="231" y="277" width="90" height="21"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="hlt-cI-RNS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -591,7 +581,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohn-3N-YBn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="placeAddress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohn-3N-YBn">
                                 <rect key="frame" x="217" y="321" width="104" height="21"/>
                                 <animations/>
                                 <constraints>
@@ -614,7 +604,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TgZ-Ok-r8B" firstAttribute="top" secondItem="Hhj-AO-e0Z" secondAttribute="bottom" constant="27" id="0hl-Se-QKO"/>
-                            <constraint firstItem="3I3-9W-a4F" firstAttribute="top" secondItem="iZi-ns-oYD" secondAttribute="bottom" constant="21" id="13W-GM-xfl"/>
                             <constraint firstItem="P5C-Jl-u35" firstAttribute="leading" secondItem="ARb-ES-pmO" secondAttribute="leadingMargin" constant="53" id="3X2-bf-bB5"/>
                             <constraint firstItem="P5C-Jl-u35" firstAttribute="trailing" secondItem="ACD-4M-MxK" secondAttribute="trailing" id="DSv-Wh-c8k"/>
                             <constraint firstItem="Ohn-3N-YBn" firstAttribute="leading" secondItem="ARb-ES-pmO" secondAttribute="leading" constant="217" id="Eve-nH-ECQ"/>
@@ -622,17 +611,14 @@
                             <constraint firstItem="iZi-ns-oYD" firstAttribute="top" secondItem="ARb-ES-pmO" secondAttribute="top" constant="235" id="HwR-IM-uzi"/>
                             <constraint firstItem="Hhj-AO-e0Z" firstAttribute="leading" secondItem="ARb-ES-pmO" secondAttribute="leading" constant="209" id="K6y-5f-h9y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Lef-Yq-GWO" secondAttribute="trailing" constant="91" id="KWt-Y2-JWG"/>
-                            <constraint firstItem="Ohn-3N-YBn" firstAttribute="trailing" secondItem="3I3-9W-a4F" secondAttribute="trailing" id="Kz4-dR-B7R"/>
                             <constraint firstItem="TgZ-Ok-r8B" firstAttribute="top" secondItem="P5C-Jl-u35" secondAttribute="bottom" constant="432" id="N4g-01-LXv"/>
                             <constraint firstItem="TII-OY-Qj2" firstAttribute="trailing" secondItem="GnP-6Z-Q9E" secondAttribute="trailing" id="Nhe-IN-Nsb"/>
                             <constraint firstItem="yfw-4K-mZn" firstAttribute="firstBaseline" secondItem="mSQ-7g-k4y" secondAttribute="firstBaseline" id="PpM-YR-mB5"/>
-                            <constraint firstItem="iZi-ns-oYD" firstAttribute="trailing" secondItem="3I3-9W-a4F" secondAttribute="trailing" id="QBj-vk-DdA"/>
                             <constraint firstItem="yfw-4K-mZn" firstAttribute="trailing" secondItem="Lef-Yq-GWO" secondAttribute="trailing" id="R6F-YW-bdc"/>
                             <constraint firstItem="P5C-Jl-u35" firstAttribute="top" secondItem="ACD-4M-MxK" secondAttribute="bottom" constant="24" id="WrZ-hI-ksF"/>
                             <constraint firstItem="yfw-4K-mZn" firstAttribute="trailing" secondItem="GnP-6Z-Q9E" secondAttribute="trailing" id="Xvs-s8-ubm"/>
                             <constraint firstItem="Lef-Yq-GWO" firstAttribute="leading" secondItem="ARb-ES-pmO" secondAttribute="leadingMargin" constant="96" id="ZVY-q6-aJy"/>
                             <constraint firstItem="ACD-4M-MxK" firstAttribute="leading" secondItem="ARb-ES-pmO" secondAttribute="leadingMargin" constant="66" id="bTl-9y-sgx"/>
-                            <constraint firstItem="Ohn-3N-YBn" firstAttribute="top" secondItem="3I3-9W-a4F" secondAttribute="bottom" constant="23" id="c1C-Zl-GNS"/>
                             <constraint firstItem="Lef-Yq-GWO" firstAttribute="top" secondItem="x3c-HZ-ojX" secondAttribute="bottom" constant="8" symbolic="YES" id="djm-qz-l5H"/>
                             <constraint firstItem="mSQ-7g-k4y" firstAttribute="baseline" secondItem="yfw-4K-mZn" secondAttribute="baseline" id="ho6-BK-iVB"/>
                             <constraint firstItem="Hhj-AO-e0Z" firstAttribute="baseline" secondItem="RhS-hO-IRO" secondAttribute="baseline" id="jSo-n9-vN3"/>
@@ -655,7 +641,6 @@
                         <outlet property="nameLabel" destination="Lef-Yq-GWO" id="n78-rr-1iZ"/>
                         <outlet property="placeAddress" destination="Ohn-3N-YBn" id="1BF-YJ-20n"/>
                         <outlet property="placeName" destination="iZi-ns-oYD" id="15L-m7-dGE"/>
-                        <outlet property="placePhone" destination="3I3-9W-a4F" id="VTl-Vh-kyx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ze-vb-99Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
