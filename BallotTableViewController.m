@@ -217,19 +217,36 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:@"Error!"
-                                message:@"For some reason we cannot converge your locations. Try again in a bit!"
+                                alertControllerWithTitle:@"Voting Time"
+                                message:@"Would you like to meet up? at......"
                                 preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *okayButton = [UIAlertAction
-                                 actionWithTitle:@"Okay 🙃"
+    UIAlertAction *voteYesButton = [UIAlertAction
+                                 actionWithTitle:@"Yes"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
                                  {
-                                     
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
-    [alert addAction:okayButton];
+    
+    UIAlertAction *voteNoButton = [UIAlertAction
+                                 actionWithTitle:@"No"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    
+    UIAlertAction *maybeLaterButton = [UIAlertAction
+                                 actionWithTitle:@"Later"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:voteYesButton];
+    [alert addAction:voteNoButton];
+    [alert addAction:maybeLaterButton];
     [self presentViewController:alert animated:YES completion:nil];
 
 }
