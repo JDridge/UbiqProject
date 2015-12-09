@@ -12,6 +12,6 @@
 
 + (void) sendEmailToUser:(NSString*)user;
 + (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you;
-+ (void) sendEmailAboutStatusOfBallot:(NSString*)user location:(NSString*)location status:(NSString*)status;
++ (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you email:(NSString*)email;
 
 @end

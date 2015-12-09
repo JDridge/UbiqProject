@@ -28,10 +28,10 @@
                        NSLog(@"error %@", [error userInfo]);}];
 }
 
-+ (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you {
-    NSString *emailTo = [NSString stringWithFormat:@"%@ %@", user, @"<xxx@uh.edu>"];
++ (void) sendEmailToUserRequestingBallot:(NSString*)user from:(NSString*)you email:(NSString*)email {
+    NSString *emailTo = [NSString stringWithFormat:@"%@ <ubicomp6uh@gmail.com>", user, email];
     NSString *subject = [NSString stringWithFormat:@"%@ %@", you, @" has requested for you to converge with them."];
-    NSString *body = [NSString stringWithFormat:@"Hello %@,\n%@ has requested for you to converge with then. Please open the converge app to see more! Open the app here! converge://OPENME", user, you];
+    NSString *body = [NSString stringWithFormat:@"Hello %@,\n%@ has requested for you to converge with them. Please open the converge app to see more! Open the app here! converge://OPENME", user, you];
     Mailgun *mailgun = [Mailgun clientWithDomain:[NSString getMailgunClientWithDomain]
                                           apiKey:[NSString getMailgunApiKey]];
     [mailgun sendMessageTo:emailTo
