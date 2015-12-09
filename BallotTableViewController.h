@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BallotTableViewController : UITableViewController
+@interface BallotTableViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
+
 
 @end

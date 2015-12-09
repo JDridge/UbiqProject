@@ -36,7 +36,7 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    //[self fetchParseData];
+    [self fetchParseData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -206,7 +206,7 @@
     NSString *userVote1 = username1[@"vote"];
     NSString *userVote2 = username2[@"vote"];
     
-    if([userVote1 isEqualToString: @"Yes"]){
+    if([userVote1 isEqualToString: @"Voted"]){
         userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
     }else if([userVote1 isEqualToString: @"No"]){
         userVote1 = [NSString stringWithFormat: @"%@ has voted No", username1[@"name"]];
@@ -215,7 +215,7 @@
     }
     cell.firstPersonVote.text = userVote1;
     
-    if([userVote2 isEqualToString: @"Yes"]){
+    if([userVote2 isEqualToString: @"Voted"]){
         userVote2 = [NSString stringWithFormat: @"%@ has voted Yes", username2[@"name"]];
     }else if([userVote2 isEqualToString: @"No"]){
         userVote2 = [NSString stringWithFormat: @"%@ has voted No", username2[@"name"]];

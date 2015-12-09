@@ -37,6 +37,7 @@
 		E13DE0461BFACE73000C9C30 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E13DE0451BFACE73000C9C30 /* .gitignore */; };
 		E14FA41C1C06FD0800E3FEB0 /* UITextField+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */; };
 		E1BAC4531C1658B600AE4035 /* Mailgun+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */; };
+		E1BAC45A1C183CAD00AE4035 /* BallotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BAC4591C183CAD00AE4035 /* BallotTableViewCell.m */; };
 		E1CE8FC01C052AAC000A9EE9 /* LoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */; };
 		E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC51C058323000A9EE9 /* railway.gif */; };
 		E1CE8FC81C058323000A9EE9 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1CE8FC61C058323000A9EE9 /* video.mov */; };
@@ -150,6 +151,8 @@
 		E14FA41B1C06FD0800E3FEB0 /* UITextField+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Utilities.m"; sourceTree = "<group>"; };
 		E1BAC4511C1658B600AE4035 /* Mailgun+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mailgun+Utilities.h"; sourceTree = "<group>"; };
 		E1BAC4521C1658B600AE4035 /* Mailgun+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mailgun+Utilities.m"; sourceTree = "<group>"; };
+		E1BAC4581C183CAD00AE4035 /* BallotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallotTableViewCell.h; sourceTree = "<group>"; };
+		E1BAC4591C183CAD00AE4035 /* BallotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallotTableViewCell.m; sourceTree = "<group>"; };
 		E1CE8FBE1C052AAC000A9EE9 /* LoginFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginFormViewController.h; sourceTree = "<group>"; };
 		E1CE8FBF1C052AAC000A9EE9 /* LoginFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginFormViewController.m; sourceTree = "<group>"; };
 		E1CE8FC51C058323000A9EE9 /* railway.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = railway.gif; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				9317A0DA1C176A900093ED5D /* HistoryTableViewController.m */,
 				ACDE69641C169E840017951F /* BallotTableViewController.h */,
 				ACDE69651C169E840017951F /* BallotTableViewController.m */,
+				E1BAC4581C183CAD00AE4035 /* BallotTableViewCell.h */,
+				E1BAC4591C183CAD00AE4035 /* BallotTableViewCell.m */,
 				ACDE696A1C16B48A0017951F /* CustomTableCell.h */,
 				ACDE696B1C16B48A0017951F /* CustomTableCell.m */,
 				ACDE69671C16A4200017951F /* Ballot.h */,
@@ -543,6 +548,7 @@
 				9317A0DE1C176B6E0093ED5D /* HistoryTableViewCell.m in Sources */,
 				ACF5345A1C12C86400854186 /* NavigationViewController.m in Sources */,
 				E1FD46ED1C16565C008101E1 /* AFJSONRequestOperation.m in Sources */,
+				E1BAC45A1C183CAD00AE4035 /* BallotTableViewCell.m in Sources */,
 				E1EA9D5E1C113EB900573260 /* NSString+APIKeys.m in Sources */,
 				D47FCD6A1C10EBA700DC0250 /* OMGFormURLEncode.m in Sources */,
 				D4F2B9141BBF12EE007F6955 /* HomeViewController.m in Sources */,
