@@ -364,7 +364,7 @@
                                     <action selector="ConvergeLocations:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u5U-MM-YJB"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Z91-8d-1Ug">
                                 <rect key="frame" x="200" y="200" width="201" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="452" id="qob-JW-Nze"/>
@@ -485,7 +485,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="qzh-8w-qjC">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="nbj-Me-dl5"/>
+                        <barButtonItem key="leftBarButtonItem" title="≡" id="nbj-Me-dl5"/>
                     </navigationItem>
                     <connections>
                         <outlet property="FriendsUsername" destination="rAI-Jo-OeF" id="GE3-EH-VEK"/>
@@ -547,7 +547,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JosephAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="ljX-KW-20n">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="JosephAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="ljX-KW-20n">
                                 <rect key="frame" x="20" y="213" width="179" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ljX-KW-20n" secondAttribute="height" multiplier="231:269" id="ZyE-lY-ne0"/>
@@ -563,7 +563,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TriAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="xRM-Va-Kjh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="TriAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="xRM-Va-Kjh">
                                 <rect key="frame" x="223" y="213" width="155" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xRM-Va-Kjh" secondAttribute="height" multiplier="231:269" id="xjx-UG-Jzd"/>
@@ -579,7 +579,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="MarioAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="XYq-rf-CO9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="MarioAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="XYq-rf-CO9">
                                 <rect key="frame" x="417" y="435" width="155" height="145"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="Cvb-qh-FwS"/>
@@ -601,7 +601,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ChrisAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="fcy-RE-glK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ChrisAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="fcy-RE-glK">
                                 <rect key="frame" x="26" y="435" width="155" height="145"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fcy-RE-glK" secondAttribute="height" multiplier="231:269" id="FbJ-mM-ejv"/>
@@ -617,7 +617,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meet The Converge Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2b5-0H-uII">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Meet The Converge Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2b5-0H-uII">
                                 <rect key="frame" x="202" y="40" width="119" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2b5-0H-uII" secondAttribute="height" multiplier="200:27" id="opa-dB-afB"/>
@@ -636,7 +636,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RobertAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="3w5-v5-UjA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="RobertAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="3w5-v5-UjA">
                                 <rect key="frame" x="417" y="213" width="163" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3w5-v5-UjA" secondAttribute="height" multiplier="231:269" id="QpX-GW-0GA"/>
@@ -652,7 +652,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LorenzoAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="QbR-Me-5Vr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LorenzoAboutUs" translatesAutoresizingMaskIntoConstraints="NO" id="QbR-Me-5Vr">
                                 <rect key="frame" x="223" y="435" width="155" height="145"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QbR-Me-5Vr" secondAttribute="height" multiplier="231:269" id="K7f-uv-Lom"/>
@@ -708,6 +708,7 @@
                                 <exclude reference="rjD-Oo-jYQ"/>
                                 <exclude reference="8R0-pI-okY"/>
                                 <exclude reference="fGn-Dn-jSA"/>
+                                <exclude reference="bfA-qu-TLS"/>
                                 <exclude reference="5Tk-kr-nwL"/>
                                 <exclude reference="9Bu-LF-tGF"/>
                                 <exclude reference="BNq-3E-TUE"/>
@@ -717,7 +718,6 @@
                                 <exclude reference="loh-4O-zCR"/>
                                 <exclude reference="nN8-28-Ddb"/>
                                 <exclude reference="oEM-BR-d93"/>
-                                <exclude reference="bfA-qu-TLS"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -734,6 +734,7 @@
                                 <include reference="rjD-Oo-jYQ"/>
                                 <include reference="8R0-pI-okY"/>
                                 <include reference="fGn-Dn-jSA"/>
+                                <include reference="bfA-qu-TLS"/>
                                 <include reference="5Tk-kr-nwL"/>
                                 <include reference="9Bu-LF-tGF"/>
                                 <include reference="BNq-3E-TUE"/>
@@ -743,7 +744,6 @@
                                 <include reference="loh-4O-zCR"/>
                                 <include reference="nN8-28-Ddb"/>
                                 <include reference="oEM-BR-d93"/>
-                                <include reference="bfA-qu-TLS"/>
                             </mask>
                         </variation>
                     </view>
@@ -913,7 +913,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-eO-4A3">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-eO-4A3">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
                                     <outlet property="delegate" destination="YhL-mf-dhP" id="GTN-hI-NDp"/>

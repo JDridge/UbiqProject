@@ -36,7 +36,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     self.title = @"Ballots";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Back"
+                                   initWithTitle:@"≡"
                                    style:UIBarButtonItemStyleDone
                                    target:self.revealViewController
                                    action:@selector(revealToggle:)];
