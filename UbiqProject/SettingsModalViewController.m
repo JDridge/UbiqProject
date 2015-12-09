@@ -8,6 +8,7 @@
 
 #import "SettingsModalViewController.h"
 #import "SWRevealViewController.h"
+#import "LoginFormViewController.h"
 
 @interface SettingsModalViewController ()
 
@@ -15,7 +16,7 @@
 
 @implementation SettingsModalViewController
 
-@synthesize printQuery;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +41,9 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
-    
+    _nameLabel.text = [PFUser currentUser][@"name"];
+    _addressLabel.text = [PFUser currentUser][@"address"];
+    _emailLabel.text = [[PFUser currentUser] username];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,4 +65,42 @@
  */
 
 
+- (IBAction)logoutOfAccount:(id)sender {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Warning"
+                                message:@"Do you really want to log out of your account?"
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *voteYesButton = [UIAlertAction
+                                    actionWithTitle:@"Yes"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        [PFUser logOut];
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        [self transitionToLoginScreen];
+                                    }];
+    
+    UIAlertAction *voteNoButton = [UIAlertAction
+                                   actionWithTitle:@"No"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                   }];
+    [alert addAction:voteYesButton];
+    [alert addAction:voteNoButton];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+-(void) transitionToLoginScreen {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        LoginFormViewController *detailViewController = (LoginFormViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"loginVC"];
+        [self presentViewController:detailViewController animated:YES completion:nil];
+        [[[self parentViewController] parentViewController] dismissViewControllerAnimated:YES completion:nil];
+        
+    });
+}
 @end

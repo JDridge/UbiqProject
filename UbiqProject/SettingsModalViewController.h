@@ -14,16 +14,10 @@
 
 
 @interface SettingsModalViewController : UIViewController
-//- (IBAction)BackButton:(id)sender;
 
-@property Query *printQuery;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButton;
-@property (weak, nonatomic) IBOutlet UILabel *setUnitType;
-@property (weak, nonatomic) IBOutlet UILabel *unitNumber;
-@property (weak, nonatomic) IBOutlet UILabel *unitType;
-@property (weak, nonatomic) IBOutlet UIStepper *unitStepper;
-
-
-
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+- (IBAction)logoutOfAccount:(id)sender;
 
 @end
