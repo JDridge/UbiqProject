@@ -165,6 +165,9 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
 
     NSLog(@"%@", hi);
     cell.ballotLabel.text = hi;
+    cell.ballotEmail = personThatIsNotYou[@"username"];
+    cell.ballotAddressOfPlace = personThatIsNotYou[@"addressOfPlace"];
+    cell.ballotPersonName = personThatIsNotYou[@"name"];
     //Name
     //cell.firstPersonName.text = username1[@"username"];
     ///cell.secondPersonName.text = username2[@"username"];
