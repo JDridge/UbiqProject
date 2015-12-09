@@ -220,7 +220,7 @@
     }
     cell.secondPersonVote.text = userVote2;
     
-    return cell;
+    return cell; //
 }
 
 /*
