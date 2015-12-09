@@ -160,6 +160,9 @@ static NSString *myCellIdentifier = @"HistoryCustomCell";
         personThatIsNotYou = currentObjects[1];
     }
     
+    NSString *hi = [NSString stringWithFormat:@"%@ <%@> has invited to meet up at %@, located at %@. \nTap here to accept their invite!", personThatIsNotYou[@"name"], personThatIsNotYou[@"username"], personThatIsNotYou[@"nameOfPlace"], personThatIsNotYou[@"addressOfPlace"]];
+    
+    NSLog(@"%@", hi);
     //Name
     //cell.firstPersonName.text = username1[@"username"];
     ///cell.secondPersonName.text = username2[@"username"];
