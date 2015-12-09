@@ -61,5 +61,28 @@
 
 }
 
++ (void) sendEmailToUserAboutStatusOfBallotWithComments:(NSString*)user email:(NSString*)email location:(NSString*)location status:(NSString*)status comments:(NSString*)comments {
+    if([comments length] == 0) {
+        //empty description
+    }
+    
+    NSString *emailTo = [NSString stringWithFormat:@"%@ <%@>", user, email];
+    NSString *subject = @"Status of your converge ballot";
+    NSString *body = [NSString stringWithFormat:@"Hello %@,\nThe status of the ballot for location %@ is: %@. Please open the converge app to see more information. Open the app here! converge://OPENME", user, location, status];
+    Mailgun *mailgun = [Mailgun clientWithDomain:[NSString getMailgunClientWithDomain]
+                                          apiKey:[NSString getMailgunApiKey]];
+    [mailgun sendMessageTo:emailTo
+                      from:@"Converge App <converge@converge.converge>"
+                   subject:subject
+                      body:body
+                   success:^(NSString *messageId) {
+                       NSLog(@"success!");}
+                   failure:^(NSError *error) {
+                       NSLog(@"error %@", [error userInfo]);}];
+
+    
+    
+}
+
 
 @end
