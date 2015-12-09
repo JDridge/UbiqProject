@@ -198,7 +198,6 @@ static const CGFloat kTextEdgeInset = 6;
             NSLog(@"start block");
             if([placemarks count] > 0) {
                 MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:placemarks[0]];
-
                 found = YES;
                 NSLog(@"%f, %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
             }

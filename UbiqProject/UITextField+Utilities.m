@@ -57,7 +57,7 @@
 + (FormTextField *)createAddressTextField {
     FormTextField *newEmailAddressTextField = [self createGenericTextFieldWithPlaceholder:@"Your Address"];
     newEmailAddressTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    newEmailAddressTextField.validationType = FormValidatingTextFieldTypeAddress;//FormValidatingTextFieldTypePassword;
+    newEmailAddressTextField.validationType = //FormValidatingTextFieldTypePassword;
     newEmailAddressTextField.returnKeyType = UIReturnKeyNext;
     newEmailAddressTextField.delegate = (id <UITextFieldDelegate>) self;
     

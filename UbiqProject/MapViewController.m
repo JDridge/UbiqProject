@@ -27,7 +27,8 @@
     NSString *friendsEmailAddress = friendsUserInfo[@"email"];
     NSString *friendsFirstName = friendsUserInfo[@"firstName"];
     NSString *friendsLastName = friendsUserInfo[@"lastName"];
-    CLLocationCoordinate2D friendsCoordinates = [self convertAddressToCoordinates:friendsUserAddress];
+    NSString *friendsCoordinatesAsString = friendsUserInfo[@"coordinates"];
+    CLLocationCoordinate2D friendsCoordinates = [self convertAddressToCoordinates:friendsCoordinatesAsString];
     
     PFUser *currentUser = [PFUser currentUser];
     
@@ -35,7 +36,8 @@
     NSString *myEmailAddress = currentUser[@"email"];
     NSString *myFirstName = currentUser[@"firstName"];
     NSString *myLastName = currentUser[@"lastName"];
-    CLLocationCoordinate2D myCoordinates = [self convertAddressToCoordinates:myUserAddress];
+    NSString *myCoordinatesAsString = currentUser[@"coordinates"];
+    CLLocationCoordinate2D myCoordinates = [self convertAddressToCoordinates:myCoordinatesAsString];
     
     
     CLLocationCoordinate2D halfwayCoordinates = [self getHalfwayCoordinates:friendsCoordinates secondLocation:myCoordinates];
@@ -66,23 +68,9 @@
 }
 
 - (CLLocationCoordinate2D)convertAddressToCoordinates:(NSString*)address {
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    NSArray *splitString = [NSArray arrayWithArray:[address componentsSeparatedByString:@","]];
     
-    __block CLPlacemark *placemark = nil;
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    
-    [geocoder geocodeAddressString:address completionHandler:^(NSArray* placemarks, NSError* error) {
-        NSLog(@"start block");
-        if([placemarks count] > 0) {
-            placemark = [placemarks objectAtIndex:0];
-            NSLog(@"%f, %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
-        }
-        dispatch_semaphore_signal(sema);
-    }];
-    while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) { [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
-    }
-
-    return placemark.location.coordinate;
+    return CLLocationCoordinate2DMake([splitString[0] floatValue], [splitString[1]floatValue]);
 }
 
 

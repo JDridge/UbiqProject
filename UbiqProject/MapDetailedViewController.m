@@ -3,6 +3,7 @@
 #import "YPAPISample.h"
 #import <Parse/Parse.h>
 #import "Mailgun+Utilities.h"
+
 @interface MapDetailedViewController ()
 
 @end
@@ -15,7 +16,6 @@
     
     self.nameLabel.text = [pinLocation.annotation title];
     
-    //[self putInBallotClass];
 
     myName.text = myCustomAnnotation.name;
     myPhone.text = myCustomAnnotation.email;
@@ -27,6 +27,8 @@
     placePhone.text = @"phone";
     placeAddress.text = [pinLocation.annotation subtitle];
     
+    [self putInBallotClass];
+ 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -49,18 +51,34 @@
     ballot[@"ballotID"] = [NSString stringWithFormat:@"BA%i", ballotID];
     
     ballot[@"username"] = [[PFUser currentUser] username];
-    
     NSString *title = [pinLocation.annotation title];
     NSString *address = [pinLocation.annotation subtitle];
     CLLocationCoordinate2D coordinate = [pinLocation.annotation coordinate];
-    
     ballot[@"nameOfPlace"] = title;
     ballot[@"addressOfPlace"] = address;
-    
-    ballot[@"coordinates"] = [NSString stringWithFormat:@"%f, %f", coordinate.latitude, coordinate.longitude];
-    ballot[@"vote"] = @"Not yet voted";
-    
+    ballot[@"coordinates"] = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+    ballot[@"vote"] = @"Voted";
+    ballot[@"myCoordinate"] = [NSString stringWithFormat:@"%f,%f", myCustomAnnotation.coordinate.latitude, myCustomAnnotation.coordinate.longitude];
+    ballot[@"friendsCoordinate"] = [NSString stringWithFormat:@"%f,%f", friendsCustomAnnotation.coordinate.latitude, friendsCustomAnnotation.coordinate.longitude];
     [ballot saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(succeeded) {
+            NSLog(@"ballot saved");
+        }
+        else {
+            NSLog(@"error: %@", [error description]);
+        }
+    }];
+    
+    PFObject *ballot2 = [PFObject objectWithClassName:@"Ballot"];
+    ballot2[@"ballotID"] = [NSString stringWithFormat:@"BA%i", ballotID];
+    ballot2[@"username"] = friendsCustomAnnotation.email;
+    ballot2[@"nameOfPlace"] = title;
+    ballot2[@"addressOfPlace"] = address;
+    ballot2[@"coordinates"] = [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+    ballot2[@"vote"] = @"Not yet voted";
+    ballot2[@"myCoordinate"] = [NSString stringWithFormat:@"%f,%f", myCustomAnnotation.coordinate.latitude, myCustomAnnotation.coordinate.longitude];
+    ballot2[@"friendsCoordinate"] = [NSString stringWithFormat:@"%f,%f", friendsCustomAnnotation.coordinate.latitude, friendsCustomAnnotation.coordinate.longitude];
+    [ballot2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded) {
             NSLog(@"ballot saved");
         }
@@ -73,10 +91,30 @@
 - (IBAction)yesTouched:(id)sender {
     NSLog(@"email isnt valid, but let's send it to robert's email address");
     [Mailgun sendEmailToUser:@"rvo@uh.edu"/*friendsCustomAnnotation.email*/];
+    [self displayEmailSent];
     [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)nahManTouched:(id)sender {
     [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
 }
+
+
+- (void)displayEmailSent {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Email Sent!"
+                                message:[NSString stringWithFormat:@"Please wait for your friend, %@, to respond.", friendsCustomAnnotation.email]
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayButton = [UIAlertAction
+                                 actionWithTitle:@"Okay 🙃"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    [alert addAction:okayButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 @end

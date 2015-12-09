@@ -12,16 +12,18 @@
 #import "FormTextField.h"
 #import <Parse/Parse.h>
 #import "HomeViewController.h" 
+#import "SWRevealViewController.h"
 
-@implementation LoginFormViewController
+@implementation LoginFormViewController {
+    MKPlacemark *placeMarkToSend;
+}
 
 @synthesize LoginButton, SignUpButton, LoginSignUpForm, WelcomeLabel, backgroundVideo;
 
 -(void) transitionToHomeViewController {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ /* put code to execute here */
-    
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-        HomeViewController *detailViewController = (HomeViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"homeVC"];
+        SWRevealViewController *detailViewController = (SWRevealViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"hamVC"];
         [self presentViewController:detailViewController animated:YES completion:nil];
         [[[self parentViewController] parentViewController] dismissViewControllerAnimated:YES completion:nil];
 
@@ -181,11 +183,12 @@
         NSLog(@"all valid");
         PFUser *user = [PFUser user];
         user.username = ((FormTextField*) LoginSignUpForm.arrangedSubviews[2]).text;
-        user.password = ((FormTextField*) LoginSignUpForm.arrangedSubviews[3]).text;
+        user.password = ((FormTextField*) LoginSignUpForm.arrangedSubviews[4]).text;
         user.email = ((FormTextField*) LoginSignUpForm.arrangedSubviews[2]).text;
         user[@"firstName"] = ((FormTextField*) LoginSignUpForm.arrangedSubviews[0]).text;
         user[@"lastName"] = ((FormTextField*) LoginSignUpForm.arrangedSubviews[1]).text;
-        
+        user[@"address"] = ((FormTextField*) LoginSignUpForm.arrangedSubviews[3]).text;
+        user[@"coordinates"] = [NSString stringWithFormat:@"%f,%f", placeMarkToSend.coordinate.latitude, placeMarkToSend.coordinate.longitude];
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 //[self displaySuccessfulLogin:user];
@@ -301,30 +304,38 @@
     for(int i = 0; i < [LoginSignUpForm.arrangedSubviews count]; i++) {
         if([self.LoginSignUpForm.arrangedSubviews[i] isKindOfClass:[FormTextField class]]) {
             FormTextField *currentTextField = self.LoginSignUpForm.arrangedSubviews[i];
-            if(currentTextField.validationStatus != FormValidatingTextFieldStatusValid) {
+            if(currentTextField.validationStatus != FormValidatingTextFieldStatusValid &&
+               [currentTextField.placeholder isEqualToString:@"Your Address"]) {
                 return NO;
             }
-//            else if([currentTextField.placeholder isEqualToString:@"Your Address"]) {
-//                __block BOOL found = NO;
-//                dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-//
-//                CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//                    
-//                                    [geocoder geocodeAddressString:currentTextField.text completionHandler:^(NSArray* placemarks, NSError* error) {
-//                                        NSLog(@"start block");
-//                                        if([placemarks count] > 0) {
-//                                            found = YES;
-//                                        }
-//                                        else {
-//                                            found = NO;
-//                                        }
-//                                        dispatch_semaphore_signal(sema);
-//                                    }];
-//                while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) { [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]]; }
-//                
-//                found ? NSLog(@"valid address") : NSLog(@"invalid address");
-//                return found;
-//            }
+            else if([currentTextField.placeholder isEqualToString:@"Your Address"]) {
+                CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                
+                __block BOOL found = NO;
+                dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+                
+                [geocoder geocodeAddressString:currentTextField.text completionHandler:^(NSArray* placemarks, NSError* error) {
+                    NSLog(@"start block");
+                    if([placemarks count] > 0) {
+                        placeMarkToSend = [[MKPlacemark alloc] initWithPlacemark:placemarks[0]];
+                        found = YES;
+                        NSLog(@"%f, %f", placeMarkToSend.location.coordinate.latitude, placeMarkToSend.location.coordinate.longitude);
+                    }
+                    else {
+                        found = NO;
+                    }
+                    dispatch_semaphore_signal(sema);
+                }];
+                while (dispatch_semaphore_wait(sema, DISPATCH_TIME_NOW)) { [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.5]]; }
+                
+                if(found) {
+                    return FormValidatingTextFieldStatusValid;
+                }
+                else {
+                    return FormValidatingTextFieldStatusInvalid;
+                }
+
+            }
         }
     }
     
