@@ -136,7 +136,6 @@
         messageLabel.textColor = [UIColor blackColor];
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = NSTextAlignmentCenter;
-        //messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
         [messageLabel sizeToFit];
         
         self.tableView.backgroundView = messageLabel;
@@ -218,14 +217,18 @@
 {
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Voting Time"
-                                message:@"Would you like to meet up? at......"
+                                message:@"Would you like to meet up? \n Enter any comments you want to send to the other person below."
                                 preferredStyle:UIAlertControllerStyleAlert];
-    
+    __weak UIAlertController *alertRef = alert;
+
     UIAlertAction *voteYesButton = [UIAlertAction
                                  actionWithTitle:@"Yes"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
                                  {
+                                     NSString *text = ((UITextField *)[alertRef.textFields objectAtIndex:0]).text;
+                                     
+                                     [self emailTheOtherPersonWith:text status:@"Voted Yes"];
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     
@@ -234,12 +237,20 @@
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
                                  {
+                                     NSString *text = ((UITextField *)[alertRef.textFields objectAtIndex:0]).text;
+                                     [self emailTheOtherPersonWith:text status:@"Voted No"];
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                  }];
     
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Enter comments here...";
+        textField.keyboardType = UIKeyboardTypeDefault;
+    }];
+
+    
     UIAlertAction *maybeLaterButton = [UIAlertAction
                                  actionWithTitle:@"Later"
-                                 style:UIAlertActionStyleDefault
+                                 style:UIAlertActionStyleCancel
                                  handler:^(UIAlertAction * action)
                                  {
                                      [alert dismissViewControllerAnimated:YES completion:nil];
@@ -247,10 +258,24 @@
     [alert addAction:voteYesButton];
     [alert addAction:voteNoButton];
     [alert addAction:maybeLaterButton];
+    
+    
     [self presentViewController:alert animated:YES completion:nil];
 
 }
 
+-(void) emailTheOtherPersonWith:(NSString*)text status:(NSString*)voted{
+    NSLog(@"emailing...");
+    if([voted isEqualToString:@"Voted Yes"]) {
+        NSLog(@"yes!!!");
+    }
+    else if([voted isEqualToString:@"Voted No"]) {
+        NSLog(@"no :(");
+    }
+    else {
+        NSLog(@"what...?");
+    }
+}
 
 
 

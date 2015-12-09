@@ -281,4 +281,31 @@
 }
 */
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HistoryTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"History"
+                                message:[NSString stringWithFormat:@"%@", cell.secondPersonVote.text]
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *voteYesButton = [UIAlertAction
+                                    actionWithTitle:@"Ok"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                    }];
+    
+    [alert addAction:voteYesButton];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+
+
+
+
 @end
