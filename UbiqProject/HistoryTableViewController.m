@@ -44,6 +44,21 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    //
+    // Initialize the refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor purpleColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(fetchParseData)
+                  forControlEvents:UIControlEventValueChanged];
+    
+    
+    //
+    
+    
+    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
     
@@ -89,7 +104,29 @@
 //        }
 //    }];
     
+    
+    [self reloadData];
+    NSLog(@"****This is where the URL should be updating****");
+    
 }
+
+
+- (void)reloadData
+{
+    // Reload table data
+    [self.tableView reloadData];
+    
+    // End the refreshing
+    if (self.refreshControl) {
+        
+        //CODE HERE
+        
+        [self.refreshControl endRefreshing];
+    }
+}
+
+
+
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
