@@ -36,7 +36,7 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    [self fetchParseData];
+    //[self fetchParseData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -149,7 +149,7 @@
         messageLabel.textColor = [UIColor blackColor];
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = NSTextAlignmentCenter;
-        messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
+        //messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:20];
         [messageLabel sizeToFit];
         
         self.tableView.backgroundView = messageLabel;
