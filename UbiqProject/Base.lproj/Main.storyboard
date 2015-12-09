@@ -571,7 +571,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.90980392156862744" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zRi-18-ZNP" firstAttribute="leading" secondItem="KGb-zT-6nM" secondAttribute="leading" id="2DA-RM-iDp"/>
                             <constraint firstItem="KGb-zT-6nM" firstAttribute="top" secondItem="zRi-18-ZNP" secondAttribute="bottom" constant="8" symbolic="YES" id="73P-1q-ovW"/>
@@ -736,7 +736,7 @@
                                 <rect key="frame" x="168" y="174" width="51" height="31"/>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.90980392156862744" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ATW-SV-gzZ" firstAttribute="leading" secondItem="sPo-VT-QIR" secondAttribute="trailing" constant="20" id="6vH-5b-O06"/>
                             <constraint firstItem="yuL-yZ-2wl" firstAttribute="leading" secondItem="Z4Q-fF-caP" secondAttribute="leading" id="8so-6m-D8l"/>
