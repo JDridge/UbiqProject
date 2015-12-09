@@ -27,8 +27,6 @@
     placeName.text = [pinLocation.annotation title];
     placeAddress.text = [pinLocation.annotation subtitle];
     
-    [self putInBallotClass];
- 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -60,6 +58,7 @@
     ballot[@"vote"] = @"Voted";
     ballot[@"myCoordinate"] = [NSString stringWithFormat:@"%f,%f", myCustomAnnotation.coordinate.latitude, myCustomAnnotation.coordinate.longitude];
     ballot[@"friendsCoordinate"] = [NSString stringWithFormat:@"%f,%f", friendsCustomAnnotation.coordinate.latitude, friendsCustomAnnotation.coordinate.longitude];
+    ballot[@"name"] = myCustomAnnotation.name;
     [ballot saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded) {
             NSLog(@"ballot saved");
@@ -78,6 +77,7 @@
     ballot2[@"vote"] = @"Not yet voted";
     ballot2[@"myCoordinate"] = [NSString stringWithFormat:@"%f,%f", myCustomAnnotation.coordinate.latitude, myCustomAnnotation.coordinate.longitude];
     ballot2[@"friendsCoordinate"] = [NSString stringWithFormat:@"%f,%f", friendsCustomAnnotation.coordinate.latitude, friendsCustomAnnotation.coordinate.longitude];
+    ballot2[@"name"] = friendsCustomAnnotation.name;
     [ballot2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(succeeded) {
             NSLog(@"ballot saved");
@@ -89,6 +89,7 @@
 
 }
 - (IBAction)yesTouched:(id)sender {
+    [self putInBallotClass];
     NSLog(@"email isnt valid, but let's send it to robert's email address");
     [Mailgun sendEmailToUserRequestingBallot:friendsCustomAnnotation.name from:myCustomAnnotation.name email:friendsCustomAnnotation.email];
     [self displayEmailSent];
