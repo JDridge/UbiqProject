@@ -124,8 +124,23 @@
      
      */
     
+    [self reloadData];
     NSLog(@"****This is where the URL should be updating****");
     
+}
+
+- (void)reloadData
+{
+    // Reload table data
+    [self.tableView reloadData];
+    
+    // End the refreshing
+    if (self.refreshControl) {
+        
+        //CODE HERE
+        
+        [self.refreshControl endRefreshing];
+    }
 }
 
 
