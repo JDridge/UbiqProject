@@ -148,6 +148,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     
     BallotTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
     
+    
     NSArray *currentObjects = secondQueryObjects[indexPath.row];
     
     PFObject *personThatIsNotYou;
@@ -161,6 +162,8 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     
     NSString *hi = [NSString stringWithFormat:@"%@ <%@> has invited to meet up at %@, located at %@. \nTap here to accept their invite!", personThatIsNotYou[@"name"], personThatIsNotYou[@"username"], personThatIsNotYou[@"nameOfPlace"], personThatIsNotYou[@"addressOfPlace"]];
     
+    cell.ballotID = personThatIsNotYou[@"ballotID"];
+
     NSLog(@"%@", hi);
     cell.ballotLabel.text = hi;
     //Name
@@ -196,13 +199,14 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
 //    secondName = username2[@"name"];
 //
     
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BallotTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
+
     UIAlertController *alert = [UIAlertController
                                 alertControllerWithTitle:@"Voting Time"
                                 message:@"Would you like to meet up? \n Enter any comments you want to send to the other person below."
@@ -253,18 +257,47 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
 
 -(void) emailTheOtherPersonWith:(NSString*)text status:(NSString*)voted cell:(BallotTableViewCell*)cell{
     NSLog(@"emailing...");
-    //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
     if([voted isEqualToString:@"Voted Yes"]) {
         NSLog(@"yes!!!");
+        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        
+        [self changeVoteColumnOfBallotClassWith:@"Yes" for:cell.ballotID];
+        
     }
     else if([voted isEqualToString:@"Voted No"]) {
-        NSLog(@"no :(");
+        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        
+        [self changeVoteColumnOfBallotClassWith:@"No" for:cell.ballotID];
     }
     else {
         NSLog(@"what...?");
     }
+
 }
 
+- (void)changeVoteColumnOfBallotClassWith:(NSString*)vote for:(NSString*)ballotID{
+    PFQuery *query = [PFQuery queryWithClassName:@"Ballot"];
+    
+    [[query whereKey:@"ballotID" equalTo:ballotID] whereKey:@"username" equalTo:[[PFUser currentUser] username]];
+    
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * userStats, NSError *error) {
+        if (!error) {
+            // Found UserStats
+            if([vote isEqualToString:@"Yes"]) {
+                NSLog(@"changing vote to yes");
+                [userStats setObject:@"Yes" forKey:@"vote"];
+            }
+            else {
+                NSLog(@"changing vote to no");
+                [userStats setObject:@"No" forKey:@"vote"];
+            }
+            [userStats saveInBackground];
+        } else {
+            // Did not find any UserStats for the current user
+            NSLog(@"Error: %@", error);
+        }
+    }];
+}
 
 
 @end

@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ballotLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *ballotImage;
 
+@property NSString *ballotID;
 
 @end
