@@ -184,11 +184,47 @@
         cell.secondPersonName.text = username2[@"username"];
         userVote1 = username1[@"vote"];
         userVote2 = username2[@"vote"];
+        //ballot
+        if([userVote1 isEqualToString: @"Voted"]){
+            userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
+        }else if([userVote1 isEqualToString: @"No"]){
+            userVote1 = [NSString stringWithFormat: @"%@ has voted No", username1[@"name"]];
+        }else{
+            userVote1 = [NSString stringWithFormat: @"%@ has not yet voted", username1[@"name"]];
+        }
+        cell.firstPersonVote.text = userVote1;
+        
+        if([userVote2 isEqualToString: @"Voted"]){
+            userVote2 = [NSString stringWithFormat: @"%@ has voted Yes", username2[@"name"]];
+        }else if([userVote2 isEqualToString: @"No"]){
+            userVote2 = [NSString stringWithFormat: @"%@ has voted No", username2[@"name"]];
+        }else{
+            userVote2 = [NSString stringWithFormat: @"%@ has not yet voted", username2[@"name"]];
+        }
+        cell.secondPersonVote.text = userVote2;
     }else{
         cell.firstPersonName.text = username2[@"username"];
         cell.secondPersonName.text = username1[@"username"];
         userVote1 = username2[@"vote"];
         userVote2 = username1[@"vote"];
+        //ballot
+        if([userVote2 isEqualToString: @"Voted"]){
+            userVote2 = [NSString stringWithFormat: @"%@ has voted Yes", username2[@"name"]];
+        }else if([userVote2 isEqualToString: @"No"]){
+            userVote2 = [NSString stringWithFormat: @"%@ has voted No", username2[@"name"]];
+        }else{
+            userVote2 = [NSString stringWithFormat: @"%@ has not yet voted", username2[@"name"]];
+        }
+        cell.firstPersonVote.text = userVote2;
+        
+        if([userVote1 isEqualToString: @"Voted"]){
+            userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
+        }else if([userVote1 isEqualToString: @"No"]){
+            userVote1 = [NSString stringWithFormat: @"%@ has voted No", username1[@"name"]];
+        }else{
+            userVote1 = [NSString stringWithFormat: @"%@ has not yet voted", username1[@"name"]];
+        }
+        cell.secondPersonVote.text = userVote1;
     }
     
     //Google Static Map
@@ -212,27 +248,7 @@
     
     [cell.mapImage setImage:image];
     
-    //ballot
-    
-    if([userVote1 isEqualToString: @"Voted"]){
-        userVote1 = [NSString stringWithFormat: @"%@ has voted Yes", username1[@"name"]];
-    }else if([userVote1 isEqualToString: @"No"]){
-        userVote1 = [NSString stringWithFormat: @"%@ has voted No", username1[@"name"]];
-    }else{
-        userVote1 = [NSString stringWithFormat: @"%@ has not yet voted", username1[@"name"]];
-    }
-    cell.firstPersonVote.text = userVote1;
-    
-    if([userVote2 isEqualToString: @"Voted"]){
-        userVote2 = [NSString stringWithFormat: @"%@ has voted Yes", username2[@"name"]];
-    }else if([userVote2 isEqualToString: @"No"]){
-        userVote2 = [NSString stringWithFormat: @"%@ has voted No", username2[@"name"]];
-    }else{
-        userVote2 = [NSString stringWithFormat: @"%@ has not yet voted", username2[@"name"]];
-    }
-    cell.secondPersonVote.text = userVote2;
-    
-    return cell; //
+    return cell;
 }
 
 /*
