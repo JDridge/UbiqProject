@@ -79,15 +79,6 @@
 		E1FD71CF1C0C35D3007245D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B21C0C2ED1007245D3 /* libsqlite3.tbd */; };
 		E1FD71D01C0C35D9007245D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD71B01C0C2ECD007245D3 /* libz.tbd */; };
 		F457BEF81C1685F500830580 /* ubiq1.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEEE1C1685F500830580 /* ubiq1.mov */; };
-		F457BEF91C1685F500830580 /* ubiq2.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEEF1C1685F500830580 /* ubiq2.mov */; };
-		F457BEFA1C1685F500830580 /* ubiq3.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF01C1685F500830580 /* ubiq3.mov */; };
-		F457BEFB1C1685F500830580 /* ubiq4.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF11C1685F500830580 /* ubiq4.mov */; };
-		F457BEFC1C1685F500830580 /* ubiq5.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF21C1685F500830580 /* ubiq5.mov */; };
-		F457BEFD1C1685F500830580 /* ubiq6.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF31C1685F500830580 /* ubiq6.mov */; };
-		F457BEFE1C1685F500830580 /* ubiq7.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF41C1685F500830580 /* ubiq7.mov */; };
-		F457BEFF1C1685F500830580 /* ubiq8.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF51C1685F500830580 /* ubiq8.mov */; };
-		F457BF001C1685F500830580 /* ubiq9.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF61C1685F500830580 /* ubiq9.mov */; };
-		F457BF011C1685F500830580 /* ubiq10.mov in Resources */ = {isa = PBXBuildFile; fileRef = F457BEF71C1685F500830580 /* ubiq10.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,15 +210,6 @@
 		E1FD71CA1C0C3596007245D3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E1FD71CB1C0C3596007245D3 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		F457BEEE1C1685F500830580 /* ubiq1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq1.mov; sourceTree = "<group>"; };
-		F457BEEF1C1685F500830580 /* ubiq2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq2.mov; sourceTree = "<group>"; };
-		F457BEF01C1685F500830580 /* ubiq3.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq3.mov; sourceTree = "<group>"; };
-		F457BEF11C1685F500830580 /* ubiq4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq4.mov; sourceTree = "<group>"; };
-		F457BEF21C1685F500830580 /* ubiq5.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq5.mov; sourceTree = "<group>"; };
-		F457BEF31C1685F500830580 /* ubiq6.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq6.mov; sourceTree = "<group>"; };
-		F457BEF41C1685F500830580 /* ubiq7.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq7.mov; sourceTree = "<group>"; };
-		F457BEF51C1685F500830580 /* ubiq8.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq8.mov; sourceTree = "<group>"; };
-		F457BEF61C1685F500830580 /* ubiq9.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq9.mov; sourceTree = "<group>"; };
-		F457BEF71C1685F500830580 /* ubiq10.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ubiq10.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,15 +373,6 @@
 				E1CE8FC61C058323000A9EE9 /* video.mov */,
 				D4F2B90D1BBF12EE007F6955 /* main.m */,
 				F457BEEE1C1685F500830580 /* ubiq1.mov */,
-				F457BEEF1C1685F500830580 /* ubiq2.mov */,
-				F457BEF01C1685F500830580 /* ubiq3.mov */,
-				F457BEF11C1685F500830580 /* ubiq4.mov */,
-				F457BEF21C1685F500830580 /* ubiq5.mov */,
-				F457BEF31C1685F500830580 /* ubiq6.mov */,
-				F457BEF41C1685F500830580 /* ubiq7.mov */,
-				F457BEF51C1685F500830580 /* ubiq8.mov */,
-				F457BEF61C1685F500830580 /* ubiq9.mov */,
-				F457BEF71C1685F500830580 /* ubiq10.mov */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -522,22 +495,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F457BF001C1685F500830580 /* ubiq9.mov in Resources */,
-				F457BEFD1C1685F500830580 /* ubiq6.mov in Resources */,
-				F457BEFB1C1685F500830580 /* ubiq4.mov in Resources */,
-				F457BEF91C1685F500830580 /* ubiq2.mov in Resources */,
 				F457BEF81C1685F500830580 /* ubiq1.mov in Resources */,
-				F457BEFA1C1685F500830580 /* ubiq3.mov in Resources */,
 				E1EA9D591C10EFC700573260 /* Main.storyboard in Resources */,
-				F457BEFF1C1685F500830580 /* ubiq8.mov in Resources */,
-				F457BF011C1685F500830580 /* ubiq10.mov in Resources */,
 				E1CE8FC81C058323000A9EE9 /* video.mov in Resources */,
 				E1CE8FC71C058323000A9EE9 /* railway.gif in Resources */,
 				E13DE0461BFACE73000C9C30 /* .gitignore in Resources */,
 				D4F2B91C1BBF12EE007F6955 /* LaunchScreen.storyboard in Resources */,
-				F457BEFE1C1685F500830580 /* ubiq7.mov in Resources */,
 				9317A0D81C1769EA0093ED5D /* HistoryCustomCell.xib in Resources */,
-				F457BEFC1C1685F500830580 /* ubiq5.mov in Resources */,
 				E1BAC4571C17663A00AE4035 /* APIKeys.plist in Resources */,
 				E1D8641E1BEDA11E00C772F6 /* Images.xcassets in Resources */,
 				D4F2B9191BBF12EE007F6955 /* Assets.xcassets in Resources */,
