@@ -10,6 +10,7 @@
 
 @implementation HistoryTableViewCell
 
+
 - (void)awakeFromNib {
     // Initialization code
 }
