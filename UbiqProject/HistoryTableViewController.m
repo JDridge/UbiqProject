@@ -10,14 +10,20 @@
 #import "HistoryTableViewCell.h"
 #import "HistoryTableViewController.h"
 
-@interface HistoryTableViewController ()
+@interface HistoryTableViewController () {
+    NSArray *firstQueryObjects;
+    NSMutableArray *secondQueryObjects;
+    NSMutableDictionary *pairedObjects;
+}
 
 @end
 
 @implementation HistoryTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"History";
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
@@ -28,6 +34,8 @@
     self.navigationItem.leftBarButtonItem = backButton;
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    [self fetchParseData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -49,8 +57,40 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+-(void)fetchParseData{
+    PFQuery *getFirstUserQuery = [PFQuery queryWithClassName:@"Ballot"];
+    PFQuery *getSecondUserQuery = [PFQuery queryWithClassName:@"Ballot"];
+    
+    NSMutableArray *ballotIDFromFirstQueryObjects = [[NSMutableArray alloc] init];
+    secondQueryObjects = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *pairedArray = [[NSMutableArray alloc] init];
+    pairedObjects = [[NSMutableDictionary alloc] init];
+    //filtering data
+    [getFirstUserQuery whereKey:@"username" equalTo:[[PFUser currentUser] username]];
+    firstQueryObjects = [getFirstUserQuery findObjects];
+    
+    for (PFObject *object in firstQueryObjects)
+        [ballotIDFromFirstQueryObjects addObject:object[@"ballotID"]];
+    
 
+    for (int i = 0; i < [ballotIDFromFirstQueryObjects count]; i++) {
+        [getSecondUserQuery whereKey:@"ballotID" equalTo:ballotIDFromFirstQueryObjects[i]];
+        [secondQueryObjects  addObject:[getSecondUserQuery findObjects]];
+    }
+
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            NSLog(@"%@", objects);
+//        } else {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
+    
+}
+
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 //    if (cell) {
@@ -80,16 +120,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 1;
+    return [secondQueryObjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *myCellIdentifier = @"HistoryCustomCell";
+    
     HistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
-    cell.firstPersonName.text = @"Tree";
-    cell.secondPersonName.text = @"Chris";
+    NSURL *url = [NSURL URLWithString:@"https://scontent.fhou2-1.fna.fbcdn.net/hphotos-xla1/v/t1.0-9/1524765_781472518533443_811718135_n.jpg?oh=d8a3b8539862aeeed0ad835ee3a63f29&oe=56DDE7D4"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    
+    //SCALABILITY SUCKS HERE ONLY GOOD FOR TWO PEOPLE CHANGE LATER ON FOR FUTURE IMPLEMENTATIONS
+    NSArray *currentObjects = secondQueryObjects[indexPath.row];
+    PFObject *username1 = currentObjects[1];
+    PFObject *username2 = currentObjects[0];
+
+    cell.firstPersonName.text = username1[@"username"];
+    cell.secondPersonName.text = username2[@"username"];
+    [cell.mapImage setImage:image];
     return cell;
 }
 
