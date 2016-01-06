@@ -261,7 +261,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
     NSLog(@"emailing...");
     if([voted isEqualToString:@"Voted Yes"]) {
         NSLog(@"yes!!!");
-        //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.ballotEmail location:nameOfPlace status:voted comments:text image:cell.ballotImage];
         
         [self changeVoteColumnOfBallotClassWith:@"Yes" for:cell.ballotID];
         
@@ -269,7 +269,7 @@ static NSString *myCellIdentifier = @"BallotCustomCell";
         
     }
     else if([voted isEqualToString:@"Voted No"]) {
-        //[Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.secondPersonName.text location:nameOfPlace status:voted comments:text];
+        [Mailgun sendEmailToUserAboutStatusOfBallotWithComments:secondName email:cell.ballotEmail location:nameOfPlace status:voted comments:text image:cell.ballotImage];
         
         [self changeVoteColumnOfBallotClassWith:@"No" for:cell.ballotID];
         
