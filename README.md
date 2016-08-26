@@ -22,3 +22,8 @@ The app is structured in a very clear and cohesive way, with each screen having 
 For instance, the login screen has a few clearly labeled text boxes so the user knows what is happening.
 Everything is also simple and easy to use. All options and available functions are visible to the user and if
 they make a wrong step, we account for all incorrect inputs and output error messages. 
+
+# Screenshots 
+
+## Welcome Screen
+![Welcome Screen](screenshots/Simulator Screen Shot Feb 21, 2016, 2.36.25 PM_framed.png)
