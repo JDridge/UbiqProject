@@ -1,17 +1,53 @@
-# Screenshots 
+# Screenshots
 
-# Welcome Screen
-![Welcome Screen](screenshots/Simulator Screen Shot Feb 21, 2016, 2.36.25 PM_framed.png)
+## Welcome Screen
+![Welcome Screen](screenshots/1 - Welcome Screen.png)
 
-# Completed Registration Screen 
-![Completed Registration Screen](screenshots/Simulator Screen Shot Feb 22, 2016, 3.24.50 PM_framed.png)
+## Registration Form Filled In
+![Registration Form Filled In](screenshots/2 - Registration Form Filled In.png)
 
-# Home Screen
-![Home Screen](screenshots/Simulator Screen Shot Feb 22, 2016, 3.26.37 PM_framed.png)
+## Home Screen
+![Home Screen](screenshots/3 - Home Screen.png)
 
-# Forms filled out on Home Screen
-![Forms Filled Home Screen](screenshots/Simulator Screen Shot Feb 22, 2016, 3.35.24 PM_framed.png)
+## Home Screen Filled In
+![Home Screen Filled In](screenshots/4 - Home Screen Filled In.png)
 
-# Results Screen
-![Results Screen](screenshots/Simulator Screen Shot Feb 27, 2016, 4.55.19 PM_framed.png)
+## Results Screen for Coffee
+![Results Screen for Coffee](screenshots/5a - Results Screen for Coffee.png)
+
+## Results Screen for Food
+![Results Screen for Food](screenshots/5b - Results Screen for Food.png)
+
+## Results Screen
+![Results Screen](screenshots/5c - Results Screen.png)
+
+## Results Screen With Halfway Point
+![Results Screen With Halfway Point](screenshots/6 - Results Screen With Halfway Point.png)
+
+## Results Screen With Bob Smith
+![Results Screen With Bob Smith](screenshots/7 - Results Screen With Bob Smith.png)
+
+## Results Screen with Robert Vo
+![Results Screen with Robert Vo](screenshots/8 - Results Screen with Robert Vo.png)
+
+## Results Screen with Ibiza
+![Results Screen with Ibiza](screenshots/9 - Results Screen with Ibiza.png)
+
+## Deciding on Ibiza
+![Deciding on Ibiza](screenshots/10 - Deciding on Ibiza.png)
+
+## Sent a Request to Meet Up at Ibiza
+![Sent a Request to Meet Up at Ibiza](screenshots/11 - Sent a Request to Meet Up at Ibiza.png)
+
+## History Page
+![History Page](screenshots/12 - History Page.png)
+
+## Pending Requests
+![Pending Requests](screenshots/13 - Pending Requests.png)
+
+## Voting to Meet Up
+![Voting to Meet Up](screenshots/14 - Voting to Meet Up.png)
+
+## Successful Vote Sent
+![Successful Vote Sent](screenshots/15 - Successful Vote Sent.png)
 
