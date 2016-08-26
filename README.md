@@ -24,6 +24,4 @@ Everything is also simple and easy to use. All options and available functions a
 they make a wrong step, we account for all incorrect inputs and output error messages. 
 
 # Screenshots 
-
-## Welcome Screen
-![Welcome Screen](screenshots/Simulator Screen Shot Feb 21, 2016, 2.36.25 PM_framed.png)
+## [Click here for screenshots!](screenshots.md)
