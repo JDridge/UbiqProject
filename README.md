@@ -1,47 +1,29 @@
 # Converge
 
-Description needed.
-# Future Features
- * Robert ![alt tag](http://progressed.io/bar/75)
-  * User accounts (using Parse)
-    * User will register with
-      * First Name
-      * Last Name
-      * Phone Number
-      * Address
-    * Login with facebook?
-   * Avatar preferences?
-   * Store preferences / logged in status
- * Tri ![alt tag](http://progressed.io/bar/00)
-  * Create icons for searched interest points
-    * beer, apples, generic restaurant symbols, etc. Think sunrise calendar.
-  * Add icons for @1x, @2x, @3x into the image assets.
-  * Layout refinements. Work with Mario.
- * Mario ![alt tag](http://progressed.io/bar/00)
-  * Implement Hamburger menu.
-    * Display settings here.
-      * Choosing between imperial vs metric units
-      * Radius from halfway points too?
- * Joseph ![alt tag](http://progressed.io/bar/00)
-  * New view (PinInformationViewController?)
-    * New view comes up when the person clicks on more information on the pin.
-    * Pass the pin information over.
-      * This new view should display information by the restaurant
-        * Info provided by Yelp? Look into Apple Maps API.
-        * Display price information, description, phone number, etc.
-        * Include a link to open up apple maps with the address
- * Lorenzo ![alt tag](http://progressed.io/bar/00)
-  * Create custom annotations for the search results
-    * There should be two custom annotations classes. 
-      * One for search results and another for location1, loc2, halfway.
-  * Zoom out the map accordingly to see all of the pins. Work with Robert on it.
-  * Add filters to common interest points search.
-    * Distance filter (1 mi, 2 mi, etc). 
-      * Look at Map VC for request.region = MKCoordinate....
-      * Distance filter has to be transferred over and converted to degrees.
-      * Make helper method - (double) convertDistanceFilterToDegrees...etc.
- * Chris ![alt tag](http://progressed.io/bar/00)
-  * Add the ability to work with multiple locations.
-    * Requires change in the storyboard, homeVC, mapVC. 
-    * Work with Robert if needed.
-    * Storyboard will need to be smooth in adding the new locations.
+# About 
+This application is designed to make it convenient for multiple people to find locations with the shortest
+distance between everybody. The app calculates the midway point between all the users and finds all of
+the places that fits the user-inputted category, like “bars” or “food”.
+
+# Functionality
+The functionality is simple, straight-forward and robust. There is a user registration system that utilizes
+the Parse database. We use the Yelp API to provide more details about each location with addresses,
+phone numbers, etc. We use Apple Maps to calculate and navigate the users to the locations. We also
+use email notifications for users to communicate and interact with each other. We also save the history
+of all the locations that have been traveled to.
+
+# Architecture
+Converge uses Core Location, Map Kit, Parse, and Mailgun. Core Location and Map Kit are for the map
+portion of the app where we calculate the halfway point. Parse is used for user registration and back
+end. Mailgun is used to send emails to the users.
+
+# User Interface Design
+The app is structured in a very clear and cohesive way, with each screen having a purpose and direction.
+For instance, the login screen has a few clearly labeled text boxes so the user knows what is happening.
+Everything is also simple and easy to use. All options and available functions are visible to the user and if
+they make a wrong step, we account for all incorrect inputs and output error messages. 
+
+# Screenshots 
+
+## Welcome Screen
+![Welcome Screen](screenshots/Simulator Screen Shot Feb 21, 2016, 2.36.25 PM_framed.png)
