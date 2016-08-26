@@ -24,4 +24,4 @@ Everything is also simple and easy to use. All options and available functions a
 they make a wrong step, we account for all incorrect inputs and output error messages. 
 
 # Screenshots 
-## [Click here for screenshots!](screenshots.md)
+## [Click here for screenshots!](SCREENSHOTS.md)
